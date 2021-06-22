@@ -7,7 +7,9 @@
   			<setting name="mapUnderscoreToCamelCase" value="true"/>
   			<setting name="useGeneratedKeys" value="true"/>
   	</settings>
+  	
   	<typeAliases>
-  		<typeAlias type="user" alias="User"/>
+  		<typeAlias type="com.user.User" alias="User"/>
   	</typeAliases>
+  	 
   </configuration>

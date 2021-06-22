@@ -1,4 +1,4 @@
-package user;
+package com.user;
 
 import static org.junit.Assert.fail;
 

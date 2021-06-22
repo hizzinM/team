@@ -11,12 +11,16 @@
 </listener>
 
 <!-- The front controller of this Spring Web application, responsible for handling all application requests -->
+
 <servlet>
 	<servlet-name>springDispatcherServlet</servlet-name>
 	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+<!-- 스프인 설정 파일 위치를 넣어줌 -->
+
 	<init-param>
 <param-name>contextConfigLocation</param-name>
-<!-- 스프인 설정 파일 위치를 넣어줌 -->
+
+
 <param-value>/WEB-INF/spring/appServlet/servlet_context.xml</param-value>
 </init-param>
 <load-on-startup>1</load-on-startup>
@@ -27,6 +31,7 @@
 <servlet-name>springDispatcherServlet</servlet-name>
 <url-pattern>/</url-pattern>
 </servlet-mapping>
+
 <!-- 한글이 깨지지 않도록 인코딩 필터를 추가한다 -->
 <filter>
 		<filter-name>encodingFilter</filter-name>
