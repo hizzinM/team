@@ -5,8 +5,7 @@ import static org.junit.Assert.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-import org.junit.Test;
-
+import org.junit.Test; 
 public class jdbctest01 {
 	static {
 		try {

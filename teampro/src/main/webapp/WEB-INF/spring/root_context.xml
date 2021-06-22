@@ -3,13 +3,24 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-	
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<context:component-scan base-package="teampro">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
 	<!-- 디비 정보 가져오기 -->
 	<context:property-placeholder
-		location="/WEB-INF/config/mysql_db.properties" />
+		location="file:src/main/webapp/WEB-INF/config/mysql_db.properties" />
 
 	<!-- 스프링 jdbc연결 -->
 	<bean id="dataSource"
@@ -20,15 +31,18 @@
 		<property name="password" value="${db.password}" />
 	</bean>
 
-	<!-- 마이바티스 접속 -->
+	<!-- mybatis 추가 -->
 	<bean id="sqlSessionFactoryBean"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- dataSource -->
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation"
-			value="/WEB-INF/config/mybatis_config.xml" />
+			value="file:src/main/webapp/WEB-INF/config/mybatis_config.xml" />
 	</bean>
- 
-	<!-- 마이바티스 매퍼 빈을 스캔함 -->
-	<mybatis-spring:scan base-package="teampro" />
+
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean" />
+	</bean>  
 
 </beans>
