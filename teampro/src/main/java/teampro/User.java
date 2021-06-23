@@ -15,7 +15,6 @@ public class User {
 	private String accountName;
 	private String accountBank;
 	private String accountNum;
-
 	public User(int userNo, int userId, String password, String passwordCheck, String userName, String address,
 			String phone, String email, LocalDate birthDate, String accountName, String accountBank,
 			String accountNum) {
@@ -33,103 +32,78 @@ public class User {
 		this.accountBank = accountBank;
 		this.accountNum = accountNum;
 	}
-
 	public int getUserNo() {
 		return userNo;
 	}
-
 	public void setUserNo(int userNo) {
 		this.userNo = userNo;
 	}
-
 	public int getUserId() {
 		return userId;
 	}
-
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 	public String getPasswordCheck() {
 		return passwordCheck;
 	}
-
 	public void setPasswordCheck(String passwordCheck) {
 		this.passwordCheck = passwordCheck;
 	}
-
 	public String getUserName() {
 		return userName;
 	}
-
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
 	public String getAddress() {
 		return address;
 	}
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
 	public String getPhone() {
 		return phone;
 	}
-
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	public LocalDate getBirthDate() {
 		return birthDate;
 	}
-
 	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
-
 	public String getAccountName() {
 		return accountName;
 	}
-
 	public void setAccountName(String accountName) {
 		this.accountName = accountName;
 	}
-
 	public String getAccountBank() {
 		return accountBank;
 	}
-
 	public void setAccountBank(String accountBank) {
 		this.accountBank = accountBank;
 	}
-
 	public String getAccountNum() {
 		return accountNum;
 	}
-
 	public void setAccountNum(String accountNum) {
 		this.accountNum = accountNum;
 	}
-
 	@Override
 	public String toString() {
 		return "User [userNo=" + userNo + ", userId=" + userId + ", password=" + password + ", passwordCheck="
@@ -137,5 +111,6 @@ public class User {
 				+ email + ", birthDate=" + birthDate + ", accountName=" + accountName + ", accountBank=" + accountBank
 				+ ", accountNum=" + accountNum + "]";
 	}
-
+	
 }
+

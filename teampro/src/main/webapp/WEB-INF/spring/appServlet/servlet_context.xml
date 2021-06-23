@@ -14,12 +14,9 @@
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
-	<!-- 화면에 보여줄 애들(뷰 리졸버 셋팅) -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/view/user/" />
-		<property name="suffix" value=".jsp" />
-	</bean>
+	<!-- 화면에 보여줄 애들(뷰 리졸버 셋팅) <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="prefix" value="/WEB-INF/view/user/" /> <property name="suffix" 
+		value=".jsp" /> </bean> -->
 
 	<!-- 리소스 관련 애들은 바로 서버안쪽의 특정 폴더에 맵핑되도록 설정가능! <mvc:resources location="/resources/static/css/" 
 		mapping="/resources/css/**" /> -->
