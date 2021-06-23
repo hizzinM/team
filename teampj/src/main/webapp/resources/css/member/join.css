@@ -31,7 +31,8 @@
 
 table {
 	width: 1100px;
-	align-content: center;
+	margin:auto;
+	width: 80%;
 }
 
 td {
@@ -39,10 +40,8 @@ td {
 }
 
 .ex01 {
-	position: relative;
-	margin-left: 405px;
-	margin-top: 25px;
-	margin-bottom: 5px;
+	width:100px;
+	margin:0 auto;	
 }
 /* float 속성 해제 */
 .clearfix {

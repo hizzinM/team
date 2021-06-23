@@ -21,7 +21,7 @@
 			<tr>
 				<td>비밀번호</td>
 				<td colspan="4"><input type="password" name="password"
-					id="password">&nbsp;<span id="checkpass"></span><br> <b>(영문
+					id="password">&nbsp;<span id="checkpass"></span><br><b>(영문
 						대소문자/숫자 4자~16자)</b></td>
 			</tr>
 			<tr>
@@ -36,10 +36,10 @@
 			<tr>
 				<td>주소</td>
 				<td colspan="4"><input type="text" name="address"><br>
-					<input type="text" name="address2"></td>
+					<input type="text" name="addressDetail" placeholder="상세주소"></td>
 			</tr>
 			<tr>
-				<td>휴대번호</td>
+				<td>전화번호</td>
 				<td colspan="4"><input type="tel" name="phone"></td>
 			</tr>
 
@@ -49,7 +49,11 @@
 					id="checkemail"></span></td>
 			</tr>
 			<tr>
-				<td colspan="4" align="center">추가정보</td>
+				<td>관리자계정</td>
+				<td colspan="6">관리자일시 체크<input type="checkbox" name="adminck"></td>
+			</tr>
+			<tr>
+				<td colspan="6" align="center">추가정보</td>
 			</tr> 
 			<tr>
 				<td>환불계좌 정보</td>
@@ -271,7 +275,6 @@ o 로그 기록
 -보존기간 : 3개월
 ※ 동의를 거부할 수 있으나 거부시 회원 가입이 불가능합니다.
 		</textarea><br>개인정보 수집 및 이용에 동의하십니까?<input type="checkbox" name="agree2">동의함</td>
-
 
 			</tr>
 		</table>
