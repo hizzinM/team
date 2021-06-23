@@ -7,16 +7,18 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<!-- servlet_context.xml -->
-	<context:component-scan base-package="teampro">
-		<!-- 컨트롤러만 스캔하여 추가 -->
+
+	<context:component-scan
+		base-package="com.teampro.mapper,com.teampro.model,com.teampro.service">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
-	<!-- 화면에 보여줄 애들(뷰 리졸버 셋팅) <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
-		<property name="prefix" value="/WEB-INF/view/user/" /> <property name="suffix" 
-		value=".jsp" /> </bean> -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/main/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
 
 	<!-- 리소스 관련 애들은 바로 서버안쪽의 특정 폴더에 맵핑되도록 설정가능! <mvc:resources location="/resources/static/css/" 
 		mapping="/resources/css/**" /> -->

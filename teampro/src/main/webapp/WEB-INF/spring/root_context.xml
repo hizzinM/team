@@ -12,12 +12,6 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-
-	<context:component-scan base-package="teampro">
-		<context:exclude-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" />
-	</context:component-scan>
-
 	<!-- 디비 정보 가져오기 -->
 	<context:property-placeholder
 		location="file:src/main/webapp/WEB-INF/config/mysql_db.properties" />
@@ -31,6 +25,16 @@
 		<property name="password" value="${db.password}" />
 	</bean>
 
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean" />
+	</bean>
+
 	<!-- mybatis 추가 -->
 	<bean id="sqlSessionFactoryBean"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -40,9 +44,6 @@
 			value="file:src/main/webapp/WEB-INF/config/mybatis_config.xml" />
 	</bean>
 
-	<bean id="sqlSession"
-		class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSessionFactoryBean" />
-	</bean>  
+	<context:component-scan base-package="teampro"></context:component-scan>
 
 </beans>
