@@ -1,6 +1,7 @@
 package com.shop.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Component;
 
@@ -11,10 +12,14 @@ public class User {
 	private String password;
 	private String passwordCheck;
 	private String userName;
+	private String addressNum;
 	private String address;
+	private String addressDetail;
 	private String phone;
 	private String email;
-	private LocalDate birthDate;
+	private int adminck;
+	private LocalDateTime regDate;
+
 	private String accountName;
 	private String accountBank;
 	private String accountNum;
@@ -24,19 +29,22 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int userNo, String userId, String password, String passwordCheck, String userName, String address,
-			String phone, String email, LocalDate birthDate, String accountName, String accountBank,
-			String accountNum) {
+	public User(int userNo, String userId, String password, String passwordCheck, String userName, String addressNum,
+			String address, String addressDetail, String phone, String email, int adminck, LocalDateTime regDate,
+			String accountName, String accountBank, String accountNum) {
 		super();
 		this.userNo = userNo;
 		this.userId = userId;
 		this.password = password;
 		this.passwordCheck = passwordCheck;
 		this.userName = userName;
+		this.addressNum = addressNum;
 		this.address = address;
+		this.addressDetail = addressDetail;
 		this.phone = phone;
 		this.email = email;
-		this.birthDate = birthDate;
+		this.adminck = adminck;
+		this.regDate = regDate;
 		this.accountName = accountName;
 		this.accountBank = accountBank;
 		this.accountNum = accountNum;
@@ -82,12 +90,28 @@ public class User {
 		this.userName = userName;
 	}
 
+	public String getAddressNum() {
+		return addressNum;
+	}
+
+	public void setAddressNum(String addressNum) {
+		this.addressNum = addressNum;
+	}
+
 	public String getAddress() {
 		return address;
 	}
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public String getAddressDetail() {
+		return addressDetail;
+	}
+
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
 	}
 
 	public String getPhone() {
@@ -106,12 +130,20 @@ public class User {
 		this.email = email;
 	}
 
-	public LocalDate getBirthDate() {
-		return birthDate;
+	public int getAdminck() {
+		return adminck;
 	}
 
-	public void setBirthDate(LocalDate birthDate) {
-		this.birthDate = birthDate;
+	public void setAdminck(int adminck) {
+		this.adminck = adminck;
+	}
+
+	public LocalDateTime getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(LocalDateTime regDate) {
+		this.regDate = regDate;
 	}
 
 	public String getAccountName() {
@@ -141,8 +173,9 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userNo=" + userNo + ", userId=" + userId + ", password=" + password + ", passwordCheck="
-				+ passwordCheck + ", userName=" + userName + ", address=" + address + ", phone=" + phone + ", email="
-				+ email + ", birthDate=" + birthDate + ", accountName=" + accountName + ", accountBank=" + accountBank
+				+ passwordCheck + ", userName=" + userName + ", addressNum=" + addressNum + ", address=" + address
+				+ ", addressDetail=" + addressDetail + ", phone=" + phone + ", email=" + email + ", adminck=" + adminck
+				+ ", regDate=" + regDate + ", accountName=" + accountName + ", accountBank=" + accountBank
 				+ ", accountNum=" + accountNum + "]";
 	}
 

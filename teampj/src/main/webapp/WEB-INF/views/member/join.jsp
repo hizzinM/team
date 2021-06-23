@@ -50,11 +50,7 @@
 			</tr>
 			<tr>
 				<td colspan="4" align="center">추가정보</td>
-			</tr>
-			<tr>
-				<td>생년월일</td>
-				<td colspan="4"><input type="date" name="bay"></td>
-			</tr>
+			</tr> 
 			<tr>
 				<td>환불계좌 정보</td>
 				<td colspan="4">예금주<input type="text" name="accountName"><br>
