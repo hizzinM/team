@@ -4,16 +4,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 <link rel="stylesheet" href="/resources/css/member/join.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 </head>
 <body>
-<<<<<<< HEAD
-=======
-	<form name="for" action="/main/input" onsubmit="return CheckForm()">
+	<form name="for" action="" form id="join_form" method="post"
+		onsubmit="return CheckForm()">
 		<p class="ex01">
 			<strong>join</strong>
 		</p>
@@ -27,7 +31,7 @@
 				<td>비밀번호</td>
 				<td colspan="4"><input type="password" name="password"
 					id="pass_word">&nbsp;<span id="checkpass"></span><br>
-				<b>(영문 대소문자/숫자 4자~12자)</b></td>
+					<b>(영문 대소문자/숫자 4자~12자)</b></td>
 			</tr>
 			<tr>
 				<td>비밀번호 확인</td>
@@ -41,143 +45,60 @@
 				<td colspan="4"><input type="text" name="userName"
 					id="userName">&nbsp;<span id="checkname"></span></td>
 			</tr>
-			<!-- 	<tr>
-				<td>주소</td>
-				<td colspan="4"><input type="text" name="address"><br>
-					<input type="text" name="addressDetail" placeholder="상세주소"></td>
-=======
-				<td colspan="4"><input type="text" name="userName" id="user_Name">&nbsp;<span id="checkname"></span></td>
->>>>>>> branch 'master' of https://github.com/hizzinM/team.git
-			</tr>
 			<tr>
 				<td>주소</td>
-				<td colspan="4"><input type="text" class="address_input_1" name="addressNum" readonly="readonly"><br>
-								<div class="address_button" onclick="execution_daum_address()"><span style="border:soild 1px black;">주소찾기</span></div>
-								<input type="text" class="address_input_2" name="addressDetail2" readonly="readonly"><br>
-							    <input type="text" class="address_input_3" name="addressDetail3" readonly="readonly">&nbsp;<span id="checkaddressDetail"></span></td>
+				<td colspan="4"><input type="text" class="address_input_1"
+					name="addressNum">&nbsp;<span id="checkaddress1"></span><br>
+					<div class="address_button" onclick="execution_daum_address()">
+						<span style="border: soild 1px black;">주소찾기</span>
+					</div> <input type="text" class="address_input_2" name="address"><br>
+					<input type="text" class="address_input_3" name="addressDetail">&nbsp;<span
+					id="checkaddress2"></span></td>
 			</tr>
-		 <tr>
+			<tr>
 				<td>전화번호</td>
-				<td colspan="4"><select name="phone1" id="phone">
-								<option value="010">010</option>
-								<option value="012">012</option>
-								<option value="050">050</option>
-								<option value="0505">0505</option>
-								<option value="060">060</option>
-								<option value="060">070</option>
-								<option value="060">080</option>
-								</select>-
-								<input type="tel" name="phone2" maxlength="4">-
-								<input type="tel"  name="phone3" maxlength="4">&nbsp;<span id="checkphone"></span></td>
+				<td colspan="4"><input class="phone_input" name="phone"><span
+					id="checkphone"></span></td>
 			</tr>
->>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
 
-<<<<<<< HEAD
-	<div class="wrapper">
-		<form action="" form id="join_form" method="post">
-			<div class="wrap">
-				<div class="subjecet">
-					<span>join</span>
-				</div>
-				<div class="id_wrap">
-					<div class="id_name">아이디</div>
-					<input class="id_input" input type="text" name="userId"
-						id="user_id">&nbsp;<span id="checkid"></span><br> <b>영문
-						소문자/숫자, 4-16자</b>
-				</div>
-				<div class="pw_wrap">
-					<div class="pw_name">비밀번호</div>
-					<input class="pw_input" name="password">
-				</div>
-				<div class="pwck_wrap">
-					<div class="pwck_name">비밀번호 확인</div>
-					<input class="pwck_input" name="passwordCheck">
-				</div>
-				<div class="user_wrap">
-					<div class="user_name">이름</div>
-					<input class="user_input" name="userName">
-				</div>
-				<div class="address_wrap">
-					<div class="address_name">주소</div>
-					<div class="address_input_1_wrap">
-						<input class="address_input_1" name="addressNum">
-						<div class="address_input_2_wrap">
-							<input class="address_input_2" name="address">
-						</div>
-					</div>
-					<div class="address_input_3_wrap">
-						<input class="address_input_3" name="addressDetail">
-					</div>
-				</div>
-				<div class="phone_wrap">
-					<div class="phone_name">전화번호</div>
-					<input class="phone_input" name="phone">
-				</div>
-				<div class="mail_wrap">
-					<div class="mail_name">이메일</div>
-					<input class="mail_input" name="email">
-				</div>
-				<div class="clearfix"></div>
-				<div class="subjecet">
-					<span>추가정보</span>
-				</div>
-				<div class="accname_wrap">
-					<div class="accname_name">예금주</div>
-					<input class="accname_input" name="accountName">
-				</div>
-=======
-			<!--<tr>
+			<tr>
 				<td>이메일</td>
 				<td colspan="4"><input type="email" name="email" id="email">&nbsp;<span
 					id="checkemail"></span></td>
 			</tr>
 			<tr>
-				<td>관리자계정</td>
-				<td colspan="6">관리자일시 체크<input type="checkbox" name="adminck"></td>
+				<td colspan="6" align="center">추가정보</td>
 			</tr>
 			<tr>
-				<td colspan="6" align="center">추가정보</td>
-			</tr> 
-			<tr>
 				<td>환불계좌 정보</td>
-				<td colspan="4">예금주<input type="text" name="accountName"><br>
-					은행명<select name="accountBank" id="accountBank">
+				<td colspan="4">예금주<input type="text" name="accountName">&nbsp;<span
+					id="checkeaccountName"></span><br> 은행명<select
+					name="accountBank" id="accountBank">
 						<option value="국민">국민</option>
 						<option value="신한">신한</option>
-				</select><br> 계좌번호<input type="text" name="accountNum"></td>
+				</select><br> 계좌번호<input type="text" name="accountNum">&nbsp;<span
+					id="checkeaccountNum"></span></td>
 			</tr>
 			<tr>
 				<td colspan="4"><textarea rows="20" cols="30"
 						style="margin: 0px; width: 405px; height: 315px">제1조(목적)
 이 약관은 민박강이 운영하는 민박강 사이버 몰(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리,의무 및 책임사항을 규정함을 목적으로 합니다.
 ※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다.」
->>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
 
-				<div class="accbank_wrap">
-					<div class="accbank_name">은행명</div>
-					<input class="accbank_input" name="accountBank">
-				</div>
+제2조(정의)
+① “몰”이란 모던이프가 재화 또는 용역(이하 “재화 등”이라 함)을 이용자에게 제공하기 위하여 컴퓨터 등 정보통신설비를 이용하여 재화 등을 거래할 수 있도록 설정한 가상의 영업장을 말하며, 아울러 사이버몰을 운영하는 사업자의 의미로도 사용합니다.
+② “이용자”란 “몰”에 접속하여 이 약관에 따라 “몰”이 제공하는 서비스를 받는 회원 및 비회원을 말합니다.
+③ ‘회원’이라 함은 “몰”에 (삭제) 회원등록을 한 자로서, 계속적으로 “몰”이 제공하는 서비스를 이용할 수 있는 자를 말합니다.
+④ ‘비회원’이라 함은 회원에 가입하지 않고 “몰”이 제공하는 서비스를 이용하는 자를 말합니다.
 
-				<div class="acc_wrap">
-					<div class="acc_name">계좌번호</div>
-					<input class="acc_input" name="accountNum">
-				</div>
-				<div class="join_button_wrap">
-					<input type="button" class="join_button" value="가입하기">
-				</div>
-			</div>
-		</form>
+제3조 (약관 등의 명시와 설명 및 개정)
+① “몰”은 이 약관의 내용과 상호 및 대표자 성명, 영업소 소재지 주소(소비자의 불만을 처리할 수 있는 곳의 주소를 포함), 전화번호,모사전송번호,전자우편주소, 사업자등록번호, 통신판매업 신고번호, 개인정보관리책임자등을 이용자가 쉽게 알 수 있도록 00 사이버몰의 초기 서비스화면(전면)에 게시합니다. 다만, 약관의 내용은 이용자가 연결화면을 통하여 볼 수 있도록 할 수 있습니다.
+② “몰은 이용자가 약관에 동의하기에 앞서 약관에 정하여져 있는 내용 중 청약철회.배송책임.환불조건 등과 같은 중요한 내용을 이용자가 이해할 수 있도록 별도의 연결화면 또는 팝업화면 등을 제공하여 이용자의 확인을 구하여야 합니다.
+③ “몰”은 「전자상거래 등에서의 소비자보호에 관한 법률」, 「약관의 규제에 관한 법률」, 「전자문서 및 전자거래기본법」, 「전자금융거래법」, 「전자서명법」, 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」, 「방문판매 등에 관한 법률」, 「소비자기본법」 등 관련 법을 위배하지 않는 범위에서 이 약관을 개정할 수 있습니다.
+④ “몰”이 약관을 개정할 경우에는 적용일자 및 개정사유를 명시하여 현행약관과 함께 몰의 초기화면에 그 적용일자 7일 이전부터 적용일자 전일까지 공지합니다. 다만, 이용자에게 불리하게 약관내용을 변경하는 경우에는 최소한 30일 이상의 사전 유예기간을 두고 공지합니다. 이 경우 "몰“은 개정 전 내용과 개정 후 내용을 명확하게 비교하여 이용자가 알기 쉽도록 표시합니다.
+⑤ “몰”이 약관을 개정할 경우에는 그 개정약관은 그 적용일자 이후에 체결되는 계약에만 적용되고 그 이전에 이미 체결된 계약에 대해서는 개정 전의 약관조항이 그대로 적용됩니다. 다만 이미 계약을 체결한 이용자가 개정약관 조항의 적용을 받기를 원하는 뜻을 제3항에 의한 개정약관의 공지기간 내에 “몰”에 송신하여 “몰”의 동의를 받은 경우에는 개정약관 조항이 적용됩니다.
+⑥ 이 약관에서 정하지 아니한 사항과 이 약관의 해석에 관하여는 전자상거래 등에서의 소비자보호에 관한 법률, 약관의 규제 등에 관한 법률, 공정거래위원회가 정하는 전자상거래 등에서의 소비자 보호지침 및 관계법령 또는 상관례에 따릅니다.
 
-<<<<<<< HEAD
-		<script>
-			$(document).ready(function() {
-				//회원가입 버튼(회원가입 기능 작동)
-				$(".join_button").click(function() {
-					$("#join_form").attr("action", "/member/join");
-					$("#join_form").submit();
-				});
-			});
-=======
 제4조(서비스의 제공 및 변경)
 ① “몰”은 다음과 같은 업무를 수행합니다.
   1. 재화 또는 용역에 대한 정보 제공 및 구매계약의 체결
@@ -319,8 +240,8 @@
 
 제24조(재판권 및 준거법)
 ① “몰”과 이용자 간에 발생한 전자상거래 분쟁에 관한 소송은 제소 당시의 이용자의 주소에 의하고, 주소가 없는 경우에는 거소를 관할하는 지방법원의 전속관할로 합니다. 다만, 제소 당시 이용자의 주소 또는 거소가 분명하지 않거나 외국 거주자의 경우에는 민사소송법상의 관할법원에 제기합니다.
-② “몰”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.</textarea><br> 이용약관에 동의하십니까?<input
-					type="checkbox" name="agree">동의함</td>
+② “몰”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.</textarea><br> 이용약관에 동의하십니까? <input
+					type="checkbox" name="agree1">동의함</td>
 				<td><textarea rows="20" cols="30"
 						style="margin: 0px; width: 405px; height: 315px">
 		** 본 양식은 쇼핑몰 운영에 도움을 드리고자 샘플로 제공되는 서식으로 쇼핑몰 운영형태에 따른 수정이 필요합니다. 쇼핑몰에 적용하시기 전, 쇼핑몰 운영 사항 등을 확인하시고 적절한 내용을 반영하여 사용하시기 바랍니다. **
@@ -369,35 +290,47 @@ o 로그 기록
 -보존이유: 통신비밀보호법
 -보존기간 : 3개월
 ※ 동의를 거부할 수 있으나 거부시 회원 가입이 불가능합니다.
-		</textarea><br>개인정보 수집 및 이용에 동의하십니까?<input type="checkbox" name="agree2">동의함</td>
+		</textarea><br>개인정보 수집 및 이용에 동의하십니까? <input type="checkbox" name="agree2">동의함</td>
 
-			</tr> -->
+			</tr>
 		</table>
 		<p align="center">
-			<br> <input type="submit" value="확인" alian="center"> <input
-				type="reset" value="다시입력" alian="center">
+			<br> <input type="submit" value="확인" alian="center">
 		</p>
 
 	</form>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script
-		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 	 function CheckForm(){
 		 var regul1 = /^[a-zA-Z0-9]{4,16}$/;
 		 var regul2 = /^[a-zA-Z0-9]{4,12}$/;
 		 var korcheck = /([^가-힣ㄱ-ㅎㅏ-ㅣ\x20])/i;
+		 var num_check=/^[0-9]*$/;
+		 var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		 var accountPattern= /^[0-9,\-]{3,6}\-[0-9,\-]{2,6}\-[0-9,\-]$/;
+
+ 
+		 
 	//아이디 유효성
          var userId=document.for.userId.value;
+	
          var password=document.for.password.value;
+         
          var passwordCheck=document.for.passwordCheck.value;
+         
      	 var userName=document.for.userName.value;
-     	 var addressNum=document.for.addressNum.value;
-     	 var phone1=document.for.phone1.value;
-     	 var phone2=document.for.phone2.value;
-     	 var phone3=document.for.phone3.value;
      	 
+     	 var addressNum=document.for.addressNum.value;
+     	 
+     	 var address=document.for.address.value;
+     	 
+     	 var addressDetail=document.for.addressDetail.value;
+     
+     	 //var phone1=document.for.phone1.value;
+     	 //var phone2=document.for.phone2.value;
+     	 //var phone3=document.for.phone3.value;
+     	 
+     	 var email=document.for.email.value;
+     	 var accountNum=document.for.accountNum.value;
   	 	if(userId==""){
          	document.getElementById("checkid").innerHTML="아이디가 비었습니다."
          	document.getElementById("checkid").style.color="red";
@@ -428,21 +361,68 @@ o 로그 기록
     	   passwordCheck.focus;
     	   return false;
        }
-       if(userName==""){
+       if(userName==""){	
         	document.getElementById("checkname").innerHTML="이름이 비었습니다."
         	document.getElementById("checkname").style.color="red";
         	userName.focus;
         	return false;
-
-    	}
-       
- }
-	}else if(korcheck.test(userName)){
- 	   document.getElementById("checkname").innerHTML="한글만 입력하세요"
-        document.getElementById("checkname").style.color="red";
- 	   userName.focus;
- 	   return false;
-    }
+		}else if(korcheck.test(userName)){
+ 	    	document.getElementById("checkname").innerHTML="한글만 입력하세요"
+        	document.getElementById("checkname").style.color="red";
+ 	   		userName.focus;
+ 	   		return false;
+   	  }	if(addressNum == "" || address =="" || addressDetail==""){
+      	 
+    	   document.getElementById("checkaddress1").innerHTML="주소를입력하세요"
+           document.getElementById("checkaddress1").style.color="red";
+    	   addressNum.focus;
+           return false;
+       }
+   	  	if(!num_check.test(phone2) || !num_check.test(phone3)){
+   	  	   document.getElementById("checkphone").innerHTML="숫자를 입력하세요"
+            document.getElementById("checkphone").style.color="red";
+     	   phone3.focus;
+            return false;
+   	  	}
+        if(phone2 =="" || phone3 ==""){
+    	   document.getElementById("checkphone").innerHTML="전화번호를입력하세요"
+           document.getElementById("checkphone").style.color="red";
+    	   phone3.focus;
+           return false;
+		} 
+        if(email==""){
+        	document.getElementById("checkemail").innerHTML="이메일을 입력하세요"
+           	document.getElementById("checkemail").style.color="red";
+        	email.focus;
+     	   	return false;
+        }else if(!emailPattern.test(email)){
+        	document.getElementById("checkemail").innerHTML="올바른 이메일을 입력하세요"
+            document.getElementById("checkemail").style.color="red";
+           	email.focus;
+         	return false;
+        }
+        
+        /*체크박스 동의*/
+       	var Namecheck1=false;
+    	var Namecheck2=false;
+		 var arr_Name1=document.getElementsByName("agree1");
+		 var arr_Name2=document.getElementsByName("agree2");
+		 
+        	for(var i=0;i<arr_Name1.length;i++){
+        		for(var j=0;i<arr_Name2.length;i++){
+        		alert("1215");
+            	if(arr_Name1[i].checked==true || arr_Name2[j].checked==true){
+            	Namecheck1=true;
+            	Namecheck2=true;
+ 	             break;                    
+            }
+        }
+     } 	
+        if(!Namecheck1 || !Namecheck2 ){
+            alert("전부 동의하세요");
+            return false;     
+        }
+    
 }
 
 	function execution_daum_address() {
@@ -481,8 +461,8 @@ o 로그 기록
              	addr += ' ';
              }
              // 우편번호와 주소 정보를 해당 필드에 넣는다.
-             $("[name=addressDetail1]").val(data.zonecode);
-             $("[name=addressDetail2]").val(addr);
+             $("[name=addressNum]").val(data.zonecode);
+             $("[name=address]").val(addr);
              // 커서를 상세주소 필드로 이동한다.
               $(".address_input_3").attr("readonly",false);
               $(".address_input_3").focus();
@@ -490,80 +470,15 @@ o 로그 기록
 		}).open();
 		
 	} 
+	$(document).ready(function() {
+		//회원가입 버튼(회원가입 기능 작동)
+		$(".join_button").click(function() {
+			$("#join_form").attr("action", "/member/join");
+			$("#join_form").submit();
+		});
+	});
 
-		}else if(korcheck.test(userName)){
-    	   document.getElementById("checkname").innerHTML="한글만 입력하세요"
-           document.getElementById("checkname").style.color="red";
-    	   userName.focus;
-    	   return false;
-       }
-       if(addressNum ==" "){
-    	   document.getElementById("checkaddressDetail").innerHTML="주소를입력하세요"
-           document.getElementById("checkaddressDetail").style.color="red";
-    	   addressNum.focus;
-           return false;
-       }
-       if(phone1 && phone2 && phone3 ==" "){
-    	   document.getElementById("checkphone").innerHTML="전화번호를입력하세요"
-           document.getElementById("checkphone").style.color="red";
-    	   addressNum.focus;
-           return false;
-	 }
- }
-	function execution_daum_address() {
-		new daum.Postcode({
-			oncomplete:function(data){
-				 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    addr += extraAddr;
-                
-                } else {
-                	addr += ' ';
-                }
-
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                $("[name=addressNum]").val(data.zonecode);
-                $("[name=addressDetail2]").val(addr);
-                // 커서를 상세주소 필드로 이동한다.
-                 $(".address_input_3").attr("readonly",false);
-                 $(".address_input_3").focus();
-			}
-		}).open();
-		
-	} 
- 
-
- 
   
->>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
 		</script>
 </body>
 </html>
