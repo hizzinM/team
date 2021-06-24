@@ -7,8 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class User {
-	private int userNo;
-	private String userId;
+	private int userId;
 	private String password;
 	private String passwordCheck;
 	private String userName;
@@ -29,11 +28,11 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int userNo, String userId, String password, String passwordCheck, String userName, String addressNum,
+	public User(int userId, String password, String passwordCheck, String userName, String addressNum,
 			String address, String addressDetail, String phone, String email, int adminck, LocalDateTime regDate,
 			String accountName, String accountBank, String accountNum) {
 		super();
-		this.userNo = userNo;
+	
 		this.userId = userId;
 		this.password = password;
 		this.passwordCheck = passwordCheck;
@@ -50,19 +49,11 @@ public class User {
 		this.accountNum = accountNum;
 	}
 
-	public int getUserNo() {
-		return userNo;
-	}
-
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
-	}
-
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
@@ -172,7 +163,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userNo=" + userNo + ", userId=" + userId + ", password=" + password + ", passwordCheck="
+		return "User [userId=" + userId + ", password=" + password + ", passwordCheck="
 				+ passwordCheck + ", userName=" + userName + ", addressNum=" + addressNum + ", address=" + address
 				+ ", addressDetail=" + addressDetail + ", phone=" + phone + ", email=" + email + ", adminck=" + adminck
 				+ ", regDate=" + regDate + ", accountName=" + accountName + ", accountBank=" + accountBank

@@ -35,8 +35,7 @@ public class MemberMapperTest {
 	public void memberJoin() throws Exception {
 		User user = new User();
 
-		user.setUserNo(0);
-		user.setUserId("test"); // 회원 id
+		user.setUserId(0); // 회원 id
 		user.setPassword("test"); // 회원 비밀번호
 		user.setPasswordCheck("test"); // 회원 이름
 		user.setUserName("test"); // 회원 메일

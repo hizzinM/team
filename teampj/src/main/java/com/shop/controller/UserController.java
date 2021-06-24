@@ -36,8 +36,8 @@ public class UserController {
 //		return "userlist";
 //	}
 	@GetMapping("/update")
-	public String showUserUpDate(Model model,int userNo) {
-		User user=userService.getUserById(userNo);
+	public String showUserUpDate(Model model,int userId) {
+		User user=userService.getUserById(userId);
 		model.addAttribute("user",user);
 		return "updateForm";
 	}
@@ -48,8 +48,8 @@ public class UserController {
 		return "result";
 	}
 	@GetMapping("/delete")
-	public String showdeleteUser(int userNo) {
-		userService.deleteUser(userNo);
+	public String showdeleteUser(int userId) {
+		userService.deleteUser(userId);
 		return "deleteview";
 
 	}
