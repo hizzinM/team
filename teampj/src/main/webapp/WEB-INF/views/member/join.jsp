@@ -8,39 +8,47 @@
 <link rel="stylesheet" href="/resources/css/member/join.css">
 </head>
 <body>
-	<form name="for" action="/main/input" onsubmit="return CheckForm(this)">
+	<form name="for" action="/main/input" onsubmit="return CheckForm()">
 		<p class="ex01">
 			<strong>join</strong>
 		</p>
 		<table style="width: 1100px;" align="center">
-			<tr>
+			<!-- <tr>
 				<td width="200px">아이디</td>
-				<td colspan="4"><input type="text" name="userId" id="userId">&nbsp;<span
+				<td colspan="4"><input type="text" name="userId" id="user_id">&nbsp;<span
 					id="checkid"></span><br> <b>영문 소문자/숫자, 4-16자</b></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
 				<td colspan="4"><input type="password" name="password"
-					id="password">&nbsp;<span id="checkpass"></span><br><b>(영문
-						대소문자/숫자 4자~16자)</b></td>
+					id="pass_word">&nbsp;<span id="checkpass"></span><br><b>(영문
+						대소문자/숫자 4자~12자)</b></td>
 			</tr>
 			<tr>
 				<td>비밀번호 확인</td>
 				<td colspan="4"><input type="password" name="passwordCheck"
 					id="passwordCheck">&nbsp;<span id="checkpass2"></span></td>
-			</tr>
-			<tr>
+			</tr> -->
+			 <tr>
 				<td>이름</td>
-				<td colspan="4"><input type="text" name="userName"></td>
+				<td colspan="4"><input type="text" name="userName" id="userName">&nbsp;<span id="checkname"></span></td>
 			</tr>
-			<tr>
+		<!-- 	<tr>
 				<td>주소</td>
 				<td colspan="4"><input type="text" name="address"><br>
 					<input type="text" name="addressDetail" placeholder="상세주소"></td>
 			</tr>
 			<tr>
 				<td>전화번호</td>
-				<td colspan="4"><input type="tel" name="phone"></td>
+				<td colspan="4"><select name="phone" id="phone">
+								<option value="010">010</option>
+								<option value="012">012</option>
+								<option value="050">050</option>
+								<option value="0505">0505</option>
+								<option value="060">060</option>
+								<option value="060">070</option>
+								<option value="060">080</option>
+								</select>-<input type="tel" maxlength="4">-<input type="tel" maxlength="4"></td>
 			</tr>
 
 			<tr>
@@ -276,26 +284,64 @@ o 로그 기록
 ※ 동의를 거부할 수 있으나 거부시 회원 가입이 불가능합니다.
 		</textarea><br>개인정보 수집 및 이용에 동의하십니까?<input type="checkbox" name="agree2">동의함</td>
 
-			</tr>
+			</tr> -->
 		</table>
 		<p align="center">
-			<br> <input type="submit" value="확인" alian="center"> <input
-				type="reset" value="다시입력" alian="center">
+			<br> <input type="submit" value="확인" alian="center">
+			 <input type="reset" value="다시입력" alian="center">
 		</p>
 
 	</form>
 	<script>
-	 function CheckForm(che){
-
+	 function CheckForm(){
+		 var regul1 = /^[a-zA-Z0-9]{4,16}$/;
+		 var regul2 = /^[a-zA-Z0-9]{4,12}$/;
+	//아이디 유효성
          var userId=document.for.userId.value;
+         var password=document.for.password.value;
+         var passwordCheck=document.for.passwordCheck.value;
+         var userName==document.for.userName.value;
 
-     if(userId==""){
-         document.getElementById("checkid").innerHTML="아이디가 비었습니다."
-         document.getElementById("checkid").style.color="red";
-         userId.focus;
-         return false;
-     }
+  	 if(userId==""){
+         	document.getElementById("checkid").innerHTML="아이디가 비었습니다."
+         	document.getElementById("checkid").style.color="red";
+         	userId.focus;
+         	return false;
+     	}else if (!regul1.test(userId)){
+     		document.getElementById("checkid").innerHTML="아이디는 영문 대소문자와 숫자 4~16자리로 입력해야합니다!."
+            document.getElementById("checkid").style.color="red";
+            userId.focus;
+            return false;
+       }
+       if(password==""){
+        	document.getElementById("checkpass").innerHTML="비밀번호가 비었습니다"
+        	document.getElementById("checkpass").style.color="red";
+        	password.focus;
+        	return false;
+       }else if (!regul2.test(password)){
+    		document.getElementById("checkpass").innerHTML="비밀번호는 영문 대소문자와 숫자 4~16자리로 입력해야합니다!."
+            document.getElementById("checkpass").style.color="red";
+    		password.focus;
+            return false;
+       }
+       
+       if(password !== passwordCheck ){
+    	   document.getElementById("checkpass2").innerHTML="비밀번호가 같지않습니다!."
+           document.getElementById("checkpass2").style.color="red";
+    	   passwordCheck.focus;
+    	   return false;
+       }
+       if(userName == " "){
+        	document.getElementById("checkname").innerHTML="이름이 비었습니다."
+        	document.getElementById("checkname").style.color="red";
+        	userName.focus;
+        	return false;
+    	}
+       
  }
+	
+        
+  
 		</script>
 </body>
 </html>
