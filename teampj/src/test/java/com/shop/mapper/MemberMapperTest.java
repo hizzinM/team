@@ -45,8 +45,8 @@ public class MemberMapperTest {
 		user.setAddressDetail("test");
 		user.setPhone("test");
 		user.setEmail("test");
-		user.setAdminck(0); 
-		user.setRegDate(LocalDateTime.now()); 
+		user.setAdminck(0);
+		user.setRegDate(LocalDateTime.now());
 		user.setAccountName("test");
 		user.setAccountBank("test");
 		user.setAccountNum("test");

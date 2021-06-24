@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,7 +22,7 @@
 				<td>비밀번호</td>
 				<td colspan="4"><input type="password" name="password"
 					id="pass_word">&nbsp;<span id="checkpass"></span><br>
-				<b>(영문 대소문자/숫자 4자~12자)</b></td>
+					<b>(영문 대소문자/숫자 4자~12자)</b></td>
 			</tr>
 			<tr>
 				<td>비밀번호 확인</td>
@@ -47,14 +46,14 @@
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td colspan="4"><input type="text" class="address_input_1" name="addressDetail1" readonly="readonly"><br>
+				<td colspan="4"><input type="text" class="address_input_1" name="addressNum" readonly="readonly"><br>
 								<div class="address_button" onclick="execution_daum_address()"><span style="border:soild 1px black;">주소찾기</span></div>
-								<input type="text" class="address_input_1" name="addressDetail2" readonly="readonly"><br>
-							    <input type="text" class="address_input_1" name="addressDetail3" readonly="readonly"></td>
+								<input type="text" class="address_input_2" name="addressDetail2" readonly="readonly"><br>
+							    <input type="text" class="address_input_3" name="addressDetail3" readonly="readonly">&nbsp;<span id="checkaddressDetail"></span></td>
 			</tr>
-		<!-- <tr>
+		 <tr>
 				<td>전화번호</td>
-				<td colspan="4"><select name="phone" id="phone">
+				<td colspan="4"><select name="phone1" id="phone">
 								<option value="010">010</option>
 								<option value="012">012</option>
 								<option value="050">050</option>
@@ -62,10 +61,12 @@
 								<option value="060">060</option>
 								<option value="060">070</option>
 								<option value="060">080</option>
-								</select>-<input type="tel" maxlength="4">-<input type="tel" maxlength="4"></td>
+								</select>-
+								<input type="tel" name="phone2" maxlength="4">-
+								<input type="tel"  name="phone3" maxlength="4">&nbsp;<span id="checkphone"></span></td>
 			</tr>
 
-			<tr>
+			<!--<tr>
 				<td>이메일</td>
 				<td colspan="4"><input type="email" name="email" id="email">&nbsp;<span
 					id="checkemail"></span></td>
@@ -320,7 +321,11 @@ o 로그 기록
          var password=document.for.password.value;
          var passwordCheck=document.for.passwordCheck.value;
      	 var userName=document.for.userName.value;
-
+     	 var addressNum=document.for.addressNum.value;
+     	 var phone1=document.for.phone1.value;
+     	 var phone2=document.for.phone2.value;
+     	 var phone3=document.for.phone3.value;
+     	 
   	 	if(userId==""){
          	document.getElementById("checkid").innerHTML="아이디가 비었습니다."
          	document.getElementById("checkid").style.color="red";
@@ -344,24 +349,19 @@ o 로그 기록
             document.getElementById("checkpass").style.color="red";
     		password.focus;
             return false;
-       }
-       
+     }
        if(password !== passwordCheck ){
     	   document.getElementById("checkpass2").innerHTML="비밀번호가 같지않습니다!."
            document.getElementById("checkpass2").style.color="red";
     	   passwordCheck.focus;
     	   return false;
-       }
-<<<<<<< HEAD
-       if(userName ==""){
-=======
-       if(userName==""){
->>>>>>> branch 'master' of https://github.com/hizzinM/team.git
+       } 
+       if(userName ==""){ 
+       if(userName==""){ 
         	document.getElementById("checkname").innerHTML="이름이 비었습니다."
         	document.getElementById("checkname").style.color="red";
         	userName.focus;
-        	return false;
-<<<<<<< HEAD
+        	return false; 
     	}
        
  }
@@ -425,7 +425,19 @@ o 로그 기록
     	   userName.focus;
     	   return false;
        }
+       if(addressNum ==" "){
+    	   document.getElementById("checkaddressDetail").innerHTML="주소를입력하세요"
+           document.getElementById("checkaddressDetail").style.color="red";
+    	   addressNum.focus;
+           return false;
+       }
+       if(phone1 && phone2 && phone3 ==" "){
+    	   document.getElementById("checkphone").innerHTML="전화번호를입력하세요"
+           document.getElementById("checkphone").style.color="red";
+    	   addressNum.focus;
+           return false;
 	 }
+ }
 	function execution_daum_address() {
 		new daum.Postcode({
 			oncomplete:function(data){
@@ -466,7 +478,7 @@ o 로그 기록
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                $("[name=addressDetail1]").val(data.zonecode);
+                $("[name=addressNum]").val(data.zonecode);
                 $("[name=addressDetail2]").val(addr);
                 // 커서를 상세주소 필드로 이동한다.
                  $(".address_input_3").attr("readonly",false);
@@ -476,10 +488,6 @@ o 로그 기록
 		
 	} 
  
->>>>>>> branch 'master' of https://github.com/hizzinM/team.git
-	
-        
-  
 		</script>
 </body>
 </html>
