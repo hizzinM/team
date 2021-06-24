@@ -32,7 +32,7 @@ public class UserService {
 		int affactedRow = userMapper.insertUser(user);
 
 		if (affactedRow == 1) {
-			return new User(user.getUserNo(), user.getUserId(), user.getPassword(), user.getPasswordCheck(),
+			return new User(user.getUserId(), user.getPassword(), user.getPasswordCheck(),
 					user.getUserName(), user.getAddressNum(), user.getAddress(), user.getAddressDetail(),
 					user.getPhone(), user.getEmail(), user.getAdminck(), user.getRegDate(), user.getAccountName(),
 					user.getAccountBank(), user.getAccountNum());
@@ -45,7 +45,7 @@ public class UserService {
 	public User updateUser(User user) {
 		int affactedRow = userMapper.updateUserList(user);
 		if (affactedRow == 1) {
-			return new User(user.getUserNo(), user.getUserId(), user.getPassword(), user.getPasswordCheck(),
+			return new User(user.getUserId(), user.getPassword(), user.getPasswordCheck(),
 					user.getUserName(), user.getAddressNum(), user.getAddress(), user.getAddressDetail(),
 					user.getPhone(), user.getEmail(), user.getAdminck(), user.getRegDate(), user.getAccountName(),
 					user.getAccountBank(), user.getAccountNum());

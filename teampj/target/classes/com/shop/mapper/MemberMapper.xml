@@ -6,7 +6,7 @@
 
 	<insert id="memberJoin">
 		insert into
-		user values(#{userNo},#{userId},#{password},#{passwordCheck},#{userName},#{addressNum},#{address},#{addressDetail},#{phone},#{email},#{adminck},#{regDate},#{accountName},#{accountBank},#{accountNum});
+		user values(#{userId},#{password},#{passwordCheck},#{userName},#{addressNum},#{address},#{addressDetail},#{phone},#{email},0,now(),#{accountName},#{accountBank},#{accountNum});
 	</insert>
 
 

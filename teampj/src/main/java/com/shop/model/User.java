@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class User {
-	private int userNo;
 	private String userId;
 	private String password;
 	private String passwordCheck;
@@ -29,11 +28,10 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int userNo, String userId, String password, String passwordCheck, String userName, String addressNum,
+	public User(String userId, String password, String passwordCheck, String userName, String addressNum,
 			String address, String addressDetail, String phone, String email, int adminck, LocalDateTime regDate,
 			String accountName, String accountBank, String accountNum) {
 		super();
-		this.userNo = userNo;
 		this.userId = userId;
 		this.password = password;
 		this.passwordCheck = passwordCheck;
@@ -48,14 +46,6 @@ public class User {
 		this.accountName = accountName;
 		this.accountBank = accountBank;
 		this.accountNum = accountNum;
-	}
-
-	public int getUserNo() {
-		return userNo;
-	}
-
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
 	}
 
 	public String getUserId() {
@@ -172,11 +162,10 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userNo=" + userNo + ", userId=" + userId + ", password=" + password + ", passwordCheck="
-				+ passwordCheck + ", userName=" + userName + ", addressNum=" + addressNum + ", address=" + address
-				+ ", addressDetail=" + addressDetail + ", phone=" + phone + ", email=" + email + ", adminck=" + adminck
-				+ ", regDate=" + regDate + ", accountName=" + accountName + ", accountBank=" + accountBank
-				+ ", accountNum=" + accountNum + "]";
+		return "User [userId=" + userId + ", password=" + password + ", passwordCheck=" + passwordCheck + ", userName="
+				+ userName + ", addressNum=" + addressNum + ", address=" + address + ", addressDetail=" + addressDetail
+				+ ", phone=" + phone + ", email=" + email + ", adminck=" + adminck + ", regDate=" + regDate
+				+ ", accountName=" + accountName + ", accountBank=" + accountBank + ", accountNum=" + accountNum + "]";
 	}
 
 }
