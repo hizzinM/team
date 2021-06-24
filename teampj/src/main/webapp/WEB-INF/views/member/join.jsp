@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
 			<strong>join</strong>
 		</p>
 		<table style="width: 1100px;" align="center">
-			<!-- <tr>
+			<tr>
 				<td width="200px">아이디</td>
 				<td colspan="4"><input type="text" name="userId" id="user_id">&nbsp;<span
 					id="checkid"></span><br> <b>영문 소문자/숫자, 4-16자</b></td>
@@ -28,17 +29,19 @@
 				<td>비밀번호 확인</td>
 				<td colspan="4"><input type="password" name="passwordCheck"
 					id="passwordCheck">&nbsp;<span id="checkpass2"></span></td>
-			</tr> -->
+			</tr> 
 			 <tr>
 				<td>이름</td>
-				<td colspan="4"><input type="text" name="userName" id="userName">&nbsp;<span id="checkname"></span></td>
-			</tr>
-		<!-- 	<tr>
-				<td>주소</td>
-				<td colspan="4"><input type="text" name="address"><br>
-					<input type="text" name="addressDetail" placeholder="상세주소"></td>
+				<td colspan="4"><input type="text" name="userName" id="user_Name">&nbsp;<span id="checkname"></span></td>
 			</tr>
 			<tr>
+				<td>주소</td>
+				<td colspan="4"><input type="text" class="address_input_1" name="addressDetail1" readonly="readonly"><br>
+								<div class="address_button" onclick="execution_daum_address()"><span style="border:soild 1px black;">주소찾기</span></div>
+								<input type="text" class="address_input_1" name="addressDetail2" readonly="readonly"><br>
+							    <input type="text" class="address_input_1" name="addressDetail3" readonly="readonly"></td>
+			</tr>
+		<!-- <tr>
 				<td>전화번호</td>
 				<td colspan="4"><select name="phone" id="phone">
 								<option value="010">010</option>
@@ -292,23 +295,27 @@ o 로그 기록
 		</p>
 
 	</form>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 	 function CheckForm(){
 		 var regul1 = /^[a-zA-Z0-9]{4,16}$/;
 		 var regul2 = /^[a-zA-Z0-9]{4,12}$/;
+		 var korcheck = /([^가-힣ㄱ-ㅎㅏ-ㅣ\x20])/i;
 	//아이디 유효성
          var userId=document.for.userId.value;
          var password=document.for.password.value;
          var passwordCheck=document.for.passwordCheck.value;
-         var userName==document.for.userName.value;
+     	 var userName=document.for.userName.value;
 
-  	 if(userId==""){
+  	 	if(userId==""){
          	document.getElementById("checkid").innerHTML="아이디가 비었습니다."
          	document.getElementById("checkid").style.color="red";
          	userId.focus;
          	return false;
-     	}else if (!regul1.test(userId)){
-     		document.getElementById("checkid").innerHTML="아이디는 영문 대소문자와 숫자 4~16자리로 입력해야합니다!."
+     	}
+  	 	if (!regul1.test(userId)){
+     		document.getElementById("checkid").innerHTML="아이디는 영문 소문자와 숫자 4~16자리로 입력해야합니다!."
             document.getElementById("checkid").style.color="red";
             userId.focus;
             return false;
@@ -318,7 +325,8 @@ o 로그 기록
         	document.getElementById("checkpass").style.color="red";
         	password.focus;
         	return false;
-       }else if (!regul2.test(password)){
+       }
+       	if (!regul2.test(password)){
     		document.getElementById("checkpass").innerHTML="비밀번호는 영문 대소문자와 숫자 4~16자리로 입력해야합니다!."
             document.getElementById("checkpass").style.color="red";
     		password.focus;
@@ -331,14 +339,68 @@ o 로그 기록
     	   passwordCheck.focus;
     	   return false;
        }
-       if(userName == " "){
+       if(userName==""){
         	document.getElementById("checkname").innerHTML="이름이 비었습니다."
         	document.getElementById("checkname").style.color="red";
         	userName.focus;
         	return false;
-    	}
-       
- }
+		}else if(korcheck.test(userName)){
+    	   document.getElementById("checkname").innerHTML="한글만 입력하세요"
+           document.getElementById("checkname").style.color="red";
+    	   userName.focus;
+    	   return false;
+       }
+	 }
+	function execution_daum_address() {
+		new daum.Postcode({
+			oncomplete:function(data){
+				 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    addr += extraAddr;
+                
+                } else {
+                	addr += ' ';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                $("[name=addressDetail1]").val(data.zonecode);
+                $("[name=addressDetail2]").val(addr);
+                // 커서를 상세주소 필드로 이동한다.
+                 $(".address_input_3").attr("readonly",false);
+                 $(".address_input_3").focus();
+			}
+		}).open();
+		
+	} 
+ 
 	
         
   

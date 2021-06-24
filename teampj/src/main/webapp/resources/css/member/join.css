@@ -47,3 +47,8 @@ td {
 .clearfix {
 	clear: both;
 }
+
+/*유효성 검사*/
+.checkid{
+	display: none;
+}
