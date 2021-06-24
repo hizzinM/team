@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.mapper.MemberMapper">
+
+	<insert id="memberJoin">
+		insert into
+		user values(#{userNo},#{userId},#{password},#{passwordCheck},#{userName},#{addressNum},#{address},#{addressDetail},#{phone},#{email},#{adminck},#{regDate},#{accountName},#{accountBank},#{accountNum});
+	</insert>
+
+
+	<!-- insert into user values(0,"관리자","민박강관리자","민박강관리자","관리자",12345,"관리자주소","관리자상세주소",010-0000-0000,"minparkang@naver.com",1,now(),"민박강","신한",000000000000); -->
+
+
+</mapper>
