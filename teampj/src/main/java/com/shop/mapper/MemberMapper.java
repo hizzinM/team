@@ -15,4 +15,7 @@ import com.shop.model.User;
 @Mapper
 public interface MemberMapper {
 	public void memberJoin(User user);
+
+	/* 로그인 기능 */
+	public User memberLogin(User user);
 }

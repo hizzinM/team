@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +33,10 @@ public class MemberMapperTest {
 
 	// 회원가입 쿼리 테스트 메서드
 	@Test
+	@Ignore
 	public void memberJoin() throws Exception {
 		User user = new User();
- 
+
 		user.setUserId("test"); // 회원 id
 		user.setPassword("test"); // 회원 비밀번호
 		user.setPasswordCheck("test"); // 회원 이름
@@ -44,13 +46,32 @@ public class MemberMapperTest {
 		user.setAddressDetail("test");
 		user.setPhone("test");
 		user.setEmail("test");
-		//user.setAdminck(0);
-		//user.setRegDate(LocalDateTime.now());
+		// user.setAdminck(0);
+		// user.setRegDate(LocalDateTime.now());
 		user.setAccountName("test");
 		user.setAccountBank("test");
 		user.setAccountNum("test");
 
 		membermapper.memberJoin(user); // 쿼리 메서드 실행
+	}
+
+	/* 로그인 쿼리 mapper 메서드 테스트 */
+	@Test
+	public void memberLogin() throws Exception {
+
+		User user = new User();
+
+		/* 올바른 아이디 비번 입력경우 */
+		user.setUserId("test");
+		user.setPassword("test");
+
+		/* 틀린 아이디 비번 입력경우 */
+		// user.setUserId("a123");
+		// user.setPassword("a1234");
+
+		membermapper.memberLogin(user);
+		System.out.println("결과 값 : " + membermapper.memberLogin(user));
+
 	}
 
 }

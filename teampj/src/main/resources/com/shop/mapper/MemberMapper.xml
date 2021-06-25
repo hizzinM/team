@@ -6,11 +6,16 @@
 
 	<insert id="memberJoin">
 		insert into
-		user values(#{userId},#{password},#{passwordCheck},#{userName},#{addressNum},#{address},#{addressDetail},#{phone},#{email},0,now(),#{accountName},#{accountBank},#{accountNum});
+		user
+		values(#{userId},#{password},#{passwordCheck},#{userName},#{addressNum},#{address},#{addressDetail},#{phone},#{email},0,now(),#{accountName},#{accountBank},#{accountNum});
 	</insert>
-
 
 	<!-- insert into user values(0,"관리자","민박강관리자","민박강관리자","관리자",12345,"관리자주소","관리자상세주소",010-0000-0000,"minparkang@naver.com",1,now(),"민박강","신한",000000000000); -->
 
+	<!-- 로그인 -->
+	<select id="memberLogin" resultType="com.shop.model.User">
+		select user_id,user_name,adminck from user where user_id = #{userId} and
+		password =#{password}
+	</select>
 
 </mapper>

@@ -30,12 +30,8 @@
 				<div id="naverIdLogin"></div>
 					<!-- //네이버아이디로로그인 버튼 노출 영역 -->
 				
-			</div>
-
-
-		</div>
-		
-
+			</div> 
+		</div> 
 	</div>
 
 <!-- 네이버아디디로로그인 초기화 Script -->
