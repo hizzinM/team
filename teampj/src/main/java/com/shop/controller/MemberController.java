@@ -55,6 +55,8 @@ public class MemberController {
 		logger.info("로그인 페이지 진입");
 
 	}
+	
+	
 
 	/* 로그인 */
 	/*
@@ -78,6 +80,9 @@ public class MemberController {
 		session.setAttribute("loginuser", loginuser); // 일치하는 아이디, 비밀번호 경우 (로그인 성공)
 		return "redirect:/main";
 	}
+	
+	
+	
 
 	/* 메인페이지 로그아웃 */
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
