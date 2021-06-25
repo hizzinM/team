@@ -13,14 +13,14 @@
 	<div class="wrapper">
 		<div class="wrap">
 			<div class="top_gnb_area">
-				<h1>gnb area</h1>
+				<!-- <h1>gnb area</h1> -->
 			</div>
 			<div class="top_area">
 				<div class="logo_area">
-					<h1>logo area</h1>
+					<!-- <h1>logo area</h1> -->
 				</div>
 				<div class="search_area">
-					<h1>Search area</h1>
+					<!-- <h1>Search area</h1> -->
 				</div>
 				<div class="login_area">
 
@@ -35,17 +35,17 @@
 					<c:if test="${ loginuser!= null }">
 						<div class="login_success_area">
 							<span>회원 : ${loginuser.userName} 님<br> 어서오세요.
-							</span> <a href="/member/logout.do">로그아웃</a>
+							</span> <a href="/member/logout">로그아웃</a>
 						</div>
 					</c:if>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 			<div class="navi_bar_area">
-				<h1>navi area</h1>
+				<!-- <h1>navi area</h1> -->
 			</div>
 			<div class="content_area">
-				<h1>content area</h1>
+				<!-- <h1>content area</h1> -->
 			</div>
 		</div>
 	</div>

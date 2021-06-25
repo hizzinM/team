@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.shop.mapper.MemberMapper;
 import com.shop.model.User;
 import com.shop.service.MemberService;
 
@@ -18,6 +19,9 @@ import com.shop.service.MemberService;
 @RequestMapping("/member")
 public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger("MainController.class");
+
+	@Autowired
+	private MemberMapper memberMapper;
 
 	@Autowired
 	private MemberService memberservice;
@@ -72,6 +76,17 @@ public class MemberController {
 		}
 
 		session.setAttribute("loginuser", loginuser); // 일치하는 아이디, 비밀번호 경우 (로그인 성공)
+		return "redirect:/main";
+	}
+
+	/* 메인페이지 로그아웃 */
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	public String logoutMainGET(HttpServletRequest request) throws Exception {
+		logger.info("logoutMainGET메서드 진입");
+
+		HttpSession session = request.getSession();
+		session.invalidate();
+
 		return "redirect:/main";
 	}
 }
