@@ -74,4 +74,18 @@ public class MemberController {
 		session.setAttribute("loginuser", loginuser); // 일치하는 아이디, 비밀번호 경우 (로그인 성공)
 		return "redirect:/main";
 	}
+
+	/* 메인페이지 로그아웃 */
+	@RequestMapping(value = "lotout.do", method = RequestMethod.GET)
+	public String logoutMainGET(HttpServletRequest request) throws Exception {
+
+		logger.info("logoutMainGET메서드 진입");
+
+		HttpSession session = request.getSession();
+
+		session.invalidate();
+
+		return "redirect:/main";
+
+	}
 }
