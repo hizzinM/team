@@ -1,6 +1,7 @@
 package com.shop.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,7 +61,19 @@ public class MemberController {
 	public String loginPOST(HttpServletRequest request, User user, RedirectAttributes rttr) throws Exception {
 
 		// System.out.println("전달된 로그인 데이터 : " + user);
+		HttpSession session = request.getSession();
+		User loginuser = memberservice.memberLogin(user);
 
-		return null;
+		if (loginuser == null) { // 일치하지 않는 아이디, 비밀번호 입력 경우
+
+			int result = 0;
+			rttr.addFlashAttribute("result", result);
+			return "redirect:/member/login";
+
+		}
+
+		session.setAttribute("member", loginuser); // 일치하는 아이디, 비밀번호 경우 (로그인 성공)
+
+		return "redirect:/main";
 	}
 }

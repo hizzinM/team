@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/resources/css/member/login.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
@@ -30,6 +32,11 @@
 							&nbsp;<span id="checklogin"></span><br>
 						</div>
 					</div>
+
+					<c:if test="${result == 0 }">
+						<div class="login_warn">사용자 ID 또는 비밀번호를 잘못 입력하셨습니다.</div>
+					</c:if>
+
 					<div class="login_button_wrap">
 						<input type="button" class="login_button" value="로그인">
 					</div>

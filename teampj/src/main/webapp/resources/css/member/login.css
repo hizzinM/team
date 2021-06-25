@@ -7,7 +7,7 @@
 
 /* 화면 전체 렙 */
 .wrapper {
-	width: 1900px;
+	width: 100%;
 }
 
 /* content 랩 */
@@ -27,7 +27,15 @@
 	font-weight: 900;
 }
 
+/* 로그인 실패시 경고글 */
+.login_warn {
+	margin-top: 30px;
+	text-align: center;
+	color: red;
+}
+
 /* 로그인 area */
+/*
 .id_input_box {
 	border: 1px solid black;
 	height: 31px;
@@ -48,7 +56,7 @@
 	margin-top: 40px;
 }
 
-.pw_input_box {
+  .pw_input_box {
 	border: 1px solid black;
 	height: 31px;
 	padding: 10px 14px;
@@ -62,8 +70,7 @@
 	height: 100%;
 	border: none;
 	font-size: 28px;
-}
-
+} 
 .login_button_wrap {
 	margin-top: 40px;
 	text-align: center;
@@ -78,7 +85,8 @@
 	color: white;
 	margin: auto;
 }
-.address_button{
+*/
+.address_button {
 	
 }
 /* float 속성 해제 */
