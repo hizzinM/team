@@ -18,4 +18,6 @@ public interface MemberMapper {
 
 	/* 로그인 기능 */
 	public User memberLogin(User user);
+	// 아이디 중복 검사
+		public int idCheck(String memberId);
 }
