@@ -17,7 +17,7 @@
 .top_gnb_area {
 	width: 100%;
 	height: 50px;
-	background-color: #a2a2ea;
+	/* background-color: #a2a2ea; */
 }
 /* 로고, 검색, 로그인 */
 .top_area {
@@ -29,14 +29,14 @@
 .logo_area {
 	width: 25%;
 	height: 100%;
-	background-color: red;
+	/* background-color: red; */
 	float: left;
 }
 /* 검색 박스 영역 */
 .search_area {
 	width: 50%;
 	height: 100%;
-	background-color: yellow;
+	/* background-color: yellow; */
 	float: left;
 }
 /* 로그인 버튼 영역 */
@@ -74,16 +74,31 @@
 .navi_bar_area {
 	width: 100%;
 	height: 70px;
-	background-color: #7696fd;
+	/* background-color: #7696fd; */
 }
 
 /* 홈페이지 메인 제품 목록  */
 .content_area {
 	width: 100%;
-	background-color: #97ef97;
+	/* background-color: #97ef97; */
 	height: 1000px;
 }
 
+/* 로그인 성공 영역 */
+.login_success_area {
+	height: 62%;
+	width: 80%;
+	border: 2px solid #7474ad;
+	border-radius: 15px;
+	margin: 5% auto;
+	padding-top: 5%;
+}
+
+.login_success_area>span {
+	display: block;
+	text-align: left;
+	margin-left: 10%;
+}
 /* float 속성 해제 */
 .clearfix {
 	clear: both;
