@@ -35,7 +35,7 @@
 					<c:if test="${ loginuser!= null }">
 						<div class="login_success_area">
 							<span>회원 : ${loginuser.userName} 님<br> 어서오세요.
-							</span> <a href="/member/logout.do">로그아웃</a>
+							</span> <a href="/member/logout">로그아웃</a>
 						</div>
 					</c:if>
 				</div>
