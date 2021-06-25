@@ -25,16 +25,16 @@
 				<div class="login_area">
 
 					<!-- 로그인 하지 않은 상태 -->
-					<c:if test="${user == null }">
+					<c:if test="${loginuser == null }">
 						<div class="login_button">
 							<a href="/member/login">로그인</a>
 						</div>
 						<span><a href="/member/join">회원가입</a></span>
 					</c:if>
 					<!-- 로그인한 상태 -->
-					<c:if test="${ user != null }">
+					<c:if test="${ loginuser!= null }">
 						<div class="login_success_area">
-							<span>회원 : ${user.userName}</span>
+							<span>회원 : ${loginuser.userName}</span>
 						</div>
 					</c:if>
 				</div>

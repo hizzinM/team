@@ -23,7 +23,7 @@
 				<div class="login_wrap">
 					<div class="id_wrap">
 						<div class="id_input_box">
-							<input class="id_input" name="user_id" placeholder="아이디">
+							<input class="id_input" name="userId" placeholder="아이디">
 						</div>
 					</div>
 					<div class="pw_wrap">
