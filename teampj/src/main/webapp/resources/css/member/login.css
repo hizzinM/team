@@ -12,25 +12,23 @@
 
 /* content 랩 */
 .wrap {
-	width: 800px;
+	width: 500px;
 	margin: auto;
 }
 
 /* 페이지 로고 */
 .logo_wrap {
-	text-align: center;
-	margin: 150px 0;
+	text-align: center; 
 }
 
 .logo_wrap>span {
-	font-size: 50px;
-	font-weight: 900;
+	font-size: 20px;
+	font-weight: 200;
 }
 
 /* 로그인 실패시 경고글 */
-.login_warn {
-	margin-top: 30px;
-	text-align: center;
+.login_warn { 
+	font-size: 12px; 
 	color: red;
 }
 
