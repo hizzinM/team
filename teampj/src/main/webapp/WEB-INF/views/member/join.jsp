@@ -53,11 +53,10 @@
 						<span style="border: soild 1px black;">주소찾기</span>
 					</div> <input type="text" class="address_input_2" name="address"><br>
 					<input type="text" class="address_input_3" name="addressDetail">&nbsp;<span
-					id="checkaddress2"></span></td>
-			</tr>
+					id="checkaddress2"></span></td>			</tr>
 			<tr>
 				<td>전화번호</td>
-				<td colspan="4"><input class="phone_input" name="phone"><span
+				<td colspan="4"><input type="tel" name="phone" id="phone"><span
 					id="checkphone"></span></td>
 			</tr>
 
@@ -81,7 +80,7 @@
 			</tr>
 			<tr>
 				<td colspan="4"><textarea rows="20" cols="30"
-						style="margin: 0px; width: 405px; height: 315px">제1조(목적)
+						style="margin: 0px; width: 900px; height: 345px">제1조(목적)
 이 약관은 민박강이 운영하는 민박강 사이버 몰(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리,의무 및 책임사항을 규정함을 목적으로 합니다.
 ※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다.」
 
@@ -240,10 +239,8 @@
 
 제24조(재판권 및 준거법)
 ① “몰”과 이용자 간에 발생한 전자상거래 분쟁에 관한 소송은 제소 당시의 이용자의 주소에 의하고, 주소가 없는 경우에는 거소를 관할하는 지방법원의 전속관할로 합니다. 다만, 제소 당시 이용자의 주소 또는 거소가 분명하지 않거나 외국 거주자의 경우에는 민사소송법상의 관할법원에 제기합니다.
-② “몰”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.</textarea><br> 이용약관에 동의하십니까? <input
-					type="checkbox" name="agree1">동의함</td>
-				<td><textarea rows="20" cols="30"
-						style="margin: 0px; width: 405px; height: 315px">
+② “몰”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.
+				
 		** 본 양식은 쇼핑몰 운영에 도움을 드리고자 샘플로 제공되는 서식으로 쇼핑몰 운영형태에 따른 수정이 필요합니다. 쇼핑몰에 적용하시기 전, 쇼핑몰 운영 사항 등을 확인하시고 적절한 내용을 반영하여 사용하시기 바랍니다. **
 
 1. 개인정보 수집목적 및 이용목적
@@ -290,7 +287,8 @@ o 로그 기록
 -보존이유: 통신비밀보호법
 -보존기간 : 3개월
 ※ 동의를 거부할 수 있으나 거부시 회원 가입이 불가능합니다.
-		</textarea><br>개인정보 수집 및 이용에 동의하십니까? <input type="checkbox" name="agree2">동의함</td>
+	</textarea><br>이용약관과 개인정보 수집 및 이용에 동의하십니까? <input type="checkbox"
+					name="agree1">동의함</td>
 
 			</tr>
 		</table>
@@ -307,9 +305,7 @@ o 로그 기록
 		 var num_check=/^[0-9]*$/;
 		 var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		 var accountPattern= /^[0-9,\-]{3,6}\-[0-9,\-]{2,6}\-[0-9,\-]$/;
-
  
-		 
 	//아이디 유효성
          var userId=document.for.userId.value;
 	
@@ -326,7 +322,7 @@ o 로그 기록
      	 var addressDetail=document.for.addressDetail.value;
      
      	 //var phone1=document.for.phone1.value;
-     	 //var phone2=document.for.phone2.value;
+     	 var phone=document.for.phone.value;
      	 //var phone3=document.for.phone3.value;
      	 
      	 var email=document.for.email.value;
@@ -378,16 +374,16 @@ o 로그 기록
     	   addressNum.focus;
            return false;
        }
-   	  	if(!num_check.test(phone2) || !num_check.test(phone3)){
+   	  	if(!num_check.test(phone)){
    	  	   document.getElementById("checkphone").innerHTML="숫자를 입력하세요"
             document.getElementById("checkphone").style.color="red";
-     	   phone3.focus;
+     	   phone.focus;
             return false;
    	  	}
-        if(phone2 =="" || phone3 ==""){
+        if(phone ==""){
     	   document.getElementById("checkphone").innerHTML="전화번호를입력하세요"
            document.getElementById("checkphone").style.color="red";
-    	   phone3.focus;
+    	   phone.focus;
            return false;
 		} 
         if(email==""){
@@ -403,28 +399,24 @@ o 로그 기록
         }
         
         /*체크박스 동의*/
-       	var Namecheck1=false;
-    	var Namecheck2=false;
-		 var arr_Name1=document.getElementsByName("agree1");
-		 var arr_Name2=document.getElementsByName("agree2");
+       	var Namecheck=false;
+    	
+		 var arr_Name=document.getElementsByName("agree1");
+	
 		 
-        	for(var i=0;i<arr_Name1.length;i++){
-        		for(var j=0;i<arr_Name2.length;i++){
-        		alert("1215");
-            	if(arr_Name1[i].checked==true || arr_Name2[j].checked==true){
-            	Namecheck1=true;
-            	Namecheck2=true;
+        	for(var i=0;i<arr_Name.length;i++){
+            	if(arr_Name[i].checked==true){
+            	Namecheck=true;           
  	             break;                    
-            }
+           
         }
      } 	
-        if(!Namecheck1 || !Namecheck2 ){
-            alert("전부 동의하세요");
+        if(!Namecheck ){
+            alert("동의하세요");
             return false;     
         }
     
 }
-
 	function execution_daum_address() {
 		new daum.Postcode({
 			oncomplete:function(data){
