@@ -49,10 +49,11 @@
 
 .login_button {
 	height: 50%;
-	background-color: #D4DFE6;
+	/* 	background-color: #D4DFE6; */
+	border: 1px solid black;
 	margin-top: 30px;
 	line-height: 77px;
-	font-size: 40px;
+	font-size: 20px;
 	font-weight: 900;
 	border-radius: 10px;
 	cursor: pointer;
@@ -60,14 +61,8 @@
 
 .login_area>span {
 	margin-top: 10px;
-	font-weight: 900;
+	font-weight: 400;
 	display: inline-block;
-}
-
-.login_button {
-	height: 50%;
-	background-color: #D4DFE6;
-	margin-top: 30px;
 }
 
 /* 제품 목록 네비 */
