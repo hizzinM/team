@@ -18,11 +18,12 @@
 
 /* 페이지 로고 */
 .logo_wrap {
-	text-align: center; 
+	text-align: center;
+	margin-top: 40px; 
 }
 
 .logo_wrap>span {
-	font-size: 20px;
+	font-size: 43px;
 	font-weight: 200;
 }
 
@@ -33,7 +34,7 @@
 }
 
 /* 로그인 area */
-/*
+
 .id_input_box {
 	border: 1px solid black;
 	height: 31px;
@@ -83,10 +84,16 @@
 	color: white;
 	margin: auto;
 }
-*/
-.address_button {
-	
+.join_button {
+	width: 25%;
+	height: 80px;
+	background-color:black;
+	font-size: 40px;
+	font-weight: 900;
+	color: white;
+	margin-left: 725px;
 }
+
 /* float 속성 해제 */
 .clearfix {
 	clear: both;
