@@ -28,7 +28,6 @@ public class UserService {
 	}
 
 	public User joinUser(User user) {
-
 		int affactedRow = userMapper.insertUser(user);
 
 		if (affactedRow == 1) {
