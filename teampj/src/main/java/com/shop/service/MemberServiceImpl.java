@@ -17,4 +17,11 @@ public class MemberServiceImpl implements MemberService {
 		membermapper.memberJoin(user);
 
 	}
+
+	/* 로그인 */
+	@Override
+	public User memberLogin(User user) throws Exception {
+
+		return membermapper.memberLogin(user);
+	}
 }
