@@ -38,20 +38,18 @@
 					</c:if>
 
 					<div class="login_button_wrap">
-						<input type="button" class="login_button" value="로그인">
+						<input type="button" class="login_button" value="로그인"> <a
+							href="/member/join"> <input type="submit" class="join_button"
+							value="회원가입">
+						</a>
 					</div>
 					<br>
 					<div id="naverIdLogin" style="margin-left: 36px;"></div>
 					<!-- //네이버아이디로로그인 버튼 노출 영역 -->
-
 				</div>
 			</form>
 		</div>
-
 	</div>
-	<a href="/member/join">
-	<input type="submit" class="join_button" value="회원가입">
-   	</a>
 	<script>
 		/* 로그인 버튼 클릭 메서드 */
 		$(".login_button").click(function() {

@@ -99,6 +99,7 @@
 	text-align: left;
 	margin-left: 10%;
 }
+
 /* float 속성 해제 */
 .clearfix {
 	clear: both;
