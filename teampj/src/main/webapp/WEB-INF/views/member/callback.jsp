@@ -1,55 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
 <head>
-<meta charset="UTF-8">
-<title>minparkang</title>
-<link rel="stylesheet" href="resources/css/main.css">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>NaverLoginSDK</title>
 </head>
+
 <body>
 
-	<div class="wrapper">
-		<div class="wrap">
-			<div class="top_gnb_area">
-				<h1>gnb area</h1>
-			</div>
-			<div class="top_area">
-				<div class="logo_area">
-					<h1>logo area</h1>
-				</div>
-				<div class="search_area">
-					<h1>Search area</h1>
-				</div>
-				<div class="login_area">
-
-					<!-- 로그인 하지 않은 상태 -->
-					<c:if test="${loginuser == null }">
-						<div class="login_button">
-							<a href="/member/login">로그인</a>
-						</div>
-						<span><a href="/member/join">회원가입</a></span>
-					</c:if>
-					<!-- 로그인한 상태 -->
-					<c:if test="${ loginuser!= null }">
-						<div class="login_success_area">
-							<span>회원 : ${loginuser.userName} 님<br> 어서오세요.
-							</span> <a href="/member/logout.do">로그아웃</a>
-						</div>
-					</c:if>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="navi_bar_area">
-				<h1>navi area</h1>
-			</div>
-			<div class="content_area">
-				<h1>content area</h1>
-			</div>
-		</div>
-	</div>
-callback 처리중입니다. 이 페이지에서는 callback을 처리하고 바로 main으로 redirect하기때문에 이 메시지가 보이면 안됩니다.
+	callback 처리중입니다. 이 페이지에서는 callback을 처리하고 바로 main으로 redirect하기때문에 이 메시지가 보이면 안됩니다.
 
 	<!-- (1) LoginWithNaverId Javscript SDK -->
 	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
@@ -59,7 +20,7 @@ callback 처리중입니다. 이 페이지에서는 callback을 처리하고 바
 	<script>
 		var naverLogin = new naver.LoginWithNaverId(
 			{
-				clientId: "kZ3Dhu0SmGhumoSEF0uv",
+				clientId:"kZ3Dhu0SmGhumoSEF0uv",
 				callbackUrl:"http://localhost:8080/main",
 				isPopup: false,
 				callbackHandle: true
@@ -84,10 +45,14 @@ callback 처리중입니다. 이 페이지에서는 callback을 처리하고 바
 					}
 
 					window.location.replace("http://" + window.location.hostname + 
-                            ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/sample/main.html");
+                            ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/main");
 				                                                    /* 인증이 완료된후 /sample/main.html 페이지로 이동하라는것이다. 본인 페이로 수정해야한다. */
                  } else {
 					console.log("callback 처리에 실패하였습니다.");
 				}
+			});
+		});
+	</script>
 </body>
+
 </html>
