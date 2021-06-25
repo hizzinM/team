@@ -34,7 +34,8 @@
 					<!-- 로그인한 상태 -->
 					<c:if test="${ loginuser!= null }">
 						<div class="login_success_area">
-							<span>회원 : ${loginuser.userName}</span>
+							<span>회원 : ${loginuser.userName} 님<br>
+							어서오세요.</span>
 						</div>
 					</c:if>
 				</div>
