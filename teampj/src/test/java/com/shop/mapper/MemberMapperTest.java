@@ -56,7 +56,7 @@ public class MemberMapperTest {
 	}
 
 	/* 로그인 쿼리 mapper 메서드 테스트 */
-	@Test
+	@Test@Ignore
 	public void memberLogin() throws Exception {
 
 		User user = new User();
@@ -73,5 +73,13 @@ public class MemberMapperTest {
 		System.out.println("결과 값 : " + membermapper.memberLogin(user));
 
 	}
+	// 아이디 중복검사
+		@Test@Ignore
+		public void memberIdChk() throws Exception{
+			String id = "testid";	// 존재하는 아이디
+			String id2 = "test123";	// 존재하지 않는 아이디
+			membermapper.idCheck(id);
+			membermapper.idCheck(id2);
+		}
 
 }
