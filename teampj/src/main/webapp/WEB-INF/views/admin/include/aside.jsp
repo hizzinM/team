@@ -9,7 +9,7 @@
 <body>
 	<aside>
 		<ul>
-			<li><a href="">회원관리</a></li>
+			<li><a href="">회원 관리</a></li>
 			<li><a href="">주문 관리</a></li>
 			<li><a href="">상품 관리</a></li>
 			<li><a href="">문의 관리</a></li>
