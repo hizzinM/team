@@ -3,11 +3,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/resources/css/admin/index.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>임시!
-
+<body>
+	<section id="container">
+		<aside>
+			<%@ include file="include/aside.jsp"%>
+		</aside>
+		<div id="container_box">본문</div>
+	</section>
 
 </body>
 </html>
