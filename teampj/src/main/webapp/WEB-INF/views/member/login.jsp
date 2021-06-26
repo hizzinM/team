@@ -42,39 +42,10 @@
 					<!--</div>-->
 					&nbsp;<input type="button" class="join_button" value="회원가입"
 						onClick="location.href='/member/join'">
-					<div id="naverIdLogin" style="margin-left: 36px;"></div>
-					<!-- //네이버아이디로로그인 버튼 노출 영역 -->
-				</div>
 			</form>
 		</div>
 	</div>
-	<script>
-		/* 로그인 버튼 클릭 메서드 */
-		$(".login_button").click(function() {
-			/* 로그인 메서드 서버 요청 */
-			$("#login_form").attr("action", "/member/login");
-			$("#login_form").submit();
-		});
-		
-	</script>
-	<!-- 네이버아디디로로그인 초기화 Script -->
-	<script type="text/javascript">
-		var naverLogin = new naver.LoginWithNaverId({
-			clientId : "kZ3Dhu0SmGhumoSEF0uv",
-			callbackUrl : "http://localhost:8080/main",
-			isPopup : false, /* 팝업을 통한 연동처리 여부 */
-			loginButton : {
-				color : "green",
-				type : 3,
-				height : 60
-			}
-		/* 로그인 버튼의 타입을 지정 */
-		});
 
-		/* 설정정보를 초기화하고 연동을 준비 */
-		naverLogin.init();
-	</script>
-	<!-- // 네이버아이디로로그인 초기화 Script -->
 </body>
 </html>
 
