@@ -34,7 +34,7 @@
 					<!-- 로그인한 상태 -->
 					<c:if test="${ loginuser!= null }">
 						<c:if test="${ loginuser.adminck ==1 }">
-							<span><a href>관리자화면</a></span>
+							<span><a href="/admin/index">관리자화면</a></span>
 						</c:if>
 						<div class="login_success_area">
 							<span>회원 : ${loginuser.userName} 님<br> 어서오세요.
