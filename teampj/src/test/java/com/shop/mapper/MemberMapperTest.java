@@ -22,7 +22,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-import com.shop.controller.HomeController;
 import com.shop.model.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -56,7 +55,8 @@ public class MemberMapperTest {
 	}
 
 	/* 로그인 쿼리 mapper 메서드 테스트 */
-	@Test@Ignore
+	@Test
+	@Ignore
 	public void memberLogin() throws Exception {
 
 		User user = new User();
@@ -73,13 +73,15 @@ public class MemberMapperTest {
 		System.out.println("결과 값 : " + membermapper.memberLogin(user));
 
 	}
+
 	// 아이디 중복검사
-		@Test@Ignore
-		public void memberIdChk() throws Exception{
-			String id = "testid";	// 존재하는 아이디
-			String id2 = "test123";	// 존재하지 않는 아이디
-			membermapper.idCheck(id);
-			membermapper.idCheck(id2);
-		}
+	@Test
+	@Ignore
+	public void memberIdChk() throws Exception {
+		String id = "testid"; // 존재하는 아이디
+		String id2 = "test123"; // 존재하지 않는 아이디
+		membermapper.idCheck(id);
+		membermapper.idCheck(id2);
+	}
 
 }

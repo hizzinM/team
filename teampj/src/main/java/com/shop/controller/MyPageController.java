@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/admin")
-public class AdminController {
+@RequestMapping("/mypage")
+public class MyPageController {
+
 	private static final Logger logger = LoggerFactory.getLogger("MainController.class");
 
-	// 관리자 페이지 이동
-	@RequestMapping(value = "index", method = RequestMethod.GET)
-	public void getmypage() throws Exception {
-		logger.info("관리자 페이지 진입");
+	// 마이페이지 이동
+	@RequestMapping(value = "myindex", method = RequestMethod.GET)
+	public void getadmin() throws Exception {
+		logger.info("마이페이지 진입");
 	}
 }
