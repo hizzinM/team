@@ -51,7 +51,7 @@
 				<td colspan="4"><input type="text" class="address_input_1"
 					name="addressNum">&nbsp;<span id="checkaddress1"></span><br>
 					<div class="address_button" onclick="execution_daum_address()">
-						<span style="border: soild 1px black;">주소찾기</span>
+						<span style="border: 1px solid gray;">주소찾기</span>
 					</div> <input type="text" class="address_input_2" name="address"><br>
 					<input type="text" class="address_input_3" name="addressDetail">&nbsp;<span
 					id="checkaddress2"></span></td>			</tr>
