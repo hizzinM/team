@@ -2,12 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<html>
-<style>
-span {
-	text-align: center;
-}
-</style>
+<html> 
 <head>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
@@ -25,7 +20,7 @@ span {
 		// 취소
 		$(".cencle").on("click", function() {
 
-			location.href = "/";
+			location.href = "/mypage/profile";
 
 		})
 
@@ -47,6 +42,7 @@ span {
 <body>
 	<section id="container">
 		<form action="/member/memberUpdate" method="post">
+			<br> <br> <br>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="userId">아이디</label> <input
 					class="form-control" type="text" id="userId" name="userId"
