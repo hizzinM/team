@@ -14,7 +14,22 @@ public class MyPageController {
 
 	// 마이페이지 이동
 	@RequestMapping(value = "myindex", method = RequestMethod.GET)
-	public void getadmin() throws Exception {
+	public void getmypage() throws Exception {
 		logger.info("마이페이지 진입");
 	}
+
+	// 프로필 페이지 이동
+	@RequestMapping(value = "profile", method = RequestMethod.GET)
+	public void getprofile() throws Exception {
+		logger.info("프로필 페이지 진입");
+	}
+
+	// 회원정보 수정 페이지 이동
+	@RequestMapping(value = "/memberUpdateView", method = RequestMethod.GET)
+	public void profileupdateGET() {
+
+		logger.info("회원정보수정 페이지 진입");
+
+	}
+
 }

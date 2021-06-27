@@ -56,27 +56,28 @@ public class MemberController {
 		logger.info("로그인 페이지 진입");
 
 	}
+
 	// 아이디 중복 검사
-		@RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
-		@ResponseBody
-		public String memberIdChkPOST(String memberId) throws Exception{
-			
-			logger.info("memberIdChk() 진입");
-						
-			int result = memberservice.idCheck(memberId);
-			
-			logger.info("결과값 = " + result);
-			
-			if(result != 0) {
-				
-				return "fail";	// 중복 아이디가 존재
-				
-			} else {
-				
-				return "success";	// 중복 아이디 x
-				
-			}	
+	@RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
+	@ResponseBody
+	public String memberIdChkPOST(String memberId) throws Exception {
+
+		logger.info("memberIdChk() 진입");
+
+		int result = memberservice.idCheck(memberId);
+
+		logger.info("결과값 = " + result);
+
+		if (result != 0) {
+
+			return "fail"; // 중복 아이디가 존재
+
+		} else {
+
+			return "success"; // 중복 아이디 x
+
 		}
+	}
 
 	/* 로그인 */
 	/*
@@ -86,7 +87,7 @@ public class MemberController {
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String loginPOST(HttpServletRequest request, User user, RedirectAttributes rttr) throws Exception {
 
-		// System.out.println("전달된 로그인 데이터 : " + user);
+		System.out.println("전달된 로그인 데이터 : " + user);
 		HttpSession session = request.getSession();
 		User loginuser = memberservice.memberLogin(user);
 
@@ -100,9 +101,6 @@ public class MemberController {
 		session.setAttribute("loginuser", loginuser); // 일치하는 아이디, 비밀번호 경우 (로그인 성공)
 		return "redirect:/main";
 	}
-	
-	
-	
 
 	/* 메인페이지 로그아웃 */
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
@@ -114,4 +112,20 @@ public class MemberController {
 
 		return "redirect:/main";
 	}
+
+//	@RequestMapping(value = "/memberUpdateView", method = RequestMethod.GET)
+//	public String registerUpdateView() throws Exception {
+//
+//		return "member/memberUpdateView";
+//	}
+
+//	@RequestMapping(value = "/memberUpdate", method = RequestMethod.POST)
+//	public String registerUpdate(User user, HttpSession session) throws Exception {
+//
+//		memberservice.memberUpdate(user);
+//
+//		session.invalidate();
+//
+//		return "redirect:/";
+//	}
 }

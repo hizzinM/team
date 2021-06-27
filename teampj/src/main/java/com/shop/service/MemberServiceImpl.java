@@ -11,6 +11,7 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	MemberMapper membermapper;
 
+	// 회원가입
 	@Override
 	public void memberJoin(User user) throws Exception {
 
@@ -18,16 +19,24 @@ public class MemberServiceImpl implements MemberService {
 
 	}
 
-	/* 로그인 */
+	// 로그인
 	@Override
 	public User memberLogin(User user) throws Exception {
 
 		return membermapper.memberLogin(user);
 	}
-	
+
+	// 아이디 중복체크
 	@Override
 	public int idCheck(String memberId) throws Exception {
-		
+
 		return membermapper.idCheck(memberId);
 	}
+
+	@Override
+	public void memberUpdate(User user) throws Exception {
+
+		membermapper.memberUpdate(user);
+	}
+
 }

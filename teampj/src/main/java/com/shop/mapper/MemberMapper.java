@@ -14,10 +14,16 @@ import com.shop.model.User;
 
 @Mapper
 public interface MemberMapper {
+
+	// 회원가입 기능
 	public void memberJoin(User user);
 
-	/* 로그인 기능 */
+	// 로그인 기능
 	public User memberLogin(User user);
+
 	// 아이디 중복 검사
-		public int idCheck(String memberId);
+	public int idCheck(String memberId);
+
+	// 회원정보 수정 기능
+	public void memberUpdate(User user);
 }

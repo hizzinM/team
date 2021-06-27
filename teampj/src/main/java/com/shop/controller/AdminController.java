@@ -13,7 +13,7 @@ public class AdminController {
 
 	// 관리자 페이지 이동
 	@RequestMapping(value = "index", method = RequestMethod.GET)
-	public void getmypage() throws Exception {
+	public void getindex() throws Exception {
 		logger.info("관리자 페이지 진입");
 	}
 

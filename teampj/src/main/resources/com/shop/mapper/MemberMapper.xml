@@ -12,17 +12,28 @@
 
 	<!-- insert into user values(0,"관리자","민박강관리자","민박강관리자","관리자",12345,"관리자주소","관리자상세주소",010-0000-0000,"minparkang@naver.com",1,now(),"민박강","신한",000000000000); -->
 
-	<!-- 로그인 -->
-	<select id="memberLogin" resultType="com.shop.model.User">
-		select
-		user_id,user_name,adminck from user where user_id = #{userId} and
-		password =#{password}
-	</select>
-	
 	<!-- 아이디 중복검사 -->
 	<select id="idCheck" resultType="int">
 
-		select count(*) from user where user_id = #{user_id}
+		select count(*) from user where
+		user_id = #{user_id}
 
 	</select>
+
+	<!-- 로그인 -->
+	<select id="memberLogin" resultType="com.shop.model.User">
+		select
+		user_id,password,password_check,user_name,address_num,address,address_detail,phone,email,adminck,account_name,account_bank,account_num
+		from user where user_id = #{userId} and
+		password =#{password}
+	</select>
+
+	<!-- 회원정보 수정 -->
+	<update id="memberUpdate">
+		update user set update user set
+		password=#{password},user_name=#{userName},address_num=#{addressNum},address=#{address},address_detail=#{addressDetail},
+		phone=#{phone},email=#{email},
+		account_name=#{accountName},account_bank=#{accountBank},account_num=#{accountNum}
+		where user_id=#{userId}
+	</update>
 </mapper>
