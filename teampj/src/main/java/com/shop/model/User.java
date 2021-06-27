@@ -3,6 +3,7 @@ package com.shop.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,7 +17,7 @@ public class User {
 	private String addressDetail;
 	private String phone;
 	private String email;
-	private int adminck;
+	private int adminck; 
 	private LocalDateTime regDate;
 
 	private String accountName;

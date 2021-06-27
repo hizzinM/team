@@ -3,6 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
+<style>
+span {
+	text-align: center;
+}
+</style>
 <head>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
@@ -13,7 +18,7 @@
 
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<title>회원가입</title>
+<title>회원정보 수정</title>
 </head>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -45,17 +50,55 @@
 			<div class="form-group has-feedback">
 				<label class="control-label" for="userId">아이디</label> <input
 					class="form-control" type="text" id="userId" name="userId"
-					value="${user.userId}" readonly="readonly" />
+					value="${loginuser.userId}" readonly="readonly" />
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="password">패스워드</label> <input
-					class="form-control" type="password" id="password" name="password" />
+					class="form-control" type="password" id="password" name="password"
+					value="${loginuser.password}" />
 			</div>
 			<div class="form-group has-feedback">
-				<label class="control-label" for="userName">성명</label> <input
+				<label class="control-label" for="userName">닉네임</label> <input
 					class="form-control" type="text" id="userName" name="userName"
-					value="${user.userName}" />
+					value="${loginuser.userName}" />
 			</div>
+
+
+
+			<div class="form-group has-feedback">
+				<label class="control-label" for="userName">주소</label> <input
+					class="form-control" type="text" id="userName" name="userName"
+					value="${loginuser.userName}" />
+			</div>
+			<div class="form-group has-feedback">
+				<label class="control-label" for="phone">휴대폰 번호</label> <input
+					class="form-control" type="text" id="phone" name="phone"
+					value="${loginuser.phone}" />
+			</div>
+			<div class="form-group has-feedback">
+				<label class="control-label" for="email">이메일</label> <input
+					class="form-control" type="text" id="email" name="email"
+					value="${loginuser.email}" />
+			</div>
+			<hr>
+			<span> <strong>추가정보</strong></span><br> <br>
+			<div class="form-group has-feedback">
+				<label class="control-label" for="accountName">예금주</label> <input
+					class="form-control" type="text" id="accountName"
+					name="accountName" value="${loginuser.accountName}" />
+			</div>
+			<div class="form-group has-feedback">
+				<label class="control-label" for="accountBank">은행</label> <input
+					class="form-control" type="text" id="accountBank"
+					name="accountBank" value="${loginuser.accountBank}" />
+			</div>
+			<div class="form-group has-feedback">
+				<label class="control-label" for="accountNum">계좌번호</label> <input
+					class="form-control" type="text" id="accountNum" name="accountNum"
+					value="${loginuser.accountNum}" />
+			</div>
+
+
 			<div class="form-group has-feedback">
 				<button class="btn btn-success" type="submit" id="submit">회원정보수정</button>
 				<button class="cencle btn btn-danger" type="button">취소</button>

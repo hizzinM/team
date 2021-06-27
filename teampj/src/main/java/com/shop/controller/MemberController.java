@@ -87,7 +87,7 @@ public class MemberController {
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String loginPOST(HttpServletRequest request, User user, RedirectAttributes rttr) throws Exception {
 
-		System.out.println("전달된 로그인 데이터 : " + user);
+		//System.out.println("전달된 로그인 데이터 : " + user);
 		HttpSession session = request.getSession();
 		User loginuser = memberservice.memberLogin(user);
 
