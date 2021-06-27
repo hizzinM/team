@@ -26,4 +26,9 @@ public interface MemberMapper {
 
 	// 회원정보 수정 기능
 	public void memberUpdate(User user);
+
+
+	public User findId(String email);
+	
+	
 }

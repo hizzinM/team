@@ -1,5 +1,7 @@
 package com.shop.service;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.shop.model.User;
 
 public interface MemberService {
@@ -15,4 +17,10 @@ public interface MemberService {
 
 	// 회원정보 수정 기능
 	public void memberUpdate(User user) throws Exception;
+	
+
+
+
+
+	
 }

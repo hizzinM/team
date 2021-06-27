@@ -34,4 +34,6 @@ public interface UserMapper {
 	@Options(useGeneratedKeys = true, keyProperty = "userNo")
 	public int insertUser(User user);
 
+
+
 }
