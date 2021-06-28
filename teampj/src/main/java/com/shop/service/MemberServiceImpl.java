@@ -1,6 +1,7 @@
 package com.shop.service;
 
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -60,6 +61,13 @@ public class MemberServiceImpl implements MemberService {
 	public User getProfile(String userId) {
 
 		return membermapper.getProfile(userId);
+	}
+
+	// 회원목록 조회
+	@Override
+	public List<User> getmemberList() {
+
+		return membermapper.getmemberList();
 	}
 
 	/* 회원정보 수정 */

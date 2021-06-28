@@ -50,16 +50,14 @@ public class MemberController {
 
 		return "/member/findid";
 	}
+
 	@RequestMapping(value = "/findidAfter", method = RequestMethod.POST)
-	public String find_id(HttpServletResponse response, @RequestParam("email") String email, Model md) throws Exception{
+	public String find_id(HttpServletResponse response, @RequestParam("email") String email, Model md)
+			throws Exception {
 		md.addAttribute("findid", memberservice.findid(response, email));
-		
+
 		return "/member/findidAfter";
 	}
-	
-	
-	
-	
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String joinPOST(User user) throws Exception {
@@ -112,11 +110,8 @@ public class MemberController {
 	 */
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
 	public String loginPOST(HttpServletRequest request, User user, RedirectAttributes rttr) throws Exception {
-
-		// System.out.println("전달된 로그인 데이터 : " + user);
 		HttpSession session = request.getSession();
 		User loginuser = memberservice.memberLogin(user);
-
 		if (loginuser == null) { // 일치하지 않는 아이디, 비밀번호 입력 경우
 
 			int result = 0;

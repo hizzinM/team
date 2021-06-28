@@ -44,8 +44,8 @@
 					<!--   <div class="login_button_wrap">-->
 					<input type="button" class="login_button" value="로그인">&nbsp;&nbsp;
 					&nbsp;<input type="button" class="join_button" value="회원가입"
-						onClick="location.href='/member/join'"><br>
-					<br> <a href='/member/findid'>아이디 찾기</a><br>
+						onClick="location.href='/member/join'"><br> <br>
+					<a href='/member/findid'>아이디 찾기</a><br>
 					<li id="GgCustomLogin"><a href="javascript:void(0)"> <span>구글로
 								로그인</span>
 					</a></li>

@@ -25,8 +25,9 @@
 			<tr>
 				<td width="200px">아이디</td>
 				<td colspan="4"><input type="text" name="userId" id="user_id">&nbsp;<span
-					id="checkid"></span><span class="id_input_re_1">사용 가능한 아이디입니다.</span>
-								        <span class="id_input_re_2">아이디가 이미 존재합니다.</span><br><b>영문 소문자/숫자, 4-16자</b></td>
+					id="checkid"></span><span class="id_input_re_1">사용 가능한
+						아이디입니다.</span> <span class="id_input_re_2">아이디가 이미 존재합니다.</span><br>
+				<b>영문 소문자/숫자, 4-16자</b></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
@@ -54,7 +55,8 @@
 						<span style="border: 1px solid gray;">주소찾기</span>
 					</div> <input type="text" class="address_input_2" name="address"><br>
 					<input type="text" class="address_input_3" name="addressDetail">&nbsp;<span
-					id="checkaddress2"></span></td>			</tr>
+					id="checkaddress2"></span></td>
+			</tr>
 			<tr>
 				<td>전화번호</td>
 				<td colspan="4"><input type="tel" name="phone" id="phone"><span

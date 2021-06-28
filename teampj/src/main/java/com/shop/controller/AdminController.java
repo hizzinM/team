@@ -2,13 +2,22 @@ package com.shop.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.shop.service.MemberService;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+
+	@Autowired
+	MemberService memberservice;
+
 	private static final Logger logger = LoggerFactory.getLogger("MainController.class");
 
 	// 관리자 페이지 이동
@@ -18,9 +27,17 @@ public class AdminController {
 	}
 
 	// 회원관리 페이지 이동
-	@RequestMapping(value = "membermenu", method = RequestMethod.GET)
-	public void getmembermenu() throws Exception {
-		logger.info("회원관리 페이지 진입");
+//	@RequestMapping(value = "membermenu", method = RequestMethod.GET)
+//	public void getmembermenu() throws Exception {
+//		logger.info("회원관리 페이지 진입");
+//	}
+
+	/* 회원 목록 페이지 접속 */
+	@GetMapping("/membermenu")
+	// => @RequestMapping(value="membermenu", method=RequestMethod.GET)
+	public void getmemberList(Model model) {
+		logger.info("게시판 목록 페이지 진입");
+		model.addAttribute("membermenu", memberservice.getmemberList());
 	}
 
 	// 주문관리 페이지 이동
