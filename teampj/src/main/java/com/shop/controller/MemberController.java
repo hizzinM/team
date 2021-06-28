@@ -11,11 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.type.filter.AbstractClassTestingTypeFilter;
 import org.springframework.stereotype.Controller;
-<<<<<<< HEAD
 import org.springframework.web.bind.annotation.GetMapping;
-=======
 import org.springframework.validation.BindingResult;
->>>>>>> refs/remotes/origin/teammaster
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -43,12 +40,13 @@ public class MemberController {
 		logger.info("회원가입 페이지 진입");
 
 	}
+
 	// 아이디 찾기 폼
-		@RequestMapping(value = "/findid")
-		public String findid(String email)  throws Exception{
-			
-			return "/member/findid";
-		}
+	@RequestMapping(value = "/findid")
+	public String findid(String email) throws Exception {
+
+		return "/member/findid";
+	}
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String joinPOST(User user) throws Exception {
@@ -128,5 +126,4 @@ public class MemberController {
 		return "redirect:/main";
 	}
 
- 
 }

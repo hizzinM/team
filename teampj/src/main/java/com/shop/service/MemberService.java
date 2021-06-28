@@ -16,15 +16,5 @@ public interface MemberService {
 	public int idCheck(String memberId) throws Exception;
 
 	// 회원정보수정
-	public void memberUpdate(User user) throws Exception;
-<<<<<<< HEAD
-
-=======
-	
-
-
-
-
-	
->>>>>>> refs/remotes/origin/teammaster
+	public void memberUpdate(User user) throws Exception; 
 }
