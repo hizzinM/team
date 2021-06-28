@@ -20,6 +20,8 @@ public interface MemberService {
 
 	public String findid(HttpServletResponse response, String email) throws Exception;
 
+	public User getProfile(String userId);
+
 	// 회원정보수정
 	public int memberUpdate(User user);
 }

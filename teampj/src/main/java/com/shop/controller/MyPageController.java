@@ -39,29 +39,37 @@ public class MyPageController {
 		logger.info("프로필 페이지 진입");
 	}
 
-	// 회원정보 수정페이지
-	@RequestMapping(value = "/memberUpdateView", method = RequestMethod.GET)
-	public String profileupdateGET() throws Exception { 
-		return "mypage/memberUpdateView";
+//	// 회원정보 수정페이지
+//	@RequestMapping(value = "/memberUpdateView", method = RequestMethod.GET)
+//	public String profileupdateGET() throws Exception {
+//		return "mypage/memberUpdateView";
+//	}
+
+	/* 프로필 조회 */
+	@GetMapping("/updateprofile")
+	public void ProfileGetPageGET(String userId, Model model) {
+
+		model.addAttribute("profileInfo", memberservice.getProfile(userId));
+
 	}
 
 	/* 수정 페이지 이동 */
-    @GetMapping("/memberUpdate")
-    public void memberUpdateGET(String userId, Model model) {
-        
-        model.addAttribute("pageInfo", bservice.getPage(bno));
-        
-    }
-    
-    
-	// 회원정보 수정 post
-	@RequestMapping(value = "/memberUpdate", method = RequestMethod.POST)
-	public String profileupdate(HttpSession session, User user) throws Exception {
-		System.out.println("포스트ok");
-		logger.info("memberUpdate");
+	@GetMapping("/memberUpdate")
+	public void memberUpdateGET(String userId, Model model) {
 
-		memberservice.memberUpdate(user); 
-		//session.invalidate(); 
-		return "redirect:/";
+		model.addAttribute("profileInfo", memberservice.getProfile(userId));
+
+	}
+
+	/* 페이지 수정 */
+	@PostMapping("/memberUpdate")
+	public String memberUpdatePOST(User user, RedirectAttributes rttr) {
+
+		memberservice.memberUpdate(user);
+
+		rttr.addFlashAttribute("result", "modify success");
+
+		return "redirect:/mypage/profile";
+
 	}
 }

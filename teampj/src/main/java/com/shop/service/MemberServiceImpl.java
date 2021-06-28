@@ -56,6 +56,12 @@ public class MemberServiceImpl implements MemberService {
 		return membermapper.idCheck(memberId);
 	}
 
+	@Override
+	public User getProfile(String userId) {
+
+		return membermapper.getProfile(userId);
+	}
+
 	/* 회원정보 수정 */
 	@Override
 	public int memberUpdate(User user) {

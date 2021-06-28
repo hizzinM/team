@@ -22,7 +22,7 @@
 		<hr>
 		예금주:${loginuser.accountName}<br> 은행:${loginuser.accountBank}<br>
 		계좌번호:${loginuser.accountNum}<br> <br> <br> <a
-			href="/mypage/memberUpdateView">회원정보수정</a>
+			href="/mypage/updateprofile">회원정보수정</a>
 	</section>
 </body>
 </html>

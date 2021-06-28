@@ -30,6 +30,8 @@ public interface MemberMapper {
 	// 아이디 찾기 기능
 	public String findid(String email);
 
+	public User getProfile(String userId);
+	
 	// 회원정보 수정 기능
 	public int memberUpdate(User user);
 

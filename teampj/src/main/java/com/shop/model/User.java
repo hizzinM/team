@@ -18,6 +18,7 @@ public class User {
 	private String phone;
 	private String email;
 	private int adminck; 
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
 	private LocalDateTime regDate;
 
 	private String accountName;

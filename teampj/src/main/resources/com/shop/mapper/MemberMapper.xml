@@ -35,9 +35,21 @@
 		password =#{password}
 	</select>
 
+	<select id="getProfile" resultType="com.shop.model.User">
+
+		select
+		user_id,password,password_check,user_name,address_num,address,address_detail,phone,email,adminck,account_name,account_bank,account_num
+		from user where
+		user_id = #{userId}
+
+	</select>
+
+
+
 	<!-- 회원정보 수정 -->
 	<update id="memberUpdate">
-		update user set password=#{password},password_check=#{passwordCheck},user_name=#{userName},address_num=#{addressNum},address=#{address},address_detail=#{addressDetail},
+		update user set
+		password=#{password},password_check=#{passwordCheck},user_name=#{userName},address_num=#{addressNum},address=#{address},address_detail=#{addressDetail},
 		phone=#{phone},email=#{email},account_name=#{accountName},account_bank=#{accountBank},account_num=#{accountNum}
 		where user_id=#{userId}
 	</update>

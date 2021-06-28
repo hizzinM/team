@@ -30,7 +30,7 @@ import com.shop.service.MemberService;
 public class MemberMapperTest {
 	@Autowired
 	private MemberMapper membermapper;
-	
+
 	@Autowired
 	private MemberService memberservice;
 
@@ -89,6 +89,25 @@ public class MemberMapperTest {
 	}
 
 	@Test
+	@Ignore
+	public void testGetProfile() {
+
+		/* 실제 존재하는 페이지 */
+		String userId = "test";
+		System.out.println("result : " + membermapper.getProfile(userId));
+
+	}
+
+	@Test
+	public void testGETProfile() {
+
+		String userId = "test";
+		System.out.println("result : " + memberservice.getProfile(userId));
+
+	}
+
+	@Test
+	@Ignore
 	public void testModify() {
 
 		User user = new User();
@@ -100,7 +119,7 @@ public class MemberMapperTest {
 		user.setAddress("test");
 		user.setAddressDetail("test");
 		user.setPhone("010-1111-1111");
-		user.setEmail("test@naver.com");  
+		user.setEmail("test@naver.com");
 
 		int result = memberservice.memberUpdate(user);
 		System.out.println("result : " + result);

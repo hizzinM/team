@@ -18,84 +18,104 @@
 
 <title>회원정보 수정</title>
 </head>
-<script type="text/javascript">
-	$(document).ready(function() {
-		// 취소
-		$(".cancel").on("click", function() {
-			location.href = "/mypage/profile";
-		}) 
-		});
-
-	})
 </script>
 <body>
-	<section id="container">
-		<form role="form" method="post" autocomplete="on">
 
-			<br> <br> <br>
+	<form id="modifyForm" action="/mypage/memberUpdate" method="post">
+
+
+		<section id="container">
+			<br> <br>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="userId">아이디</label> <input
 					class="form-control" type="text" id="userId" name="userId"
-					value="${loginuser.userId}" readonly="readonly" />
+					value='<c:out value="${loginuser.userId}"/>' readonly="readonly" />
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="password">패스워드</label> <input
 					class="form-control" type="password" id="password" name="password"
-					value="${loginuser.password}" />
+					value='<c:out value="${loginuser.password}"/>' />
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="userName">닉네임</label> <input
 					class="form-control" type="text" id="userName" name="userName"
-					value="${loginuser.userName}" />
+					value='<c:out value="${loginuser.userName}"/>' />
 			</div>
 
 			<div class="form-group has-feedback">
 				<label class="control-label" for="addressNum">주소</label> <input
 					class="form-control" type="text" id="addressNum" name="addressNum"
-					value="${loginuser.addressNum}" /> <input class="form-control"
-					type="text" id="address" name="address"
-					value="${loginuser.address}" />
+					value='<c:out value="${loginuser.addressNum}"/>' /> <input
+					class="form-control" type="text" id="address" name="address"
+					value='<c:out value="${loginuser.address}"/>' />
 				<div class="form-group has-feedback">
 					<input class="form-control" type="text" id="addressDetail"
-						name="addressDetail" value="${loginuser.addressDetail}" />
+						name="addressDetail"
+						value='<c:out value="${loginuser.addressDetail}"/>' />
 				</div>
 				<div class="address_button" onclick="execution_daum_address()">
 					<span style="border: 1px solid gray; background-color: lightgray;">주소찾기</span>
 				</div>
 				<br> <label class="control-label" for="phone">휴대폰 번호</label> <input
 					class="form-control" type="text" id="phone" name="phone"
-					value="${loginuser.phone}" />
+					value='<c:out value="${loginuser.phone}"/>' />
 			</div>
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="email">이메일</label> <input
 					class="form-control" type="text" id="email" name="email"
-					value="${loginuser.email}" />
+					value='<c:out value="${loginuser.email}"/>' />
 			</div>
 			<hr>
 			<span> <strong>추가정보</strong></span><br> <br>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="accountName">예금주</label> <input
 					class="form-control" type="text" id="accountName"
-					name="accountName" value="${loginuser.accountName}" />
+					name="accountName"
+					value='<c:out value="${loginuser.accountName}"/>' />
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="accountBank">은행</label> <input
 					class="form-control" type="text" id="accountBank"
-					name="accountBank" value="${loginuser.accountBank}" />
+					name="accountBank"
+					value='<c:out value="${loginuser.accountBank}"/>' />
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="accountNum">계좌번호</label> <input
 					class="form-control" type="text" id="accountNum" name="accountNum"
-					value="${loginuser.accountNum}" />
+					value='<c:out value="${loginuser.accountNum}"/>' />
 			</div>
 
 
-			<div class="form-group has-feedback">
+			<!--   <div class="form-group has-feedback">
 				<button class="btn btn-success" type="submit" id="submit">회원정보수정</button>
 				<button class="cancel btn btn-danger" type="button">취소</button>
+			</div>-->
+			<div>
+				<a class="btn" id="modify_btn">수정 완료</a> <a class="btn"
+					id="cancel_btn">수정 취소</a>
 			</div>
-		</form>
+	</form>
+	<form id="infoForm" action="/mypage/memberUpdate" method="get">
+		<input type="hidden" id="userId" name="userId"
+			value='<c:out value="${profileInfo.userId}"/>'>
+	</form>
+
+	<script type="text/javascript">
+		let form = $("#infoForm"); // 페이지 이동 form(리스트 페이지 이동, 조회 페이지 이동)
+		let mForm = $("#modifyForm"); // 페이지 데이터 수정 from
+
+		/* 수정 하기 버튼 */
+		$("#modify_btn").on("click", function(e) {
+			mForm.submit();
+		});
+
+		/* 취소 버튼 */
+		$("#cancel_btn").on("click", function(e) {
+			form.attr("action", "/board/profile");
+			form.submit();
+		});
+	</script>
 	</section>
 	<script type="text/javascript">
 		function execution_daum_address() {
