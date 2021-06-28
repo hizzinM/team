@@ -43,11 +43,9 @@
 		user_id = #{userId}
 
 	</select>
-
-
-
+ 
 	<!-- 회원정보 수정 -->
-	<update id="memberUpdate">
+	<update id="profileUpdate">
 		update user set
 		password=#{password},password_check=#{passwordCheck},user_name=#{userName},address_num=#{addressNum},address=#{address},address_detail=#{addressDetail},
 		phone=#{phone},email=#{email},account_name=#{accountName},account_bank=#{accountBank},account_num=#{accountNum}

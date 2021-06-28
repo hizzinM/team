@@ -64,9 +64,9 @@ public class MemberServiceImpl implements MemberService {
 
 	/* 회원정보 수정 */
 	@Override
-	public int memberUpdate(User user) {
+	public int profileUpdate(User user) {
 
-		return membermapper.memberUpdate(user);
+		return membermapper.profileUpdate(user);
 	}
 
 }

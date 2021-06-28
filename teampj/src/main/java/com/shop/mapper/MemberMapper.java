@@ -33,6 +33,6 @@ public interface MemberMapper {
 	public User getProfile(String userId);
 	
 	// 회원정보 수정 기능
-	public int memberUpdate(User user);
+	public int profileUpdate(User user);
 
 }

@@ -39,36 +39,20 @@ public class MyPageController {
 		logger.info("프로필 페이지 진입");
 	}
 
-//	// 회원정보 수정페이지
-//	@RequestMapping(value = "/memberUpdateView", method = RequestMethod.GET)
-//	public String profileupdateGET() throws Exception {
-//		return "mypage/memberUpdateView";
-//	}
-
-	/* 프로필 조회 */
-	@GetMapping("/updateprofile")
-	public void ProfileGetPageGET(String userId, Model model) {
-
+	// 프로필 수정 페이지 이동
+	@GetMapping("/profileUpdate")
+	public void profileUpdateGET(String userId, Model model) {
 		model.addAttribute("profileInfo", memberservice.getProfile(userId));
 
 	}
 
-	/* 수정 페이지 이동 */
-	@GetMapping("/memberUpdate")
-	public void memberUpdateGET(String userId, Model model) {
+	// 프로필 수정 기능
+	@PostMapping("/profileUpdate")
+	public String profileUpdatePOST(User user, RedirectAttributes rttr) {
 
-		model.addAttribute("profileInfo", memberservice.getProfile(userId));
-
-	}
-
-	/* 페이지 수정 */
-	@PostMapping("/memberUpdate")
-	public String memberUpdatePOST(User user, RedirectAttributes rttr) {
-
-		memberservice.memberUpdate(user);
+		memberservice.profileUpdate(user);
 
 		rttr.addFlashAttribute("result", "modify success");
-
 		return "redirect:/mypage/profile";
 
 	}

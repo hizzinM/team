@@ -23,5 +23,5 @@ public interface MemberService {
 	public User getProfile(String userId);
 
 	// 회원정보수정
-	public int memberUpdate(User user);
+	public int profileUpdate(User user);
 }

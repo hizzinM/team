@@ -6,6 +6,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <body>
 	<c:if test="${ loginuser!= null }">
 		<div>
@@ -22,7 +27,21 @@
 		<hr>
 		예금주:${loginuser.accountName}<br> 은행:${loginuser.accountBank}<br>
 		계좌번호:${loginuser.accountNum}<br> <br> <br> <a
-			href="/mypage/updateprofile">회원정보수정</a>
+			class="btn" id="modify_btn">수정</a>
+
+		<form id="infoForm" action="/mypage/profileUpdate" method="get">
+			<input type="hidden" id="userId" name="userId"
+				value='<c:out value="${profileInfo.userId}"/>'>
+		</form>
+
+		<script type="text/javascript">
+			let form = $("#infoForm");
+			$("#modify_btn").on("click", function(e) {
+				form.attr("action", "/mypage/profileUpdate");
+				form.submit();
+			});
+		</script>
+	</section>
 	</section>
 </body>
 </html>

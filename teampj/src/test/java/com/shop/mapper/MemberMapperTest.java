@@ -121,7 +121,7 @@ public class MemberMapperTest {
 		user.setPhone("010-1111-1111");
 		user.setEmail("test@naver.com");
 
-		int result = memberservice.memberUpdate(user);
+		int result = memberservice.profileUpdate(user);
 		System.out.println("result : " + result);
 
 	}

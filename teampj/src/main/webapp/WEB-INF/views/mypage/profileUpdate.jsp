@@ -21,7 +21,7 @@
 </script>
 <body>
 
-	<form id="modifyForm" action="/mypage/memberUpdate" method="post">
+	<form id="modifyForm" action="/mypage/profileUpdate" method="post">
 
 
 		<section id="container">
@@ -35,6 +35,12 @@
 				<label class="control-label" for="password">패스워드</label> <input
 					class="form-control" type="password" id="password" name="password"
 					value='<c:out value="${loginuser.password}"/>' />
+			</div>
+			<div class="form-group has-feedback">
+				<label class="control-label" for="passwordCheck">패스워드 확인</label> <input
+					class="form-control" type="passwordCheck" id="passwordCheck"
+					name="passwordCheck"
+					value='<c:out value="${loginuser.passwordCheck}"/>' />
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="userName">닉네임</label> <input
@@ -96,7 +102,7 @@
 					id="cancel_btn">수정 취소</a>
 			</div>
 	</form>
-	<form id="infoForm" action="/mypage/memberUpdate" method="get">
+	<form id="infoForm" action="/mypage/profileUpdate" method="get">
 		<input type="hidden" id="userId" name="userId"
 			value='<c:out value="${profileInfo.userId}"/>'>
 	</form>
