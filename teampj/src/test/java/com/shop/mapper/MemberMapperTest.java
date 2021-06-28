@@ -23,12 +23,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import com.shop.model.User;
+import com.shop.service.MemberService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root_context.xml")
 public class MemberMapperTest {
 	@Autowired
 	private MemberMapper membermapper;
+	
+	@Autowired
+	private MemberService memberservice;
 
 	// 회원가입 쿼리 테스트 메서드
 	@Test
@@ -82,6 +86,25 @@ public class MemberMapperTest {
 		String id2 = "test123"; // 존재하지 않는 아이디
 		membermapper.idCheck(id);
 		membermapper.idCheck(id2);
+	}
+
+	@Test
+	public void testModify() {
+
+		User user = new User();
+		user.setUserId("test");
+		user.setPassword("test");
+		user.setPasswordCheck("test");
+		user.setUserName("test");
+		user.setAddressNum("test");
+		user.setAddress("test");
+		user.setAddressDetail("test");
+		user.setPhone("010-1111-1111");
+		user.setEmail("test@naver.com");  
+
+		int result = memberservice.memberUpdate(user);
+		System.out.println("result : " + result);
+
 	}
 
 }

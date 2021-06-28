@@ -27,8 +27,10 @@ public interface MemberMapper {
 	// 아이디 중복 검사
 	public int idCheck(String memberId);
 
-	// 회원정보 수정 기능
-	public void memberUpdate(User user);
-
+	// 아이디 찾기 기능
 	public String findid(String email);
+
+	// 회원정보 수정 기능
+	public int memberUpdate(User user);
+
 }

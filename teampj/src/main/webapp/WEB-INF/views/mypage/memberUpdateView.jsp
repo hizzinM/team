@@ -21,50 +21,17 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		// 취소
-		$(".cencle").on("click", function() {
-
+		$(".cancel").on("click", function() {
 			location.href = "/mypage/profile";
-
-		})
-
-		$("#submit").on("click", function() {
-			if ($("#password").val() == "") {
-				alert("비밀번호를 입력해주세요.");
-				$("#password").focus();
-				return false;
-			}
-			if ($("#userName").val() == "") {
-				alert("성명을 입력해주세요.");
-				$("#userName").focus();
-				return false;
-			}
-			if ($("#userName").val() == "") {
-				alert("성명을 입력해주세요.");
-				$("#userName").focus();
-				return false;
-			}
-			if ($("#userName").val() == "") {
-				alert("성명을 입력해주세요.");
-				$("#userName").focus();
-				return false;
-			}
-			if ($("#userName").val() == "") {
-				alert("성명을 입력해주세요.");
-				$("#userName").focus();
-				return false;
-			}
-			if ($("#userName").val() == "") {
-				alert("성명을 입력해주세요.");
-				$("#userName").focus();
-				return false;
-			}
+		}) 
 		});
 
 	})
 </script>
 <body>
 	<section id="container">
-		<form action="/member/memberUpdate" method="post">
+		<form role="form" method="post" autocomplete="on">
+
 			<br> <br> <br>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="userId">아이디</label> <input
@@ -126,7 +93,7 @@
 
 			<div class="form-group has-feedback">
 				<button class="btn btn-success" type="submit" id="submit">회원정보수정</button>
-				<button class="cencle btn btn-danger" type="button">취소</button>
+				<button class="cancel btn btn-danger" type="button">취소</button>
 			</div>
 		</form>
 	</section>

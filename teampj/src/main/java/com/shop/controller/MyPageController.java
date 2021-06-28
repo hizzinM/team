@@ -41,8 +41,27 @@ public class MyPageController {
 
 	// 회원정보 수정페이지
 	@RequestMapping(value = "/memberUpdateView", method = RequestMethod.GET)
-	public String profileupdateGET() throws Exception {
+	public String profileupdateGET() throws Exception { 
 		return "mypage/memberUpdateView";
 	}
- 
+
+	/* 수정 페이지 이동 */
+    @GetMapping("/memberUpdate")
+    public void memberUpdateGET(String userId, Model model) {
+        
+        model.addAttribute("pageInfo", bservice.getPage(bno));
+        
+    }
+    
+    
+	// 회원정보 수정 post
+	@RequestMapping(value = "/memberUpdate", method = RequestMethod.POST)
+	public String profileupdate(HttpSession session, User user) throws Exception {
+		System.out.println("포스트ok");
+		logger.info("memberUpdate");
+
+		memberservice.memberUpdate(user); 
+		//session.invalidate(); 
+		return "redirect:/";
+	}
 }

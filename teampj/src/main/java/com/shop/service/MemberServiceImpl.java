@@ -29,24 +29,25 @@ public class MemberServiceImpl implements MemberService {
 
 		return membermapper.memberLogin(user);
 	}
+
 	// 아이디 찾기
-		@Override
-		public String findid(HttpServletResponse response, String email) throws Exception {
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			String userid = membermapper.findid(email);
-			
-			if (userid == null) {
-				out.println("<script>");
-				out.println("alert('가입된 아이디가 없습니다.');");
-				out.println("history.go(-1);");
-				out.println("</script>");
-				out.close();
-				return null;
-			} else {
-				return userid;
-			}
+	@Override
+	public String findid(HttpServletResponse response, String email) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String userid = membermapper.findid(email);
+
+		if (userid == null) {
+			out.println("<script>");
+			out.println("alert('가입된 아이디가 없습니다.');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+			return null;
+		} else {
+			return userid;
 		}
+	}
 
 	// 아이디 중복체크
 	@Override
@@ -55,12 +56,11 @@ public class MemberServiceImpl implements MemberService {
 		return membermapper.idCheck(memberId);
 	}
 
-	// 회원정보수정
+	/* 회원정보 수정 */
 	@Override
-	public void memberUpdate(User user) throws Exception {
-		membermapper.memberUpdate(user);
-	}
+	public int memberUpdate(User user) {
 
-	
+		return membermapper.memberUpdate(user);
+	}
 
 }
