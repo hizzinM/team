@@ -3,9 +3,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/resources/css/admin/index.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>문의관리</title>
 </head>
-<body>qna
+<body>
+	<section id="container">
+		<aside>
+			<%@ include file="include/aside.jsp"%>
+		</aside>
+		<div id="container_box">문의관리</div>
+	</section>
+
 </body>
 </html>
