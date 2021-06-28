@@ -17,9 +17,15 @@
 
 		select count(*) from user where
 		user_id = #{user_id}
-
 	</select>
-
+	
+	
+	<!-- 아이디 찾기 -->
+	<select id="findid"  resultType="com.shop.model.User">
+		select userId from user where email = #{email}
+	</select>
+	
+	
 	<!-- 로그인 -->
 	<select id="memberLogin" resultType="com.shop.model.User">
 		select

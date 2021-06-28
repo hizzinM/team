@@ -1,5 +1,7 @@
 package com.shop.service;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,8 @@ public class MemberServiceImpl implements MemberService {
 
 		return membermapper.memberLogin(user);
 	}
+	
+
 
 	// 아이디 중복체크
 	@Override
@@ -38,5 +42,7 @@ public class MemberServiceImpl implements MemberService {
 	public void memberUpdate(User user) throws Exception {
 		membermapper.memberUpdate(user);
 	}
+
+	
 
 }

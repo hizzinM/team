@@ -41,14 +41,18 @@
 					</c:if>
 
 					<!--   <div class="login_button_wrap">-->
-					<input type="button" class="login_button" value="로그인">
+					<input type="button" class="login_button" value="로그인"><br>
+					<a href='/member/findid'>아이디 찾기</a><br>
+					
 					<!--</div>-->
 					&nbsp;<input type="button" class="join_button" value="회원가입"
-						onClick="location.href='/member/join'">
+						onClick="location.href='/member/join'"><br>
 			</form>
+			
 		</div>
 	</div>
-	<ul>
+
+	<ul style="text-align:center;">
  <li id="GgCustomLogin">
   <a href="javascript:void(0)">
    <span>Login with Google</span>
