@@ -7,7 +7,13 @@
 <meta charset="UTF-8">
 <title>주문관리</title>
 </head>
-<body>
+<body> 
+	<div class="top_gnb_area">
+		<ul class="list">
+			<li><a href="/main">메인 페이지</a></li>
+			<li><a href="/member/logout.do">로그아웃</a></li>
+		</ul>
+	</div>
 	<section id="container">
 		<aside>
 			<%@ include file="include/aside.jsp"%>
