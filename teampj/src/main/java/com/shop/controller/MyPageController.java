@@ -35,8 +35,10 @@ public class MyPageController {
 
 	// 프로필 페이지 이동
 	@RequestMapping(value = "profile", method = RequestMethod.GET)
-	public void getprofile() throws Exception {
+	public void getprofile(User user) throws Exception {
 		logger.info("프로필 페이지 진입");
+		System.out.println("전달된 로그인 데이터 : " + user);
+		User loginuser = memberservice.memberLogin(user);
 	}
 
 	// 프로필 수정 페이지 이동

@@ -42,7 +42,6 @@
 			});
 		</script>
 	</section>
-	</section>
 </body>
 </html>
 

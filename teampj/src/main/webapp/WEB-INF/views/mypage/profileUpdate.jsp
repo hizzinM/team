@@ -92,11 +92,6 @@
 					value='<c:out value="${loginuser.accountNum}"/>' />
 			</div>
 
-
-			<!--   <div class="form-group has-feedback">
-				<button class="btn btn-success" type="submit" id="submit">회원정보수정</button>
-				<button class="cancel btn btn-danger" type="button">취소</button>
-			</div>-->
 			<div>
 				<a class="btn" id="modify_btn">수정 완료</a> <a class="btn"
 					id="cancel_btn">수정 취소</a>
