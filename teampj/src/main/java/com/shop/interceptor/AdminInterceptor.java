@@ -17,13 +17,9 @@ public class AdminInterceptor implements HandlerInterceptor {
 		User loginuser = (User) session.getAttribute("loginuser");
 
 		if (loginuser == null || loginuser.getAdminck() == 0) { // 관리자 계정 아닌 경우
-
 			response.sendRedirect("/main"); // 메인페이지로 리다이렉트
-
 			return false;
-
 		}
-
 		return true; // 관리자 계정 로그인 경우(loginuser != null && loginuser.getAdminCk() == 1)
 	}
 }
