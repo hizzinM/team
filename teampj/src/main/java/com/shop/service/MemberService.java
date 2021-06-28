@@ -2,9 +2,13 @@ package com.shop.service;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.shop.model.User;
 
 public interface MemberService {
+	
 
 	// 회원가입
 	public void memberJoin(User user) throws Exception;
@@ -16,5 +20,7 @@ public interface MemberService {
 	public int idCheck(String memberId) throws Exception;
 
 	// 회원정보수정
-	public void memberUpdate(User user) throws Exception; 
+	public void memberUpdate(User user) throws Exception;
+
+    public String findid(HttpServletResponse response, String email) throws Exception; 
 }

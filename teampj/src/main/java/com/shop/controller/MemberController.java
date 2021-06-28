@@ -4,6 +4,7 @@ import java.io.Console;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -11,10 +12,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.type.filter.AbstractClassTestingTypeFilter;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -43,10 +46,20 @@ public class MemberController {
 
 	// 아이디 찾기 폼
 	@RequestMapping(value = "/findid")
-	public String findid(String email) throws Exception {
+	public String FindId() throws Exception {
 
 		return "/member/findid";
 	}
+	@RequestMapping(value = "/findidAfter", method = RequestMethod.POST)
+	public String find_id(HttpServletResponse response, @RequestParam("email") String email, Model md) throws Exception{
+		md.addAttribute("findid", memberservice.findid(response, email));
+		
+		return "/member/findidAfter";
+	}
+	
+	
+	
+	
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String joinPOST(User user) throws Exception {
