@@ -97,7 +97,7 @@ public class MemberController {
 	 * User는 데이터를 전달받기 위해, HttpServletRequest는 로그인 성공 시 session에 회원 정보를 저장하기 위해,
 	 * RedirectAttributes는 로그인 실패 시 리다이렉트 된 로그인 페이지에 실패를 의미하는 데이터를 전송하기 위해 사용합니다.
 	 */
-	@RequestMapping(value = "login", method = RequestMethod.POST)
+	@RequestMapping(value = "login.do", method = RequestMethod.POST)
 	public String loginPOST(HttpServletRequest request, User user, RedirectAttributes rttr) throws Exception {
 
 		// System.out.println("전달된 로그인 데이터 : " + user);

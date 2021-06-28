@@ -7,6 +7,12 @@
 <title>admin 페이지</title>
 </head>
 <body>
+	<div class="top_gnb_area">
+		<ul class="list">
+			<li><a href="/main">메인 페이지</a></li>
+			<li><a href="/member/logout">로그아웃</a></li>
+		</ul>
+	</div>
 	<aside>
 		<ul>
 			<li><a href="/admin/menu/membermenu">회원 관리</a></li>
