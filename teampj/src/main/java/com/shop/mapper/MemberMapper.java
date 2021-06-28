@@ -9,6 +9,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.shop.model.User;
 
@@ -26,4 +29,5 @@ public interface MemberMapper {
 
 	// 회원정보 수정 기능
 	public void memberUpdate(User user);
+
 }

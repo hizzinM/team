@@ -33,9 +33,9 @@ public class MemberServiceImpl implements MemberService {
 		return membermapper.idCheck(memberId);
 	}
 
+	// 회원정보수정
 	@Override
 	public void memberUpdate(User user) throws Exception {
-
 		membermapper.memberUpdate(user);
 	}
 

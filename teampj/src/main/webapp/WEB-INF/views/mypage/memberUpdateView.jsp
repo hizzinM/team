@@ -175,8 +175,8 @@
 							$("[name=addressNum]").val(data.zonecode);
 							$("[name=address]").val(addr);
 							// 커서를 상세주소 필드로 이동한다.
-							$(".address_input_3").attr("readonly", false);
-							$(".address_input_3").focus();
+							$("#addressDetail").attr("readonly", false);
+							$("#addressDetail").focus();
 						}
 					}).open();
 

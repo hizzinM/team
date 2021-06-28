@@ -13,6 +13,7 @@ public interface MemberService {
 	// 아이디 중복 검사
 	public int idCheck(String memberId) throws Exception;
 
-	// 회원정보 수정 기능
+	// 회원정보수정
 	public void memberUpdate(User user) throws Exception;
+
 }
