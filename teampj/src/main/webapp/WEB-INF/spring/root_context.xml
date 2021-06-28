@@ -24,7 +24,17 @@
 		<property name="username" value="${db.username}" />
 		<property name="password" value="${db.password}" />
 	</bean>
-
+<!-- Mail Properties -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<value>classpath:pack/mail/controller/mail.properties</value>
+		</property>
+	</bean>
+	
+	
+	
+	
 	<!-- mybatis 추가 -->
 	<bean id="sqlSessionFactoryBean"
 		class="org.mybatis.spring.SqlSessionFactoryBean">

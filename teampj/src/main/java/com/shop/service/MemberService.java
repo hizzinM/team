@@ -31,4 +31,5 @@ public interface MemberService {
 
 	// 회원정보수정
 	public int profileUpdate(User user);
+	
 }
