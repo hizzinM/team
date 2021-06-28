@@ -22,4 +22,28 @@ public class AdminController {
 	public void getmembermenu() throws Exception {
 		logger.info("회원관리 페이지 진입");
 	}
+
+	// 주문관리 페이지 이동
+	@RequestMapping(value = "ordermenu", method = RequestMethod.GET)
+	public void getordermenu() throws Exception {
+		logger.info("주문관리 페이지 접속");
+	}
+
+	// 상품관리 페이지 이동
+	@RequestMapping(value = "goodsmenu", method = RequestMethod.GET)
+	public void getgoodsmenu() throws Exception {
+		logger.info("상품관리 페이지 접속");
+	}
+
+	// 문의관리 페이지 이동
+	@RequestMapping(value = "qnamenu", method = RequestMethod.GET)
+	public void getqnamenu() throws Exception {
+		logger.info("문의관리 페이지 접속");
+	}
+
+	// 공지관리 페이지 이동
+	@RequestMapping(value = "noticemenu", method = RequestMethod.GET)
+	public void getnoticemenu() throws Exception {
+		logger.info("공지관리 페이지 접속");
+	}
 }
