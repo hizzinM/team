@@ -118,7 +118,7 @@
 
 		/* 취소 버튼 */
 		$("#cancel_btn").on("click", function(e) {
-			form.attr("action", "/board/profile");
+			form.attr("action", "/mypage/profile");
 			form.submit();
 		});
 	</script>
