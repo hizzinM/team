@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,8 @@ import com.shop.model.User;
 public class MemberServiceImpl implements MemberService {
 	@Autowired
 	MemberMapper membermapper;
-
+	@Autowired
+	MemberServiceImpl mpl;
 	// 회원가입
 	@Override
 	public void memberJoin(User user) throws Exception {
@@ -76,5 +78,9 @@ public class MemberServiceImpl implements MemberService {
 
 		return membermapper.profileUpdate(user);
 	}
+	
+	
+
+	
 
 }

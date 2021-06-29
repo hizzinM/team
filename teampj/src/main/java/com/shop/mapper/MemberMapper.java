@@ -39,4 +39,8 @@ public interface MemberMapper {
 	// 회원정보 수정 기능
 	public int profileUpdate(User user);
 
+	public User readMember(String userId);
+
+	public int updatePw(User user) throws Exception;
+
 }
