@@ -58,10 +58,10 @@ public class AdminController {
 	}
 
 	/* 상품 등록 */
-	@PostMapping("/goodsEnroll")
+	@PostMapping("/goodsmenu")
 	public String goodsEnrollPOST(Product product, RedirectAttributes rttr) {
 
-		logger.info("goodsEnrollPOST......" + product);
+		logger.info("goodsmenuPOST......" + product);
 
 		adminService.insertpro(product);
 		rttr.addFlashAttribute("insert_result", product.getProductName());

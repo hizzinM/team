@@ -19,7 +19,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void insertpro(Product product) {
 		
-		logger.info("(srevice)insertpro........");
+		logger.info("(service)insertpro........");
 		
 		adminMapper.insertpro(product);
 		

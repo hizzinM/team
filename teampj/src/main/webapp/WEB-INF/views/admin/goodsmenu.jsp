@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +29,7 @@
 			</div>
 			<div align="center">
 				<br> <br>
-				<form action="/admin/goodsEnroll" method="post" id="enrollForm">
+				<form action="/admin/goodsmenu" method="post" id="enrollForm">
 
 					<div class="form_section">
 						<label> </label> <input name="productId" value="0" hidden="">
@@ -60,7 +63,7 @@
 			/* 취소 버튼 */
 			$("#cancelBtn").click(function() {
 
-				location.href = "/admin/goodsManage"
+				location.href = "redirect:/admin/goodsmenu"
 
 			});
 
