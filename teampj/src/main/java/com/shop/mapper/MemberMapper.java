@@ -13,6 +13,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.shop.model.Criteria;
 import com.shop.model.User;
 
 @Mapper
@@ -32,6 +33,9 @@ public interface MemberMapper {
 
 	// 회원목록 조회
 	public List<User> getmemberList();
+
+	// 회원목록(페이징 적용)
+	public List<User> getmemberListPaging(Criteria cri);
 
 	// 회원정보 조회 기능
 	public User getProfile(String userId);

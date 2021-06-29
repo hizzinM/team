@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shop.mapper.MemberMapper;
+import com.shop.model.Criteria;
 import com.shop.model.Product;
 import com.shop.service.AdminService;
 import com.shop.service.MemberService;
@@ -38,11 +39,17 @@ public class AdminController {
 	}
 
 	// 회원 목록 페이지 접속/데이터도 가져옴
-	@GetMapping("/membermenu")
-	public void getmemberList(Model model) {
-		logger.info("회원 목록 페이지");
+//	@GetMapping("/membermenu")
+//	public void getmemberList(Model model) {
+//		logger.info("회원 목록 페이지"); 
+//		model.addAttribute("membermenu", membermapper.getmemberList());
+//	}
 
-		model.addAttribute("membermenu", membermapper.getmemberList());
+	// 회원 목록 페이지 접속/데이터도 가져옴 + 페이징
+	@GetMapping("/membermenu")
+	public void getmemberList(Model model, Criteria cri) {
+		logger.info("회원 목록 페이지");
+		model.addAttribute("membermenu", memberservice.getmemberListPaging(cri));
 	}
 
 	// 주문관리 페이지 이동
