@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.shop.model.Criteria;
 import com.shop.model.User;
 
 public interface MemberService {
@@ -26,12 +25,6 @@ public interface MemberService {
 
 	// 회원목록 조회
 	public List<User> getmemberList();
-
-	// 회원목록(페이징)
-	public List<User> getmemberListPaging(Criteria cri);
-
-	// 총 회원수
-	public int getTotal();
 
 	// 회원정보 조회
 	public User getProfile(String userId);

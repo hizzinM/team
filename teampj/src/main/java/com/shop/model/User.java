@@ -1,5 +1,6 @@
 package com.shop.model;
- 
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,8 +17,8 @@ public class User {
 	private String addressDetail;
 	private String phone;
 	private String email;
-	private int adminck; 
-	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
+	private int adminck;
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	private LocalDateTime regDate;
 
 	private String accountName;

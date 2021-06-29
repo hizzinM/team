@@ -92,7 +92,8 @@ public class MemberMapperTest {
 		membermapper.idCheck(id2);
 	}
 
-	@Test @Ignore
+	@Test
+	@Ignore
 	public void testMemberList() {
 
 		List list = membermapper.getmemberList();
@@ -150,23 +151,4 @@ public class MemberMapperTest {
 		System.out.println("result : " + result);
 
 	}
-
-	@Test
-	@Ignore
-	public void testPaging() {
-		Criteria cri = new Criteria();
-		// cri.setPageNum(2);
-		List list = membermapper.getmemberListPaging(cri);
-		list.forEach(user -> log.info("" + user));
-	}
-
-	/* 게시판 조회(페이징 적용) */
-	@Test
-	@Ignore
-	public void testPaging2() {
-		Criteria cri = new Criteria();
-		List list = memberservice.getmemberListPaging(cri);
-		list.forEach(user -> log.info("" + user));
-	}
-
 }
