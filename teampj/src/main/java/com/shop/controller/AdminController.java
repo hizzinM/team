@@ -70,13 +70,13 @@ public class AdminController {
 		logger.info("주문관리 페이지 접속");
 	}
 
-	// 상품관리 페이지 이동
+	// 상품등록 페이지 이동
 	@RequestMapping(value = "goodsmenu", method = RequestMethod.GET)
 	public void getgoodsmenu() throws Exception {
-		logger.info("상품관리 페이지 접속");
+		logger.info("상품등록 페이지 접속");
 	}
 
-	/* 상품 등록 */
+	// 상품 등록
 	@PostMapping("/goodsmenu")
 	public String goodsEnrollPOST(Product product, RedirectAttributes rttr) {
 
@@ -86,6 +86,12 @@ public class AdminController {
 		rttr.addFlashAttribute("insert_result", product.getProductName());
 
 		return "redirect:/admin/goodsmenu";
+	}
+
+	// 상품관리 페이지 이동
+	@RequestMapping(value = "goodsmanage", method = RequestMethod.GET)
+	public void goodsmanage() throws Exception {
+		logger.info("상품관리 페이지 접속");
 	}
 
 	// 문의관리 페이지 이동
@@ -101,27 +107,28 @@ public class AdminController {
 	}
 
 	/* 첨부 파일 업로드 */
-	@PostMapping(value="/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<AttachImageVO>> uploadAjaxActionPOST(MultipartFile[] uploadFile) {
 
 		logger.info("uploadAjaxActionPOST......");
 		/* 이미지 파일 체크 */
-		for(MultipartFile multipartFile: uploadFile) {
-			
+		for (MultipartFile multipartFile : uploadFile) {
+
 			File checkfile = new File(multipartFile.getOriginalFilename());
 			String type = null;
-			
+
 			try {
 				type = Files.probeContentType(checkfile.toPath());
 				logger.info("MIME TYPE : " + type);
 			} catch (IOException e) {
-				
+
 				e.printStackTrace();
-			}if(!type.startsWith("image")) {
+			}
+			if (!type.startsWith("image")) {
 				List<AttachImageVO> list = null;
 				return new ResponseEntity<>(list, HttpStatus.BAD_REQUEST);
 			}
-			
+
 		}
 		String uploadFolder = "C:\\upload";
 
@@ -143,18 +150,18 @@ public class AdminController {
 		List<AttachImageVO> list = new ArrayList();
 		// 향상된 for
 		for (MultipartFile multipartFile : uploadFile) {
-			/*이미지 정보  객체*/
-			AttachImageVO vo=new AttachImageVO();
-			
+			/* 이미지 정보 객체 */
+			AttachImageVO vo = new AttachImageVO();
+
 			/* 파일 이름 */
 			String uploadFileName = multipartFile.getOriginalFilename();
 			vo.setFileName(uploadFileName);
 			vo.setUploadPath(datePath);
-			
+
 			/* uuid 적용 파일 이름 */
 			String uuid = UUID.randomUUID().toString();
 			vo.setUuid(uuid);
-			
+
 			uploadFileName = uuid + "_" + uploadFileName;
 
 			/* 파일 위치, 파일 이름을 합친 File 객체 */
@@ -180,64 +187,59 @@ public class AdminController {
 				 * 
 				 * ImageIO.write(bt_image, "jpg", thumbnailFile);
 				 */
-				
+
 				/* 방법 2 */
-				File thumbnailFile = new File(uploadPath, "s_" + uploadFileName);				
-				
-				
+				File thumbnailFile = new File(uploadPath, "s_" + uploadFileName);
+
 				BufferedImage bo_image = ImageIO.read(saveFile);
 
-				//비율 
+				// 비율
 				double ratio = 3;
-				//넓이 높이
+				// 넓이 높이
 				int width = (int) (bo_image.getWidth() / ratio);
-				int height = (int) (bo_image.getHeight() / ratio);					
-			
-			
-				Thumbnails.of(saveFile)
-				.size(width, height)
-		        .toFile(thumbnailFile);
-	
-				
+				int height = (int) (bo_image.getHeight() / ratio);
+
+				Thumbnails.of(saveFile).size(width, height).toFile(thumbnailFile);
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			list.add(vo);
-		}//for
+		} // for
 		ResponseEntity<List<AttachImageVO>> result = new ResponseEntity<List<AttachImageVO>>(list, HttpStatus.OK);
 		return result;
 	}
+
 	/* 이미지 파일 삭제 */
 	@PostMapping("/deleteFile")
-	public ResponseEntity<String> deleteFile(String fileName){
-		
+	public ResponseEntity<String> deleteFile(String fileName) {
+
 		logger.info("deleteFile........" + fileName);
-		File file=null;
-		
+		File file = null;
+
 		try {
 			/* 썸네일 파일 삭제 */
 			file = new File("c:\\upload\\" + URLDecoder.decode(fileName, "UTF-8"));
-			
+
 			file.delete();
-			
+
 			/* 원본 파일 삭제 */
 			String originFileName = file.getAbsolutePath().replace("s_", "");
-			
+
 			logger.info("originFileName : " + originFileName);
-			
+
 			file = new File(originFileName);
-			
+
 			file.delete();
-			
-			
-		} catch(Exception e) {
-			
+
+		} catch (Exception e) {
+
 			e.printStackTrace();
-			
+
 			return new ResponseEntity<String>("fail", HttpStatus.NOT_IMPLEMENTED);
-			
+
 		}
 		return new ResponseEntity<String>("success", HttpStatus.OK);
-		
+
 	}
 }

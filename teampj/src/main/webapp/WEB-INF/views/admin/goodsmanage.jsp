@@ -18,7 +18,7 @@
 		<aside>
 			<%@ include file="include/aside.jsp"%>
 		</aside>
-		<div id="container_box">공지</div>
+		<div id="container_box">상품관리</div>
 	</section>
 
 </body>
