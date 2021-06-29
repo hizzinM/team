@@ -18,8 +18,9 @@
 		<aside>
 			<%@ include file="include/aside.jsp"%>
 		</aside>
-		<div id="container_box">상품관리</div>
+		<div id="container_box">상품관리</div><br>
+		
 	</section>
-
+	<a href="/admin/goodsEnroll">상품등록</a>
 </body>
 </html>
