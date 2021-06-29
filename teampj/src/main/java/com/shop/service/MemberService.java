@@ -30,6 +30,9 @@ public interface MemberService {
 	// 회원목록(페이징)
 	public List<User> getmemberListPaging(Criteria cri);
 
+	// 총 회원수
+	public int getTotal();
+
 	// 회원정보 조회
 	public User getProfile(String userId);
 

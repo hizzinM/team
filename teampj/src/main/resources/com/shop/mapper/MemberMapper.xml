@@ -52,6 +52,11 @@
 		limit #{skip},#{amount}
 	</select>
 
+	<!-- 총 회원 수 -->
+	<select id="getTotal" resultType="int">
+		select count(*) from user
+	</select>
+
 	<!-- 회원정보 조회 -->
 	<select id="getProfile" resultType="com.shop.model.User">
 
