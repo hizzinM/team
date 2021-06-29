@@ -302,12 +302,15 @@ o 로그 기록
 	</form>
 	<script>
 	 function CheckForm(){
-		 var regul1 = /^[a-zA-Z0-9]{4,16}$/;
-		 var regul2 = /^[a-zA-Z0-9]{4,12}$/;
+		 var regul1 = /^[a-zA-Z]*$/; 
+		 var regul2 = /^[a-zA-Z0-9]{4,16}$/;
+		 var regul3 = /^[a-zA-Z0-9]{4,12}$/;
 		 var korcheck = /([^가-힣ㄱ-ㅎㅏ-ㅣ\x20])/i;
-		 var num_check=/^[0-9]*$/;
+		 var num_check=/^\d{3}-\d{3,4}-\d{4}$/;
 		 var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		 var accountPattern= /^[0-9,\-]{3,6}\-[0-9,\-]{2,6}\-[0-9,\-]$/;
+		 var nameStop=/[~!@#$%^&*()_+-|<>?:;`,{}\]\[/\'\"\\\']/gi;
+
  
 	//아이디 유효성
          var userId=document.for.userId.value;
@@ -336,12 +339,13 @@ o 로그 기록
          	userId.focus;
          	return false;
      	}
-  	 	if (!regul1.test(userId)){
-     		document.getElementById("checkid").innerHTML="아이디는 영문 소문자와 숫자 4~16자리로 입력해야합니다!."
+  	 	if (!regul2.test(userId)){
+     		document.getElementById("checkid").innerHTML="아이디는 영문및숫자포함4~16자리로 입력해야합니다."
             document.getElementById("checkid").style.color="red";
             userId.focus;
             return false;
        }
+  	 	
        if(password==""){
         	document.getElementById("checkpass").innerHTML="비밀번호가 비었습니다"
         	document.getElementById("checkpass").style.color="red";
@@ -365,8 +369,8 @@ o 로그 기록
         	document.getElementById("checkname").style.color="red";
         	userName.focus;
         	return false;
-		}else if(korcheck.test(userName)){
- 	    	document.getElementById("checkname").innerHTML="한글만 입력하세요"
+		}else if(nameStop.test(userName)){
+ 	    	document.getElementById("checkname").innerHTML="특수문자는 입력하지마세요"
         	document.getElementById("checkname").style.color="red";
  	   		userName.focus;
  	   		return false;
@@ -378,7 +382,7 @@ o 로그 기록
            return false;
        }
    	  	if(!num_check.test(phone)){
-   	  	   document.getElementById("checkphone").innerHTML="숫자를 입력하세요"
+   	  	   document.getElementById("checkphone").innerHTML="전화번호 010-0000-0000패턴으로 입력하세요"
             document.getElementById("checkphone").style.color="red";
      	   phone.focus;
             return false;
@@ -388,7 +392,9 @@ o 로그 기록
            document.getElementById("checkphone").style.color="red";
     	   phone.focus;
            return false;
-		} 
+		}
+        
+        
         if(email==""){
         	document.getElementById("checkemail").innerHTML="이메일을 입력하세요"
            	document.getElementById("checkemail").style.color="red";
