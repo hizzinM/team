@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shop.mapper.MemberMapper;
 import com.shop.service.MemberService;
@@ -38,6 +40,8 @@ public class AdminController {
 
 		model.addAttribute("membermenu", membermapper.getmemberList());
 	}
+
+	 
 
 	// 주문관리 페이지 이동
 	@RequestMapping(value = "ordermenu", method = RequestMethod.GET)

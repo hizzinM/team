@@ -39,14 +39,6 @@ public class MyPageController {
 		logger.info("프로필 페이지 진입");
 	}
 
-	// 프로필 페이지 이동
-//	@RequestMapping(value = "profile", method = RequestMethod.GET)
-//	public void getprofile(User user) throws Exception {
-//		logger.info("프로필 페이지 진입");
-//		//System.out.println("전달된 로그인 데이터 : " + user);
-//		User loginuser = memberservice.memberLogin(user);
-//	}
-
 	/* 게시판 조회 */
 	@GetMapping("/profileUpdate")
 	public void profileUpdateGET(String userId, Model model) {
@@ -59,6 +51,13 @@ public class MyPageController {
 		memberservice.profileUpdate(user);
 		rttr.addFlashAttribute("result", "modify success");
 		return "redirect:/mypage/profile";
+	}
 
+	// 회원 삭제
+	@PostMapping("/profileDelete")
+	public String boardDeletePOST(String userId, RedirectAttributes rttr) {
+		memberservice.profileDelete(userId);
+		rttr.addFlashAttribute("result", "delete success");
+		return "/main";
 	}
 }

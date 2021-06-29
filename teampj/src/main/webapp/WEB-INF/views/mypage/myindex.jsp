@@ -36,7 +36,7 @@
 						</a>
 					</div></td>
 				<td><div>
-						<a href="/mypage/profile">PROFILE<br>회원정보
+						<a href="/mypage/profile?userId=${loginuser.userId}">PROFILE<br>회원정보
 						</a>
 					</div></td>
 				<td><div>

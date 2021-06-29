@@ -15,7 +15,7 @@ public interface MemberService {
 	public void memberJoin(User user) throws Exception;
 
 	// 로그인
-	public User memberLogin(User user) ;
+	public User memberLogin(User user);
 
 	// 아이디 중복 검사
 	public int idCheck(String memberId) throws Exception;
@@ -31,5 +31,8 @@ public interface MemberService {
 
 	// 회원정보수정
 	public int profileUpdate(User user);
-	
+
+	// 회원정보 삭제
+	public String profileDelete(String userId);
+
 }

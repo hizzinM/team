@@ -3,7 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
-<head>
+<head> 
+<style>
+#delete_btn {
+	background-color: #f3e3e7;
+}
+</style>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -94,7 +99,8 @@
 
 			<div>
 				<a class="btn" id="modify_btn">수정 완료</a> <a class="btn"
-					id="cancel_btn">수정 취소</a>
+					id="cancel_btn">수정 취소</a><a class="btn" id="delete_btn">탈퇴</a>
+
 			</div>
 	</form>
 	<form id="infoForm" action="/mypage/profileUpdate" method="get">
@@ -114,6 +120,13 @@
 		/* 취소 버튼 */
 		$("#cancel_btn").on("click", function(e) {
 			form.attr("action", "/mypage/profile");
+			form.submit();
+		});
+
+		/* 탈퇴 버튼 */
+		$("#delete_btn").on("click", function(e) {
+			form.attr("action", "/mypage/profileDelete");
+			form.attr("method", "post");
 			form.submit();
 		});
 	</script>
