@@ -72,4 +72,10 @@ public class MemberServiceImpl implements MemberService {
 	public int profileUpdate(User user) {
 		return membermapper.profileUpdate(user);
 	}
+
+	// 회원정보 삭제
+	@Override
+	public String profileDelete(String userId) {
+		return membermapper.profileDelete(userId);
+	}
 }

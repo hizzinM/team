@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -31,8 +32,7 @@
 		<hr>
 		예금주:${loginuser.accountName}<br> 은행:${loginuser.accountBank}<br>
 		계좌번호:${loginuser.accountNum}<br> <br> <br> <a
-			class="btn" id="modify_btn">수정</a>
-
+			class="btn" id="modify_btn">수정</a>  
 		<form id="infoForm" action="/mypage/profileUpdate" method="get">
 			<input type="hidden" id="userId" name="userId"
 				value='<c:out value="${loginuser.userId}"/>'>
@@ -44,6 +44,7 @@
 				form.attr("action", "/mypage/profileUpdate");
 				form.submit();
 			});
+ 
 		</script>
 	</section>
 	</section>

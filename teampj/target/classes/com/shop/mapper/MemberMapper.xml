@@ -6,7 +6,7 @@
 
 	<insert id="memberJoin">
 		insert into
-		user
+		user(user_id,password,password_check,user_name,address_num,address,address_detail,phone,email,adminck,reg_date,account_name,account_bank,account_num)
 		values(#{userId},#{password},#{passwordCheck},#{userName},#{addressNum},#{address},#{addressDetail},#{phone},#{email},0,now(),#{accountName},#{accountBank},#{accountNum});
 	</insert>
 
@@ -59,4 +59,9 @@
 		phone=#{phone},email=#{email},account_name=#{accountName},account_bank=#{accountBank},account_num=#{accountNum}
 		where user_id=#{userId}
 	</update>
+
+	<!-- 회원정보 삭제 -->
+	<delete id="profileDelete">
+		delete from user where user_id = #{userId}
+	</delete>
 </mapper>

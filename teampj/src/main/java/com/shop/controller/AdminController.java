@@ -46,6 +46,8 @@ public class AdminController {
 		model.addAttribute("membermenu", membermapper.getmemberList());
 	}
 
+	 
+
 	// 주문관리 페이지 이동
 	@RequestMapping(value = "ordermenu", method = RequestMethod.GET)
 	public void getordermenu() throws Exception {
