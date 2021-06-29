@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +12,9 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
 <body>
 	<c:if test="${ loginuser!= null }">
 		<div>
@@ -31,7 +35,7 @@
 
 		<form id="infoForm" action="/mypage/profileUpdate" method="get">
 			<input type="hidden" id="userId" name="userId"
-				value='<c:out value="${profileInfo.userId}"/>'>
+				value='<c:out value="${loginuser.userId}"/>'>
 		</form>
 
 		<script type="text/javascript">
@@ -41,6 +45,7 @@
 				form.submit();
 			});
 		</script>
+	</section>
 	</section>
 </body>
 </html>

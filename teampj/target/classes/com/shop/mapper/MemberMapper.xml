@@ -39,7 +39,7 @@
 	<select id="getmemberList" resultType="com.shop.model.User">
 		select
 		user_id,password,password_check,user_name,address_num,address,address_detail,phone,email,adminck,account_name,account_bank,account_num
-		from user 
+		from user
 	</select>
 
 	<!-- 회원정보 조회 -->

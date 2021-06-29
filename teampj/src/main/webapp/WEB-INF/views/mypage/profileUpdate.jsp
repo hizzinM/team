@@ -99,7 +99,7 @@
 	</form>
 	<form id="infoForm" action="/mypage/profileUpdate" method="get">
 		<input type="hidden" id="userId" name="userId"
-			value='<c:out value="${profileInfo.userId}"/>'>
+			value='<c:out value="${loginuser.userId}"/>'>
 	</form>
 
 	<script type="text/javascript">

@@ -99,6 +99,7 @@ public class MemberMapperTest {
 	}
 
 	@Test
+	@Ignore
 	public void testGETProfile() {
 
 		String userId = "test";

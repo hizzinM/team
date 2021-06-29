@@ -31,7 +31,7 @@
 		<!-- dataSource -->
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation"
-			value="/WEB-INF/config/mybatis_config.xml" /> 
+			value="/WEB-INF/config/mybatis_config.xml" />
 	</bean>
 
 

@@ -35,25 +35,28 @@ public class MyPageController {
 
 	// 프로필 페이지 이동
 	@RequestMapping(value = "profile", method = RequestMethod.GET)
-	public void getprofile(User user) throws Exception {
+	public void getprofile() throws Exception {
 		logger.info("프로필 페이지 진입");
-		System.out.println("전달된 로그인 데이터 : " + user);
-		User loginuser = memberservice.memberLogin(user);
 	}
 
-	// 프로필 수정 페이지 이동
+	// 프로필 페이지 이동
+//	@RequestMapping(value = "profile", method = RequestMethod.GET)
+//	public void getprofile(User user) throws Exception {
+//		logger.info("프로필 페이지 진입");
+//		//System.out.println("전달된 로그인 데이터 : " + user);
+//		User loginuser = memberservice.memberLogin(user);
+//	}
+
+	/* 게시판 조회 */
 	@GetMapping("/profileUpdate")
 	public void profileUpdateGET(String userId, Model model) {
-		model.addAttribute("profileInfo", memberservice.getProfile(userId));
-
+		model.addAttribute("loginuser", memberservice.getProfile(userId));
 	}
 
 	// 프로필 수정 기능
 	@PostMapping("/profileUpdate")
 	public String profileUpdatePOST(User user, RedirectAttributes rttr) {
-
 		memberservice.profileUpdate(user);
-
 		rttr.addFlashAttribute("result", "modify success");
 		return "redirect:/mypage/profile";
 

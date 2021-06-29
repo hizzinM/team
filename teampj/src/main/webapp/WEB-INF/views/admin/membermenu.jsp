@@ -50,19 +50,7 @@ th {
 							<th class="useraddress_width">주소</th>
 							<th class="userregdate_width">가입일자</th>
 						</tr>
-					</thead>
-
-					<c:forEach var="membermenu" items="${membermenu}">
-						<tr>
-							<td><c:out value="${membermenu.userName}" /></td>
-							<td><c:out value="${membermenu.userId}" /></td>
-							<td><c:out value="${membermenu.phone}" /></td>
-							<td><c:out value="${membermenu.email}" /></td>
-							<td><c:out value="${membermenu.addressNum}" /></td>
-							<td><c:out value="${membermenu.address}" /></td>
-							<td><c:out value="${membermenu.addressDetail}" /></td>
-						</tr>
-					</c:forEach>
+					</thead> 
 				</table>
 			</div>
 		</section>
