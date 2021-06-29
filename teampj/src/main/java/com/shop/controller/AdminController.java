@@ -29,7 +29,6 @@ public class AdminController {
 	@Autowired
 	AdminService adminService;
 
-	
 	private static final Logger logger = LoggerFactory.getLogger("MainController.class");
 
 	// 관리자 페이지 이동
@@ -46,8 +45,6 @@ public class AdminController {
 		model.addAttribute("membermenu", membermapper.getmemberList());
 	}
 
-	 
-
 	// 주문관리 페이지 이동
 	@RequestMapping(value = "ordermenu", method = RequestMethod.GET)
 	public void getordermenu() throws Exception {
@@ -59,25 +56,24 @@ public class AdminController {
 	public void getgoodsmenu() throws Exception {
 		logger.info("상품관리 페이지 접속");
 	}
-	 /* 상품 등록 */
+
+	/* 상품 등록 */
 	@PostMapping("/goodsEnroll")
-		public String goodsEnrollPOST(Product product, RedirectAttributes rttr) {
-			
-			logger.info("goodsEnrollPOST......" + product);
-			
-			
-			adminService.insertpro(product);
-			rttr.addFlashAttribute("insert_result", product.getProductName());
-			
-			return "redirect:/admin/goodsManage";
-		}	
+	public String goodsEnrollPOST(Product product, RedirectAttributes rttr) {
+
+		logger.info("goodsEnrollPOST......" + product);
+
+		adminService.insertpro(product);
+		rttr.addFlashAttribute("insert_result", product.getProductName());
+
+		return "redirect:/admin/goodsmenu";
+	}
 
 	// 문의관리 페이지 이동
 	@RequestMapping(value = "qnamenu", method = RequestMethod.GET)
 	public void getqnamenu() throws Exception {
 		logger.info("문의관리 페이지 접속");
 	}
-	
 
 	// 공지관리 페이지 이동
 	@RequestMapping(value = "noticemenu", method = RequestMethod.GET)
