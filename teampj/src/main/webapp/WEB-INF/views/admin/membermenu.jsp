@@ -34,8 +34,6 @@ th {
 		<aside>
 			<%@ include file="include/aside.jsp"%>
 		</aside>
-		<div id="container_box">회원관리</div>
-
 		<section id=content>
 			<div>&nbsp;</div>
 			<div id=title align="center">
