@@ -65,7 +65,6 @@ public class MemberMapperTest {
 
 	/* 로그인 쿼리 mapper 메서드 테스트 */
 	@Test
-	@Ignore
 	public void memberLogin() throws Exception {
 
 		User user = new User();
@@ -93,7 +92,7 @@ public class MemberMapperTest {
 		membermapper.idCheck(id2);
 	}
 
-	@Test
+	@Test @Ignore
 	public void testMemberList() {
 
 		List list = membermapper.getmemberList();
@@ -163,10 +162,11 @@ public class MemberMapperTest {
 
 	/* 게시판 조회(페이징 적용) */
 	@Test
-	public void testPaging2() { 
-		Criteria cri = new Criteria(); 
-		List list = memberservice.getmemberListPaging(cri); 
-		list.forEach(user -> log.info("" + user)); 
+	@Ignore
+	public void testPaging2() {
+		Criteria cri = new Criteria();
+		List list = memberservice.getmemberListPaging(cri);
+		list.forEach(user -> log.info("" + user));
 	}
 
 }
