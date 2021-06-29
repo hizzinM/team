@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
-<head> 
+<head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -32,7 +32,7 @@
 		<hr>
 		예금주:${loginuser.accountName}<br> 은행:${loginuser.accountBank}<br>
 		계좌번호:${loginuser.accountNum}<br> <br> <br> <a
-			class="btn" id="modify_btn">수정</a>  
+			class="btn" id="modify_btn">수정</a>
 		<form id="infoForm" action="/mypage/profileUpdate" method="get">
 			<input type="hidden" id="userId" name="userId"
 				value='<c:out value="${loginuser.userId}"/>'>
