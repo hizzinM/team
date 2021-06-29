@@ -24,8 +24,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-
-import com.shop.model.Criteria;
 import com.shop.model.User;
 import com.shop.service.MemberService;
 import java.util.List;
@@ -150,23 +148,6 @@ public class MemberMapperTest {
 		int result = memberservice.profileUpdate(user);
 		System.out.println("result : " + result);
 
-	}
-
-	@Test
-	@Ignore
-	public void testPaging() {
-		Criteria cri = new Criteria();
-		// cri.setPageNum(2);
-		List list = membermapper.getmemberListPaging(cri);
-		list.forEach(user -> log.info("" + user));
-	}
-
-	/* 게시판 조회(페이징 적용) */
-	@Test
-	public void testPaging2() { 
-		Criteria cri = new Criteria(); 
-		List list = memberservice.getmemberListPaging(cri); 
-		list.forEach(user -> log.info("" + user)); 
 	}
 
 }

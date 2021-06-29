@@ -42,21 +42,6 @@
 		from user
 	</select>
 
-	<!-- 회원목록 (페이징) -->
-	<select id="getmemberListPaging"
-		resultType="com.shop.model.User">
-		select * from ( select
-		user_id,password,password_check,user_name,address_num,address,address_detail,phone,email,adminck,account_name,account_bank,account_num
-		from
-		user order by user_id desc) as T1
-		limit #{skip},#{amount}
-	</select>
-
-	<!-- 총 회원 수 -->
-	<select id="getTotal" resultType="int">
-		select count(*) from user
-	</select>
-
 	<!-- 회원정보 조회 -->
 	<select id="getProfile" resultType="com.shop.model.User">
 
