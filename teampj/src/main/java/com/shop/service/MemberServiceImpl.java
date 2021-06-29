@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,18 +17,16 @@ public class MemberServiceImpl implements MemberService {
 	MemberMapper membermapper;
 	@Autowired
 	MemberServiceImpl mpl;
+
 	// 회원가입
 	@Override
 	public void memberJoin(User user) throws Exception {
-
 		membermapper.memberJoin(user);
-
 	}
 
 	// 로그인
 	@Override
 	public User memberLogin(User user) {
-
 		return membermapper.memberLogin(user);
 	}
 
@@ -55,32 +52,24 @@ public class MemberServiceImpl implements MemberService {
 	// 아이디 중복체크
 	@Override
 	public int idCheck(String memberId) throws Exception {
-
 		return membermapper.idCheck(memberId);
-	}
-
-	@Override
-	public User getProfile(String userId) {
-
-		return membermapper.getProfile(userId);
 	}
 
 	// 회원목록 조회
 	@Override
 	public List<User> getmemberList() {
-
 		return membermapper.getmemberList();
 	}
 
-	/* 회원정보 수정 */
+	// 회원정보 조회
+	@Override
+	public User getProfile(String userId) {
+		return membermapper.getProfile(userId);
+	}
+
+	// 회원정보 수정
 	@Override
 	public int profileUpdate(User user) {
-
 		return membermapper.profileUpdate(user);
 	}
-	
-	
-
-	
-
 }

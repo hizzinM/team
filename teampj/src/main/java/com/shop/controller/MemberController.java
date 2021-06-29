@@ -40,15 +40,12 @@ public class MemberController {
 	// 회원가입 페이지 이동
 	@RequestMapping(value = "join", method = RequestMethod.GET)
 	public void loginGET() {
-
 		logger.info("회원가입 페이지 진입");
-
 	}
 
 	// 아이디 찾기 폼
 	@RequestMapping(value = "/findid")
 	public String FindId() throws Exception {
-
 		return "/member/findid";
 	}
 
@@ -56,20 +53,15 @@ public class MemberController {
 	public String find_id(HttpServletResponse response, @RequestParam("email") String email, Model md)
 			throws Exception {
 		md.addAttribute("findid", memberservice.findid(response, email));
-
 		return "/member/findidAfter";
 	}
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String joinPOST(User user) throws Exception {
-
 		logger.info("join 진입");
-
 		// 회원가입 서비스 실행
 		memberservice.memberJoin(user);
-
 		logger.info("join Service 성공");
-
 		return "redirect:/main";
 
 	}
@@ -77,30 +69,20 @@ public class MemberController {
 	// 로그인 페이지 이동
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public void joinGET() {
-
 		logger.info("로그인 페이지 진입");
-
 	}
 
 	// 아이디 중복 검사
 	@RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
 	@ResponseBody
 	public String memberIdChkPOST(String memberId) throws Exception {
-
 		logger.info("memberIdChk() 진입");
-
 		int result = memberservice.idCheck(memberId);
-
 		logger.info("결과값 = " + result);
-
 		if (result != 0) {
-
 			return "fail"; // 중복 아이디가 존재
-
 		} else {
-
 			return "success"; // 중복 아이디 x
-
 		}
 	}
 
@@ -114,7 +96,6 @@ public class MemberController {
 		HttpSession session = request.getSession();
 		User loginuser = memberservice.memberLogin(user);
 		if (loginuser == null) { // 일치하지 않는 아이디, 비밀번호 입력 경우
-
 			int result = 0;
 			rttr.addFlashAttribute("result", result);
 			return "redirect:/member/login";
@@ -128,11 +109,8 @@ public class MemberController {
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logoutMainGET(HttpServletRequest request) throws Exception {
 		logger.info("logoutMainGET메서드 진입");
-
 		HttpSession session = request.getSession();
 		session.invalidate();
-
 		return "redirect:/main";
 	}
-	
 }

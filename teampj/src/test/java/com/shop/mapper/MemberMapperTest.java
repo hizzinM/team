@@ -13,6 +13,8 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -24,6 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import com.shop.model.User;
 import com.shop.service.MemberService;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root_context.xml")
@@ -89,10 +92,30 @@ public class MemberMapperTest {
 	}
 
 	@Test
+	public void testMemberList() {
+
+		List list = membermapper.getmemberList();
+		for (int i = 0; i < list.size(); i++) {
+			log.info("" + list.get(i));
+		}
+
+	}
+
+	private static final Logger log = LoggerFactory.getLogger(MemberMapperTest.class);
+
+	/* 회원목록 테스트 */
+	@Test
+	@Ignore
+	public void testMemberList2() {
+
+		memberservice.getmemberList().forEach(user -> log.info("" + user));
+
+	}
+
+	@Test
 	@Ignore
 	public void testGetProfile() {
 
-		/* 실제 존재하는 페이지 */
 		String userId = "test";
 		System.out.println("result : " + membermapper.getProfile(userId));
 

@@ -1,5 +1,7 @@
 package com.shop.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +11,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.shop.mapper.MemberMapper;
 import com.shop.service.MemberService;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
 
+	@Autowired
+	MemberMapper membermapper;
 	@Autowired
 	MemberService memberservice;
 
@@ -23,21 +28,15 @@ public class AdminController {
 	// 관리자 페이지 이동
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public void getindex() throws Exception {
-		logger.info("관리자 페이지 진입");
+		logger.info("관리자 페이지 ");
 	}
 
-	// 회원관리 페이지 이동
-//	@RequestMapping(value = "membermenu", method = RequestMethod.GET)
-//	public void getmembermenu() throws Exception {
-//		logger.info("회원관리 페이지 진입");
-//	}
-
-	/* 회원 목록 페이지 접속 */
+	// 회원 목록 페이지 접속/데이터도 가져옴
 	@GetMapping("/membermenu")
-	// => @RequestMapping(value="membermenu", method=RequestMethod.GET)
 	public void getmemberList(Model model) {
-		logger.info("게시판 목록 페이지 진입");
-		model.addAttribute("membermenu", memberservice.getmemberList());
+		logger.info("회원 목록 페이지");
+
+		model.addAttribute("membermenu", membermapper.getmemberList());
 	}
 
 	// 주문관리 페이지 이동
