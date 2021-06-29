@@ -24,10 +24,11 @@
 		<table style="width: 1100px;" align="center">
 			<tr>
 				<td width="200px">아이디</td>
-				<td colspan="4"><input type="text" name="userId" id="user_id">&nbsp;<span
-					id="checkid"></span><span class="id_input_re_1">사용 가능한
-						아이디입니다.</span> <span class="id_input_re_2">아이디가 이미 존재합니다.</span><br>
-				<b>영문 소문자/숫자, 4-16자</b></td>
+				<td colspan="4"><input type="text" name="userId" id="user_id"
+					placeholder="test123">&nbsp;<span id="checkid"></span><span
+					class="id_input_re_1">사용 가능한 아이디입니다.</span> <span
+					class="id_input_re_2">아이디가 이미 존재합니다.</span><br> <b>영문
+						소문자/숫자, 4-16자</b></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
@@ -45,7 +46,7 @@
 			<tr>
 				<td>이름</td>
 				<td colspan="4"><input type="text" name="userName"
-					id="userName">&nbsp;<span id="checkname"></span></td>
+					id="userName" placeholder="회원1">&nbsp;<span id="checkname"></span></td>
 			</tr>
 			<tr>
 				<td>주소</td>
@@ -59,14 +60,14 @@
 			</tr>
 			<tr>
 				<td>전화번호</td>
-				<td colspan="4"><input type="tel" name="phone" id="phone"><span
-					id="checkphone"></span></td>
+				<td colspan="4"><input type="tel" name="phone" id="phone"
+					placeholder="010-0000-0000"><span id="checkphone"></span></td>
 			</tr>
 
 			<tr>
 				<td>이메일</td>
-				<td colspan="4"><input type="email" name="email" id="email">&nbsp;<span
-					id="checkemail"></span></td>
+				<td colspan="4"><input type="email" name="email" id="email"
+					placeholder="test@email.com">&nbsp;<span id="checkemail"></span></td>
 			</tr>
 			<tr>
 				<td colspan="6" align="center">추가정보</td>
