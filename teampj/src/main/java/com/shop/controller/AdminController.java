@@ -51,13 +51,13 @@ public class AdminController {
 		logger.info("주문관리 페이지 접속");
 	}
 
-	// 상품관리 페이지 이동
+	// 상품등록 페이지 이동
 	@RequestMapping(value = "goodsmenu", method = RequestMethod.GET)
 	public void getgoodsmenu() throws Exception {
-		logger.info("상품관리 페이지 접속");
+		logger.info("상품등록 페이지 접속");
 	}
 
-	/* 상품 등록 */
+	// 상품등록 기능
 	@PostMapping("/goodsmenu")
 	public String goodsEnrollPOST(Product product, RedirectAttributes rttr) {
 
@@ -67,6 +67,12 @@ public class AdminController {
 		rttr.addFlashAttribute("insert_result", product.getProductName());
 
 		return "redirect:/admin/goodsmenu";
+	}
+
+	// 상품관리 페이지 이동
+	@RequestMapping(value = "goodsmanage", method = RequestMethod.GET)
+	public void goodsmanage() throws Exception {
+		logger.info("상품관리 페이지 접속");
 	}
 
 	// 문의관리 페이지 이동

@@ -11,7 +11,8 @@
 		<ul>
 			<li><a href="/admin/membermenu">회원 관리</a></li>
 			<li><a href="/admin/ordermenu">주문 관리</a></li>
-			<li><a href="/admin/goodsmenu">상품 관리</a></li>
+			<li><a href="/admin/goodsmenu">상품 등록</a></li>
+			<li><a href="/admin/goodsmanage">상품 관리</a></li>
 			<li><a href="/admin/qnamenu">문의 관리</a></li>
 			<li><a href="/admin/noticemenu">공지 관리</a></li>
 		</ul>

@@ -25,7 +25,7 @@
 
 		<section id=content>
 			<div id=title align="center">
-				<h2>상품관리</h2>
+				<h2>상품등록</h2>
 			</div>
 			<div align="center">
 				<br> <br>
