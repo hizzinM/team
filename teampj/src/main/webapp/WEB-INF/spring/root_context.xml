@@ -10,7 +10,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- 디비 정보 가져오기 -->
 	<context:property-placeholder
-		location="file:src/main/webapp/WEB-INF/config/mysql_db.properties" />
+		location="/WEB-INF/config/mysql_db.properties" />
 
 	<!-- 스프링 jdbc연결 -->
 	<bean id="dataSource"
@@ -31,7 +31,7 @@
 		<!-- dataSource -->
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation"
-			value="file:src/main/webapp/WEB-INF/config/mybatis_config.xml" />
+			value="/WEB-INF/config/mybatis_config.xml" />
 	</bean>
 
 	<mybatis-spring:scan base-package="com.shop.mapper" />
