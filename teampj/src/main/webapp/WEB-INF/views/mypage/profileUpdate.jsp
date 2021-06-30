@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
-<head> 
+<head>
 <style>
 #delete_btn {
 	background-color: #f3e3e7;
@@ -15,9 +15,11 @@
 <!-- 부가적인 테마 -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
 <script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
@@ -26,75 +28,72 @@
 </script>
 <body>
 
-	<form id="modifyForm" action="/mypage/profileUpdate" method="post">
-
+	<form id="modifyForm" action="/mypage/profileUpdate" method="post"> 
 
 		<section id="container">
 			<br> <br>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="userId">아이디</label> <input
 					class="form-control" type="text" id="userId" name="userId"
-					value='<c:out value="${loginuser.userId}"/>' readonly="readonly" />
+					value='<c:out value="${profile.userId}"/>' readonly="readonly" />
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="password">패스워드</label> <input
 					class="form-control" type="password" id="password" name="password"
-					value='<c:out value="${loginuser.password}"/>' />
+					value='<c:out value="${profile.password}"/>' />
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="passwordCheck">패스워드 확인</label> <input
 					class="form-control" type="passwordCheck" id="passwordCheck"
 					name="passwordCheck"
-					value='<c:out value="${loginuser.passwordCheck}"/>' />
+					value='<c:out value="${profile.passwordCheck}"/>' />
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="userName">닉네임</label> <input
 					class="form-control" type="text" id="userName" name="userName"
-					value='<c:out value="${loginuser.userName}"/>' />
+					value='<c:out value="${profile.userName}"/>' />
 			</div>
 
 			<div class="form-group has-feedback">
 				<label class="control-label" for="addressNum">주소</label> <input
 					class="form-control" type="text" id="addressNum" name="addressNum"
-					value='<c:out value="${loginuser.addressNum}"/>' /> <input
+					value='<c:out value="${profile.addressNum}"/>' /> <input
 					class="form-control" type="text" id="address" name="address"
-					value='<c:out value="${loginuser.address}"/>' />
+					value='<c:out value="${profile.address}"/>' />
 				<div class="form-group has-feedback">
 					<input class="form-control" type="text" id="addressDetail"
 						name="addressDetail"
-						value='<c:out value="${loginuser.addressDetail}"/>' />
+						value='<c:out value="${profile.addressDetail}"/>' />
 				</div>
 				<div class="address_button" onclick="execution_daum_address()">
 					<span style="border: 1px solid gray; background-color: lightgray;">주소찾기</span>
 				</div>
 				<br> <label class="control-label" for="phone">휴대폰 번호</label> <input
 					class="form-control" type="text" id="phone" name="phone"
-					value='<c:out value="${loginuser.phone}"/>' />
+					value='<c:out value="${profile.phone}"/>' />
 			</div>
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="email">이메일</label> <input
 					class="form-control" type="text" id="email" name="email"
-					value='<c:out value="${loginuser.email}"/>' />
+					value='<c:out value="${profile.email}"/>' />
 			</div>
 			<hr>
 			<span> <strong>추가정보</strong></span><br> <br>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="accountName">예금주</label> <input
 					class="form-control" type="text" id="accountName"
-					name="accountName"
-					value='<c:out value="${loginuser.accountName}"/>' />
+					name="accountName" value='<c:out value="${profile.accountName}"/>' />
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="accountBank">은행</label> <input
 					class="form-control" type="text" id="accountBank"
-					name="accountBank"
-					value='<c:out value="${loginuser.accountBank}"/>' />
+					name="accountBank" value='<c:out value="${profile.accountBank}"/>' />
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="accountNum">계좌번호</label> <input
 					class="form-control" type="text" id="accountNum" name="accountNum"
-					value='<c:out value="${loginuser.accountNum}"/>' />
+					value='<c:out value="${profile.accountNum}"/>' />
 			</div>
 
 			<div>
@@ -105,7 +104,7 @@
 	</form>
 	<form id="infoForm" action="/mypage/profileUpdate" method="get">
 		<input type="hidden" id="userId" name="userId"
-			value='<c:out value="${loginuser.userId}"/>'>
+			value='<c:out value="${profile.userId}"/>'>
 	</form>
 
 	<script type="text/javascript">
@@ -113,13 +112,12 @@
 		let mForm = $("#modifyForm"); // 페이지 데이터 수정 from
 
 		/* 수정 하기 버튼 */
-		$("#modify_btn").on("click", function(e) {
+		$("#modify_btn").on("click", function(e) {  
 			mForm.submit();
-		});
 
+		});
 		/* 취소 버튼 */
-		$("#cancel_btn").on("click", function(e) {
-			form.attr("action", "/mypage/profile");
+		$("#cancel_btn").on("click", function(e) { 
 			form.submit();
 		});
 

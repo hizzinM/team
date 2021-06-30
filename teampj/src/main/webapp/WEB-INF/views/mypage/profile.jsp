@@ -24,19 +24,19 @@
 		</div>
 	</c:if>
 	<section>
-		유저아이디 : ${loginuser.userId}<br> 비밀번호 : ${loginuser.password}<br>
-		닉네임 : ${loginuser.userName}<br> 주소 :
-		${loginuser.addressNum}&nbsp;${loginuser.address}&nbsp;${loginuser.addressDetail}<br>
-		휴대폰 번호 : ${loginuser.phone}<br> 이메일 : ${loginuser.email}<br>
+		유저아이디 : ${profile.userId}<br> 비밀번호 : ${profile.password}<br>
+		닉네임 : ${profile.userName}<br> 주소 :
+		${profile.addressNum}&nbsp;${profile.address}&nbsp;${profile.addressDetail}<br>
+		휴대폰 번호 : ${profile.phone}<br> 이메일 : ${profile.email}<br>
 		가입날짜 :
-		<fmt:formatDate value="${loginuser.regDate}" pattern="yyyy년MM월dd일" />
+		<fmt:formatDate value="${profile.regDate}" pattern="yyyy년MM월dd일" />
 		<hr>
-		예금주:${loginuser.accountName}<br> 은행:${loginuser.accountBank}<br>
-		계좌번호:${loginuser.accountNum}<br> <br> <br> <a
-			class="btn" id="modify_btn">수정</a>
+		예금주:${profile.accountName}<br> 은행:${profile.accountBank}<br>
+		계좌번호:${profile.accountNum}<br> <br> <br> <a class="btn"
+			id="modify_btn">수정</a>
 		<form id="infoForm" action="/mypage/profileUpdate" method="get">
 			<input type="hidden" id="userId" name="userId"
-				value='<c:out value="${loginuser.userId}"/>'>
+				value='<c:out value="${profile.userId}"/>'>
 		</form>
 
 		<script type="text/javascript">
