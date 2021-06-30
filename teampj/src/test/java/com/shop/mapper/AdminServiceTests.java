@@ -20,12 +20,13 @@ public class AdminServiceTests {
 	@Autowired
 	private AdminService adminService;
 	
+	/* 상품 등록 & 상품 이미지 등록 테스트 */
 	@Test
 	public void bookEnrollTEsts() {
 		Product product = new Product();
 		// 상품 정보
 		product.setProductId(0);
-		product.setProductName("테스트DB2");
+		product.setProductName("테스트DB2");		
 		product.setProductPrice("154");
 		product.setProductSize("L");
 		product.setProductColor("노랑");
@@ -48,6 +49,7 @@ public class AdminServiceTests {
 		
 		productImg.add(image1);
 		productImg.add(image2);
+		
 		
 		
 		// bookEnroll() 메서드 호출

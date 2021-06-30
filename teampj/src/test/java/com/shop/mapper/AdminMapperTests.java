@@ -17,7 +17,7 @@ public class AdminMapperTests {
 	private AdminMapper mapper;
 	
 	/* 상품 등록 */
-	@Test
+	@Test@Ignore
 	public void bookEnrollTest() throws Exception{
 		
 		Product product = new Product();
@@ -35,15 +35,15 @@ public class AdminMapperTests {
 		System.out.println("After AttachImageVO :" + product);
 	}
 	/* 이미지 등록 */
-	@Test@Ignore
+	@Test
 	public void imageEnrollTest() {
 		
 		AttachImageVO vo = new AttachImageVO();
 		
-		vo.setProductId(1);
+		vo.setProductId(2);
 		vo.setFileName("test");
 		vo.setUploadPath("test");
-		vo.setUuid("test2");
+		vo.setUuid("test02");
 		
 		mapper.imageEnroll(vo);
 		
