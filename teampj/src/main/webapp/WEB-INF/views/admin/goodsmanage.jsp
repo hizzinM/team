@@ -7,6 +7,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="/resources/css/admin/index.css">
+
 <meta charset="UTF-8">
 <title>공지관리</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"
@@ -54,10 +55,10 @@
 						</tr>
 				</thead>
 				<c:forEach items="${productList}" var="product">
-					
+					<c:forEach items="${productimg}" var="img">
 				<tr>
 					<td><c:out value="${product.productId}"/></td>
-					<td><c:out value="${product.imageList}"/></td>
+					<td><img alt="" src="/upload/${img.uploadPath}/${img.uuid}" style="width: 300px"></td>
 					<td><c:out value="${product.productName}"/></td>
 					<td><c:out value="${product.productPrice}"/></td>
 					<td><c:out value="${product.productSize}"/></td>
@@ -65,9 +66,11 @@
 					<td><c:out value="${product.productInventory}"/></td>
 				
 				</tr>
-				
 				</c:forEach>
-			</table>
+			</c:forEach>
+		</table>
+			
+			
 		</div>
 	</section>
 
