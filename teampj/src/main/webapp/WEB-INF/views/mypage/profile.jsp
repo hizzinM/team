@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +28,8 @@
 		닉네임 : ${loginuser.userName}<br> 주소 :
 		${loginuser.addressNum}&nbsp;${loginuser.address}&nbsp;${loginuser.addressDetail}<br>
 		휴대폰 번호 : ${loginuser.phone}<br> 이메일 : ${loginuser.email}<br>
-		가입날짜 :${loginuser.regDate} <br>
+		가입날짜 :
+		<fmt:formatDate value="${loginuser.regDate}" pattern="yyyy년MM월dd일" />
 		<hr>
 		예금주:${loginuser.accountName}<br> 은행:${loginuser.accountBank}<br>
 		계좌번호:${loginuser.accountNum}<br> <br> <br> <a
@@ -44,7 +45,6 @@
 				form.attr("action", "/mypage/profileUpdate");
 				form.submit();
 			});
- 
 		</script>
 	</section>
 	</section>

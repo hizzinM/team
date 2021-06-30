@@ -64,7 +64,7 @@ public class MemberMapperTest {
 	}
 
 	/* 로그인 쿼리 mapper 메서드 테스트 */
-	@Test
+	@Test @Ignore
 	public void memberLogin() throws Exception {
 
 		User user = new User();

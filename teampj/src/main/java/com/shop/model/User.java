@@ -2,6 +2,7 @@ package com.shop.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -17,9 +18,8 @@ public class User {
 	private String addressDetail;
 	private String phone;
 	private String email;
-	private int adminck;
-	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-	private LocalDateTime regDate;
+	private int adminck; 
+	private Date regDate;
 
 	private String accountName;
 	private String accountBank;
@@ -31,7 +31,7 @@ public class User {
 	}
 
 	public User(String userId, String password, String passwordCheck, String userName, String addressNum,
-			String address, String addressDetail, String phone, String email, int adminck, LocalDateTime regDate,
+			String address, String addressDetail, String phone, String email, int adminck, Date regDate,
 			String accountName, String accountBank, String accountNum) {
 		super();
 		this.userId = userId;
@@ -130,11 +130,11 @@ public class User {
 		this.adminck = adminck;
 	}
 
-	public LocalDateTime getRegDate() {
+	public Date getRegDate() {
 		return regDate;
 	}
 
-	public void setRegDate(LocalDateTime regDate) {
+	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
 

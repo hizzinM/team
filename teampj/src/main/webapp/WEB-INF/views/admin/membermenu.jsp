@@ -48,6 +48,7 @@ th {
 							<th class="userphone_width">연락처</th>
 							<th class="useremail_width">이메일</th>
 							<th class="useraddress_width">주소</th>
+							<th class="useregdate_width">가입일자</th>
 						</tr>
 					</thead>
 					<c:forEach items="${membermenu}" var="membermenu">
@@ -59,6 +60,9 @@ th {
 							<td><c:out value="${membermenu.addressNum}" />&nbsp;<c:out
 									value="${membermenu.address}" />&nbsp;<c:out
 									value="${membermenu.addressDetail}" /></td>
+							<td><fmt:formatDate value="${membermenu.regDate}"
+									pattern="yyyy년MM월dd일 HH시mm분" /></td>
+
 						</tr>
 					</c:forEach>
 				</table>
