@@ -17,20 +17,22 @@ public class AdminMapperTests {
 	private AdminMapper mapper;
 	
 	/* 상품 등록 */
-	@Test@Ignore
+	@Test
 	public void bookEnrollTest() throws Exception{
 		
 		Product product = new Product();
 		
 		product.setProductId(0);
-		product.setProductName("테스트 실험2");
-		product.setProductImg("");
+		product.setProductName("테스트 실험3");
 		product.setProductPrice("100");
 		product.setProductSize("L");
 		product.setProductColor("노랑");
 		product.setProductInventory(1);
+		System.out.println("Before AttachImageVO :" + product);
+		
 		
 		mapper.insertpro(product);
+		System.out.println("After AttachImageVO :" + product);
 	}
 	/* 이미지 등록 */
 	@Test@Ignore

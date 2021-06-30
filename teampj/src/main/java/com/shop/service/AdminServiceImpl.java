@@ -23,6 +23,15 @@ public class AdminServiceImpl implements AdminService {
 		
 		adminMapper.insertpro(product);
 		
+		if(product.getProductImg() == null || product.getProductImg().size() <= 0) {
+			return;
+		}
+		
+		product.getProductImg().forEach(attach ->{
+			
+			attach.setProductId(product.getProductId());
+			adminMapper.imageEnroll(attach);
+		});
 	}
 
 }

@@ -5,7 +5,11 @@
 <mapper namespace="com.shop.mapper.AdminMapper">
 
 	<insert id="insertpro">
-
+		<selectKey resultType="int" keyProperty="productId" order="AFTER">
+  		
+  			SELECT LAST_INSERT_ID()
+  		
+  		</selectKey>
 		insert into product(product_id, product_name, product_img, product_price,
 		product_size, product_color, product_inventory)
 		values(#{productId},#{productName},
@@ -14,9 +18,9 @@
 	</insert>
 	<!-- 이미지 등록 -->
 	<insert id="imageEnroll">
-	
+		
 		insert into product_img(product_id, fileName, uploadPath, uuid) values (#{productId}, #{fileName}, #{uploadPath}, #{uuid})
 	
 	</insert>
-
+		
 </mapper>

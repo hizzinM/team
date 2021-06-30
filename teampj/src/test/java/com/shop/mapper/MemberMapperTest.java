@@ -59,7 +59,9 @@ public class MemberMapperTest {
 		user.setAccountName("test");
 		user.setAccountBank("test");
 		user.setAccountNum("test");
-
+		
+		
+		
 		membermapper.memberJoin(user); // 쿼리 메서드 실행
 	}
 
