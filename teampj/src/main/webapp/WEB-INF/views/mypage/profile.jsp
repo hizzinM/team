@@ -5,9 +5,15 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
+<style>
+#delete_btn {
+	background-color: #f3e3e7;
+}
+</style>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -33,7 +39,9 @@
 		<hr>
 		예금주:${profile.accountName}<br> 은행:${profile.accountBank}<br>
 		계좌번호:${profile.accountNum}<br> <br> <br> <a class="btn"
-			id="modify_btn">수정</a>
+			id="modify_btn">수정</a>&nbsp;&nbsp;<a class="btn" id="delete_btn"
+			href="/mypage/profileDeleteView">탈퇴</a>
+
 		<form id="infoForm" action="/mypage/profileUpdate" method="get">
 			<input type="hidden" id="userId" name="userId"
 				value='<c:out value="${profile.userId}"/>'>
