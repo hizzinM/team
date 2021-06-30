@@ -5,16 +5,17 @@ import java.util.List;
 public class Product {
 	private int productId;
 	private String productName;
-	private List<AttachImageVO> productImg;
+	private String productImg;
 	private String productPrice;
 	private String productSize;
 	private String productColor;
 	private int productInventory;
+	private List<AttachImageVO> imageList;
 	public Product() {
 		super();
 	}
-	public Product(int productId, String productName, List<AttachImageVO> productImg, String productPrice,
-			String productSize, String productColor, int productInventory) {
+	public Product(int productId, String productName, String productImg, String productPrice, String productSize,
+			String productColor, int productInventory) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
@@ -36,10 +37,10 @@ public class Product {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public List<AttachImageVO> getProductImg() {
+	public String getProductImg() {
 		return productImg;
 	}
-	public void setProductImg(List<AttachImageVO> productImg) {
+	public void setProductImg(String productImg) {
 		this.productImg = productImg;
 	}
 	public String getProductPrice() {
@@ -66,12 +67,17 @@ public class Product {
 	public void setProductInventory(int productInventory) {
 		this.productInventory = productInventory;
 	}
+	public List<AttachImageVO> getImageList() {
+		return imageList;
+	}
+	public void setImageList(List<AttachImageVO> imageList) {
+		this.imageList = imageList;
+	}
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", productImg=" + productImg
 				+ ", productPrice=" + productPrice + ", productSize=" + productSize + ", productColor=" + productColor
-				+ ", productInventory=" + productInventory + "]";
+				+ ", productInventory=" + productInventory + ", imageList=" + imageList + "]";
 	}
-	
 	
 }

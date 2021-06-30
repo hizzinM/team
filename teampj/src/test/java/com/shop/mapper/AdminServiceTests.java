@@ -34,7 +34,7 @@ public class AdminServiceTests {
 		
 
 		// 이미지 정보
-		List<AttachImageVO> productImg = new ArrayList<AttachImageVO>(); 
+		List<AttachImageVO> imagelist = new ArrayList<AttachImageVO>(); 
 		
 		AttachImageVO image1 = new AttachImageVO();
 		AttachImageVO image2 = new AttachImageVO();
@@ -47,11 +47,11 @@ public class AdminServiceTests {
 		image2.setUploadPath("test image 2");
 		image2.setUuid("test2222");
 		
-		productImg.add(image1);
-		productImg.add(image2);
+		imagelist.add(image1);
+		imagelist.add(image2);
 		
 		
-		
+		product.setImageList(imagelist);
 		// bookEnroll() 메서드 호출
 		adminService.insertpro(product);
 		

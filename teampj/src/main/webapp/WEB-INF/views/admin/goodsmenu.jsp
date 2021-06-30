@@ -27,7 +27,7 @@
 
 		<section id=content>
 			<div id=title align="center">
-				<h2>상품관리</h2>
+				<h2>상품등록</h2>
 			</div>
 			<div align="center">
 				<br> <br>
@@ -156,9 +156,9 @@
 				str += "<div id='result_card'>";
 				str += "<img src='/display?fileName=" + fileCallPath +"'>";
 				str += "<div class='imgDeleteBtn' data-file='" + fileCallPath + "'>x</div>";
-				str += "<input type='hidden' name='productImg[0].fileName' value='"+ obj.fileName +"'>";
-				str += "<input type='hidden' name='productImg[0].uuid' value='"+ obj.uuid +"'>";
-				str += "<input type='hidden' name='productImg[0].uploadPath' value='"+ obj.uploadPath +"'>";		
+				str += "<input type='hidden' name='imageList[0].fileName' value='"+ obj.fileName +"'>";
+				str += "<input type='hidden' name='imageList[0].uuid' value='"+ obj.uuid +"'>";
+				str += "<input type='hidden' name='imageList[0].uploadPath' value='"+ obj.uploadPath +"'>";		
 				str += "</div>";
 				
 				uploadResult.append(str);     

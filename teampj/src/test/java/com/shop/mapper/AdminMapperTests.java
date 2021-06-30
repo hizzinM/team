@@ -35,7 +35,7 @@ public class AdminMapperTests {
 		System.out.println("After AttachImageVO :" + product);
 	}
 	/* 이미지 등록 */
-	@Test
+	@Test@Ignore
 	public void imageEnrollTest() {
 		
 		AttachImageVO vo = new AttachImageVO();
