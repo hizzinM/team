@@ -32,8 +32,8 @@
 					</div>
 					<div class="pw_wrap">
 						<div class="pw_input_box">
-							<input class="pw_iput" name="password" placeholder="비밀번호"><br>
-							&nbsp;<span id="checklogin"></span><br>
+							<input class="pw_iput" type="password" name="password"
+								placeholder="비밀번호"><br> &nbsp;<span id="checklogin"></span><br>
 						</div>
 					</div>
 

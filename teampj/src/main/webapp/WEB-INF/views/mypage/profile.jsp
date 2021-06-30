@@ -24,8 +24,8 @@
 		</div>
 	</c:if>
 	<section>
-		유저아이디 : ${profile.userId}<br> 비밀번호 : ${profile.password}<br>
-		닉네임 : ${profile.userName}<br> 주소 :
+		유저아이디 : ${profile.userId}<br> 닉네임 : ${profile.userName}<br>
+		주소 :
 		${profile.addressNum}&nbsp;${profile.address}&nbsp;${profile.addressDetail}<br>
 		휴대폰 번호 : ${profile.phone}<br> 이메일 : ${profile.email}<br>
 		가입날짜 :
