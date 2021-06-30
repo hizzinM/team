@@ -5,16 +5,16 @@ import java.util.List;
 public class Product {
 	private int productId;
 	private String productName;
-	private String productImg;
+	private List<AttachImageVO> productImg;
 	private String productPrice;
 	private String productSize;
 	private String productColor;
 	private int productInventory;
-	/* 이미지 정보 */
-	private List<AttachImageVO> imageList;
-	
-	public Product(int productId, String productName, String productImg, String productPrice, String productSize,
-			String productColor, int productInventory) {
+	public Product() {
+		super();
+	}
+	public Product(int productId, String productName, List<AttachImageVO> productImg, String productPrice,
+			String productSize, String productColor, int productInventory) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
@@ -23,9 +23,6 @@ public class Product {
 		this.productSize = productSize;
 		this.productColor = productColor;
 		this.productInventory = productInventory;
-	}
-	public Product() {
-		super();
 	}
 	public int getProductId() {
 		return productId;
@@ -39,10 +36,10 @@ public class Product {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public String getProductImg() {
+	public List<AttachImageVO> getProductImg() {
 		return productImg;
 	}
-	public void setProductImg(String productImg) {
+	public void setProductImg(List<AttachImageVO> productImg) {
 		this.productImg = productImg;
 	}
 	public String getProductPrice() {
@@ -69,18 +66,12 @@ public class Product {
 	public void setProductInventory(int productInventory) {
 		this.productInventory = productInventory;
 	}
-	public List<AttachImageVO> getImageList() {
-		return imageList;
-	}
-	public void setImageList(List<AttachImageVO> imageList) {
-		this.imageList = imageList;
-	}
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", productImg=" + productImg
 				+ ", productPrice=" + productPrice + ", productSize=" + productSize + ", productColor=" + productColor
-				+ ", productInventory=" + productInventory + ", imageList=" + imageList + "]";
+				+ ", productInventory=" + productInventory + "]";
 	}
 	
+	
 }
-

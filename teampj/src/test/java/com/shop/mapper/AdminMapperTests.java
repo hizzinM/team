@@ -23,25 +23,27 @@ public class AdminMapperTests {
 		Product product = new Product();
 		
 		product.setProductId(0);
-		product.setProductName("테스트 실험2");
-		product.setProductImg("");
+		product.setProductName("테스트 실험3");
 		product.setProductPrice("100");
 		product.setProductSize("L");
 		product.setProductColor("노랑");
 		product.setProductInventory(1);
+		System.out.println("Before AttachImageVO :" + product);
+		
 		
 		mapper.insertpro(product);
+		System.out.println("After AttachImageVO :" + product);
 	}
 	/* 이미지 등록 */
-	@Test@Ignore
+	@Test
 	public void imageEnrollTest() {
 		
 		AttachImageVO vo = new AttachImageVO();
 		
-		vo.setProductId(1);
+		vo.setProductId(2);
 		vo.setFileName("test");
 		vo.setUploadPath("test");
-		vo.setUuid("test2");
+		vo.setUuid("test02");
 		
 		mapper.imageEnroll(vo);
 		
