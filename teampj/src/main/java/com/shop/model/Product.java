@@ -1,5 +1,7 @@
 package com.shop.model;
 
+import java.util.List;
+
 public class Product {
 	private int productId;
 	private String productName;
@@ -8,6 +10,9 @@ public class Product {
 	private String productSize;
 	private String productColor;
 	private int productInventory;
+	/* 이미지 정보 */
+	private List<AttachImageVO> imageList;
+	
 	public Product(int productId, String productName, String productImg, String productPrice, String productSize,
 			String productColor, int productInventory) {
 		super();
@@ -64,11 +69,18 @@ public class Product {
 	public void setProductInventory(int productInventory) {
 		this.productInventory = productInventory;
 	}
+	public List<AttachImageVO> getImageList() {
+		return imageList;
+	}
+	public void setImageList(List<AttachImageVO> imageList) {
+		this.imageList = imageList;
+	}
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", productImg=" + productImg
 				+ ", productPrice=" + productPrice + ", productSize=" + productSize + ", productColor=" + productColor
-				+ ", productInventory=" + productInventory + "]";
+				+ ", productInventory=" + productInventory + ", imageList=" + imageList + "]";
 	}
+	
 }
 

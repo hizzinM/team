@@ -47,6 +47,7 @@ public class AdminController {
 	MemberService memberservice;
 	@Autowired
 	AdminService adminService;
+	
 
 	private static final Logger logger = LoggerFactory.getLogger("MainController.class");
 
