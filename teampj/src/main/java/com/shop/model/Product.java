@@ -5,7 +5,6 @@ import java.util.List;
 public class Product {
 	private int productId;
 	private String productName;
-	private String productImg;
 	private String productPrice;
 	private String productSize;
 	private String productColor;
@@ -14,12 +13,11 @@ public class Product {
 	public Product() {
 		super();
 	}
-	public Product(int productId, String productName, String productImg, String productPrice, String productSize,
+	public Product(int productId, String productName, String productPrice, String productSize,
 			String productColor, int productInventory) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
-		this.productImg = productImg;
 		this.productPrice = productPrice;
 		this.productSize = productSize;
 		this.productColor = productColor;
@@ -36,12 +34,6 @@ public class Product {
 	}
 	public void setProductName(String productName) {
 		this.productName = productName;
-	}
-	public String getProductImg() {
-		return productImg;
-	}
-	public void setProductImg(String productImg) {
-		this.productImg = productImg;
 	}
 	public String getProductPrice() {
 		return productPrice;
@@ -75,8 +67,7 @@ public class Product {
 	}
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", productName=" + productName + ", productImg=" + productImg
-				+ ", productPrice=" + productPrice + ", productSize=" + productSize + ", productColor=" + productColor
+		return "Product [productId=" + productId + ", productName=" + productName + ",productPrice=" + productPrice + ", productSize=" + productSize + ", productColor=" + productColor
 				+ ", productInventory=" + productInventory + ", imageList=" + imageList + "]";
 	}
 	

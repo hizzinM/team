@@ -10,10 +10,9 @@
   			SELECT LAST_INSERT_ID()
   		
   		</selectKey>
-		insert into product(product_id, product_name, product_img, product_price,
+		insert into product(product_id, product_name, product_price,
 		product_size, product_color, product_inventory)
-		values(#{productId},#{productName},
-		#{productImg},#{productPrice},#{productSize},#{productColor},#{productInventory})
+		values(#{productId},#{productName},#{productPrice},#{productSize},#{productColor},#{productInventory})
 
 	</insert>
 	<!-- 이미지 등록 -->
