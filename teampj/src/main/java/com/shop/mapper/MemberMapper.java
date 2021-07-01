@@ -43,7 +43,7 @@ public interface MemberMapper {
 	public int profileUpdate(User user);
 
 	// 회원정보 삭제 기능
-	public String profileDelete(String userId);
+	public int profileDelete(User user);
 
 	// public User readMember(String userId);
 

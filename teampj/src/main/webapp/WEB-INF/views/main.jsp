@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
     <link rel="stylesheet" href="/resources/css/common-style/contents.css">
     <link rel="stylesheet" href="/resources/css/main.css" >
-    <link rel="stylesheet" href="/resources/css/member/join.css">
 </head>
 <body>
     <header>

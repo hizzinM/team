@@ -33,6 +33,6 @@ public interface MemberService {
 	public int profileUpdate(User user);
 
 	// 회원정보 삭제
-	public String profileDelete(String userId);
+	public int profileDelete(User user);
 
 }

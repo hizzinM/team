@@ -34,7 +34,9 @@
 		user_id = #{userId} and
 		password =#{password}
 	</select>
+	
 	<!-- user_id,password,password_check,user_name,address_num,address,address_detail,phone,email,adminck,account_name,account_bank,account_num -->
+
 	<!-- 회원목록 조회 -->
 	<select id="getmemberList" resultType="com.shop.model.User">
 		select
@@ -71,6 +73,7 @@
 
 	<!-- 회원정보 삭제 -->
 	<delete id="profileDelete">
-		delete from user where user_id = #{userId}
+		delete from user where user_id = #{userId} and
+		password =#{password}
 	</delete>
 </mapper>

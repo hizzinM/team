@@ -4,11 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-<style>
-#delete_btn {
-	background-color: #f3e3e7;
-}
-</style>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -28,7 +23,7 @@
 </script>
 <body>
 
-	<form id="modifyForm" action="/mypage/profileUpdate" method="post"> 
+	<form id="modifyForm" action="/mypage/profileUpdate" method="post">
 
 		<section id="container">
 			<br> <br>
@@ -98,8 +93,7 @@
 
 			<div>
 				<a class="btn" id="modify_btn">수정 완료</a> <a class="btn"
-					id="cancel_btn">수정 취소</a><a class="btn" id="delete_btn">탈퇴</a>
-
+					id="cancel_btn">수정 취소</a>  
 			</div>
 	</form>
 	<form id="infoForm" action="/mypage/profileUpdate" method="get">
@@ -111,20 +105,14 @@
 		let form = $("#infoForm"); // 페이지 이동 form(리스트 페이지 이동, 조회 페이지 이동)
 		let mForm = $("#modifyForm"); // 페이지 데이터 수정 from
 
-		/* 수정 하기 버튼 */
-		$("#modify_btn").on("click", function(e) {  
+		/* 수정 하기 버튼  */
+		$("#modify_btn").on("click", function(e) {
+
 			mForm.submit();
 
 		});
 		/* 취소 버튼 */
-		$("#cancel_btn").on("click", function(e) { 
-			form.submit();
-		});
-
-		/* 탈퇴 버튼 */
-		$("#delete_btn").on("click", function(e) {
-			form.attr("action", "/mypage/profileDelete");
-			form.attr("method", "post");
+		$("#cancel_btn").on("click", function(e) {
 			form.submit();
 		});
 	</script>
