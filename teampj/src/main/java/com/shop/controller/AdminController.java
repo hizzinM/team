@@ -242,7 +242,7 @@ public class AdminController {
 
 		try {
 			/* 썸네일 파일 삭제 */
-			file = new File("c:\\upload\\" + URLDecoder.decode(fileName, "UTF-8"));
+			file = new File("C:\\upload" + URLDecoder.decode(fileName, "UTF-8"));
 
 			file.delete();
 
