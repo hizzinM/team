@@ -28,11 +28,22 @@
         <h1><a href="setup-finish.html">MINPARKANG</a></h1>
         <div id="s_nav">
             <ul>
-                <!--<li>{$} 님 환영합니다.</li>-->
-                <li><a href="/member/login">로그인</a></li>
-                <!--<li><a href="/member/logout">로그아웃</a></li>-->
-                <li><a href="/member/join">회원가입</a></li>
-                <li><a href="/mypage/myindex">마이페이지</a></li>
+            	<!-- 로그인 전 -->
+            	<c:if test="${loginuser == null }">
+					<li><a href="/member/login">로그인</a></li>
+					<li><a href="/member/join">회원가입</a></li>
+				</c:if>
+				
+				<!-- 로그인 후 -->
+				<c:if test="${ loginuser!= null }">
+					<c:if test="${ loginuser.adminck ==1 }">
+						<li><a href="/admin/index">관리자화면</a></li>
+					</c:if>
+						<li>${loginuser.userName}님<br>어서오세요.</li>
+						<li><a href="/mypage/myindex">마이페이지</a></li>
+						<li><a href="/member/logout">로그아웃</a></li>
+				</c:if> 
+				
                 <li><a href="#">배송조회</a></li>
                 <br>
                 <li><a href="#">장바구니</a></li>
@@ -260,25 +271,5 @@
             </div>
         </div>
     </div>
-                <!-- 
-   					로그인 하지 않은 상태 
-					<c:if test="${loginuser == null }">
-						<div class="login_button">
-							<a href="/member/login">로그인</a>
-						</div>
-						<span><a href="/member/join">회원가입</a></span>
-					</c:if>
-					로그인한 상태
-					<c:if test="${ loginuser!= null }">
-						<c:if test="${ loginuser.adminck ==1 }">
-							<span><a href="/admin/index">관리자화면</a></span>
-						</c:if>
-						<div class="login_success_area">
-							<span>회원 : ${loginuser.userName} 님<br> 어서오세요.
-							</span><a href="/mypage/myindex">마이페이지</a>&nbsp;&nbsp;<a
-								href="/member/logout">로그아웃</a>
-						</div>
-					</c:if> 
-                -->
 </body>
 </html>
