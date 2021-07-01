@@ -75,7 +75,7 @@ public class MemberServiceImpl implements MemberService {
 
 	// 회원정보 삭제
 	@Override
-	public String profileDelete(String userId) {
-		return membermapper.profileDelete(userId);
+	public int profileDelete(User user) {
+		return membermapper.profileDelete(user);
 	}
 }
