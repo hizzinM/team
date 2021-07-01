@@ -93,8 +93,9 @@ public class AdminController {
 	@RequestMapping(value = "goodsmanage", method = RequestMethod.GET)
 	public void goodsmanage(Model model) throws Exception {
 		logger.info("상품관리 페이지 접속");
+		List<AttachImageVO>list=adminService.selectimgList();
 		model.addAttribute("productList",adminService.selectproductList());
-		model.addAttribute("productimg",adminService.selectimgList());
+		model.addAttribute("list",list);
 	}
 	
 	// 문의관리 페이지 이동

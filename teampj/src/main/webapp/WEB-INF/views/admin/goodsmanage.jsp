@@ -55,10 +55,10 @@
 						</tr>
 				</thead>
 				<c:forEach items="${productList}" var="product">
-					<c:forEach items="${productimg}" var="img">
+					<c:forEach items="${list}" var="list">
 				<tr>
 					<td><c:out value="${product.productId}"/></td>
-					<td><img alt="" src="/upload/${img.uploadPath}/${img.uuid}" style="width: 300px"></td>
+					<td><img src="/upload/${list.uploadPath}/${list.uuid}" width="300px"></td>
 					<td><c:out value="${product.productName}"/></td>
 					<td><c:out value="${product.productPrice}"/></td>
 					<td><c:out value="${product.productSize}"/></td>
