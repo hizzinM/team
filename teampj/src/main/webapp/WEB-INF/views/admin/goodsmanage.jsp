@@ -56,11 +56,11 @@
 				</thead>
 				<c:forEach items="${productList}" var="product">
 					<c:forEach items="${list}" var="list">
-						
+					
 				<tr>
 					<td><c:out value="${product.productId}"/></td>
 					
-					<td><img src="/upload/${list.uploadPath}/${list.uuid}/${list.fileName}" width="300px"></td>
+					<td><img src="/resources//image//upload//${list.uploadPath}//${list.uuid}_${list.fileName}" width="300px"></td>
 				
 					<td><c:out value="${product.productName}"/></td>
 					<td><c:out value="${product.productPrice}"/></td>
