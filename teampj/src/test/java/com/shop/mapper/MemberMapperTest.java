@@ -59,14 +59,13 @@ public class MemberMapperTest {
 		user.setAccountName("test");
 		user.setAccountBank("test");
 		user.setAccountNum("test");
-		
-		
-		
+
 		membermapper.memberJoin(user); // 쿼리 메서드 실행
 	}
 
 	/* 로그인 쿼리 mapper 메서드 테스트 */
-	@Test @Ignore
+	@Test
+	@Ignore
 	public void memberLogin() throws Exception {
 
 		User user = new User();
@@ -113,6 +112,24 @@ public class MemberMapperTest {
 	public void testMemberList2() {
 
 		memberservice.getmemberList().forEach(user -> log.info("" + user));
+
+	}
+
+	/* 게시판 목록(페이징 적용)테스트 */
+	@Test
+	@Ignore
+	public void testGetListPaging() {
+		Criteria cri = new Criteria();
+		List list = membermapper.getListPaging(cri);
+		list.forEach(user -> log.info("" + user));
+	}
+
+	/* 게시판 조회(페이징 적용) */
+	@Test
+	public void testGetListPaging2() {
+		Criteria cri = new Criteria();
+		List list = memberservice.getListPaging(cri);
+		list.forEach(user -> log.info("" + user));
 
 	}
 

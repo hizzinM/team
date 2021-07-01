@@ -1,6 +1,7 @@
 package com.shop.mapper;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -13,6 +14,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.shop.model.Criteria;
 import com.shop.model.User;
 
 @Mapper
@@ -33,8 +35,8 @@ public interface MemberMapper {
 	// 회원목록 조회
 	public List<User> getmemberList();
 
-	//페이징 
-	public int count(User user);
+	// 페이징
+	public List<User> getListPaging(Criteria cri);
 
 	// 회원정보 조회 기능
 	public User getProfile(String userId);
