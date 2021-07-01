@@ -36,8 +36,8 @@
 			value="/WEB-INF/config/mybatis_config.xml" />
 	</bean>
 	
-
 	
+
 	<tx:annotation-driven />
 	
 	<mybatis-spring:scan base-package="com.shop.mapper" />

@@ -22,5 +22,15 @@
 		insert into product_img(product_id, fileName, uploadPath, uuid) values (#{productId}, #{fileName}, #{uploadPath}, #{uuid})
 	
 	</insert>
+	
+	<!-- 상품목록 -->
+	<select id="selectproductList" resultType="com.shop.model.Product">
+		select*from product
+	</select>
+	<!-- 상품목록 -->
+	<select id="selectimgList" resultType="com.shop.model.AttachImageVO">
+		select*from product_img
+	</select>
+	
 		
 </mapper>

@@ -91,10 +91,12 @@ public class AdminController {
 
 	// 상품관리 페이지 이동
 	@RequestMapping(value = "goodsmanage", method = RequestMethod.GET)
-	public void goodsmanage() throws Exception {
+	public void goodsmanage(Model model) throws Exception {
 		logger.info("상품관리 페이지 접속");
+		model.addAttribute("productList",adminService.selectproductList());
+		model.addAttribute("productimg",adminService.selectimgList());
 	}
-
+	
 	// 문의관리 페이지 이동
 	@RequestMapping(value = "qnamenu", method = RequestMethod.GET)
 	public void getqnamenu() throws Exception {
