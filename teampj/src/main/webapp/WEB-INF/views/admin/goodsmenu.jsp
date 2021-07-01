@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" type="image/png" href="http://example.com/myicon.png">
 <link rel="stylesheet" href="/resources/css/admin/index.css">
 <meta charset="UTF-8">
 <title>상품관리</title>
