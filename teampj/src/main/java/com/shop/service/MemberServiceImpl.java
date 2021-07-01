@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shop.mapper.MemberMapper;
+import com.shop.model.Criteria;
 import com.shop.model.User;
 
 @Service
@@ -59,6 +60,18 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<User> getmemberList() {
 		return membermapper.getmemberList();
+	}
+
+	// 페이징
+	@Override
+	public List<User> getListPaging(Criteria cri) {
+		return membermapper.getListPaging(cri);
+	}
+
+	// 총회원수
+	@Override
+	public int getTotal() {
+		return membermapper.getTotal();
 	}
 
 	// 회원정보 조회
