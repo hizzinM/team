@@ -21,76 +21,142 @@ td, th {
 th {
 	font-size: 17px;
 }
+
+.pageInfo {
+	list-style: none;
+	display: inline-block;
+	margin: 50px 0 0 100px;
+}
+
+table {
+	border-collapse: collapse;
+	width: 1000px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+.pageInfo li {
+	float: left;
+	font-size: 20px;
+	margin-left: 18px;
+	padding: 7px;
+	font-weight: 500;
+}
+
+a:link {
+	color: black;
+	text-decoration: none;
+}
+
+a:visited {
+	color: black;
+	text-decoration: none;
+}
+
+a:hover {
+	color: black;
+	text-decoration: underline;
+}
+
+.active {
+	background-color: #cdd5ec;
+}
+
+.pageInfo_wrap {
+	text-align: center;
+}
 </style>
 </head>
 <body>
+
 	<div class="top_gnb_area">
 		<ul class="list">
 			<li><a href="/main">메인 페이지</a></li>
 			<li><a href="/member/logout.do">로그아웃</a></li>
 		</ul>
 	</div>
-	<section id="container">
-		<aside>
-			<%@ include file="include/aside.jsp"%>
-		</aside>
-		<section id=content>
+	<div class="table_wrap">
+		<section id="container">
+
+			<aside>
+				<%@ include file="include/aside.jsp"%>
+			</aside>
 			<div>&nbsp;</div>
-			<div id=title align="center">
-				<h2>회원관리</h2>
-			</div>
-			<div align="center">
-				<table>
-					<thead>
-						<tr>
-							<th class="username_width">회원명</th>
-							<th class="userid_width">ID</th>
-							<th class="userphone_width">연락처</th>
-							<th class="useremail_width">이메일</th>
-							<th class="useraddress_width">주소</th>
-							<th class="useregdate_width">가입일자</th>
-						</tr>
-					</thead>
-					<c:forEach items="${membermenu}" var="membermenu">
-						<tr>
-							<td><c:out value="${membermenu.userName}" /></td>
-							<td><c:out value="${membermenu.userId}" /></td>
-							<td><c:out value="${membermenu.phone}" /></td>
-							<td><c:out value="${membermenu.email}" /></td>
-							<td><c:out value="${membermenu.addressNum}" />&nbsp;<c:out
-									value="${membermenu.address}" />&nbsp;<c:out
-									value="${membermenu.addressDetail}" /></td>
-							<td><fmt:formatDate value="${membermenu.regDate}"
-									pattern="yyyy년MM월dd일 HH시mm분" /></td>
+			<div class="table_wrap">
+				<div id=title align="center">
+					<h2>회원관리</h2>
+				</div>
+				<div align="center">
+					<table>
+						<thead>
+							<tr>
+								<th class="username_width">회원명</th>
+								<th class="userid_width">ID</th>
+								<th class="userphone_width">연락처</th>
+								<th class="useremail_width">이메일</th>
+								<th class="useraddress_width">주소</th>
+								<th class="useregdate_width">가입일자</th>
+							</tr>
+						</thead>
+						<c:forEach items="${membermenu}" var="membermenu">
+							<tr>
+								<td><c:out value="${membermenu.userName}" /></td>
+								<td><c:out value="${membermenu.userId}" /></td>
+								<td><c:out value="${membermenu.phone}" /></td>
+								<td><c:out value="${membermenu.email}" /></td>
+								<td><c:out value="${membermenu.addressNum}" />&nbsp;<c:out
+										value="${membermenu.address}" />&nbsp;<c:out
+										value="${membermenu.addressDetail}" /></td>
+								<td><fmt:formatDate value="${membermenu.regDate}"
+										pattern="yyyy년MM월dd일 HH시mm분" /></td>
 
-						</tr>
-					</c:forEach>
-				</table>
-			</div>
-			<div class="pageInfo_wrap">
-				<div class="pageInfo_area">
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+				<div class="pageInfo_wrap">
+					<div class="pageInfo_area">
+						<ul id="pageInfo" class="pageInfo">
+							<!-- 이전페이지 버튼 -->
+							<c:if test="${pageMaker.prev}">
+								<li class="pageInfo_btn previous"><a
+									href="${pageMaker.startPage-1}">Previous</a></li>
+							</c:if>
 
-					<!-- 각 번호 페이지 버튼 -->
-					<c:forEach var="num" begin="${pageMaker.startPage}"
-						end="${pageMaker.endPage}">
-						<li class="pageInfo_btn"><a href="${num}">${num}</a></li>
-					</c:forEach>
+							<!-- 페이지 번호 버튼 -->
+							<c:forEach var="num" begin="${pageMaker.startPage}"
+								end="${pageMaker.endPage}">
+								<li class="pageInfo_btn ${pageMaker.cri.pageNum == num ? "active":"" }"><a
+									href="${num}">${num}</a></li>
+							</c:forEach>
+
+							<!-- 다음페이지 버튼 -->
+							<c:if test="${pageMaker.next}">
+								<li class="pageInfo_btn next"><a
+									href="${pageMaker.endPage + 1 }">Next</a></li>
+							</c:if>
+
+						</ul>
+					</div>
 				</div>
 			</div>
-			<form>
-				<input type="hidden" name="pageNum"
-					value="${pageMaker.cri.pageNum }"> <input type="hidden"
-					name="amount" value="${pageMaker.cri.amount }">
-			</form>
 		</section>
-	</section>
-	<script>
-		$(".pageInfo a").on("click", function(e) {
-			e.preventDefault();
-			moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-			moveForm.attr("action", "/admin/membermenu");
-			moveForm.submit();
-		});
-	</script>
+		<form id="moveForm" method="get">
+			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
+			<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
+		</form>
+
+		<script>
+			let moveForm = $("#moveForm");
+			$(".pageInfo a").on(
+					"click",
+					function(e) {
+						e.preventDefault();
+						moveForm.find("input[name='pageNum']").val(
+								$(this).attr("href"));
+						moveForm.attr("action", "/admin/membermenu");
+						moveForm.submit();
+					});
+		</script>
 </body>
 </html>
