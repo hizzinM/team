@@ -33,6 +33,9 @@ public interface MemberMapper {
 	// 회원목록 조회
 	public List<User> getmemberList();
 
+	//페이징 
+	public int count(User user);
+
 	// 회원정보 조회 기능
 	public User getProfile(String userId);
 
