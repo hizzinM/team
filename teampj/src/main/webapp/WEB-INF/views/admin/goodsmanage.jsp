@@ -56,16 +56,20 @@
 				</thead>
 				<c:forEach items="${productList}" var="product">
 					<c:forEach items="${list}" var="list">
+						
 				<tr>
 					<td><c:out value="${product.productId}"/></td>
-					<td><img src="/upload/${list.uploadPath}/${list.uuid}" width="300px"></td>
+					
+					<td><img src="/upload/${list.uploadPath}/${list.uuid}/${list.fileName}" width="300px"></td>
+				
 					<td><c:out value="${product.productName}"/></td>
 					<td><c:out value="${product.productPrice}"/></td>
 					<td><c:out value="${product.productSize}"/></td>
 					<td><c:out value="${product.productColor}"/></td>
 					<td><c:out value="${product.productInventory}"/></td>
-				
+					
 				</tr>
+						
 				</c:forEach>
 			</c:forEach>
 		</table>

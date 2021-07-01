@@ -26,7 +26,7 @@
 		up static resources in the ${webappRoot}/resources directory -->
 		
 	<resources mapping="/resources/**" location="/resources/" />
-	
+	<resources mapping="/upload/**" location="C:\\upload" />
 	<!-- 인터셉터 적용 -->
 	<interceptors>
 		<interceptor>
