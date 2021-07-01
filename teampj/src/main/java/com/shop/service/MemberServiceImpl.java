@@ -68,6 +68,12 @@ public class MemberServiceImpl implements MemberService {
 		return membermapper.getListPaging(cri);
 	}
 
+	// 총회원수
+	@Override
+	public int getTotal() {
+		return membermapper.getTotal();
+	}
+
 	// 회원정보 조회
 	@Override
 	public User getProfile(String userId) {

@@ -47,8 +47,13 @@
 	<select id="getListPaging" resultType="com.shop.model.User">
 		select * from ( select
 		user_id,user_name,address_num,address,address_detail,phone,email,adminck,reg_date
-		from user order by user_id
-		desc) as Page limit #{skip},#{amount}
+		from user order by reg_date
+		asc) as Page limit #{skip},#{amount}
+	</select>
+
+	<!-- 게시물 총 개숫 -->
+	<select id="getTotal" resultType="int">
+		select count(*) from user
 	</select>
 
 	<!-- 회원정보 조회 -->

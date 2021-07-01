@@ -32,6 +32,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.shop.mapper.MemberMapper;
 import com.shop.model.AttachImageVO;
 import com.shop.model.Criteria;
+import com.shop.model.PageMakerDTO;
 import com.shop.model.Product;
 import com.shop.service.AdminService;
 import com.shop.service.MemberService;
@@ -66,10 +67,21 @@ public class AdminController {
 //	}
 
 	// 회원 목록 페이지 접속/데이터도 가져옴 (페이징 적용)
+//	@GetMapping("/membermenu")
+//	public void getmemberList(Model model, Criteria cri) {
+//		logger.info("회원 목록 페이지");
+//		model.addAttribute("membermenu", memberservice.getListPaging(cri));
+//	}
+
+	/* 게시판 목록 페이지 접속(페이징 적용) */
 	@GetMapping("/membermenu")
 	public void getmemberList(Model model, Criteria cri) {
 		logger.info("회원 목록 페이지");
 		model.addAttribute("membermenu", memberservice.getListPaging(cri));
+		int total = memberservice.getTotal();
+		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+		model.addAttribute("pageMaker", pageMake);
+
 	}
 
 	// 주문관리 페이지 이동

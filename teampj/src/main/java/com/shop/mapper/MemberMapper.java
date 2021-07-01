@@ -38,6 +38,9 @@ public interface MemberMapper {
 	// 페이징
 	public List<User> getListPaging(Criteria cri);
 
+	// 총회원수
+	public int getTotal();
+
 	// 회원정보 조회 기능
 	public User getProfile(String userId);
 
