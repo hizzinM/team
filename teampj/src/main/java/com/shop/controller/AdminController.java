@@ -153,7 +153,7 @@ public class AdminController {
 			}
 
 		}
-		String uploadFolder = "C:\\Users\\wwhhp\\git\\team\\teampj\\src\\main\\webapp\\resources\\image\\upload";
+		String uploadFolder = "C:\\git\\team\\teampj\\src\\main\\webapp\\resources\\upload";
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -242,7 +242,7 @@ public class AdminController {
 
 		try {
 			/* 썸네일 파일 삭제 */
-			file = new File("C:\\Users\\wwhhp\\git\\team\\teampj\\src\\main\\webapp\\resources\\image\\upload"
+			file = new File("C:\\git\\team\\teampj\\src\\main\\webapp\\resources\\upload"
 					+ URLDecoder.decode(fileName, "UTF-8"));
 
 			file.delete();

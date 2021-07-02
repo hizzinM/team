@@ -60,7 +60,7 @@
 				<tr>
 					<td><c:out value="${product.productId}"/></td>
 					
-					<td><img src="/resources//image//upload//${list.uploadPath}//${list.uuid}_${list.fileName}" width="300px"></td>
+					<td><img src="/resources/upload/${list.uploadPath}//${list.uuid}_${list.fileName}" width="300px"></td>
 				
 					<td><c:out value="${product.productName}"/></td>
 					<td><c:out value="${product.productPrice}"/></td>
