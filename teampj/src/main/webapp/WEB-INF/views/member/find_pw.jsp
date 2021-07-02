@@ -4,14 +4,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
-<link rel="stylesheet" href="/resources/css/member/find_style.css">
+<link rel="stylesheet" href="/resources/css/member/find_style.css" >
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$(function(){
+		$("#findBtn").click(function(){
+			$.ajax({
+				url : "/member/findpw",
+				type : "POST",
+				data : {
+					id : $("#userId").val(),
+					email : $("#email").val()
+				},
+				success : function(result) {
+					alert(result);
+				},
+			})
+		});
+	})
+</script>
+<title>비밀번호 찾기</title>
 </head>
 <body>
-    <header>
+<header>
         <nav>
             <!--
             <ul>
@@ -82,46 +102,46 @@
     </div>
     <div id="contents">
         <div class="content-frame">
-            <div class="form-frame" style="padding:243px 0;">
-                <form action="/member/findidAfter" method="post">
-                    <div>
-                        <h3>아이디 찾기</h3>
-                    </div>
-                    <div>
-                        <hr>
-                        <p>
-                            <label><span class="font_style">Email</span></label>
-                            <input class="text-frame" type="text" id="email" name="email" placeholder="회원가입한 이메일주소를 입력하세요" required>
-                        </p><hr>
-                        <p>
-                            <button type="submit" id="findBtn" class="btn-style">find</button>
-                            <button type="button" onclick="history.go(-1);" class="btn-style">Cancel</button>
-                        </p>
-                    </div>
-                </form>
+            <div class="form-frame">
+                <h3>비밀번호 찾기</h3>
+                <hr>
+                <p>
+                    <label><span class="font_style">아이디</span></label>
+                    <input type="text" id="userId" class="text-frame" name="userId" placeholder="회원가입한 아이디를 입력하세요" required>
+                </p><hr>
+               
+                <p>
+                    <label><span class="font_style">이메일</span></label>
+                    <input type="text" id="email" class="text-frame" name="email" placeholder="회원가입한 이메일주소를 입력하세요" required>
+                </p><hr>
+                <p class="w3-center">
+                    <button type="button" id="findBtn" class="btn-style">find</button>
+                    <button type="button" onclick="history.go(-1);" class="btn-style">go to login</button>
+                </p>
             </div>
         </div>
-            <div id="footer">
-                <div class="footer-text">
-                    <p>고객센터</p>
-                    <p>1522-4953</p>
-                    <p>Mon-Fri AM 11:00 – PM 6:00</p>
-                    <p>Lunch time PM 13:00 – 14:00</p>
-                    <p>Sat.Sun.Holiday OFF</p>
-                    <p>은행정보</p>
-                    <p>농협 317-0011-4079-11</p>
-                    <p>국민 242437-04-006967</p>
-                    <p>예금주 : (주) 모던이프</p>
-                </div>
-                <div class="footer-text">
-                    <P>주식회사 모던이프</P>
-                    <p>대표이사 : 장재원 | 이메일 : modernif.co.kr@gmail.com</p>
-                    <p>16490 경기도 수원시 팔달구 인계동 1031-2 성지빌딩 701호 모던이프</p>
-                    <p>사업자등록번호 : 8858800485 [사업자정보확인] | 통신판매업신고번호 : 2017-수원팔달-0059호</p>
-                    <p>고객님은 안전거래를 위해 현금 등으로 결제시 저희 쇼핑몰에서 가입한 PG 사의 구매안전서비스를 이용하실 수 있습니다.
-                        KG 이니시스 [서비스 가입사실 확인]</p>
-                </div>
+
+        <div id="footer">
+            <div class="footer-text">
+                <p>고객센터</p>
+                <p>1522-4953</p>
+                <p>Mon-Fri AM 11:00 – PM 6:00</p>
+                <p>Lunch time PM 13:00 – 14:00</p>
+                <p>Sat.Sun.Holiday OFF</p>
+                <p>은행정보</p>
+                <p>농협 317-0011-4079-11</p>
+                <p>국민 242437-04-006967</p>
+                <p>예금주 : (주) 모던이프</p>
             </div>
+            <div class="footer-text">
+                <P>주식회사 모던이프</P>
+                <p>대표이사 : 장재원 | 이메일 : modernif.co.kr@gmail.com</p>
+                <p>16490 경기도 수원시 팔달구 인계동 1031-2 성지빌딩 701호 모던이프</p>
+                <p>사업자등록번호 : 8858800485 [사업자정보확인] | 통신판매업신고번호 : 2017-수원팔달-0059호</p>
+                <p>고객님은 안전거래를 위해 현금 등으로 결제시 저희 쇼핑몰에서 가입한 PG 사의 구매안전서비스를 이용하실 수 있습니다.
+                    KG 이니시스 [서비스 가입사실 확인]</p>
+            </div>
+        </div>
     </div>
 </body>
 </html>

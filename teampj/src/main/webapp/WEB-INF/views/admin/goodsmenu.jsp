@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -24,7 +25,7 @@
 		<aside>
 			<%@ include file="include/aside.jsp"%>
 		</aside>
-
+	
 
 		<section id=content>
 			<div id=title align="center">
@@ -66,14 +67,15 @@
 								</div> -->
 							       </div>		
                     			</div>
-                    		</div>  
+                    		</div>
+                       
 					<div class="btn_section">
 						<button id="cancelBtn" class="btn">취 소</button>
 						<button id="enrollBtn" class="btn enroll_btn">등 록</button>
+						
 					</div>
-			</div>
-			
-			</form>
+				  </form> 
+				</div>
 		</section>
 		<script>
 			let enrollForm = $("#enrollForm")
@@ -93,6 +95,7 @@
 				enrollForm.submit();
 
 			});
+		
 			/* 이미지 업로드 */
 			$("input[type='file']").on("change", function(e){
 				/* 이미지 존재시 삭제 */
