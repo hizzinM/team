@@ -65,6 +65,26 @@ a:hover {
 .pageInfo_wrap {
 	text-align: center;
 }
+
+.search_wrap {
+	text-align: center;
+}
+
+.search_area {
+	display: inline-block;
+	margin-top: 30px;
+	margin-left: 260px;
+}
+
+.search_area input {
+	height: 30px;
+	width: 250px;
+}
+
+.search_area button {
+	width: 100px;
+	height: 36px;
+}
 </style>
 </head>
 <body>
@@ -114,6 +134,13 @@ a:hover {
 						</c:forEach>
 					</table>
 				</div>
+				<div class="search_wrap">
+					<div class="search_area">
+						<input type="text" name="keyword"
+							value="${pageMaker.cri.keyword }">
+						<button>Search</button>
+					</div>
+				</div>
 				<div class="pageInfo_wrap">
 					<div class="pageInfo_area">
 						<ul id="pageInfo" class="pageInfo">
@@ -144,6 +171,8 @@ a:hover {
 		<form id="moveForm" method="get">
 			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
 			<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
+			<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
+			<input type="hidden" name="keyword" value="${cri.keyword }">
 		</form>
 
 		<script>
@@ -157,6 +186,14 @@ a:hover {
 						moveForm.attr("action", "/admin/membermenu");
 						moveForm.submit();
 					});
+
+			$(".search_area button").on("click", function(e) {
+				e.preventDefault();
+				let val = $("input[name='keyword']").val();
+				moveForm.find("input[name='keyword']").val(val);
+				moveForm.find("input[name='pageNum']").val(1);
+				moveForm.submit();
+			});
 		</script>
 </body>
 </html>

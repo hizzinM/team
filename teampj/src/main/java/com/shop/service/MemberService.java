@@ -31,7 +31,7 @@ public interface MemberService {
 	public List<User> getListPaging(Criteria cri);
 	
 	//총회원수 
-    public int getTotal();
+    public int getTotal(Criteria cri);
 
 	// 회원정보 조회
 	public User getProfile(String userId);

@@ -78,7 +78,7 @@ public class AdminController {
 	public void getmemberList(Model model, Criteria cri) {
 		logger.info("회원 목록 페이지");
 		model.addAttribute("membermenu", memberservice.getListPaging(cri));
-		int total = memberservice.getTotal();
+		int total = memberservice.getTotal(cri);
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
 
@@ -242,7 +242,8 @@ public class AdminController {
 
 		try {
 			/* 썸네일 파일 삭제 */
-			file = new File("C:\\Users\\wwhhp\\git\\team\\teampj\\src\\main\\webapp\\resources\\image\\upload" + URLDecoder.decode(fileName, "UTF-8"));
+			file = new File("C:\\Users\\wwhhp\\git\\team\\teampj\\src\\main\\webapp\\resources\\image\\upload"
+					+ URLDecoder.decode(fileName, "UTF-8"));
 
 			file.delete();
 
