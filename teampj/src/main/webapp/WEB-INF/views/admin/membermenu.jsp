@@ -136,7 +136,16 @@ a:hover {
 				</div>
 				<div class="search_wrap">
 					<div class="search_area">
-						<input type="text" name="keyword"
+						<select name="type">
+							<option value=""
+								<c:out value="${pageMaker.cri.type == null?'selected':'' }"/>>--</option>
+							<option value="I"
+								<c:out value="${pageMaker.cri.type eq 'I'?'selected':'' }"/>>회원ID</option>
+							<option value="N"
+								<c:out value="${pageMaker.cri.type eq 'N'?'selected':'' }"/>>회원명</option>
+							<option value="D"
+								<c:out value="${pageMaker.cri.type eq 'D'?'selected':'' }"/>>가입일</option>
+						</select> <input type="text" name="keyword"
 							value="${pageMaker.cri.keyword }">
 						<button>Search</button>
 					</div>
@@ -172,6 +181,7 @@ a:hover {
 			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
 			<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
 			<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
+			<input type="hidden" name="type" value="${pageMaker.cri.type }">
 		</form>
 
 		<script>
@@ -192,6 +202,17 @@ a:hover {
 				let type = $(".search_area select").val();
 				let keyword = $(".search_area input[name='keyword']").val();
 
+				if (!type) {
+					alert("검색 종류를 선택하세요.");
+					return false;
+				}
+
+				if (!keyword) {
+					alert("키워드를 입력하세요.");
+					return false;
+				}
+
+				moveForm.find("input[name='type']").val(type);
 				moveForm.find("input[name='keyword']").val(keyword);
 				moveForm.find("input[name='pageNum']").val(1);
 				moveForm.submit();

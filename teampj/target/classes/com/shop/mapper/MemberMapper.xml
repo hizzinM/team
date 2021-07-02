@@ -39,23 +39,45 @@
 		* from user
 	</select>
 
+	<!-- 검색 조건문 -->
+	<sql id="criteria">
+		<trim prefix="where (" suffix=")" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'I'.toString()">
+							user_id like concat('%',#{keyword},'%')
+						</when>
+						<when test="type == 'N'.toString()">
+							user_name like concat('%',#{keyword},'%')
+						</when>
+						<when test="type == 'D'.toString()">
+							reg_date like concat('%',#{keyword},'%' )
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+
+
 	<!-- 회원목록 (페이징) -->
 	<select id="getListPaging" resultType="com.shop.model.User">
 		select * from ( select
 		user_id,user_name,address_num,address,address_detail,phone,email,adminck,reg_date
-		from user where user_id like '%검색%'
-		order by reg_date asc) as Page
-		limit 10,10;
+		from user
+		<if test="keyword != null">
+			<include refid="criteria"></include>
+		</if>
+		order by reg_date asc) as Page limit #{skip},#{amount}
 	</select>
-
-	<!-- <if test="keyword != null"> where user_id like concat('%',#{keyword},'%' 
-		) </if> order by reg_date asc) as Page limit #{skip},#{amount} -->
+	<!-- where user_id like concat('%',#{keyword},'%') -->
 
 	<!-- 게시물 총 개숫 -->
 	<select id="getTotal" resultType="int">
 		select count(*) from user
 		<if test="keyword != null">
-			where user_id like concat('%',#{keyword},'%' )
+			<include refid="criteria"></include>
 		</if>
 	</select>
 
