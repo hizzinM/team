@@ -34,7 +34,7 @@
         </nav>
     </header>
     <div id="side_navigation">
-        <h1><a href="main.html">MINPARKANG</a></h1>
+        <h1><a href="/main">MINPARKANG</a></h1>
         <div id="s_nav">
             <ul>
                 <!-- 로그인 전 -->
