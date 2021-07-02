@@ -26,28 +26,26 @@
             -->
         </nav>
     </header>
-    <!--사이드 메뉴-->
     <div id="side_navigation">
-        <h1><a href="../../setup-finish.html">MINPARKANG</a></h1>
+        <h1><a href="main.html">MINPARKANG</a></h1>
         <div id="s_nav">
             <ul>
                 <!-- 로그인 전 -->
-            	<c:if test="${loginuser == null }">
-					<li><a href="/member/login">로그인</a></li>
-					<li><a href="/member/join">회원가입</a></li>
-				</c:if>
-				
-				<!-- 로그인 후 -->
-				<c:if test="${ loginuser!= null }">
-					<c:if test="${ loginuser.adminck ==1 }">
-						<li><a href="/admin/index">관리자화면</a></li>
-					</c:if>
-						<li>${loginuser.userName}님<br>어서오세요.</li>
-						<li><a href="/mypage/myindex">마이페이지</a></li>
-						<li><a href="/member/logout">로그아웃</a></li>
-				</c:if> 
+                <c:if test="${loginuser == null }">
+                    <li><a href="/member/login">로그인</a></li>
+                    <li><a href="/member/join">회원가입</a></li><br>
+                </c:if>
+                
+                <!-- 로그인 후 -->
+                <c:if test="${ loginuser!= null }">
+                    <li style="font-weight: bold; font-size: 11px;">${loginuser.userName}님 어서오세요.</li><br><br>
+                    <li><a href="/member/logout">로그아웃</a></li>
+                    <li><a href="/mypage/myindex">마이페이지</a></li>
+                    <c:if test="${ loginuser.adminck ==1 }">
+                        <li><a href="/admin/index">관리자화면</a></li>
+                    </c:if>
+                </c:if><br>
                 <li><a href="#">배송조회</a></li>
-                <br>
                 <li><a href="#">장바구니</a></li>
                 <li><a href="#">리뷰</a></li>
                 <li><a href="#">고객센터</a></li><br>
@@ -55,16 +53,15 @@
         </div>
         <div id="s_category">
             <ul>
-                <li>Outer</li>
-                <li>Top</li>
-                <li>Shirts</li>
-                <li>Pants</li>
-                <li>Suit</li>
-                <li>Bag/Shose</li>
-                <li>Acc</li>
-                <li>Sale</li>
+                <li><a href="#">Outer</a></li>
+                <li><a href="#">Top</a></li>
+                <li><a href="#">Shirts</a></li>
+                <li><a href="#">Pants</a></li>
+                <li><a href="#">Suit</a></li>
+                <li><a href="#">Bag/Shose</a></li>
+                <li><a href="#">Acc</a></li>
+                <li><a href="#">Sale</a></li>
             </ul>
-
         </div>
         <div id ="s_footer">
             <h1>고객센터　1522-4953</h1><br>
@@ -114,7 +111,7 @@
                             
                         <li id="GgCustomLogin">
                             <a href="javascript:void(0)">
-                                <img src="../../images/google_logo.png" alt="">
+                                <img src="/resources/img/google_logo.png" alt="">
                                 <span>구글로 로그인</span>
                             </a>
                         </li>

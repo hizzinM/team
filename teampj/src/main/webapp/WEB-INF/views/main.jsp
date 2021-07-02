@@ -24,27 +24,25 @@
         </nav>
     </header>
     <div id="side_navigation">
-        <h1><a href="setup-finish.html">MINPARKANG</a></h1>
+        <h1><a href="/main">MINPARKANG</a></h1>
         <div id="s_nav">
             <ul>
-            	<!-- 로그인 전 -->
-            	<c:if test="${loginuser == null }">
-					<li><a href="/member/login">로그인</a></li>
-					<li><a href="/member/join">회원가입</a></li>
-				</c:if>
-				
-				<!-- 로그인 후 -->
-				<c:if test="${ loginuser!= null }">
-					<c:if test="${ loginuser.adminck ==1 }">
-						<li><a href="/admin/index">관리자화면</a></li>
-					</c:if>
-						<li>${loginuser.userName}님<br>어서오세요.</li>
-						<li><a href="/mypage/myindex">마이페이지</a></li>
-						<li><a href="/member/logout">로그아웃</a></li>
-				</c:if> 
-				
+                <!-- 로그인 전 -->
+                <c:if test="${loginuser == null }">
+                    <li><a href="/member/login">로그인</a></li>
+                    <li><a href="/member/join">회원가입</a></li><br>
+                </c:if>
+                
+                <!-- 로그인 후 -->
+                <c:if test="${ loginuser!= null }">
+                    <li style="font-weight: bold; font-size: 11px;">${loginuser.userName}님 어서오세요.</li><br><br>
+                    <li><a href="/member/logout">로그아웃</a></li>
+                    <li><a href="/mypage/myindex">마이페이지</a></li>
+                    <c:if test="${ loginuser.adminck ==1 }">
+                        <li><a href="/admin/index">관리자화면</a></li>
+                    </c:if>
+                </c:if><br>
                 <li><a href="#">배송조회</a></li>
-                <br>
                 <li><a href="#">장바구니</a></li>
                 <li><a href="#">리뷰</a></li>
                 <li><a href="#">고객센터</a></li><br>
@@ -52,14 +50,14 @@
         </div>
         <div id="s_category">
             <ul>
-                <li>Outer</li>
-                <li>Top</li>
-                <li>Shirts</li>
-                <li>Pants</li>
-                <li>Suit</li>
-                <li>Bag/Shose</li>
-                <li>Acc</li>
-                <li>Sale</li>
+                <li><a href="#">Outer</a></li>
+                <li><a href="#">Top</a></li>
+                <li><a href="#">Shirts</a></li>
+                <li><a href="#">Pants</a></li>
+                <li><a href="#">Suit</a></li>
+                <li><a href="#">Bag/Shose</a></li>
+                <li><a href="#">Acc</a></li>
+                <li><a href="#">Sale</a></li>
             </ul>
 
         </div>
@@ -85,16 +83,23 @@
     </div>
     <div id="contents">
         <h1>BEST SELLER</h1>
-        <div class="side-img">
-            <img src="../images/pic_1.jpg" alt="">
-            <img src="../images/pic_2.jpg" alt="">
-            <img src="../images/pic_3.jpg" alt="">
-        </div>
+        <ul class="side-img show-img">
+            <li><img src="/resources/img/20210625_PC1.jpg" alt=""></li>
+            <li><img src="/resources/img/20210625_PC2.jpg" alt=""></li>
+            <li><img src="/resources/img/20210630_PC1.jpg" alt=""></li>
+        </ul>
         <h1>NEW ARRIVALS & RESTOCK</h1>
-        <div class="side-img">
-            <img src="../images/pic_1.jpg" alt="">
-            <img src="../images/pic_2.jpg" alt="">
-            <img src="../images/pic_3.jpg" alt="">
+        <div id="slide-frame">
+            <ul class="slide-img">
+                <li><img src="/resources/img/slide-img_01.jpg" alt=""></li>
+                <li><img src="/resources/img/slide-img_02.jpg" alt=""></li>
+                <li><img src="/resources/img/slide-img_03.jpg" alt=""></li>
+                <li><img src="/resources/img/slide-img_04.jpg" alt=""></li>
+                <li><img src="/resources/img/slide-img_05.jpg" alt=""></li>
+                <li><img src="/resources/img/slide-img_06.jpg" alt=""></li>
+                <li><img src="/resources/img/slide-img_07.jpg" alt=""></li>
+                <li><img src="/resources/img/slide-img_08.jpg" alt=""></li>
+            </ul>
         </div>
         <div class="product-list">
             <ul>
@@ -256,19 +261,20 @@
                 <p>Lunch time PM 13:00 – 14:00</p>
                 <p>Sat.Sun.Holiday OFF</p>
                 <p>은행정보</p>
-                <p>농협 123-4567-8910-11</p>
-                <p>국민 123-4567-8910-11</p>
-                <p>예금주 : (주) minparkang</p>
+                <p>농협 317-0011-4079-11</p>
+                <p>국민 242437-04-006967</p>
+                <p>예금주 : (주) 모던이프</p>
             </div>
             <div class="footer-text">
-                <P>주식회사 minparkang</P>
-                <p>대표이사 : 민박강 | 이메일 : minparkang@gmail.com</p>
-                <p>16490 경기도 수원시 팔달구 인계8동</p>
-                <p>사업자등록번호 : 123456789 | 통신판매업신고번호 : 2021-더조은-0000호</p>
+                <P>주식회사 모던이프</P>
+                <p>대표이사 : 장재원 | 이메일 : modernif.co.kr@gmail.com</p>
+                <p>16490 경기도 수원시 팔달구 인계동 1031-2 성지빌딩 701호 모던이프</p>
+                <p>사업자등록번호 : 8858800485 [사업자정보확인] | 통신판매업신고번호 : 2017-수원팔달-0059호</p>
                 <p>고객님은 안전거래를 위해 현금 등으로 결제시 저희 쇼핑몰에서 가입한 PG 사의 구매안전서비스를 이용하실 수 있습니다.
-                    KG 이니시스</p>
+                    KG 이니시스 [서비스 가입사실 확인]</p>
             </div>
         </div>
     </div>
+
 </body>
 </html>
