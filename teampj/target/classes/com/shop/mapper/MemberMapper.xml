@@ -49,7 +49,7 @@
 		user_id,user_name,address_num,address,address_detail,phone,email,adminck,reg_date
 		from user
 		<if test="keyword != null">
-			where title like concat('%',#{keyword},'%' )
+			where user_id like concat('%',#{keyword},'%' )
 		</if>
 		order by reg_date
 		asc) as Page limit #{skip},#{amount}
@@ -59,7 +59,7 @@
 	<select id="getTotal" resultType="int">
 		select count(*) from user
 		<if test="keyword != null">
-			where title like concat('%',#{keyword},'%' )
+			where user_id like concat('%',#{keyword},'%' )
 		</if>
 	</select>
 
