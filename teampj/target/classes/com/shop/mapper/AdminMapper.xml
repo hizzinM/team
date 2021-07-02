@@ -18,15 +18,16 @@
 	<!-- 이미지 등록 -->
 	<insert id="imageEnroll">
 		
-		insert into product_img(product_id, fileName, uploadPath, uuid) values (#{productId}, #{fileName}, #{uploadPath}, #{uuid})
+		insert into product_img(product_id, file_name, upload_path, uuid) values (#{productId}, #{fileName}, #{uploadPath}, #{uuid})
 	
 	</insert>
 	
 	<!-- 상품목록 -->
 	<select id="selectproductList" resultType="com.shop.model.Product">
-		select*from product
+	select p.product_id,p.product_name,p.product_price,p.product_size,p.product_color,
+	p.product_inventory,i.file_name,i.upload_path,i.uuid from product p join product_img i on p.product_id=i.product_id
 	</select>
-	<!-- 상품목록 -->
+	<!-- 이미지목록 -->
 	<select id="selectimgList" resultType="com.shop.model.AttachImageVO">
 		select*from product_img
 	</select>

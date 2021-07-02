@@ -3,6 +3,7 @@ package com.shop.mapper;
 import java.util.List;
 
 import com.shop.model.AttachImageVO;
+import com.shop.model.Criteria;
 import com.shop.model.Product;
 
 public interface AdminMapper {

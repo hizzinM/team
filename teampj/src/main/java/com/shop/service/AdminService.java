@@ -3,6 +3,7 @@ package com.shop.service;
 import java.util.List;
 
 import com.shop.model.AttachImageVO;
+import com.shop.model.Criteria;
 import com.shop.model.Product;
 import com.shop.model.User;
 

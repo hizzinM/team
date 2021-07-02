@@ -42,43 +42,32 @@ th {
 			<h2>상품관리</h2>
 		</div>
 		<div align="center">
-			<table class="goods_table">
+			<table>
 				<thead>
 					<tr>
-						<th class="form_section">ID</th>
-						<th class="form_section">상품이미지</th>
-						<th class="form_section">상품명</th>
-						<th class="form_section">가격</th>
-						<th class="form_section">사이즈</th>
-						<th class="form_section">색깔</th>
-						<th class="form_section">재고</th>
+						<th class="username_width">ID</th>
+						<th class="userid_width">상품이미지</th>
+						<th class="userphone_width">상품명</th>
+						<th class="useremail_width">가격</th>
+						<th class="useraddress_width">사이즈</th>
+						<th class="useregdate_width">색깔</th>
+						<th class="useregdate_width">재고</th>
 					</tr>
 				</thead>
 				
-				<c:if test="${productList.productId == ${list.productId}">
-	                    	<table class="goods_table">
-	                    		<thead>
-	                    			<tr>
-										<td class="th_column_1">상품 번호</td>
-	                    				<td class="th_column_2">상품 이름</td>
-	                    				<td class="th_column_3">작가 이름</td>
-	                    				<td class="th_column_4">카테고리</td>
-	                    				<td class="th_column_5">재고</td>
-	                    				<td class="th_column_6">등록날짜</td>
-	                    			</tr>
-	                    		</thead>	
-	                    		<c:forEach items="${productList}" var="product">
-	                    		<tr>
-	                    			<td><c:out value="${product.productId}"></c:out></td>
-	                    			<td><img src="/resources/upload/${list.uploadPath}//${list.uuid}_${list.fileName}" width="300px"></td>
-	                    			<td><c:out value="${product.productName}"></c:out></td>
-	                    			<td><c:out value="${product.productSize}"></c:out></td>
-	                    			<td><c:out value="${product.productColor}"></c:out></td>
-	                    			<td><c:out value="${product.productInventory}"></c:out></td>
-	                    		</tr>
-	                    		</c:forEach>
-	                    	</table>
-	                    </c:if>
+				<c:forEach items="${productList}" var="product">
+
+		
+				<tr>
+					<td><c:out value="${product.productId}"/></td>
+					<td><img src="/resources/upload/${product.uploadPath}/${product.uuid}_${product.fileName}" width="200px" height="200px"></td>
+					<td><c:out value="${product.productName}"/></td>
+					<td><c:out value="${product.productPrice}"/></td>
+					<td><c:out value="${product.productSize}"/></td>
+					<td><c:out value="${product.productColor}"/></td>
+					<td><c:out value="${product.productInventory}"/></td>
+				</tr>
+				</c:forEach>
 			</table>
 
 

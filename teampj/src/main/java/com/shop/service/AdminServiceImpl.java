@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shop.mapper.AdminMapper;
 import com.shop.model.AttachImageVO;
+import com.shop.model.Criteria;
 import com.shop.model.Product;
 
 @Service
@@ -38,10 +39,10 @@ public class AdminServiceImpl implements AdminService {
 			adminMapper.imageEnroll(attach);
 		});
 	}
-
+	/*상품리스트*/
 	@Override
 	public List<Product> selectproductList() {
-		
+		logger.info("selectproductList()......");
 		return adminMapper.selectproductList();
 	}
 	

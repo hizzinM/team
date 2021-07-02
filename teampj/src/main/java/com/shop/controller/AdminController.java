@@ -103,6 +103,7 @@ public class AdminController {
 		logger.info("goodsmenuPOST......" + product);
 
 		adminService.insertpro(product);
+		
 		rttr.addFlashAttribute("insert_result", product.getProductName());
 
 		return "redirect:/admin/goodsmenu";
@@ -112,9 +113,9 @@ public class AdminController {
 	@RequestMapping(value = "goodsmanage", method = RequestMethod.GET)
 	public void goodsmanage(Model model) throws Exception {
 		logger.info("상품관리 페이지 접속");
-		List<AttachImageVO> list = adminService.selectimgList();
+		
 		model.addAttribute("productList", adminService.selectproductList());
-		model.addAttribute("list", list);
+	
 	}
 
 	// 문의관리 페이지 이동
