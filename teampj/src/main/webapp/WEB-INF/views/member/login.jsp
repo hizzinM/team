@@ -106,7 +106,7 @@
                         <!--   <div class="login_button_wrap">-->
                         <input type="button" class="join_button text-deco" value="JOIN" onClick="location.href='/member/join'">
                         <a href='/member/findid' class="text-deco">FORGOT ID</a>
-                        <a href='/member/findid' class="text-deco">FORGOT PW</a>
+                        <a href='/member/find_pw' class="text-deco">FORGOT PW</a>
                         <input type="button" class="login_button text-deco" value="LOGIN">
                             
                         <li id="GgCustomLogin">
