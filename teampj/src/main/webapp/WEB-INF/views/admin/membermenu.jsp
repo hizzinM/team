@@ -172,7 +172,6 @@ a:hover {
 			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
 			<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
 			<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
-			<input type="hidden" name="keyword" value="${cri.keyword }">
 		</form>
 
 		<script>
@@ -189,8 +188,11 @@ a:hover {
 
 			$(".search_area button").on("click", function(e) {
 				e.preventDefault();
-				let val = $("input[name='keyword']").val();
-				moveForm.find("input[name='keyword']").val(val);
+
+				let type = $(".search_area select").val();
+				let keyword = $(".search_area input[name='keyword']").val();
+
+				moveForm.find("input[name='keyword']").val(keyword);
 				moveForm.find("input[name='pageNum']").val(1);
 				moveForm.submit();
 			});
