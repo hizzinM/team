@@ -22,5 +22,6 @@ public interface AdminMapper {
 	/* 상품 수정조회페이지이동 */
 	public Product goodsUpdateId(int productId);
 	/* 상품 수정 페이지 */
-	public Product goodsUpdateProduct(Product product);
+	public int goodsUpdateProduct(Product product);
+	public int goodsUpdateProductImg(AttachImageVO attachImageVO);
 }

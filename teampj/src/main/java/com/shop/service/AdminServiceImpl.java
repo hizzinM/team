@@ -70,11 +70,20 @@ public class AdminServiceImpl implements AdminService {
 	
 	/* 상품 수정 페이지 */
 	@Override
-	public Product goodsUpdateProduct(Product product) {
+	public int goodsUpdateProduct(Product product) {
 		logger.info("(service)goodsUpdateProduct........");
-		
+			adminMapper.goodsUpdateProduct(product);
+			
+			
 		return adminMapper.goodsUpdateProduct(product);
 		
 		
 	}
+	@Override
+	public int goodsUpdateProductImg(AttachImageVO attachImageVO) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
 }

@@ -152,9 +152,10 @@ public class AdminController {
 	}
     
 	@PostMapping("/Update")
-	public String goodsProductUpdate(Product product,RedirectAttributes rttr) {
+	public String goodsProductUpdate(RedirectAttributes rttr,Product product) {
 	adminService.goodsUpdateProduct(product);
-	rttr.addFlashAttribute("resultProduct","resultProduct");
+	System.out.println(adminService.goodsUpdateProduct(product));
+	rttr.addFlashAttribute("resultProduct","resultProduct success");
 	return "/admin/result";
 	}
 

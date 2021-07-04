@@ -50,12 +50,11 @@
 	
 	</select>
 	
-	<update id="goodsUpdateProduct" parameterType="com.shop.model.Product">
+	<update id="goodsUpdateProduct">
 	update product set  product_name=#{productName},
 	product_price=#{productPrice},product_size=#{productSize},product_color=#{productColor},
 	product_inventory=#{productInventory} where product_id=#{productId};
 	</update>
-	
 	<update id="goodsUpdateProductImg">
 	update product_img set file_name=#{fileName},upload_path=#{uploadPath},uuid=#{uuid} where product_id=#{productId}
 	</update>

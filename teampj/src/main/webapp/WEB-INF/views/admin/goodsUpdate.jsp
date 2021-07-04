@@ -56,12 +56,12 @@ th {
 				</thead>
 				<tr>
 					<td><input type="text" readonly="readonly" name="productId" value="${goodsUpdateData.productId}"/></td>
-					<td><input type="file" name="productName" value=<img src="/resources/upload/${goodsUpdateData.uploadPath}/${goodsUpdateData.uuid}_${goodsUpdateData.fileName}" width="200px" height="200px""/>></td>
+					<td><img src="/resources/upload/${goodsUpdateData.uploadPath}/${goodsUpdateData.uuid}_${goodsUpdateData.fileName}" width="200px" height="200px"/></td>
 					<td><input type="text" name="productName" value="${goodsUpdateData.productName}"/></td>
-					<td><input type="text" name="productName" value="${goodsUpdateData.productPrice}"/></td>
-					<td><input type="text" name="productName" value="${goodsUpdateData.productSize}"/></td>
-					<td><input type="text" name="productName" value="${goodsUpdateData.productColor}"/></td>
-					<td><input type="text" name="productName" value="${goodsUpdateData.productInventory}"/></td>
+					<td><input type="text" name="productPrice" value="${goodsUpdateData.productPrice}"/></td>
+					<td><input type="text" name="productSize" value="${goodsUpdateData.productSize}"/></td>
+					<td><input type="text" name="productColor" value="${goodsUpdateData.productColor}"/></td>
+					<td><input type="text" name="productInventory" value="${goodsUpdateData.productInventory}"/></td>
 				</tr>
 				
 			</table><br>

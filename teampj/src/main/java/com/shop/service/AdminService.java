@@ -19,8 +19,8 @@ public interface AdminService {
 	/* 상품 조회 수정 페이지 */
 	public Product goodsUpdateId(int productId);	
 	/* 상품 수정 페이지 */
-	public Product goodsUpdateProduct(Product product);
-	
+	public int goodsUpdateProduct(Product product);
+	public int goodsUpdateProductImg(AttachImageVO attachImageVO);
 	/*상품삭제*/
 	public int deleterProdect(String productId);
 	
