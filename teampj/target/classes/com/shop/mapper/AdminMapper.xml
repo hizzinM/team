@@ -41,15 +41,24 @@
 	</delete>
 	
 	
-	<!-- 상품 조회 페이지 -->
+	<!-- 상품 수정 조회 페이지 -->
 	
-	<select id="goodsUpdate" resultType="com.shop.model.Product">
+	<select id="goodsUpdateId" resultType="com.shop.model.Product">
 	
 	select p.product_id,p.product_name,p.product_price,p.product_size,p.product_color,
 	p.product_inventory,i.file_name,i.upload_path,i.uuid from product p join product_img i on p.product_id=i.product_id where  p.product_id = #{productId}
 	
 	</select>
 	
+	<update id="goodsUpdateProduct" parameterType="com.shop.model.Product">
+	update product set  product_name=#{productName},
+	product_price=#{productPrice},product_size=#{productSize},product_color=#{productColor},
+	product_inventory=#{productInventory} where product_id=#{productId};
+	</update>
+	
+	<update id="goodsUpdateProductImg">
+	update product_img set file_name=#{fileName},upload_path=#{uploadPath},uuid=#{uuid} where product_id=#{productId}
+	</update>
 	
 	
 		

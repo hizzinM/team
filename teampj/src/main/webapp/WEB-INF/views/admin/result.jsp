@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품 수정</title>
+<title>상품 수정결과</title>
 <link rel="stylesheet" href="/resources/css/admin/index.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -37,10 +37,9 @@ th {
 	<section id="container">
 	<div id="container_box" align="center">
 			<div>&nbsp;</div>
-			<h2>상품수정</h2>
+			<h2>상품수정결과</h2>
 		</div>
 		<div align="center">
-		<form action="/admin/Update" method="post">
 			<table>
 				<thead>
 					<tr>
@@ -55,17 +54,17 @@ th {
 					</tr>
 				</thead>
 				<tr>
-					<td><input type="text" readonly="readonly" name="productId" value="${goodsUpdateData.productId}"/></td>
-					<td><input type="file" name="productName" value=<img src="/resources/upload/${goodsUpdateData.uploadPath}/${goodsUpdateData.uuid}_${goodsUpdateData.fileName}" width="200px" height="200px""/>></td>
-					<td><input type="text" name="productName" value="${goodsUpdateData.productName}"/></td>
-					<td><input type="text" name="productName" value="${goodsUpdateData.productPrice}"/></td>
-					<td><input type="text" name="productName" value="${goodsUpdateData.productSize}"/></td>
-					<td><input type="text" name="productName" value="${goodsUpdateData.productColor}"/></td>
-					<td><input type="text" name="productName" value="${goodsUpdateData.productInventory}"/></td>
+					<td>${resultProduct.productId}</td>
+					<td><img src="/resources/upload/${resultProduct.uploadPath}/${resultProduct.uuid}_${resultProduct.fileName}" width="200px" height="200px"></td>
+					<td>${resultProduct.productName}</td>
+					<td>${resultProduct.productPrice}</td>
+					<td>${resultProduct.productSize}</td>
+					<td>${resultProduct.productColor}</td>
+					<td>${resultProduct.productInventory}</td>
 				</tr>
 				
-			</table><br>
-			<input type="submit" value="수정하기">
+			</table>
+			
 		</form>
 	</div>
 	

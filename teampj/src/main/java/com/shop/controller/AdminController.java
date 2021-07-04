@@ -140,22 +140,23 @@ public class AdminController {
 		
 		
 		
-		Product result=adminService.goodsUpdate(productId);
+		Product result=adminService.goodsUpdateId(productId);
 		System.out.println(result);
 		/* 목록 페이지 조건 정보 */
 		model.addAttribute("cri", cri);
 		
 		/* 조회 페이지 정보 */
-		model.addAttribute("goodsInfo", adminService.goodsUpdate(productId));
+		model.addAttribute("goodsUpdateData", adminService.goodsUpdateId(productId));
 		
 		return "/admin/goodsUpdate";
 	}
     
-
-
-	
-	
-	
+	@PostMapping("/Update")
+	public String goodsProductUpdate(Product product,RedirectAttributes rttr) {
+	adminService.goodsUpdateProduct(product);
+	rttr.addFlashAttribute("resultProduct","resultProduct");
+	return "/admin/result";
+	}
 
 	// 문의관리 페이지 이동
 	@RequestMapping(value = "qnamenu", method = RequestMethod.GET)

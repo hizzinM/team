@@ -51,12 +51,12 @@ public class AdminServiceImpl implements AdminService {
 		return adminMapper.selectimgList();
 	}
 	
-	/* 상품 조회 페이지 */
+	/* 상품 수정 조회 페이지 */
 	@Override
-	public Product goodsUpdate(int productId) {
+	public Product goodsUpdateId(int productId) {
 		
 		logger.info("(service)goodsGetDetail......." + productId);
-		return adminMapper.goodsUpdate(productId);
+		return adminMapper.goodsUpdateId(productId);
 	}	
 	
 	/*상품삭제*/
@@ -66,5 +66,15 @@ public class AdminServiceImpl implements AdminService {
 		adminMapper.deleterProdectImg(productId);
 		
 		return adminMapper.deleterProdect(productId);
+	}
+	
+	/* 상품 수정 페이지 */
+	@Override
+	public Product goodsUpdateProduct(Product product) {
+		logger.info("(service)goodsUpdateProduct........");
+		
+		return adminMapper.goodsUpdateProduct(product);
+		
+		
 	}
 }

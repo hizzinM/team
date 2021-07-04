@@ -72,7 +72,7 @@ th {
 				</tr>
 				</c:forEach>
 			</table>
-			<input type="button" value="회원삭제" class="deletebutton" onclick="deleteValue();">
+			<input type="button" value="물건삭제" class="deletebutton" onclick="deleteValue();">
 		</div>
 	</section>
 <script type="text/javascript">

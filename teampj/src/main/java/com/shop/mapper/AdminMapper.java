@@ -19,6 +19,8 @@ public interface AdminMapper {
 	/*상품삭제*/
 	public int deleterProdect(String productId);
 	public int deleterProdectImg(String productId);
-	/* 상품 조회 페이지 */
-	public Product goodsUpdate(int productId);
+	/* 상품 수정조회페이지이동 */
+	public Product goodsUpdateId(int productId);
+	/* 상품 수정 페이지 */
+	public Product goodsUpdateProduct(Product product);
 }
