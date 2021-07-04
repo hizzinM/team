@@ -16,4 +16,9 @@ public interface AdminMapper {
 	public List<Product> selectproductList();
 	/*이미지 목록*/
 	public List<AttachImageVO> selectimgList();
+	/*상품삭제*/
+	public int deleterProdect(String productId);
+	public int deleterProdectImg(String productId);
+	/* 상품 조회 페이지 */
+	public Product goodsUpdate(int productId);
 }

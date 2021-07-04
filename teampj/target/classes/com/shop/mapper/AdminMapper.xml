@@ -32,5 +32,25 @@
 		select*from product_img
 	</select>
 	
+	<delete id="deleterProdect">
+		delete from product where product_id = #{productId}
+	</delete>
+	
+	<delete id="deleterProdectImg">
+		delete from product_img where product_id = #{productId}
+	</delete>
+	
+	
+	<!-- 상품 조회 페이지 -->
+	
+	<select id="goodsUpdate" resultType="com.shop.model.Product">
+	
+	select p.product_id,p.product_name,p.product_price,p.product_size,p.product_color,
+	p.product_inventory,i.file_name,i.upload_path,i.uuid from product p join product_img i on p.product_id=i.product_id where  p.product_id = #{productId}
+	
+	</select>
+	
+	
+	
 		
 </mapper>

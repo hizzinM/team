@@ -12,6 +12,7 @@ public class Product {
 	private String fileName;
 	private String uploadPath;
 	private String uuid;
+	private int[] noList;
 	private List<AttachImageVO> imageList;
 	public Product() {
 		super();
@@ -86,6 +87,12 @@ public class Product {
 	}
 	public void setImageList(List<AttachImageVO> imageList) {
 		this.imageList = imageList;
+	}
+	public int[] getNoList() {
+		return noList;
+	}
+	public void setNoList(int[] noList) {
+		this.noList = noList;
 	}
 	@Override
 	public String toString() {

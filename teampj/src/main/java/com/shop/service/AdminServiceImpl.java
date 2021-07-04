@@ -50,5 +50,21 @@ public class AdminServiceImpl implements AdminService {
 	public List<AttachImageVO> selectimgList(){
 		return adminMapper.selectimgList();
 	}
-
+	
+	/* 상품 조회 페이지 */
+	@Override
+	public Product goodsUpdate(int productId) {
+		
+		logger.info("(service)goodsGetDetail......." + productId);
+		return adminMapper.goodsUpdate(productId);
+	}	
+	
+	/*상품삭제*/
+	@Override 
+	public int deleterProdect(String productId) {
+		
+		adminMapper.deleterProdectImg(productId);
+		
+		return adminMapper.deleterProdect(productId);
+	}
 }

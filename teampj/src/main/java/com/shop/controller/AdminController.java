@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,10 +23,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -117,6 +120,42 @@ public class AdminController {
 		model.addAttribute("productList", adminService.selectproductList());
 	
 	}
+	 //게시물 선택삭제
+    @RequestMapping(value = "/delete")
+    public String ajaxTest(HttpServletRequest request) throws Exception {
+            
+        String[] ajaxMsg = request.getParameterValues("valueArr");
+        int size = ajaxMsg.length;
+        for(int i=0; i<size; i++) {
+        	adminService.deleterProdect(ajaxMsg[i]);
+        	System.out.println(ajaxMsg[i]);
+        }
+        return "redirect:/admin/goodsmanage";
+    }
+    /* 상품 수정 페이지 */
+	@GetMapping("/Update")
+	public String goodsGetInfoGET(int productId, Criteria cri, Model model) {
+		
+		logger.info("goodsGetInfo()........." + productId);
+		
+		
+		
+		Product result=adminService.goodsUpdate(productId);
+		System.out.println(result);
+		/* 목록 페이지 조건 정보 */
+		model.addAttribute("cri", cri);
+		
+		/* 조회 페이지 정보 */
+		model.addAttribute("goodsInfo", adminService.goodsUpdate(productId));
+		
+		return "/admin/goodsUpdate";
+	}
+    
+
+
+	
+	
+	
 
 	// 문의관리 페이지 이동
 	@RequestMapping(value = "qnamenu", method = RequestMethod.GET)
