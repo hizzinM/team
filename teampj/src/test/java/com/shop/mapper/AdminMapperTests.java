@@ -56,7 +56,7 @@ public class AdminMapperTests {
 		Criteria cri=new Criteria();
 		cri.setKeyword("테스트");
 		
-		List list=mapper.selectproductList();
+		List list=mapper.selectproductList(cri);
 		for(int i = 0; i < list.size(); i++) {
 			System.out.println("result......." + i + " : " + list.get(i));
 		}

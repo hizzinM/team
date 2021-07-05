@@ -93,7 +93,7 @@
 
 			<div>
 				<a class="btn" id="modify_btn">수정 완료</a> <a class="btn"
-					id="cancel_btn">수정 취소</a>  
+					id="cancel_btn">수정 취소</a>
 			</div>
 	</form>
 	<form id="infoForm" action="/mypage/profileUpdate" method="get">
