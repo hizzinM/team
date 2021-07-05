@@ -118,7 +118,7 @@ public class AdminController {
 		List list = adminService.selectproductList(cri);
 		
 		if(!list.isEmpty()) {
-			model.addAttribute("list", list);
+			model.addAttribute("produstList", list);
 		} else {
 		model.addAttribute("listCheck", "empty");
 			return;

@@ -35,7 +35,7 @@ public class AdminServiceImpl implements AdminService {
 		});
 	}
 
-	/* 상품리스트 */
+	/* 상품리스트(페이징) */
 	@Override
 	public List<Product> selectproductList(Criteria cri) {
 		logger.info("selectproductList()......");
