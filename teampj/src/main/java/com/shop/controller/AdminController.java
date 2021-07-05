@@ -83,7 +83,7 @@ public class AdminController {
 		String[] ajaxMsg = request.getParameterValues("valueArr");
 		int size = ajaxMsg.length;
 		for (int i = 0; i < size; i++) {
-			adminService.deleterProdect(ajaxMsg[i]);
+			adminService.userDelete(ajaxMsg[i]);
 			System.out.println(ajaxMsg[i]);
 		}
 		return "redirect:/admin/membermenu";
