@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
-<link rel="stylesheet" href="/resources/css/member/find_style.css" >
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href="/resources/css/member/find_style.css">
 <script>
 	$(function(){
 		$("#findBtn").click(function(){
@@ -31,7 +31,7 @@
 <title>비밀번호 찾기</title>
 </head>
 <body>
-<header>
+    <header>
         <nav>
             <!--
             <ul>
