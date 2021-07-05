@@ -22,7 +22,6 @@ public class AdminServiceImpl implements AdminService {
 	private AdminMapper adminMapper;
 
 	/* 상품 등록 */
-
 	@Override
 	public void insertpro(Product product) {
 		logger.info("(service)insertpro........");
@@ -38,23 +37,29 @@ public class AdminServiceImpl implements AdminService {
 
 	/* 상품리스트 */
 	@Override
-	public List<Product> selectproductList() {
+	public List<Product> selectproductList(Criteria cri) {
 		logger.info("selectproductList()......");
-		return adminMapper.selectproductList();
+		return adminMapper.selectproductList(cri);
 	}
-
+	/* 상품 총 갯수 */
+	public int goodsGetTotal(Criteria cri) {
+		logger.info("goodsGetTotal().........");
+		return adminMapper.goodsGetTotal(cri);
+	}
+	
+	/* 상품이미지 리스트 */
 	@Override
 	public List<AttachImageVO> selectimgList() {
 		return adminMapper.selectimgList();
 	}
-
+	
 	/* 상품 수정 조회 페이지 */
 	@Override
 	public Product goodsUpdateId(int productId) {
 		logger.info("(service)goodsGetDetail......." + productId);
 		return adminMapper.goodsUpdateId(productId);
 	}
-
+	
 	/* 상품삭제 */
 	@Override
 	public int deleterProdect(String productId) {
@@ -74,12 +79,11 @@ public class AdminServiceImpl implements AdminService {
 		logger.info("(service)goodsUpdateProduct........");
 		adminMapper.goodsUpdateProduct(product);
 		return adminMapper.goodsUpdateProduct(product);
-
 	}
-
+	
 	@Override
-	public int goodsUpdateProductImg(AttachImageVO attachImageVO) {
+	public int goodsUpdateProductImg(AttachImageVO vo) {
 		// TODO Auto-generated method stub
 		return 0;
-	} 
+	}
 }

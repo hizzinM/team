@@ -33,7 +33,27 @@
 		p.product_id,p.product_name,p.product_price,p.product_size,p.product_color,
 		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
 		join product_img i on p.product_id=i.product_id
+		<if test="keyword != null">
+			where (product_name like concat ('%', #{keyword}, '%'))
+		</if>
+		order by product_id desc 
+		limit #{skip}, #{amount}		
 	</select>
+	<!-- 상품 총 갯수 -->
+  	<select id="goodsGetTotal" resultType="int">
+  	
+  		select count(*) from product
+  		
+  		<if test="keyword != null">
+  		
+  			where product_name like concat('%' , #{keyword}, '%')
+  		
+  		</if>
+  	
+  	</select>
+	
+	
+	
 	<!-- 이미지목록 -->
 	<select id="selectimgList"
 		resultType="com.shop.model.AttachImageVO">

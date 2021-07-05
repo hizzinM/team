@@ -15,9 +15,6 @@ public interface AdminMapper {
 	/* 이미지 등록 */
 	public void imageEnroll(AttachImageVO vo);
 
-	/* 상품 목록 */
-	public List<Product> selectproductList();
-
 	/* 이미지 목록 */
 	public List<AttachImageVO> selectimgList();
 
@@ -27,14 +24,25 @@ public interface AdminMapper {
 	// 상품이미지삭제
 	public int deleterProdectImg(String productId);
 
+
 	/* 회원삭제 */
 	public int userDelete(String userId);
 
 	/* 상품 수정조회페이지이동 */
-	public Product goodsUpdateId(int productId);
 
+	public Product goodsUpdateId(int productId);
+	
+	/* 상품 총 개수 */
+	public int goodsGetTotal(Criteria cri);
+	
+	/* 상품 목록 */
+	public List<Product> selectproductList(Criteria cri);
+	
 	/* 상품 수정 페이지 */
 	public int goodsUpdateProduct(Product product);
 
-	public int goodsUpdateProductImg(AttachImageVO attachImageVO); 
+	public int goodsUpdateProductImg(AttachImageVO vo);
+
+
+
 }

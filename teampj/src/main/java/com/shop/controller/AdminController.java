@@ -112,14 +112,23 @@ public class AdminController {
 
 	// 상품관리 페이지 이동
 	@RequestMapping(value = "goodsmanage", method = RequestMethod.GET)
-	public void goodsmanage(Model model) throws Exception {
+	public void goodsmanage(Criteria cri,Model model) throws Exception {
 		logger.info("상품관리 페이지 접속");
-
-		model.addAttribute("productList", adminService.selectproductList());
+		/* 상품 리스트 데이터 */
+		List list = adminService.selectproductList(cri);
+		
+		if(!list.isEmpty()) {
+			model.addAttribute("list", list);
+		} else {
+		model.addAttribute("listCheck", "empty");
+			return;
+		}
+		/* 페이지 인터페이스 데이터 */
+		model.addAttribute("pageMaker", new PageMakerDTO(cri, adminService.goodsGetTotal(cri)));;
 
 	}
 
-	// 게시물 선택삭제
+	// 상품 선택삭제
 	@RequestMapping(value = "/delete")
 	public String ajaxTest(HttpServletRequest request) throws Exception {
 
@@ -132,7 +141,7 @@ public class AdminController {
 		return "redirect:/admin/goodsmanage";
 	}
 
-	/* 상품 수정 페이지 */
+	/* 상품 수정 페이지이동 */
 	@GetMapping("/Update")
 	public String goodsGetInfoGET(int productId, Criteria cri, Model model) {
 
@@ -148,8 +157,16 @@ public class AdminController {
 
 		return "/admin/goodsUpdate";
 	}
-
+	/* 상품 수정 */
 	@PostMapping("/Update")
+	public String goodsProductUpdate(RedirectAttributes rttr,Product product,AttachImageVO vo,MultipartFile file) {
+	adminService.goodsUpdateProduct(product);
+	System.out.println(adminService.goodsUpdateProduct(product));
+	rttr.addFlashAttribute("resultProduct","resultProduct success");
+	return "/admin/result";
+	}
+	
+
 
 //	public String goodsProductUpdate(RedirectAttributes rttr, Product product, MultipartFile file,
 //			AttachImageVO attachImageVO) {
@@ -159,14 +176,7 @@ public class AdminController {
 //		return "/admin/result";
 //	}
 
-	public String goodsProductUpdate(RedirectAttributes rttr, Product product) {
-		adminService.goodsUpdateProduct(product);
-		System.out.println(adminService.goodsUpdateProduct(product));
-		rttr.addFlashAttribute("resultProduct", "resultProduct success");
-		return "/admin/goodsmanage";
-
-	}
-
+	
 	// 문의관리 페이지 이동
 	@RequestMapping(value = "qnamenu", method = RequestMethod.GET)
 	public void getqnamenu() throws Exception {
