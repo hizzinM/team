@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shop.mapper.AdminMapper;
 import com.shop.model.AttachImageVO;
+import com.shop.model.Criteria;
 import com.shop.model.Product;
 
 @Service
@@ -38,10 +39,10 @@ public class AdminServiceImpl implements AdminService {
 			adminMapper.imageEnroll(attach);
 		});
 	}
-
+	/*상품리스트*/
 	@Override
 	public List<Product> selectproductList() {
-		
+		logger.info("selectproductList()......");
 		return adminMapper.selectproductList();
 	}
 	
@@ -49,5 +50,40 @@ public class AdminServiceImpl implements AdminService {
 	public List<AttachImageVO> selectimgList(){
 		return adminMapper.selectimgList();
 	}
-
+	
+	/* 상품 수정 조회 페이지 */
+	@Override
+	public Product goodsUpdateId(int productId) {
+		
+		logger.info("(service)goodsGetDetail......." + productId);
+		return adminMapper.goodsUpdateId(productId);
+	}	
+	
+	/*상품삭제*/
+	@Override 
+	public int deleterProdect(String productId) {
+		
+		adminMapper.deleterProdectImg(productId);
+		
+		return adminMapper.deleterProdect(productId);
+	}
+	
+	/* 상품 수정 페이지 */
+	@Override
+	public int goodsUpdateProduct(Product product) {
+		logger.info("(service)goodsUpdateProduct........");
+			adminMapper.goodsUpdateProduct(product);
+			
+			
+		return adminMapper.goodsUpdateProduct(product);
+		
+		
+	}
+	@Override
+	public int goodsUpdateProductImg(AttachImageVO attachImageVO) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
 }

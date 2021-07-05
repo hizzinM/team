@@ -9,12 +9,16 @@ public class Product {
 	private String productSize;
 	private String productColor;
 	private int productInventory;
+	private String fileName;
+	private String uploadPath;
+	private String uuid;
+	private int[] noList;
 	private List<AttachImageVO> imageList;
 	public Product() {
 		super();
 	}
-	public Product(int productId, String productName, String productPrice, String productSize,
-			String productColor, int productInventory) {
+	public Product(int productId, String productName, String productPrice, String productSize, String productColor,
+			int productInventory) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
@@ -22,6 +26,7 @@ public class Product {
 		this.productSize = productSize;
 		this.productColor = productColor;
 		this.productInventory = productInventory;
+	
 	}
 	public int getProductId() {
 		return productId;
@@ -59,16 +64,43 @@ public class Product {
 	public void setProductInventory(int productInventory) {
 		this.productInventory = productInventory;
 	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getUploadPath() {
+		return uploadPath;
+	}
+	public void setUploadPath(String uploadPath) {
+		this.uploadPath = uploadPath;
+	}
+	public String getUuid() {
+		return uuid;
+	}
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
 	public List<AttachImageVO> getImageList() {
 		return imageList;
 	}
 	public void setImageList(List<AttachImageVO> imageList) {
 		this.imageList = imageList;
 	}
+	public int[] getNoList() {
+		return noList;
+	}
+	public void setNoList(int[] noList) {
+		this.noList = noList;
+	}
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", productName=" + productName + ",productPrice=" + productPrice + ", productSize=" + productSize + ", productColor=" + productColor
-				+ ", productInventory=" + productInventory + ", imageList=" + imageList + "]";
+		return "Product [productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice
+				+ ", productSize=" + productSize + ", productColor=" + productColor + ", productInventory="
+				+ productInventory + ", fileName=" + fileName + ", uploadPath=" + uploadPath + ", uuid=" + uuid
+				+ ", imageList=" + imageList + "]";
 	}
+	
 	
 }

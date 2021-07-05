@@ -30,7 +30,7 @@ public class MainController {
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> getImage(String fileName){
 		logger.info("getImage()........"+ fileName);
-		File file = new File("c:\\upload\\" + fileName);
+		File file = new File("C:\\git\\team\\teampj\\src\\main\\webapp\\resources\\upload\\" + fileName);
 		
 		ResponseEntity<byte[]> result = null;
 		

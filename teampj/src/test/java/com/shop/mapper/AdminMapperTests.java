@@ -1,5 +1,7 @@
 package com.shop.mapper;
 
+import java.util.List;
+
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.shop.model.AttachImageVO;
+import com.shop.model.Criteria;
 import com.shop.model.Product;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -48,5 +51,17 @@ public class AdminMapperTests {
 		mapper.imageEnroll(vo);
 		
 	}
- 
+	@Test@Ignore
+	public void selectproductList() {
+		Criteria cri=new Criteria();
+		cri.setKeyword("테스트");
+		
+		List list=mapper.selectproductList();
+		for(int i = 0; i < list.size(); i++) {
+			System.out.println("result......." + i + " : " + list.get(i));
+		}
+		
+	}
+
+
 }

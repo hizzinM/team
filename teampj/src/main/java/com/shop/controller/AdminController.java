@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,10 +23,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -78,7 +81,7 @@ public class AdminController {
 	public void getmemberList(Model model, Criteria cri) {
 		logger.info("회원 목록 페이지");
 		model.addAttribute("membermenu", memberservice.getListPaging(cri));
-		int total = memberservice.getTotal();
+		int total = memberservice.getTotal(cri);
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
 
@@ -103,6 +106,7 @@ public class AdminController {
 		logger.info("goodsmenuPOST......" + product);
 
 		adminService.insertpro(product);
+		
 		rttr.addFlashAttribute("insert_result", product.getProductName());
 
 		return "redirect:/admin/goodsmenu";
@@ -112,9 +116,47 @@ public class AdminController {
 	@RequestMapping(value = "goodsmanage", method = RequestMethod.GET)
 	public void goodsmanage(Model model) throws Exception {
 		logger.info("상품관리 페이지 접속");
-		List<AttachImageVO> list = adminService.selectimgList();
+		
 		model.addAttribute("productList", adminService.selectproductList());
-		model.addAttribute("list", list);
+	
+	}
+	 //게시물 선택삭제
+    @RequestMapping(value = "/delete")
+    public String ajaxTest(HttpServletRequest request) throws Exception {
+            
+        String[] ajaxMsg = request.getParameterValues("valueArr");
+        int size = ajaxMsg.length;
+        for(int i=0; i<size; i++) {
+        	adminService.deleterProdect(ajaxMsg[i]);
+        	System.out.println(ajaxMsg[i]);
+        }
+        return "redirect:/admin/goodsmanage";
+    }
+    /* 상품 수정 페이지 */
+	@GetMapping("/Update")
+	public String goodsGetInfoGET(int productId, Criteria cri, Model model) {
+		
+		logger.info("goodsGetInfo()........." + productId);
+		
+		
+		
+		Product result=adminService.goodsUpdateId(productId);
+		System.out.println(result);
+		/* 목록 페이지 조건 정보 */
+		model.addAttribute("cri", cri);
+		
+		/* 조회 페이지 정보 */
+		model.addAttribute("goodsUpdateData", adminService.goodsUpdateId(productId));
+		
+		return "/admin/goodsUpdate";
+	}
+    
+	@PostMapping("/Update")
+	public String goodsProductUpdate(RedirectAttributes rttr,Product product) {
+	adminService.goodsUpdateProduct(product);
+	System.out.println(adminService.goodsUpdateProduct(product));
+	rttr.addFlashAttribute("resultProduct","resultProduct success");
+	return "/admin/result";
 	}
 
 	// 문의관리 페이지 이동
@@ -153,7 +195,7 @@ public class AdminController {
 			}
 
 		}
-		String uploadFolder = "C:\\Users\\wwhhp\\git\\team\\teampj\\src\\main\\webapp\\resources\\image\\upload";
+		String uploadFolder = "C:\\git\\team\\teampj\\src\\main\\webapp\\resources\\upload";
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -242,7 +284,8 @@ public class AdminController {
 
 		try {
 			/* 썸네일 파일 삭제 */
-			file = new File("C:\\Users\\wwhhp\\git\\team\\teampj\\src\\main\\webapp\\resources\\image\\upload" + URLDecoder.decode(fileName, "UTF-8"));
+			file = new File("C:\\git\\team\\teampj\\src\\main\\webapp\\resources\\upload"
+					+ URLDecoder.decode(fileName, "UTF-8"));
 
 			file.delete();
 

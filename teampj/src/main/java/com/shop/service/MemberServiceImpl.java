@@ -70,8 +70,8 @@ public class MemberServiceImpl implements MemberService {
 
 	// 총회원수
 	@Override
-	public int getTotal() {
-		return membermapper.getTotal();
+	public int getTotal(Criteria cri) {
+		return membermapper.getTotal(cri);
 	}
 
 	// 회원정보 조회
