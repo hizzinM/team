@@ -11,13 +11,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
-<script type="text/javascript"
-	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
-	charset="utf-8"></script>
-<script src="https://apis.google.com/js/platform.js?onload=init"
-	asyncdefer></script>
-<meta name="google-signin-client_id"
-	content="520156142234-t6mlg5l5d2tl2fpclqivv15i5llu4ktq.apps.googleusercontent.com">
 </head>
 <body>
 	<!--상단 툴바-->
@@ -131,6 +124,7 @@
 			</div>
 		</div>
 	</div>
+
 	<script>
 		/* 로그인 버튼 클릭 메서드 */
 		$(".login_button").click(function() {
