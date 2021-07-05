@@ -31,4 +31,10 @@ public interface AdminService {
 	/* 회원삭제 */
 	public int userDelete(String userId);
 
+	// 회원 수정조회페이지 이동
+	public User userUpdatePage(int userId);
+
+	// 회원 수정
+	public int userUpdate(User user);
+
 }

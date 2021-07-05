@@ -54,10 +54,8 @@
 	</delete>
 
 
-	<!-- 상품 수정 조회 페이지 -->
-
-	<select id="goodsUpdateId" resultType="com.shop.model.Product">
-
+	<!-- 상품 수정 조회 페이지 --> 
+	<select id="goodsUpdateId" resultType="com.shop.model.Product"> 
 		select
 		p.product_id,p.product_name,p.product_price,p.product_size,p.product_color,
 		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
@@ -77,6 +75,9 @@
 		product_id=#{productId}
 	</update>
 
-
-
+	<!-- 회원수정 -->
+	<update id="userUpdate">
+		update user set phone=#{phone} where
+		user_id=#{userId};
+	</update>
 </mapper>

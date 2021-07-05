@@ -61,20 +61,15 @@ public class AdminController {
 		logger.info("관리자 페이지 ");
 	}
 
-	// 회원 목록 페이지 접속/데이터도 가져옴
-//	@GetMapping("/membermenu")
-//	public void getmemberList(Model model) {
-//		logger.info("회원 목록 페이지");
-//
-//		model.addAttribute("membermenu", membermapper.getmemberList());
-//	}
-
-	// 회원 목록 페이지 접속/데이터도 가져옴 (페이징 적용)
-//	@GetMapping("/membermenu")
-//	public void getmemberList(Model model, Criteria cri) {
-//		logger.info("회원 목록 페이지");
-//		model.addAttribute("membermenu", memberservice.getListPaging(cri));
-//	}
+	/* 게시판 목록 페이지 접속(페이징 적용) */
+	@GetMapping("/membermenu")
+	public void getmemberList(Model model, Criteria cri) {
+		logger.info("회원 목록 페이지");
+		model.addAttribute("membermenu", memberservice.getListPaging(cri));
+		int total = memberservice.getTotal(cri);
+		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+		model.addAttribute("pageMaker", pageMake);
+	}
 
 	// 회원 선택삭제
 	@RequestMapping(value = "/userDelete")
@@ -87,17 +82,6 @@ public class AdminController {
 			System.out.println(ajaxMsg[i]);
 		}
 		return "redirect:/admin/membermenu";
-	}
-
-	/* 게시판 목록 페이지 접속(페이징 적용) */
-	@GetMapping("/membermenu")
-	public void getmemberList(Model model, Criteria cri) {
-		logger.info("회원 목록 페이지");
-		model.addAttribute("membermenu", memberservice.getListPaging(cri));
-		int total = memberservice.getTotal(cri);
-		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
-		model.addAttribute("pageMaker", pageMake);
-
 	}
 
 	// 주문관리 페이지 이동
@@ -166,12 +150,14 @@ public class AdminController {
 
 	@PostMapping("/Update")
 
-	public String goodsProductUpdate(RedirectAttributes rttr,Product product,MultipartFile file,AttachImageVO attachImageVO) {
-	adminService.goodsUpdateProduct(product);
-	System.out.println(adminService.goodsUpdateProduct(product));
-	rttr.addFlashAttribute("resultProduct","resultProduct success");
-	return "/admin/result";
-	}
+//	public String goodsProductUpdate(RedirectAttributes rttr, Product product, MultipartFile file,
+//			AttachImageVO attachImageVO) {
+//		adminService.goodsUpdateProduct(product);
+//		System.out.println(adminService.goodsUpdateProduct(product));
+//		rttr.addFlashAttribute("resultProduct", "resultProduct success");
+//		return "/admin/result";
+//	}
+
 	public String goodsProductUpdate(RedirectAttributes rttr, Product product) {
 		adminService.goodsUpdateProduct(product);
 		System.out.println(adminService.goodsUpdateProduct(product));

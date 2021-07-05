@@ -81,10 +81,7 @@ th {
 		</div>
 	</section>
 	<script type="text/javascript">
-<<<<<<< HEAD
 		/*상품 삭제*/
-=======
->>>>>>> refs/remotes/origin/teammaster
 		$(function() {
 			var chkObj = document.getElementsByName("RowCheck");
 			var rowCnt = chkObj.length;

@@ -123,8 +123,11 @@ a:hover {
 							<tr>
 								<td><input type="checkbox" name="RowCheck" class="RowCheck"
 									value="${membermenu.userId}"></td>
+
+
 								<td><c:out value="${membermenu.userName}" /></td>
-								<td><c:out value="${membermenu.userId}" /></td>
+								<td><a href="/admin/Update?userId=${membermenu.userId}"><c:out
+											value="${membermenu.userId}"></c:out></a></td>
 								<td><c:out value="${membermenu.phone}" /></td>
 								<td><c:out value="${membermenu.email}" /></td>
 								<td><c:out value="${membermenu.addressNum}" />&nbsp;<c:out

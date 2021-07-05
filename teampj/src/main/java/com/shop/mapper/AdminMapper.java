@@ -5,6 +5,7 @@ import java.util.List;
 import com.shop.model.AttachImageVO;
 import com.shop.model.Criteria;
 import com.shop.model.Product;
+import com.shop.model.User;
 
 public interface AdminMapper {
 
@@ -23,10 +24,11 @@ public interface AdminMapper {
 	/* 상품삭제 */
 	public int deleterProdect(String productId);
 
+	// 상품이미지삭제
+	public int deleterProdectImg(String productId);
+
 	/* 회원삭제 */
 	public int userDelete(String userId);
-
-	public int deleterProdectImg(String productId);
 
 	/* 상품 수정조회페이지이동 */
 	public Product goodsUpdateId(int productId);
@@ -35,4 +37,10 @@ public interface AdminMapper {
 	public int goodsUpdateProduct(Product product);
 
 	public int goodsUpdateProductImg(AttachImageVO attachImageVO);
+
+	// 회원 수정조회페이지 이동
+	public User userUpdatePage(int userId);
+
+	// 회원 수정
+	public int userUpdate(User user);
 }
