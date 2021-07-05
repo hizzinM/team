@@ -93,7 +93,7 @@ th,td{
             onclick="deleteValue();">
        <c:if test="${listCheck == 'empty'}">
                 			<div class="table_empty">
-                				등록된 작가가 없습니다.
+                				등록된 상품이 없습니다.
                 			</div>
                 </c:if> 
 		</div>
