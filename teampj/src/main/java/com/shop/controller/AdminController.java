@@ -76,6 +76,19 @@ public class AdminController {
 //		model.addAttribute("membermenu", memberservice.getListPaging(cri));
 //	}
 
+	// 회원 선택삭제
+	@RequestMapping(value = "/userDelete")
+	public String ajaxTest2(HttpServletRequest request) throws Exception {
+
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for (int i = 0; i < size; i++) {
+			adminService.userDelete(ajaxMsg[i]);
+			System.out.println(ajaxMsg[i]);
+		}
+		return "redirect:/admin/membermenu";
+	}
+
 	/* 게시판 목록 페이지 접속(페이징 적용) */
 	@GetMapping("/membermenu")
 	public void getmemberList(Model model, Criteria cri) {
@@ -106,7 +119,7 @@ public class AdminController {
 		logger.info("goodsmenuPOST......" + product);
 
 		adminService.insertpro(product);
-		
+
 		rttr.addFlashAttribute("insert_result", product.getProductName());
 
 		return "redirect:/admin/goodsmenu";
@@ -116,47 +129,55 @@ public class AdminController {
 	@RequestMapping(value = "goodsmanage", method = RequestMethod.GET)
 	public void goodsmanage(Model model) throws Exception {
 		logger.info("상품관리 페이지 접속");
-		
+
 		model.addAttribute("productList", adminService.selectproductList());
-	
+
 	}
-	 //게시물 선택삭제
-    @RequestMapping(value = "/delete")
-    public String ajaxTest(HttpServletRequest request) throws Exception {
-            
-        String[] ajaxMsg = request.getParameterValues("valueArr");
-        int size = ajaxMsg.length;
-        for(int i=0; i<size; i++) {
-        	adminService.deleterProdect(ajaxMsg[i]);
-        	System.out.println(ajaxMsg[i]);
-        }
-        return "redirect:/admin/goodsmanage";
-    }
-    /* 상품 수정 페이지 */
+
+	// 게시물 선택삭제
+	@RequestMapping(value = "/delete")
+	public String ajaxTest(HttpServletRequest request) throws Exception {
+
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for (int i = 0; i < size; i++) {
+			adminService.deleterProdect(ajaxMsg[i]);
+			System.out.println(ajaxMsg[i]);
+		}
+		return "redirect:/admin/goodsmanage";
+	}
+
+	/* 상품 수정 페이지 */
 	@GetMapping("/Update")
 	public String goodsGetInfoGET(int productId, Criteria cri, Model model) {
-		
+
 		logger.info("goodsGetInfo()........." + productId);
-		
-		
-		
-		Product result=adminService.goodsUpdateId(productId);
+
+		Product result = adminService.goodsUpdateId(productId);
 		System.out.println(result);
 		/* 목록 페이지 조건 정보 */
 		model.addAttribute("cri", cri);
-		
+
 		/* 조회 페이지 정보 */
 		model.addAttribute("goodsUpdateData", adminService.goodsUpdateId(productId));
-		
+
 		return "/admin/goodsUpdate";
 	}
-    
+
 	@PostMapping("/Update")
+
 	public String goodsProductUpdate(RedirectAttributes rttr,Product product,MultipartFile file,AttachImageVO attachImageVO) {
 	adminService.goodsUpdateProduct(product);
 	System.out.println(adminService.goodsUpdateProduct(product));
 	rttr.addFlashAttribute("resultProduct","resultProduct success");
 	return "/admin/result";
+	}
+	public String goodsProductUpdate(RedirectAttributes rttr, Product product) {
+		adminService.goodsUpdateProduct(product);
+		System.out.println(adminService.goodsUpdateProduct(product));
+		rttr.addFlashAttribute("resultProduct", "resultProduct success");
+		return "/admin/result";
+
 	}
 
 	// 문의관리 페이지 이동
