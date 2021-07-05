@@ -37,6 +37,7 @@ import com.shop.model.AttachImageVO;
 import com.shop.model.Criteria;
 import com.shop.model.PageMakerDTO;
 import com.shop.model.Product;
+import com.shop.model.User;
 import com.shop.service.AdminService;
 import com.shop.service.MemberService;
 

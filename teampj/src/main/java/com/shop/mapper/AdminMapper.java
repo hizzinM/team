@@ -36,11 +36,5 @@ public interface AdminMapper {
 	/* 상품 수정 페이지 */
 	public int goodsUpdateProduct(Product product);
 
-	public int goodsUpdateProductImg(AttachImageVO attachImageVO);
-
-	// 회원 수정조회페이지 이동
-	public User userUpdatePage(int userId);
-
-	// 회원 수정
-	public int userUpdate(User user);
+	public int goodsUpdateProductImg(AttachImageVO attachImageVO); 
 }

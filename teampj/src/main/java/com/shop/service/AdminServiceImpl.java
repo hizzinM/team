@@ -81,18 +81,5 @@ public class AdminServiceImpl implements AdminService {
 	public int goodsUpdateProductImg(AttachImageVO attachImageVO) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	// 회원 수정 조회 페이지 이동
-	@Override
-	public User userUpdatePage(int userId) {
-		return adminMapper.userUpdatePage(userId);
-	}
-
-	// 회원 수정
-	@Override
-	public int userUpdate(User user) {
-		adminMapper.userUpdate(user);
-		return adminMapper.userUpdate(user);
-	}
+	} 
 }
