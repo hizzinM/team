@@ -5,11 +5,12 @@
 <mapper namespace="com.shop.mapper.AdminMapper">
 
 	<insert id="insertpro">
-		<selectKey resultType="int" keyProperty="productId" order="AFTER">
-  		
-  			SELECT LAST_INSERT_ID()
-  		
-  		</selectKey>
+		<selectKey resultType="int" keyProperty="productId"
+			order="AFTER">
+
+			SELECT LAST_INSERT_ID()
+
+		</selectKey>
 		insert into product(product_id, product_name, product_price,
 		product_size, product_color, product_inventory)
 		values(#{productId},#{productName},#{productPrice},#{productSize},#{productColor},#{productInventory})
@@ -17,48 +18,81 @@
 	</insert>
 	<!-- 이미지 등록 -->
 	<insert id="imageEnroll">
-		
-		insert into product_img(product_id, file_name, upload_path, uuid) values (#{productId}, #{fileName}, #{uploadPath}, #{uuid})
-	
+
+		insert into product_img(product_id, file_name,
+		upload_path, uuid) values
+		(#{productId}, #{fileName}, #{uploadPath},
+		#{uuid})
+
 	</insert>
-	
+
 	<!-- 상품목록 -->
-	<select id="selectproductList" resultType="com.shop.model.Product">
-	select p.product_id,p.product_name,p.product_price,p.product_size,p.product_color,
-	p.product_inventory,i.file_name,i.upload_path,i.uuid from product p join product_img i on p.product_id=i.product_id
+	<select id="selectproductList"
+		resultType="com.shop.model.Product">
+		select
+		p.product_id,p.product_name,p.product_price,p.product_size,p.product_color,
+		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		join product_img i on p.product_id=i.product_id
+		<if test="keyword != null">
+			where (product_name like concat ('%', #{keyword}, '%'))
+		</if>
+		order by product_id desc 
+		limit #{skip}, #{amount}		
 	</select>
+	<!-- 상품 총 갯수 -->
+  	<select id="goodsGetTotal" resultType="int">
+  	
+  		select count(*) from product
+  		
+  		<if test="keyword != null">
+  		
+  			where product_name like concat('%' , #{keyword}, '%')
+  		
+  		</if>
+  	
+  	</select>
+	
+	
+	
 	<!-- 이미지목록 -->
-	<select id="selectimgList" resultType="com.shop.model.AttachImageVO">
+	<select id="selectimgList"
+		resultType="com.shop.model.AttachImageVO">
 		select*from product_img
 	</select>
-	
+
 	<delete id="deleterProdect">
 		delete from product where product_id = #{productId}
 	</delete>
-	
-	<delete id="deleterProdectImg">
-		delete from product_img where product_id = #{productId}
+
+	<delete id="userDelete">
+		delete from user where user_id = #{userId}
 	</delete>
-	
-	
+
+	<delete id="deleterProdectImg">
+		delete from product_img where product_id =
+		#{productId}
+	</delete>
+
+
 	<!-- 상품 수정 조회 페이지 -->
-	
 	<select id="goodsUpdateId" resultType="com.shop.model.Product">
-	
-	select p.product_id,p.product_name,p.product_price,p.product_size,p.product_color,
-	p.product_inventory,i.file_name,i.upload_path,i.uuid from product p join product_img i on p.product_id=i.product_id where  p.product_id = #{productId}
-	
+		select
+		p.product_id,p.product_name,p.product_price,p.product_size,p.product_color,
+		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		join product_img i on p.product_id=i.product_id where p.product_id =
+		#{productId}
+
 	</select>
-	
+
 	<update id="goodsUpdateProduct">
-	update product set  product_name=#{productName},
-	product_price=#{productPrice},product_size=#{productSize},product_color=#{productColor},
-	product_inventory=#{productInventory} where product_id=#{productId};
+		update product set product_name=#{productName},
+		product_price=#{productPrice},product_size=#{productSize},product_color=#{productColor},
+		product_inventory=#{productInventory} where product_id=#{productId};
 	</update>
 	<update id="goodsUpdateProductImg">
-	update product_img set file_name=#{fileName},upload_path=#{uploadPath},uuid=#{uuid} where product_id=#{productId}
+		update product_img set
+		file_name=#{fileName},upload_path=#{uploadPath},uuid=#{uuid} where
+		product_id=#{productId}
 	</update>
-	
-	
-		
+
 </mapper>

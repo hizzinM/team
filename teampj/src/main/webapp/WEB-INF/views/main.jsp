@@ -62,7 +62,8 @@
 
         </div>
         <div id ="s_footer">
-            <h1>고객센터　1522-4953</h1><br>
+            <h1>고객센터　1522-4953</h1>
+            <br>
             <p>
                 MON-FRI AM 11:00 – PM 6:00<br>
                 LUNCH TIME PM 13:00 – 14:00<br>

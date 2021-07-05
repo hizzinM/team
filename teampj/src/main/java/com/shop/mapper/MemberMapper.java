@@ -34,7 +34,7 @@ public interface MemberMapper {
 
 	// 회원목록 조회
 	public List<User> getmemberList();
-
+ 
 	// 페이징
 	public List<User> getListPaging(Criteria cri);
 

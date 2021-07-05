@@ -37,6 +37,7 @@ import com.shop.model.AttachImageVO;
 import com.shop.model.Criteria;
 import com.shop.model.PageMakerDTO;
 import com.shop.model.Product;
+import com.shop.model.User;
 import com.shop.service.AdminService;
 import com.shop.service.MemberService;
 
@@ -61,21 +62,6 @@ public class AdminController {
 		logger.info("관리자 페이지 ");
 	}
 
-	// 회원 목록 페이지 접속/데이터도 가져옴
-//	@GetMapping("/membermenu")
-//	public void getmemberList(Model model) {
-//		logger.info("회원 목록 페이지");
-//
-//		model.addAttribute("membermenu", membermapper.getmemberList());
-//	}
-
-	// 회원 목록 페이지 접속/데이터도 가져옴 (페이징 적용)
-//	@GetMapping("/membermenu")
-//	public void getmemberList(Model model, Criteria cri) {
-//		logger.info("회원 목록 페이지");
-//		model.addAttribute("membermenu", memberservice.getListPaging(cri));
-//	}
-
 	/* 게시판 목록 페이지 접속(페이징 적용) */
 	@GetMapping("/membermenu")
 	public void getmemberList(Model model, Criteria cri) {
@@ -84,7 +70,19 @@ public class AdminController {
 		int total = memberservice.getTotal(cri);
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
+	}
 
+	// 회원 선택삭제
+	@RequestMapping(value = "/userDelete")
+	public String ajaxTest2(HttpServletRequest request) throws Exception {
+
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for (int i = 0; i < size; i++) {
+			adminService.userDelete(ajaxMsg[i]);
+			System.out.println(ajaxMsg[i]);
+		}
+		return "redirect:/admin/membermenu";
 	}
 
 	// 주문관리 페이지 이동
@@ -106,7 +104,7 @@ public class AdminController {
 		logger.info("goodsmenuPOST......" + product);
 
 		adminService.insertpro(product);
-		
+
 		rttr.addFlashAttribute("insert_result", product.getProductName());
 
 		return "redirect:/admin/goodsmenu";
@@ -114,51 +112,71 @@ public class AdminController {
 
 	// 상품관리 페이지 이동
 	@RequestMapping(value = "goodsmanage", method = RequestMethod.GET)
-	public void goodsmanage(Model model) throws Exception {
+	public void goodsmanage(Criteria cri,Model model) throws Exception {
 		logger.info("상품관리 페이지 접속");
+		/* 상품 리스트 데이터 */
+		List list = adminService.selectproductList(cri);
 		
-		model.addAttribute("productList", adminService.selectproductList());
-	
+		if(!list.isEmpty()) {
+			model.addAttribute("list", list);
+		} else {
+		model.addAttribute("listCheck", "empty");
+			return;
+		}
+		/* 페이지 인터페이스 데이터 */
+		model.addAttribute("pageMaker", new PageMakerDTO(cri, adminService.goodsGetTotal(cri)));;
+
 	}
-	 //게시물 선택삭제
-    @RequestMapping(value = "/delete")
-    public String ajaxTest(HttpServletRequest request) throws Exception {
-            
-        String[] ajaxMsg = request.getParameterValues("valueArr");
-        int size = ajaxMsg.length;
-        for(int i=0; i<size; i++) {
-        	adminService.deleterProdect(ajaxMsg[i]);
-        	System.out.println(ajaxMsg[i]);
-        }
-        return "redirect:/admin/goodsmanage";
-    }
-    /* 상품 수정 페이지 */
+
+	// 상품 선택삭제
+	@RequestMapping(value = "/delete")
+	public String ajaxTest(HttpServletRequest request) throws Exception {
+
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for (int i = 0; i < size; i++) {
+			adminService.deleterProdect(ajaxMsg[i]);
+			System.out.println(ajaxMsg[i]);
+		}
+		return "redirect:/admin/goodsmanage";
+	}
+
+	/* 상품 수정 페이지이동 */
 	@GetMapping("/Update")
 	public String goodsGetInfoGET(int productId, Criteria cri, Model model) {
-		
+
 		logger.info("goodsGetInfo()........." + productId);
-		
-		
-		
-		Product result=adminService.goodsUpdateId(productId);
+
+		Product result = adminService.goodsUpdateId(productId);
 		System.out.println(result);
 		/* 목록 페이지 조건 정보 */
 		model.addAttribute("cri", cri);
-		
+
 		/* 조회 페이지 정보 */
 		model.addAttribute("goodsUpdateData", adminService.goodsUpdateId(productId));
-		
+
 		return "/admin/goodsUpdate";
 	}
-    
+	/* 상품 수정 */
 	@PostMapping("/Update")
-	public String goodsProductUpdate(RedirectAttributes rttr,Product product) {
+	public String goodsProductUpdate(RedirectAttributes rttr,Product product,AttachImageVO vo,MultipartFile file) {
 	adminService.goodsUpdateProduct(product);
 	System.out.println(adminService.goodsUpdateProduct(product));
 	rttr.addFlashAttribute("resultProduct","resultProduct success");
 	return "/admin/result";
 	}
+	
 
+
+//	public String goodsProductUpdate(RedirectAttributes rttr, Product product, MultipartFile file,
+//			AttachImageVO attachImageVO) {
+//		adminService.goodsUpdateProduct(product);
+//		System.out.println(adminService.goodsUpdateProduct(product));
+//		rttr.addFlashAttribute("resultProduct", "resultProduct success");
+//		return "/admin/result";
+//	}
+
+	
 	// 문의관리 페이지 이동
 	@RequestMapping(value = "qnamenu", method = RequestMethod.GET)
 	public void getqnamenu() throws Exception {
