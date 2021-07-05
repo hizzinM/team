@@ -152,7 +152,7 @@ public class AdminController {
 	}
     
 	@PostMapping("/Update")
-	public String goodsProductUpdate(RedirectAttributes rttr,Product product) {
+	public String goodsProductUpdate(RedirectAttributes rttr,Product product,MultipartFile file,AttachImageVO attachImageVO) {
 	adminService.goodsUpdateProduct(product);
 	System.out.println(adminService.goodsUpdateProduct(product));
 	rttr.addFlashAttribute("resultProduct","resultProduct success");

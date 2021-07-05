@@ -81,7 +81,7 @@ th {
 		</div>
 	</section>
 	<script type="text/javascript">
-		/*회원삭제*/
+		/*상품 삭제*/
 		$(function() {
 			var chkObj = document.getElementsByName("RowCheck");
 			var rowCnt = chkObj.length;
