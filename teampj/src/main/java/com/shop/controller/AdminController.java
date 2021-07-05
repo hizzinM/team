@@ -163,7 +163,7 @@ public class AdminController {
 		adminService.goodsUpdateProduct(product);
 		System.out.println(adminService.goodsUpdateProduct(product));
 		rttr.addFlashAttribute("resultProduct", "resultProduct success");
-		return "/admin/result";
+		return "/admin/goodsmanage";
 
 	}
 
