@@ -108,7 +108,7 @@
 		 <c:set var="i" value="0" />
  		 <c:set var="j" value="4" />
 		<div class="product-list">
-			<c:forEach items="${MainProduct}" var="Product">
+			<c:forEach items="${MainProduct}" var="Product" end="10">
 				<c:if test="${i%j == 0 }">
  				<tr> 
 				</c:if> 
