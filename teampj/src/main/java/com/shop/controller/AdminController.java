@@ -86,9 +86,12 @@ public class AdminController {
 
 	// 프로필 수정 기능
 	@PostMapping("/AdminMemberUpdate")
-	public String profileUpdatePOST(User user, RedirectAttributes rttr) {
+	public String profileUpdatePOST(User user, RedirectAttributes rttr,Model model) {
 		adminService.profileUpdateAdmin(user);
-		rttr.addFlashAttribute("profile", "modify success");
+		rttr.addFlashAttribute("profile", adminService.profileUpdateAdmin(user));
+		
+		
+		System.out.println(adminService.profileUpdateAdmin(user));
 		return "/admin/AdminMemberUpdateResult";
 	}
 
@@ -184,7 +187,7 @@ public class AdminController {
 	public String goodsProductUpdate(RedirectAttributes rttr, Product product, AttachImageVO vo, MultipartFile file) {
 		adminService.goodsUpdateProduct(product);
 		// System.out.println(adminService.goodsUpdateProduct(product));
-		rttr.addFlashAttribute("resultProduct", "resultProduct success");
+		rttr.addFlashAttribute("resultProduct", adminService.goodsUpdateProduct(product));
 		return "/admin/goodsUpdateResult";
 	}
 
