@@ -8,6 +8,12 @@
 </head>
 <body>
 	<ul>
+<<<<<<< HEAD
+=======
+	<ul> 
+
+=======
+>>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
 		<li><a href="/category/Outer">Outer</a></li>
 		<li><a href="/category/Top">Top</a></li>
 		<li><a href="/category/Shirts">Shirts</a></li>

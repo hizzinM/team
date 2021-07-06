@@ -41,13 +41,27 @@ th {
 		</div>
 		<div align="center">
 <<<<<<< HEAD
-			<form action="/admin/goodsUpdate" method="post">
+
 =======
 <<<<<<< HEAD
-			<form action="/admin/Update" method="post">
+>>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
+			<form action="/admin/goodsUpdate" method="post">
+<<<<<<< HEAD
+
+
 =======
+=======
+<<<<<<< HEAD
+>>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
+			<form action="/admin/Update" method="post">
+
 			<form action="/admin/goodsUpdateResult" method="post">
+<<<<<<< HEAD
+
+
+=======
 >>>>>>> refs/remotes/origin/teammaster
+>>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
 >>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
 				<table>
 					<thead>

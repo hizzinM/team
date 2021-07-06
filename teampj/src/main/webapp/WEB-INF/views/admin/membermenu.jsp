@@ -125,7 +125,7 @@ a:hover {
 									value="${membermenu.userId}"></td>
 
 
-								<td><c:out value="${membermenu.userName}" /></td>
+								<td><c:out value="${membermenu.userName}" /></td> 
 								<td><c:out value="${membermenu.userId}"></c:out></a></td>
 								<td><a href="/admin/AdminMemberUpdate?userId=${membermenu.userId}"><c:out value="${membermenu.userId}"></c:out></a></td>
 								<td><c:out value="${membermenu.phone}" /></td>
