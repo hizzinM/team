@@ -66,6 +66,11 @@
 				<%@ include file="../navigation.jsp"%>
 			</ul>
 		</div>
+        <div id="s_search">
+            <form action="">
+                <input type="text" id="search" name="" placeholder="Store item search">
+            </form>
+        </div>
         <div id ="s_footer">
             <h1>고객센터　1522-4953</h1><br>
             <p>
@@ -79,11 +84,6 @@
                 국민 9876-54-3210<br>
                 예금주 : (주) 민박강
             </p>
-        </div>
-        <div id="s_search">
-            <form action="">
-                <input type="text" id="search"name="">
-            </form>
         </div>
     </div>
     <div id="contents">
