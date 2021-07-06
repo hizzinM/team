@@ -139,7 +139,6 @@
                     <td>계좌번호</td>
                     <td>${profile.accountNum}</td>
                 </tr>   
-                </ul>
             </table>
             <div class="buttom-wrap">
                 <input type="button" class="btn-style btn-update" id="modify_btn" value="수정">
