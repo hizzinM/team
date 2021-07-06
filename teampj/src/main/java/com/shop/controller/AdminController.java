@@ -71,29 +71,26 @@ public class AdminController {
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
 	}
-<<<<<<< HEAD
-=======
-	//회원정보조회
+
+	// 회원정보조회
 	@GetMapping("/AdminMemberUpdate")
-	public String profileUpdate(String userId,Model model) {
-		
-		User result=adminService.profileUpdateAdminId(userId);
+	public String profileUpdate(String userId, Model model) {
+
+		User result = adminService.profileUpdateAdminId(userId);
 		System.out.println(result);
-		
-		model.addAttribute("profile",adminService.profileUpdateAdminId(userId));
-		
+
+		model.addAttribute("profile", adminService.profileUpdateAdminId(userId));
+
 		return "/admin/AdminMemberUpdate";
 	}
+
 	// 프로필 수정 기능
-		@PostMapping("/AdminMemberUpdate")
-		public String profileUpdatePOST(User user, RedirectAttributes rttr) {
-			adminService.profileUpdateAdmin(user);
-			rttr.addFlashAttribute("profile", "modify success");
-			return "/admin/AdminMemberUpdateResult";
-		}
-	
-	
->>>>>>> refs/remotes/origin/teammaster
+	@PostMapping("/AdminMemberUpdate")
+	public String profileUpdatePOST(User user, RedirectAttributes rttr) {
+		adminService.profileUpdateAdmin(user);
+		rttr.addFlashAttribute("profile", "modify success");
+		return "/admin/AdminMemberUpdateResult";
+	}
 
 	// 회원 선택삭제
 	@RequestMapping(value = "/userDelete")
@@ -135,19 +132,20 @@ public class AdminController {
 
 	// 상품관리 페이지 이동
 	@RequestMapping(value = "goodsmanage", method = RequestMethod.GET)
-	public void goodsmanage(Criteria cri,Model model) throws Exception {
+	public void goodsmanage(Criteria cri, Model model) throws Exception {
 		logger.info("상품관리 페이지 접속");
 		/* 상품 리스트 데이터 */
 		List list = adminService.selectproductList(cri);
-		
-		if(!list.isEmpty()) {
+
+		if (!list.isEmpty()) {
 			model.addAttribute("produstList", list);
 		} else {
-		model.addAttribute("listCheck", "empty");
+			model.addAttribute("listCheck", "empty");
 			return;
 		}
 		/* 페이지 인터페이스 데이터 */
-		model.addAttribute("pageMaker", new PageMakerDTO(cri, adminService.goodsGetTotal(cri)));;
+		model.addAttribute("pageMaker", new PageMakerDTO(cri, adminService.goodsGetTotal(cri)));
+		;
 
 	}
 
@@ -180,16 +178,15 @@ public class AdminController {
 
 		return "/admin/goodsUpdate";
 	}
+
 	/* 상품 수정 */
 	@PostMapping("/Update")
-	public String goodsProductUpdate(RedirectAttributes rttr,Product product,AttachImageVO vo,MultipartFile file) {
-	adminService.goodsUpdateProduct(product);
-	//System.out.println(adminService.goodsUpdateProduct(product));
-	rttr.addFlashAttribute("resultProduct","resultProduct success");
-	return "/admin/goodsUpdateResult";
+	public String goodsProductUpdate(RedirectAttributes rttr, Product product, AttachImageVO vo, MultipartFile file) {
+		adminService.goodsUpdateProduct(product);
+		// System.out.println(adminService.goodsUpdateProduct(product));
+		rttr.addFlashAttribute("resultProduct", "resultProduct success");
+		return "/admin/goodsUpdateResult";
 	}
-	
-
 
 //	public String goodsProductUpdate(RedirectAttributes rttr, Product product, MultipartFile file,
 //			AttachImageVO attachImageVO) {
@@ -199,7 +196,6 @@ public class AdminController {
 //		return "/admin/result";
 //	}
 
-	
 	// 문의관리 페이지 이동
 	@RequestMapping(value = "qnamenu", method = RequestMethod.GET)
 	public void getqnamenu() throws Exception {
