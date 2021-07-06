@@ -40,16 +40,7 @@ th {
 			<h2>상품수정</h2>
 		</div>
 		<div align="center">
-			<form action="/admin/goodsUpdate" method="post">
-
-
-
-
-			<form action="/admin/Update" method="post">
-
 			<form action="/admin/goodsUpdateResult" method="post">
-
-
 				<table>
 					<thead>
 						<tr>
@@ -105,8 +96,9 @@ th {
 						<td><input type="text" name="productInventory"
 							value="${goodsUpdateData.productInventory}" /></td>
 					</tr>
-
+					
 				</table>
+				
 				<br> <input type="submit" value="수정하기">
 			</form>
 		</div>
