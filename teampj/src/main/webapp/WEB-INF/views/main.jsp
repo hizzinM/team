@@ -53,26 +53,26 @@
 				<%@ include file="navigation.jsp"%>
 			</ul>
 		</div>
-		<div id="s_footer">
-			<h1>고객센터 1522-4953</h1>
-			<br>
-			<p>
-				MON-FRI AM 11:00 – PM 6:00<br> LUNCH TIME PM 13:00 – 14:00<br>
-				SAT.SUN.HOLIDAY OFF<br>
-			</p>
-			<br>
-			<h1>은행정보</h1>
-			<br>
-			<p>
-				농협 123-4567-8910-12<br> 국민 9876-54-3210<br> 예금주 : (주) 민박강
-			</p>
-		</div>
-		<div id="s_search">
-			<form action="">
-				<input type="text" id="search" name="">
-			</form>
-		</div>
-	</div>
+        <div id="s_search">
+            <form action="">
+                <input type="text" id="search" name="" placeholder="Store item search">
+            </form>
+        </div>
+        <div id ="s_footer">
+            <h1>고객센터　1522-4953</h1><br>
+            <p>
+                MON-FRI AM 11:00 – PM 6:00<br>
+                LUNCH TIME PM 13:00 – 14:00<br>
+                SAT.SUN.HOLIDAY OFF<br>
+            </p><br>
+            <h1>은행정보</h1><br>
+            <p>
+                농협 123-4567-8910-12<br>
+                국민 9876-54-3210<br>
+                예금주 : (주) 민박강
+            </p>
+        </div>
+    </div>
 	<div id="contents">
 		<h1>BEST SELLER</h1>
 		<ul class="side-img show-img">
