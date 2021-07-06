@@ -45,6 +45,18 @@
 						<label>옷 가격</label> <input name="productPrice">
 					</div>
 					<div class="form_section">
+						<label>카테고리</label><select name="productCategory">
+						<option value="Outer">Outer</option>
+						<option value="Top">Top</option>
+						<option value="Shirts">Shirts</option>
+						<option value="Pants">Pants</option>
+						<option value="Suit">Suit</option>
+						<option value="Bag/Shose">Bag/Shose</option>
+						<option value="Acc">Acc</option>
+						<option value="Sale">Sale</option>
+						</select>
+					</div>
+					<div class="form_section">
 						<label>옷사이즈</label> <input name="productSize">
 					</div>
 					<div class="form_section">

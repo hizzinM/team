@@ -11,9 +11,8 @@
 			SELECT LAST_INSERT_ID()
 
 		</selectKey>
-		insert into product(product_id, product_name, product_price,
-		product_size, product_color, product_inventory)
-		values(#{productId},#{productName},#{productPrice},#{productSize},#{productColor},#{productInventory})
+		insert into product(product_id, product_name, product_price,product_category,product_size, product_color, product_inventory)
+		values(#{productId},#{productName},#{productPrice},#{productCategory},#{productSize},#{productColor},#{productInventory})
 
 	</insert>
 	<!-- 이미지 등록 -->
@@ -31,7 +30,7 @@
 	<select id="selectproductList"
 		resultType="com.shop.model.Product">
 		select
-		p.product_id,p.product_name,p.product_price,p.product_size,p.product_color,
+		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
 		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
 		join product_img i on p.product_id=i.product_id
 		<if test="keyword != null">
@@ -89,7 +88,7 @@
 	<!-- 상품 수정Id 조회 페이지 -->
 	<select id="goodsUpdateId" resultType="com.shop.model.Product">
 		select
-		p.product_id,p.product_name,p.product_price,p.product_size,p.product_color,
+		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
 		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
 		join product_img i on p.product_id=i.product_id where p.product_id =
 		#{productId}
@@ -98,7 +97,7 @@
 
 	<update id="goodsUpdateProduct">
 		update product set product_name=#{productName},
-		product_price=#{productPrice},product_size=#{productSize},product_color=#{productColor},
+		product_price=#{productPrice},product_category=#{productCategory},product_size=#{productSize},product_color=#{productColor},
 		product_inventory=#{productInventory} where product_id=#{productId};
 	</update>
 	<update id="goodsUpdateProductImg">

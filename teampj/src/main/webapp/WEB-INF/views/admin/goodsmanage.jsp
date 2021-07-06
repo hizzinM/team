@@ -124,6 +124,7 @@ th,td{
                   <th class="userid_width">상품이미지</th>
                   <th class="userphone_width">상품명</th>
                   <th class="useremail_width">가격</th>
+                   <th class="useremail_width">카테고리</th>
                   <th class="useraddress_width">사이즈</th>
                   <th class="useregdate_width">색깔</th>
                   <th class="useregdate_width">재고</th>
@@ -141,6 +142,7 @@ th,td{
                      width="200px" height="200px"></td>
                   <td><c:out value="${product.productName}" /></td>
                   <td><c:out value="${product.productPrice}" /></td>
+                  <td><c:out value="${product.productCategory}" /></td>
                   <td><c:out value="${product.productSize}" /></td>
                   <td><c:out value="${product.productColor}" /></td>
                   <td><c:out value="${product.productInventory}" /></td>
