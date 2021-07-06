@@ -20,6 +20,10 @@ public interface AdminService {
 
 	/* 상품 수정 페이지 */
 	public int goodsUpdateProduct(Product product);
+<<<<<<< HEAD
+	public int goodsUpdateProductImg(AttachImageVO vo);
+=======
+>>>>>>> refs/remotes/origin/teammaster
 
 	/* 상품삭제 */
 	public int deleterProdect(String productId);
@@ -31,11 +35,17 @@ public interface AdminService {
 	public List<Product> selectproductList(Criteria cri);
 	/* 상품 총 개수 */
 	public int goodsGetTotal(Criteria cri);
+<<<<<<< HEAD
+
+	
+	
+=======
 	
 	// 회원정보 수정 기능
 	public int profileUpdateAdmin(User user);
 	// 회원정보 조회 기능
 	public User profileUpdateAdminId(String userId);
+>>>>>>> refs/remotes/origin/teammaster
 	
 
 }
