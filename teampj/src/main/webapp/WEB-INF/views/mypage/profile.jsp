@@ -37,8 +37,6 @@
 					<li><a href="/member/join">회원가입</a></li>
 					<br>
 				</c:if>
-
-<<<<<<< HEAD
 				<!-- 로그인 후 -->
 				<c:if test="${ loginuser!= null }">
 					<li style="font-weight: bold; font-size: 11px;">${loginuser.userName}님
@@ -61,17 +59,9 @@
 		</div>
 		<div id="s_category">
 			<ul>
-				<li><a href="#">Outer</a></li>
-				<li><a href="#">Top</a></li>
-				<li><a href="#">Shirts</a></li>
-				<li><a href="#">Pants</a></li>
-				<li><a href="#">Suit</a></li>
-				<li><a href="#">Bag/Shose</a></li>
-				<li><a href="#">Acc</a></li>
-				<li><a href="#">Sale</a></li>
+				<%@ include file="../navigation.jsp"%>
 			</ul>
-=======
-        </div>
+		</div>
         <div id ="s_footer">
             <h1>고객센터　1522-4953</h1><br>
             <p>

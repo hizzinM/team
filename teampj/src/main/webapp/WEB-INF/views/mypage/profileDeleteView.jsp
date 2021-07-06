@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -63,8 +62,6 @@
 	</section>
 
 </body>
-
-=======
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -120,19 +117,11 @@
                 <li><a href="#">고객센터</a></li><br>
             </ul>
         </div>
-        <div id="s_category">
-            <ul>
-                <li><a href="#">Outer</a></li>
-                <li><a href="#">Top</a></li>
-                <li><a href="#">Shirts</a></li>
-                <li><a href="#">Pants</a></li>
-                <li><a href="#">Suit</a></li>
-                <li><a href="#">Bag/Shose</a></li>
-                <li><a href="#">Acc</a></li>
-                <li><a href="#">Sale</a></li>
-            </ul>
-
-        </div>
+		<div id="s_category">
+			<ul>
+				<%@ include file="../navigation.jsp"%>
+			</ul>
+		</div>
         <div id ="s_footer">
             <h1>고객센터　1522-4953</h1><br>
             <p>

@@ -60,14 +60,7 @@
 		</div>
 		<div id="s_category">
 			<ul>
-				<li><a href="#">Outer</a></li>
-				<li><a href="#">Top</a></li>
-				<li><a href="#">Shirts</a></li>
-				<li><a href="#">Pants</a></li>
-				<li><a href="#">Suit</a></li>
-				<li><a href="#">Bag/Shose</a></li>
-				<li><a href="#">Acc</a></li>
-				<li><a href="#">Sale</a></li>
+				<%@ include file="../navigation.jsp"%>
 			</ul>
 		</div>
 		<div id="s_footer">
