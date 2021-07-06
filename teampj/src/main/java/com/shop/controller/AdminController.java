@@ -71,6 +71,21 @@ public class AdminController {
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
 	}
+	//회원정보조회
+	@GetMapping("/memberUpdate")
+	public String profileUpdate(String userId,Model model) {
+		
+		User result=adminService.profileUpdateAdminId(userId);
+		System.out.println(result);
+		
+		model.addAttribute("profile",adminService.profileUpdateAdminId(userId));
+		
+		return "/admin/memberUpdate";
+		
+	}
+	
+	
+	
 
 	// 회원 선택삭제
 	@RequestMapping(value = "/userDelete")

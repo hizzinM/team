@@ -40,8 +40,12 @@ public interface AdminMapper {
 	/* 상품 수정 페이지 */
 	public int goodsUpdateProduct(Product product);
 
-	public int goodsUpdateProductImg(AttachImageVO vo);
+	
+	// 회원정보 조회 기능
+	public User profileUpdateAdminId(String userId);
 
+	// 회원정보 수정 기능
+	public int profileUpdateAdmin(User user);
 
 
 }
