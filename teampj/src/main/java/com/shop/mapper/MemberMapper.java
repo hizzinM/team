@@ -53,5 +53,4 @@ public interface MemberMapper {
 	// public User readMember(String userId);
 
 	// public int updatePw(User user) throws Exception;
-
 }

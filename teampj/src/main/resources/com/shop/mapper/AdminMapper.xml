@@ -28,6 +28,7 @@
 
 
 	<!-- 상품목록(페이징) -->
+<<<<<<< HEAD
 	<select id="selectproductList" resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_size,p.product_color,
@@ -37,9 +38,22 @@
 			where (product_name like concat ('%', #{keyword}, '%'))
 		</if>
 		order by product_id desc 
+=======
+	<select id="selectproductList"
+		resultType="com.shop.model.Product">
+		select
+		p.product_id,p.product_name,p.product_price,p.product_size,p.product_color,
+		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		join product_img i on p.product_id=i.product_id
+		<if test="keyword != null">
+			where (product_name like concat ('%', #{keyword}, '%'))
+		</if>
+		order by product_id desc
+>>>>>>> refs/remotes/origin/teammaster
 		limit #{skip}, #{amount}
 	</select>
 	<!-- 상품 총 갯수 -->
+<<<<<<< HEAD
   	<select id="goodsGetTotal" resultType="int">
   		select count(*) from product
   		<if test="keyword != null">
@@ -52,6 +66,33 @@
 	
 	
 	
+=======
+	<select id="goodsGetTotal" resultType="int">
+		select count(*) from product
+		<if test="keyword != null">
+
+			where product_name like concat('%' , #{keyword}, '%')
+
+		</if>
+	</select>
+
+	<!-- 회원정보 조회 -->
+	<select id="profileUpdateAdminId"
+		resultType="com.shop.model.User">
+		select
+		user_id,password,password_check,user_name,address_num,address,address_detail,phone,email,adminck,reg_date,account_name,account_bank,account_num
+		from user where
+		user_id = #{userId}
+	</select>
+	<!-- 회원정보 수정 -->
+	<update id="profileUpdateAdmin">
+		update user set
+		password=#{password},password_check=#{passwordCheck},user_name=#{userName},address_num=#{addressNum},address=#{address},address_detail=#{addressDetail},
+		phone=#{phone},email=#{email},account_name=#{accountName},account_bank=#{accountBank},account_num=#{accountNum}
+		where user_id=#{userId}
+	</update>
+
+>>>>>>> refs/remotes/origin/teammaster
 	<!-- 이미지목록 -->
 	<select id="selectimgList"
 		resultType="com.shop.model.AttachImageVO">

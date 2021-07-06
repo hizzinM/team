@@ -6,6 +6,10 @@ ul,li{list-style: none}
     padding-top: 200px;
     padding-bottom: 300px;
 }
+#login_form{
+    width:500px;
+    margin:0 auto;
+}
 .text-frame{
     border-radius: 0;
     border:1px solid rgb(56, 56, 56);
@@ -15,12 +19,22 @@ ul,li{list-style: none}
 }
 .join_button{padding:0;}
 .text-deco{
-    background-color: white;
+    background-color: rgb(253, 253, 253);
     border:none;
     font-size:12px;
     font-weight: 500;
     padding-left: 5px;
     padding-top:10px;
+    cursor: pointer;
+}
+#GgCustomLogin{
+    width:350px;
+    border:1px solid rgb(224, 224, 224);
+    margin: 0 auto;
+    padding:8px 0;
+}
+#GgCustomLogin:hover{
+    background-color: rgb(240, 240, 240);
 }
 .login_wrap>a{color:black;}
 .login_button{font-size:15px;padding-left:120px;}

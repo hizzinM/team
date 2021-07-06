@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?> 
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -103,4 +104,110 @@
 		delete from user where user_id = #{userId} and
 		password =#{password}
 	</delete>
+=======
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.mapper.MemberMapper">
+
+	<insert id="memberJoin">
+		insert into
+		user(user_id,password,password_check,user_name,address_num,address,address_detail,phone,email,adminck,account_name,account_bank,account_num)
+		values(#{userId},#{password},#{passwordCheck},#{userName},#{addressNum},#{address},#{addressDetail},#{phone},#{email},0,#{accountName},#{accountBank},#{accountNum});
+	</insert>
+
+	<!-- 아이디 중복검사 -->
+	<select id="idCheck" resultType="int">
+
+		select count(*) from user where
+		user_id = #{user_id}
+	</select>
+
+
+	<!-- 아이디 찾기 -->
+	<select id="findid" parameterType="String" resultType="String">
+		select
+		user_id from user where email = #{email}
+	</select>
+
+
+	<!-- 로그인 -->
+	<select id="memberLogin" resultType="com.shop.model.User">
+		select *
+		from user where
+		user_id = #{userId} and
+		password =#{password}
+	</select>
+
+	<!-- 회원목록 조회 -->
+	<select id="getmemberList" resultType="com.shop.model.User">
+		select
+		* from user
+	</select>
+
+	<!-- 검색 조건문 -->
+	<sql id="criteria">
+		<trim prefix="where (" suffix=")" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'I'.toString()">
+							user_id like concat('%',#{keyword},'%')
+						</when>
+						<when test="type == 'N'.toString()">
+							user_name like concat('%',#{keyword},'%')
+						</when>
+						<when test="type == 'D'.toString()">
+							reg_date like concat('%',#{keyword},'%' )
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+
+
+	<!-- 회원목록 (페이징) -->
+	<select id="getListPaging" resultType="com.shop.model.User">
+		select * from ( select
+		user_id,user_name,address_num,address,address_detail,phone,email,adminck,reg_date
+		from user
+		<if test="keyword != null">
+			<include refid="criteria"></include>
+		</if>
+		order by reg_date asc) as Page limit #{skip},#{amount}
+	</select>
+	<!-- where user_id like concat('%',#{keyword},'%') -->
+
+	<!-- 게시물 총 개숫 -->
+	<select id="getTotal" resultType="int">
+		select count(*) from user
+		<if test="keyword != null">
+			<include refid="criteria"></include>
+		</if>
+	</select>
+
+	<!-- 회원정보 조회 -->
+	<select id="getProfile" resultType="com.shop.model.User"> 
+		select
+		user_id,password,password_check,user_name,address_num,address,address_detail,phone,email,adminck,account_name,account_bank,account_num
+		from user where
+		user_id = #{userId} 
+	</select>
+
+	<!-- 회원정보 수정 -->
+	<update id="profileUpdate">
+		update user set
+		password=#{password},password_check=#{passwordCheck},user_name=#{userName},address_num=#{addressNum},address=#{address},address_detail=#{addressDetail},
+		phone=#{phone},email=#{email},account_name=#{accountName},account_bank=#{accountBank},account_num=#{accountNum}
+		where user_id=#{userId}
+	</update>
+
+	<!-- 회원정보 삭제 -->
+	<delete id="profileDelete">
+		delete from user where user_id = #{userId} and
+		password =#{password}
+	</delete>
+>>>>>>> refs/remotes/origin/teammaster
 </mapper>

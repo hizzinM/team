@@ -40,3 +40,7 @@ hr{
     padding: 10px 0;
     font-size:11px;
 }
+.btn-style:hover{
+    background-color: black;
+    color:white;
+}

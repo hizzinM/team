@@ -40,7 +40,11 @@ th {
 			<h2>상품수정</h2>
 		</div>
 		<div align="center">
+<<<<<<< HEAD
 			<form action="/admin/Update" method="post">
+=======
+			<form action="/admin/goodsUpdateResult" method="post">
+>>>>>>> refs/remotes/origin/teammaster
 				<table>
 					<thead>
 						<tr>

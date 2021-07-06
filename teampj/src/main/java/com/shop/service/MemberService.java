@@ -37,7 +37,7 @@ public interface MemberService {
 	public User getProfile(String userId);
 
 	// 회원정보수정
-	public int profileUpdate(User user);
+	public int profileUpdate(User user); 
 
 	// 회원정보 삭제
 	public int profileDelete(User user);
