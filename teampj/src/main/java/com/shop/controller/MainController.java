@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.shop.mapper.AdminMapper;
 import com.shop.model.Criteria;
 import com.shop.model.PageMakerDTO;
+import com.shop.model.Product;
 import com.shop.service.AdminService;
 
 @Controller
@@ -34,10 +35,11 @@ public class MainController {
 	
 		
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public void mainPageGET() {
-
+	public void mainPageGET(Model model) throws Exception {
 		logger.info("메인 페이지 진입");
-
+		List<Product> list = adminService.selectMainProductList();
+		model.addAttribute("MainProduct",list);
+		System.out.println(adminService.selectMainProductList());
 	}
 
 	@GetMapping("/display")
@@ -104,15 +106,7 @@ public class MainController {
 		logger.info("악세사리 페이지 접속");
 	}
 	
-	//메인페이지 상품목록
-	@RequestMapping(value = "main", method = RequestMethod.GET)
-	public void selectMainProductList(Model model) throws Exception {
-		/* 상품 리스트 데이터 */
-		List list = adminService.selectMainProductList();
-
-		model.addAttribute("MainProduct",list);
-		
-	}
+	
 	
 	
 	

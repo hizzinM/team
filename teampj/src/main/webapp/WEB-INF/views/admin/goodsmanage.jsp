@@ -159,9 +159,7 @@ th, td {
 								value="${product.productId}"></td>
 							<td><a href="/admin/Update?productId=${product.productId}"><c:out
 										value="${product.productId}"></c:out></a></td>
-							<td><img
-								src="/resources/upload/${product.uploadPath}/${product.uuid}_${product.fileName}"
-								width="200px" height="200px"></td>
+							<td><img src="/resources/upload/${product.uploadPath}/${product.uuid}_${product.fileName}" width="200px" height="200px"></td>
 							<td><c:out value="${product.productName}" /></td>
 							<td><c:out value="${product.productPrice}" /></td>
 							<td><c:out value="${product.productCategory}" /></td>

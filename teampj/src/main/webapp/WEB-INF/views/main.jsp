@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,17 @@
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/main.css">
+<style type="text/css">
+.product-list{
+    width: 1600px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex: 200px;
+    flex-wrap: wrap;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -93,118 +105,26 @@
 				<li><img src="/resources/img/slide-img_08.jpg" alt=""></li>
 			</ul>
 		</div>
+		 <c:set var="i" value="0" />
+ 		 <c:set var="j" value="4" />
 		<div class="product-list">
+			<c:forEach items="${MainProduct}" var="Product">
+				<c:if test="${i%j == 0 }">
+ 				<tr> 
+				</c:if> 
 			<ul>
-				<li><a href=""><img src="../images/bimg01.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
+				<li><a href=""><img src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}"/></a>
+					<a href=""><h1>상품명</h1><c:out value="${Product.productName}" /></a>
 					<hr>
-					<p>상품 가격</p>
+					<p>상품 가격 KRW:<c:out value="${Product.productPrice}"/></p>
 					<p>리뷰 개수</p></li>
-				<li><a href=""><img src="../images/bimg02.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-				<li><a href=""><img src="../images/bimg03.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-				<li><a href=""><img src="../images/bimg04.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
+					<c:if test="${i%j == j-1 }"> </tr> 
+					</c:if> 
+					<c:set var="i" value="${i+1 }" /> 
 			</ul>
-			<ul>
-				<li><a href=""><img src="../images/bimg01.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-				<li><a href=""><img src="../images/bimg02.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-				<li><a href=""><img src="../images/bimg03.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-				<li><a href=""><img src="../images/bimg04.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-			</ul>
-			<ul>
-				<li><a href=""><img src="../images/bimg01.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-				<li><a href=""><img src="../images/bimg02.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-				<li><a href=""><img src="../images/bimg03.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-				<li><a href=""><img src="../images/bimg04.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-			</ul>
-			<ul>
-				<li><a href=""><img src="../images/bimg01.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-				<li><a href=""><img src="../images/bimg02.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-				<li><a href=""><img src="../images/bimg03.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-				<li><a href=""><img src="../images/bimg04.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-			</ul>
-			<ul>
-				<li><a href=""><img src="../images/bimg01.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-				<li><a href=""><img src="../images/bimg02.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-				<li><a href=""><img src="../images/bimg03.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-				<li><a href=""><img src="../images/bimg04.jpg" alt=""></a>
-					<a href=""><h1>상품명</h1></a>
-					<hr>
-					<p>상품 가격</p>
-					<p>리뷰 개수</p></li>
-			</ul>
+			</c:forEach>
 		</div>
+	
 		<div id="footer">
 			<div class="footer-text">
 				<p>고객센터</p>
