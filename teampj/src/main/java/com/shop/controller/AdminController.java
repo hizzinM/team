@@ -148,7 +148,7 @@ public class AdminController {
 		}
 		/* 페이지 인터페이스 데이터 */
 		model.addAttribute("pageMaker", new PageMakerDTO(cri, adminService.goodsGetTotal(cri)));
-		;
+		
 
 	}
 
@@ -188,7 +188,7 @@ public class AdminController {
 		adminService.goodsUpdateProduct(product);
 		// System.out.println(adminService.goodsUpdateProduct(product));
 		rttr.addFlashAttribute("resultProduct", adminService.goodsUpdateProduct(product));
-		return "/admin/goodsUpdateResult";
+		return "redirect:/admin/goodsmanage";
 	}
 
 //	public String goodsProductUpdate(RedirectAttributes rttr, Product product, MultipartFile file,
