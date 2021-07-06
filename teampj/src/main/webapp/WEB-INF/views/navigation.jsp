@@ -8,11 +8,10 @@
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <style>
 li{margin-bottom: 10px; font-weight: bolder;}
-
 </style>
 </head>
 <body>
-	<ul> 
+	<ul>
 		<li><a href="/category/Outer">Outer</a></li>
 		<li><a href="/category/Top">Top</a></li>
 		<li><a href="/category/Shirts">Shirts</a></li>

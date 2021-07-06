@@ -23,7 +23,7 @@
 </script>
 <body>
 	<h2>회원정보 수정(관리자)</h2>
-	<form id="modifyForm" action="\admin\AdminMemberUpdateResult" method="post">
+	<form id="modifyForm" action="/admin/AdminMemberUpdate" method="post">
 
 		<section id="container">
 			<br> <br>
@@ -97,7 +97,7 @@
 			</div>
 	</form>
 	
-	<form id="infoForm" action="/admin/AdminMemberUpdateResult" method="get">
+	<form id="infoForm" action="/admin/AdminMemberUpdate" method="get">
 		<input type="hidden" id="userId" name="userId"
 			value='<c:out value="${profile.userId}"/>'>
 		

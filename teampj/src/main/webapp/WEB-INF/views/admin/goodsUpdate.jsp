@@ -38,31 +38,12 @@ th {
 		<div id="container_box" align="center">
 			<div>&nbsp;</div>
 			<h2>상품수정</h2>
-		</div>
+		</div> 
+		<div align="center"> 
+			<form action="/admin/Update" method="post"> 
+			<form action="/admin/goodsUpdateResult" method="post">  
 		<div align="center">
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
->>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
-			<form action="/admin/goodsUpdate" method="post">
-<<<<<<< HEAD
-
-
-=======
-=======
-<<<<<<< HEAD
->>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
-			<form action="/admin/Update" method="post">
-
-			<form action="/admin/goodsUpdateResult" method="post">
-<<<<<<< HEAD
-
-
-=======
->>>>>>> refs/remotes/origin/teammaster
->>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
->>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
+			<form action="/admin/Update" method="post"> 
 				<table>
 					<thead>
 						<tr>
@@ -118,8 +99,9 @@ th {
 						<td><input type="text" name="productInventory"
 							value="${goodsUpdateData.productInventory}" /></td>
 					</tr>
-
+					
 				</table>
+				
 				<br> <input type="submit" value="수정하기">
 			</form>
 		</div>
