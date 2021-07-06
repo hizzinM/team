@@ -72,7 +72,7 @@ public class AdminController {
 		model.addAttribute("pageMaker", pageMake);
 	}
 	//회원정보조회
-	@GetMapping("/memberUpdate")
+	@GetMapping("/AdminMemberUpdate")
 	public String profileUpdate(String userId,Model model) {
 		
 		User result=adminService.profileUpdateAdminId(userId);
@@ -80,10 +80,15 @@ public class AdminController {
 		
 		model.addAttribute("profile",adminService.profileUpdateAdminId(userId));
 		
-		return "/admin/memberUpdate";
-		
+		return "/admin/AdminMemberUpdate";
 	}
-	
+	// 프로필 수정 기능
+		@PostMapping("/AdminMemberUpdate")
+		public String profileUpdatePOST(User user, RedirectAttributes rttr) {
+			adminService.profileUpdateAdmin(user);
+			rttr.addFlashAttribute("profile", "modify success");
+			return "/admin/AdminMemberUpdateResult";
+		}
 	
 	
 
@@ -178,7 +183,7 @@ public class AdminController {
 	adminService.goodsUpdateProduct(product);
 	//System.out.println(adminService.goodsUpdateProduct(product));
 	rttr.addFlashAttribute("resultProduct","resultProduct success");
-	return "/admin/result";
+	return "/admin/goodsUpdateResult";
 	}
 	
 
