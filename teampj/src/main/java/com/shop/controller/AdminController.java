@@ -86,10 +86,13 @@ public class AdminController {
 
 	// 프로필 수정 기능
 	@PostMapping("/AdminMemberUpdate")
-	public String profileUpdatePOST(User user, RedirectAttributes rttr) {
+	public String profileUpdatePOST(User user, RedirectAttributes rttr,Model model) {
 		adminService.profileUpdateAdmin(user);
-		rttr.addFlashAttribute("profile", "modify success");
-		return "/admin/AdminMemberUpdateResult";
+		rttr.addFlashAttribute("profile", adminService.profileUpdateAdmin(user));
+		
+		
+		System.out.println(adminService.profileUpdateAdmin(user));
+		return "redirect:/admin/membermenu";
 	}
 
 	// 회원 선택삭제
@@ -145,7 +148,7 @@ public class AdminController {
 		}
 		/* 페이지 인터페이스 데이터 */
 		model.addAttribute("pageMaker", new PageMakerDTO(cri, adminService.goodsGetTotal(cri)));
-		;
+		
 
 	}
 
@@ -184,8 +187,8 @@ public class AdminController {
 	public String goodsProductUpdate(RedirectAttributes rttr, Product product, AttachImageVO vo, MultipartFile file) {
 		adminService.goodsUpdateProduct(product);
 		// System.out.println(adminService.goodsUpdateProduct(product));
-		rttr.addFlashAttribute("resultProduct", "resultProduct success");
-		return "/admin/goodsUpdateResult";
+		rttr.addFlashAttribute("resultProduct", adminService.goodsUpdateProduct(product));
+		return "redirect:/admin/goodsmanage";
 	}
 
 //	public String goodsProductUpdate(RedirectAttributes rttr, Product product, MultipartFile file,

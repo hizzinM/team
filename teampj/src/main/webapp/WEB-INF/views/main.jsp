@@ -52,7 +52,6 @@
 			<ul>
 				<%@ include file="navigation.jsp"%>
 			</ul>
-
 		</div>
 		<div id="s_footer">
 			<h1>고객센터 1522-4953</h1>

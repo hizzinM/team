@@ -39,11 +39,16 @@ th {
 			<div>&nbsp;</div>
 			<h2>상품수정</h2>
 		</div>
+<<<<<<< HEAD
 		<div align="center">
 <<<<<<< HEAD
 			<form action="/admin/Update" method="post">
 =======
 			<form action="/admin/goodsUpdateResult" method="post">
+>>>>>>> refs/remotes/origin/teammaster
+=======
+		<div align="center">
+			<form action="/admin/Update" method="post">
 >>>>>>> refs/remotes/origin/teammaster
 				<table>
 					<thead>
