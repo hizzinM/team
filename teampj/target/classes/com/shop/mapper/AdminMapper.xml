@@ -28,7 +28,8 @@
 
 
 	<!-- 상품목록(페이징) -->
-	<select id="selectproductList" resultType="com.shop.model.Product">
+	<select id="selectproductList"
+		resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_size,p.product_color,
 		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
@@ -36,41 +37,22 @@
 		<if test="keyword != null">
 			where (product_name like concat ('%', #{keyword}, '%'))
 		</if>
-<<<<<<< HEAD
 		order by product_id desc
-=======
-		order by product_id desc 
->>>>>>> refs/remotes/hizzin/teammaster
 		limit #{skip}, #{amount}
 	</select>
 	<!-- 상품 총 갯수 -->
-<<<<<<< HEAD
 	<select id="goodsGetTotal" resultType="int">
-
 		select count(*) from product
-
 		<if test="keyword != null">
 
 			where product_name like concat('%' , #{keyword}, '%')
 
 		</if>
-
 	</select>
 
-
-
-=======
-  	<select id="goodsGetTotal" resultType="int">
-  		select count(*) from product
-  		<if test="keyword != null">
-  		
-  			where product_name like concat('%' , #{keyword}, '%')
-  		
-  		</if>
-	</select>
-	
 	<!-- 회원정보 조회 -->
-	<select id="profileUpdateAdminId" resultType="com.shop.model.User">
+	<select id="profileUpdateAdminId"
+		resultType="com.shop.model.User">
 		select
 		user_id,password,password_check,user_name,address_num,address,address_detail,phone,email,adminck,reg_date,account_name,account_bank,account_num
 		from user where
@@ -83,8 +65,7 @@
 		phone=#{phone},email=#{email},account_name=#{accountName},account_bank=#{accountBank},account_num=#{accountNum}
 		where user_id=#{userId}
 	</update>
-	
->>>>>>> refs/remotes/hizzin/teammaster
+
 	<!-- 이미지목록 -->
 	<select id="selectimgList"
 		resultType="com.shop.model.AttachImageVO">
