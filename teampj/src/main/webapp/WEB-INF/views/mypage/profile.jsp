@@ -173,7 +173,7 @@
             </script>
             -->
         </div>
->>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
+
 
 		</div>
 		<div id="s_footer">

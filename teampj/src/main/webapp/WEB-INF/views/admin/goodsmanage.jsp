@@ -886,6 +886,5 @@ th,td{
 
 
 </body>
->>>>>>> refs/remotes/origin/teammaster
->>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
+
 </html>
