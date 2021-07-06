@@ -99,13 +99,14 @@ public class AdminServiceImpl implements AdminService {
 		return 1;
 	}
 
-	/* 회원정보수정조회 */
+	
 	@Override
 	public int goodsUpdateProductImg(AttachImageVO vo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	/* 회원정보수정조회 */
+	@Override
 	public User profileUpdateAdminId(String userId) {
 		return adminMapper.profileUpdateAdminId(userId);
 	}

@@ -40,7 +40,7 @@ th {
 			<h2>상품수정</h2>
 		</div>
 		<div align="center">
-			<form action="/admin/goodsUpdateResult" method="post">
+			<form action="/admin/Update" method="post">
 				<table>
 					<thead>
 						<tr>
