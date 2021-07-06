@@ -116,4 +116,12 @@ public class AdminServiceImpl implements AdminService {
 	public int profileUpdateAdmin(User user) {
 		return adminMapper.profileUpdateAdmin(user);
 	}
+	
+	/*메인페이지 상품목록*/
+	public List<Product> selectMainProductList() {
+		
+		return adminMapper.selectMainProductList();
+	}
+	
+	
 }

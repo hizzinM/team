@@ -4,23 +4,35 @@ import java.io.File;
 import java.io.IOException;
 
 import java.nio.file.Files;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.shop.mapper.AdminMapper;
+import com.shop.model.Criteria;
+import com.shop.model.PageMakerDTO;
+import com.shop.service.AdminService;
+
 @Controller
 public class MainController {
+	@Autowired
+	AdminService adminService;
 
+	
 	private static final Logger logger = LoggerFactory.getLogger("MainController.class");
-
+	
+		
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public void mainPageGET() {
 
@@ -91,4 +103,18 @@ public class MainController {
 	public void getAcc() throws Exception {
 		logger.info("악세사리 페이지 접속");
 	}
+	
+	//메인페이지 상품목록
+	@RequestMapping(value = "main", method = RequestMethod.GET)
+	public void selectMainProductList(Model model) throws Exception {
+		/* 상품 리스트 데이터 */
+		List list = adminService.selectMainProductList();
+
+		model.addAttribute("MainProduct",list);
+		
+	}
+	
+	
+	
+	
 }

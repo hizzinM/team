@@ -39,4 +39,7 @@ public interface AdminService {
 
 	// 회원정보 조회 기능
 	public User profileUpdateAdminId(String userId);
+	
+	//메인페이지 상품
+	public List<Product> selectMainProductList();
 }

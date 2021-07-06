@@ -46,6 +46,7 @@ public interface AdminMapper {
 
 	// 회원정보 수정 기능
 	public int profileUpdateAdmin(User user);
-
-
+	
+	//메인페이지 상품
+	public List<Product> selectMainProductList();
 }
