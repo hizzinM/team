@@ -11,8 +11,6 @@ public interface AdminService {
 	/* 상품 등록 */
 	public void insertpro(Product product);
 
-	/* 상품 목록 */
-	public List<Product> selectproductList(Criteria cri);
 
 	/* 이미지 목록 */
 	public List<AttachImageVO> selectimgList();
@@ -29,6 +27,9 @@ public interface AdminService {
 
 	/* 회원삭제 */
 	public int userDelete(String userId);
+	
+	/* 상품 목록(페이징) */
+	public List<Product> selectproductList(Criteria cri);
 	/* 상품 총 개수 */
 	public int goodsGetTotal(Criteria cri);
 

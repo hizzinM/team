@@ -65,6 +65,12 @@ public class MemberController {
 		return "redirect:/main";
 
 	}
+	
+	// 비밀번호 찾기 폼
+	@RequestMapping(value = "/findpwd")
+	public String Findpwd() throws Exception {
+		return "/member/findpwd";
+	}
 
 	// 로그인 페이지 이동
 	@RequestMapping(value = "login", method = RequestMethod.GET)

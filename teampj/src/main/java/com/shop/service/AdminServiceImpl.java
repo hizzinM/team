@@ -35,7 +35,7 @@ public class AdminServiceImpl implements AdminService {
 		});
 	}
 
-	/* 상품리스트 */
+	/* 상품리스트(페이징) */
 	@Override
 	public List<Product> selectproductList(Criteria cri) {
 		logger.info("selectproductList()......");
@@ -76,9 +76,28 @@ public class AdminServiceImpl implements AdminService {
 	/* 상품 수정 페이지 */
 	@Override
 	public int goodsUpdateProduct(Product product) {
-		logger.info("(service)goodsUpdateProduct........");
+		//logger.info("(service)goodsUpdateProduct........");
+		System.out.println("(service)goodsUpdateProduct........");
 		adminMapper.goodsUpdateProduct(product);
-		return adminMapper.goodsUpdateProduct(product);
+			System.out.println("2222");
+		if (product.getImageList() == null || product.getImageList().size() <= 0) {
+			//System.out.println("1111");
+			
+			//System.out.println( product.getImageList().size());
+			return 0;
+	}
+		System.out.println(product);
+		System.out.println(product.getImageList());
+		
+		product.getImageList().forEach(attach -> {
+			attach.setProductId(product.getProductId());
+			System.out.println(product.getImageList());
+			adminMapper.deleterProdectImg(( String.valueOf(product.getProductId())));
+			adminMapper.imageEnroll(attach);
+		});
+	
+		return 1;
+
 	}
 	
 	@Override
