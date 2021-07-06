@@ -142,9 +142,21 @@
                 </ul>
             </table>
             <div class="buttom-wrap">
-                <a href="/mypage/profileUpdate"><input type="button" class="btn-style btn-update" value="수정"></a>
+                <input type="button" class="btn-style btn-update" id="modify_btn" value="수정">
                 <a href="/mypage/profileDeleteView"><input type="button" class="btn-style" value="탈퇴"></a>
             </div>
+            <form id="infoForm" action="/mypage/profileUpdate" method="get">
+                <input type="hidden" id="userId" name="userId" value='<c:out value="${profile.userId}"/>'>
+            </form>
+        <!--<a href="/mypage/profileUpdate" class="btn btn-style" id="modify_btn">수정</a>
+            <a href="/mypage/profileDeleteView" class="btn btn-style" id="delete_btn">탈퇴</a>-->
+            <script type="text/javascript">
+                let form = $("#infoForm");
+                $("#modify_btn").on("click", function(e) {
+                    form.attr("action", "/mypage/profileUpdate");
+                    form.submit();
+                });
+            </script>
             <!--
             <a href="/mypage/profileUpdate" class="btn btn-style" id="modify_btn" >수정</a>
             <a href="/mypage/profileDeleteView" class="btn btn-style" id="delete_btn" >탈퇴</a>
