@@ -118,7 +118,7 @@ public class AdminController {
 		List list = adminService.selectproductList(cri);
 		
 		if(!list.isEmpty()) {
-			model.addAttribute("list", list);
+			model.addAttribute("produstList", list);
 		} else {
 		model.addAttribute("listCheck", "empty");
 			return;
@@ -161,7 +161,7 @@ public class AdminController {
 	@PostMapping("/Update")
 	public String goodsProductUpdate(RedirectAttributes rttr,Product product,AttachImageVO vo,MultipartFile file) {
 	adminService.goodsUpdateProduct(product);
-	System.out.println(adminService.goodsUpdateProduct(product));
+	//System.out.println(adminService.goodsUpdateProduct(product));
 	rttr.addFlashAttribute("resultProduct","resultProduct success");
 	return "/admin/result";
 	}

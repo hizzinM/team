@@ -26,9 +26,9 @@
 
 	</insert>
 
-	<!-- 상품목록 -->
-	<select id="selectproductList"
-		resultType="com.shop.model.Product">
+
+	<!-- 상품목록(페이징) -->
+	<select id="selectproductList" resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_size,p.product_color,
 		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
@@ -37,20 +37,18 @@
 			where (product_name like concat ('%', #{keyword}, '%'))
 		</if>
 		order by product_id desc 
-		limit #{skip}, #{amount}		
+		limit #{skip}, #{amount}
 	</select>
 	<!-- 상품 총 갯수 -->
   	<select id="goodsGetTotal" resultType="int">
-  	
   		select count(*) from product
-  		
   		<if test="keyword != null">
   		
   			where product_name like concat('%' , #{keyword}, '%')
   		
   		</if>
-  	
-  	</select>
+	</select>
+	
 	
 	
 	
@@ -74,7 +72,7 @@
 	</delete>
 
 
-	<!-- 상품 수정 조회 페이지 -->
+	<!-- 상품 수정Id 조회 페이지 -->
 	<select id="goodsUpdateId" resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_size,p.product_color,
