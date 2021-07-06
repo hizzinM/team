@@ -49,7 +49,17 @@ th,td{
     margin-left: 15px;
     background-color: #c3daf7;
 }
-
+.deletebutton{
+	height: 32px;
+    width: 100px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 20px;
+    position: absolute;
+    margin-left: 155px;
+    margin-top:-17px;
+    background-color: #c3daf7;
+}
 
 	/* 페이지 버튼 인터페이스 */
 .pageMaker_wrap{
@@ -191,12 +201,12 @@ th,td{
 						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
                 	</form>
-   </section>
+  
    <script type="text/javascript">
    let searchForm = $('#searchForm');
 	let moveForm = $('#moveForm');
 
-	/* 작거 검색 버튼 동작 */
+	/* 상품 검색 버튼 동작 */
 	$("#searchForm button").on("click", function(e){
 		
 		e.preventDefault();
