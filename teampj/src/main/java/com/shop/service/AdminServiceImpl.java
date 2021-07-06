@@ -99,25 +99,18 @@ public class AdminServiceImpl implements AdminService {
 		return 1;
 
 	}
-<<<<<<< HEAD
-	
-=======
+
 	/*회원정보수정조회*/
->>>>>>> refs/remotes/origin/teammaster
+
 	@Override
-<<<<<<< HEAD
 	public int goodsUpdateProductImg(AttachImageVO vo) {
 		// TODO Auto-generated method stub
 		return 0;
-=======
+	}
 	public User profileUpdateAdminId(String userId) {
 		
 		return adminMapper.profileUpdateAdminId(userId);
-		
->>>>>>> refs/remotes/origin/teammaster
 	}
-<<<<<<< HEAD
-=======
 	/*회원정보수정*/
 	@Override
 	public int profileUpdateAdmin(User user) {
@@ -127,5 +120,5 @@ public class AdminServiceImpl implements AdminService {
 
 
 	
->>>>>>> refs/remotes/origin/teammaster
+
 }
