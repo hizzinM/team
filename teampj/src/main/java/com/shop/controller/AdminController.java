@@ -92,7 +92,7 @@ public class AdminController {
 		
 		
 		System.out.println(adminService.profileUpdateAdmin(user));
-		return "/admin/AdminMemberUpdateResult";
+		return "redirect:/admin/membermenu";
 	}
 
 	// 회원 선택삭제
