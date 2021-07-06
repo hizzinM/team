@@ -7,26 +7,29 @@ public class Product {
 	private String productName;
 	private String productPrice;
 	private String productSize;
+	private String productCategory;
 	private String productColor;
 	private int productInventory;
 	private String fileName;
 	private String uploadPath;
 	private String uuid;
-	private int[] noList;
 	private List<AttachImageVO> imageList;
 	public Product() {
 		super();
 	}
-	public Product(int productId, String productName, String productPrice, String productSize, String productColor,
-			int productInventory) {
+	public Product(int productId, String productName, String productPrice, String productSize, String productCategory,
+			String productColor, int productInventory, String fileName, String uploadPath, String uuid) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.productSize = productSize;
+		this.productCategory = productCategory;
 		this.productColor = productColor;
 		this.productInventory = productInventory;
-	
+		this.fileName = fileName;
+		this.uploadPath = uploadPath;
+		this.uuid = uuid;
 	}
 	public int getProductId() {
 		return productId;
@@ -51,6 +54,12 @@ public class Product {
 	}
 	public void setProductSize(String productSize) {
 		this.productSize = productSize;
+	}
+	public String getProductCategory() {
+		return productCategory;
+	}
+	public void setProductCategory(String productCategory) {
+		this.productCategory = productCategory;
 	}
 	public String getProductColor() {
 		return productColor;
@@ -88,19 +97,14 @@ public class Product {
 	public void setImageList(List<AttachImageVO> imageList) {
 		this.imageList = imageList;
 	}
-	public int[] getNoList() {
-		return noList;
-	}
-	public void setNoList(int[] noList) {
-		this.noList = noList;
-	}
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice
-				+ ", productSize=" + productSize + ", productColor=" + productColor + ", productInventory="
-				+ productInventory + ", fileName=" + fileName + ", uploadPath=" + uploadPath + ", uuid=" + uuid
-				+ ", imageList=" + imageList + "]";
+				+ ", productSize=" + productSize + ", productCategory=" + productCategory + ", productColor="
+				+ productColor + ", productInventory=" + productInventory + ", fileName=" + fileName + ", uploadPath="
+				+ uploadPath + ", uuid=" + uuid + ", imageList=" + imageList + "]";
 	}
+
 	
 	
 }

@@ -47,6 +47,7 @@ th {
 						<th class="userid_width">상품이미지</th>
 						<th class="userphone_width">상품명</th>
 						<th class="useremail_width">가격</th>
+						<th class="useremail_width">카테고리</th>
 						<th class="useraddress_width">사이즈</th>
 						<th class="useregdate_width">색깔</th>
 						<th class="useregdate_width">재고</th>
@@ -58,6 +59,7 @@ th {
 					<td><img src="/resources/upload/${resultProduct.uploadPath}/${resultProduct.uuid}_${resultProduct.fileName}" width="200px" height="200px"></td>
 					<td>${resultProduct.productName}</td>
 					<td>${resultProduct.productPrice}</td>
+					<td>${resultProduct.productCategory}</td>
 					<td>${resultProduct.productSize}</td>
 					<td>${resultProduct.productColor}</td>
 					<td>${resultProduct.productInventory}</td>

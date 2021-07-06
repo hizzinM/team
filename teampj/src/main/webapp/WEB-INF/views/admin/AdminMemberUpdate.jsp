@@ -97,7 +97,7 @@
 			</div>
 	</form>
 	
-	<form id="infoForm" action="/mypage/profileUpdate" method="get">
+	<form id="infoForm" action="/admin/AdminMemberUpdateResult" method="get">
 		<input type="hidden" id="userId" name="userId"
 			value='<c:out value="${profile.userId}"/>'>
 		

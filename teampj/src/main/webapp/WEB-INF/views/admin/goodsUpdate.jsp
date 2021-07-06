@@ -41,10 +41,14 @@ th {
 		</div>
 		<div align="center">
 <<<<<<< HEAD
+			<form action="/admin/goodsUpdate" method="post">
+=======
+<<<<<<< HEAD
 			<form action="/admin/Update" method="post">
 =======
 			<form action="/admin/goodsUpdateResult" method="post">
 >>>>>>> refs/remotes/origin/teammaster
+>>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
 				<table>
 					<thead>
 						<tr>
@@ -52,6 +56,7 @@ th {
 							<th class="userid_width">상품이미지</th>
 							<th class="userphone_width">상품명</th>
 							<th class="useremail_width">가격</th>
+							<th class="useremail_width">카테고리</th>
 							<th class="useraddress_width">사이즈</th>
 							<th class="useregdate_width">색깔</th>
 							<th class="useregdate_width">재고</th>
@@ -80,6 +85,18 @@ th {
 							value="${goodsUpdateData.productName}" /></td>
 						<td><input type="text" name="productPrice"
 							value="${goodsUpdateData.productPrice}" /></td>
+
+						<td><select name="productCategory">
+						<option value="Outer">Outer</option>
+						<option value="Top">Top</option>
+						<option value="Shirts">Shirts</option>
+						<option value="Pants">Pants</option>
+						<option value="Suit">Suit</option>
+						<option value="Bag/Shose">Bag/Shose</option>
+						<option value="Acc">Acc</option>
+						<option value="Sale">Sale</option>
+						</select></td>
+	
 						<td><input type="text" name="productSize"
 							value="${goodsUpdateData.productSize}" /></td>
 						<td><input type="text" name="productColor"
