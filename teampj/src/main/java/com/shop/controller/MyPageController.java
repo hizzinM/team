@@ -52,7 +52,7 @@ public class MyPageController {
 	public String profileUpdatePOST(User user, RedirectAttributes rttr) {
 		memberservice.profileUpdate(user);
 		rttr.addFlashAttribute("profile", "modify success");
-		return "redirect:/mypage/myindex";
+		return "redirect:/mypage/index";
 	}
 	// 이부분 선생님한테 질문하기 포스트 방식으로 폼도 보내고 페이지 이동하고 싶다면?
 

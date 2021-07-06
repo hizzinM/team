@@ -36,24 +36,24 @@
 		<if test="keyword != null">
 			where (product_name like concat ('%', #{keyword}, '%'))
 		</if>
-		order by product_id desc 
-		limit #{skip}, #{amount}		
+		order by product_id desc
+		limit #{skip}, #{amount}
 	</select>
 	<!-- 상품 총 갯수 -->
-  	<select id="goodsGetTotal" resultType="int">
-  	
-  		select count(*) from product
-  		
-  		<if test="keyword != null">
-  		
-  			where product_name like concat('%' , #{keyword}, '%')
-  		
-  		</if>
-  	
-  	</select>
-	
-	
-	
+	<select id="goodsGetTotal" resultType="int">
+
+		select count(*) from product
+
+		<if test="keyword != null">
+
+			where product_name like concat('%' , #{keyword}, '%')
+
+		</if>
+
+	</select>
+
+
+
 	<!-- 이미지목록 -->
 	<select id="selectimgList"
 		resultType="com.shop.model.AttachImageVO">
