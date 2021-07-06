@@ -41,25 +41,26 @@ public class AdminServiceImpl implements AdminService {
 		logger.info("selectproductList()......");
 		return adminMapper.selectproductList(cri);
 	}
+
 	/* 상품 총 갯수 */
 	public int goodsGetTotal(Criteria cri) {
 		logger.info("goodsGetTotal().........");
 		return adminMapper.goodsGetTotal(cri);
 	}
-	
+
 	/* 상품이미지 리스트 */
 	@Override
 	public List<AttachImageVO> selectimgList() {
 		return adminMapper.selectimgList();
 	}
-	
+
 	/* 상품 수정 조회 페이지 */
 	@Override
 	public Product goodsUpdateId(int productId) {
 		logger.info("(service)goodsGetDetail......." + productId);
 		return adminMapper.goodsUpdateId(productId);
 	}
-	
+
 	/* 상품삭제 */
 	@Override
 	public int deleterProdect(String productId) {
@@ -76,56 +77,45 @@ public class AdminServiceImpl implements AdminService {
 	/* 상품 수정 페이지 */
 	@Override
 	public int goodsUpdateProduct(Product product) {
-		//logger.info("(service)goodsUpdateProduct........");
+		// logger.info("(service)goodsUpdateProduct........");
 		System.out.println("(service)goodsUpdateProduct........");
 		adminMapper.goodsUpdateProduct(product);
-			System.out.println("2222");
+		System.out.println("2222");
 		if (product.getImageList() == null || product.getImageList().size() <= 0) {
-			//System.out.println("1111");
-			
-			//System.out.println( product.getImageList().size());
+			// System.out.println("1111");
+
+			// System.out.println( product.getImageList().size());
 			return 0;
-	}
+		}
 		System.out.println(product);
 		System.out.println(product.getImageList());
-		
+
 		product.getImageList().forEach(attach -> {
 			attach.setProductId(product.getProductId());
 			System.out.println(product.getImageList());
-			adminMapper.deleterProdectImg(( String.valueOf(product.getProductId())));
+			adminMapper.deleterProdectImg((String.valueOf(product.getProductId())));
 			adminMapper.imageEnroll(attach);
 		});
-	
+
 		return 1;
 
 	}
-<<<<<<< HEAD
-	
-=======
-	/*회원정보수정조회*/
->>>>>>> refs/remotes/origin/teammaster
+
+	/* 회원정보수정조회 */
 	@Override
-<<<<<<< HEAD
 	public int goodsUpdateProductImg(AttachImageVO vo) {
 		// TODO Auto-generated method stub
 		return 0;
-=======
-	public User profileUpdateAdminId(String userId) {
-		
-		return adminMapper.profileUpdateAdminId(userId);
-		
->>>>>>> refs/remotes/origin/teammaster
 	}
-<<<<<<< HEAD
-=======
-	/*회원정보수정*/
+
+	public User profileUpdateAdminId(String userId) {
+		return adminMapper.profileUpdateAdminId(userId);
+	}
+
+	/* 회원정보수정 */
 	@Override
 	public int profileUpdateAdmin(User user) {
-		
+
 		return adminMapper.profileUpdateAdmin(user);
 	}
-
-
-	
->>>>>>> refs/remotes/origin/teammaster
 }
