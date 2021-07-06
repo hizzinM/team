@@ -96,49 +96,23 @@ public class AdminServiceImpl implements AdminService {
 			adminMapper.deleterProdectImg((String.valueOf(product.getProductId())));
 			adminMapper.imageEnroll(attach);
 		});
-
 		return 1;
-
 	}
 
-<<<<<<< HEAD
 	/* 회원정보수정조회 */
-=======
-	/*회원정보수정조회*/
-
->>>>>>> refs/remotes/origin/teammaster
 	@Override
 	public int goodsUpdateProductImg(AttachImageVO vo) {
 		// TODO Auto-generated method stub
 		return 0;
-<<<<<<< HEAD
-=======
 	}
-	public User profileUpdateAdminId(String userId) {
-		
-		return adminMapper.profileUpdateAdminId(userId);
->>>>>>> refs/remotes/origin/teammaster
-	}
-<<<<<<< HEAD
 
 	public User profileUpdateAdminId(String userId) {
 		return adminMapper.profileUpdateAdminId(userId);
 	}
 
 	/* 회원정보수정 */
-=======
-	/*회원정보수정*/
->>>>>>> refs/remotes/origin/teammaster
 	@Override
 	public int profileUpdateAdmin(User user) {
-
 		return adminMapper.profileUpdateAdmin(user);
 	}
-<<<<<<< HEAD
-=======
-
-
-	
-
->>>>>>> refs/remotes/origin/teammaster
 }
