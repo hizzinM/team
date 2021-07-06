@@ -886,5 +886,10 @@ th,td{
 
 
 </body>
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/teammaster
+>>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
+>>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
 </html>
