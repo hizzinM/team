@@ -128,6 +128,7 @@ public class MainController {
 		} else {
 			model.addAttribute("listCheck", "empty");
 			return;
-		}
+		} /* 페이지 인터페이스 데이터 */
+		model.addAttribute("pageMaker", new PageMakerDTO(cri, adminService.goodsGetTotal(cri)));
 	}
 }
