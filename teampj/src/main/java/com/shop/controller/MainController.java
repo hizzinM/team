@@ -37,10 +37,27 @@ public class MainController {
 		logger.info("메인 페이지 진입");
 		List<Product> list = adminService.selectMainProductList();
 		model.addAttribute("MainProduct", list);
-		System.out.println(adminService.selectMainProductList());
-		model.addAttribute("MainProduct", list);
+		
 	}
+	/*상품상세보기*/
+	@RequestMapping(value = "/detail")
+	public String goodsGetInfoGET(int productId, Criteria cri, Model model) {
 
+		logger.info("goodsGetInfo()........." + productId);
+
+		Product result = adminService.goodsUpdateId(productId);
+		System.out.println(result);
+		/* 목록 페이지 조건 정보 */
+		model.addAttribute("cri", cri);
+
+		/* 조회 페이지 정보 */
+		model.addAttribute("goodDetailData", result);
+
+		return "/productDetail";
+	}
+	
+	
+	
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> getImage(String fileName) {
 		logger.info("getImage()........" + fileName);

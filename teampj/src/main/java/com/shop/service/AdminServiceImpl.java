@@ -60,7 +60,14 @@ public class AdminServiceImpl implements AdminService {
 		logger.info("(service)goodsGetDetail......." + productId);
 		return adminMapper.goodsUpdateId(productId);
 	}
-
+	/* 상품 상세페이지 */
+	@Override
+	public Product ProductDetailNameList(String productName) {
+		logger.info("(service)goodsGetDetail......." + productName);
+		return adminMapper.ProductDetailNameList(productName);
+	}
+	
+	
 	/* 상품삭제 */
 	@Override
 	public int deleterProdect(String productId) {
