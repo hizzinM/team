@@ -64,14 +64,16 @@
 			<ul>
 				<%@ include file="navigation.jsp"%>
 			</ul>
-		</div>
-		<div id="s_search">
-			<form action="/search" method="get">
-				<input type="text" id="search" name=""
-					placeholder="Store item search">
-				<button>Search</button>
-		</div>
 
+		</div>
+		<div class="search_wrap">
+			<div class="search_area">
+				<input type="text" name="keyword" id="search"
+					value="${pageMaker.cri.keyword }" placeholder="Store item search">
+				<button>Search</button>
+			</div>
+		</div>
+		<br>
 		<div id="s_footer">
 			<h1>고객센터 1522-4953</h1>
 			<br>
@@ -120,7 +122,6 @@
 						</p>
 						<p>리뷰 개수</p></li>
 				</ul>
-
 			</c:forEach>
 		</div>
 
@@ -146,6 +147,24 @@
 			</div>
 		</div>
 	</div>
+	<form id="moveForm" method="get">
+		<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
+	</form>
 
+	<script>
+		let moveForm = $("#moveForm");
+		$(".search_area button").on("click", function(e) {
+			e.preventDefault();
+
+			let keyword = $(".search_area input[name='keyword']").val();
+			if (!keyword) {
+				alert("키워드를 입력하세요.");
+				return false;
+			}
+
+			moveForm.find("input[name='keyword']").val(keyword);
+			moveForm.submit();
+		});
+	</script>
 </body>
 </html>

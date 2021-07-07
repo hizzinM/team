@@ -120,18 +120,14 @@ public class MainController {
 		model.addAttribute("AccProduct", Acclist);
 	}
 
-	// 상품검색 불러오기
 	@RequestMapping(value = "search", method = RequestMethod.GET)
 	public void goodsearch(Criteria cri, Model model) throws Exception {
 		List list = adminService.selectproductList(cri);
 		if (!list.isEmpty()) {
-			model.addAttribute("produstList", list);
+			model.addAttribute("searchlist", list);
 		} else {
 			model.addAttribute("listCheck", "empty");
 			return;
 		}
-		/* 페이지 인터페이스 데이터 */
-		model.addAttribute("pageMaker", new PageMakerDTO(cri, adminService.goodsGetTotal(cri)));
 	}
-
 }
