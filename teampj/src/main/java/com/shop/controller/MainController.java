@@ -125,7 +125,7 @@ public class MainController {
 	public void goodsearch(Criteria cri, Model model) throws Exception {
 		List list = adminService.selectproductList(cri);
 		if (!list.isEmpty()) {
-			model.addAttribute("produstList", list);
+			model.addAttribute("searchlist", list);
 		} else {
 			model.addAttribute("listCheck", "empty");
 			return;
