@@ -35,10 +35,10 @@ public class MainController {
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public void mainPageGET(Model model) throws Exception {
 		logger.info("메인 페이지 진입");
-		List<Product> list = adminService.selectMainProductList(); 
+		List<Product> list = adminService.selectMainProductList();
 		model.addAttribute("MainProduct", list);
-		System.out.println(adminService.selectMainProductList()); 
-		model.addAttribute("MainProduct",list); 
+		System.out.println(adminService.selectMainProductList());
+		model.addAttribute("MainProduct", list);
 	}
 
 	@GetMapping("/display")
@@ -68,7 +68,7 @@ public class MainController {
 	public void getOuter(Model model) throws Exception {
 		logger.info("아우터 페이지 접속");
 		List<Product> Outerlist = adminService.OuterProductList();
-		model.addAttribute("OuterProduct",Outerlist);
+		model.addAttribute("OuterProduct", Outerlist);
 		System.out.println(adminService.OuterProductList());
 	}
 
@@ -76,7 +76,7 @@ public class MainController {
 	@RequestMapping(value = "/category/Top", method = RequestMethod.GET)
 	public void getTop(Model model) throws Exception {
 		List<Product> Toplist = adminService.TopProductList();
-		model.addAttribute("TopProduct",Toplist);
+		model.addAttribute("TopProduct", Toplist);
 		logger.info("탑 페이지 접속");
 	}
 
@@ -85,7 +85,7 @@ public class MainController {
 	public void getShirts(Model model) throws Exception {
 		logger.info("셔츠 페이지 접속");
 		List<Product> Shirtslist = adminService.ShirtsProductList();
-		model.addAttribute("ShirtsProduct",Shirtslist);
+		model.addAttribute("ShirtsProduct", Shirtslist);
 	}
 
 	// 팬츠 페이지 이동
@@ -93,7 +93,7 @@ public class MainController {
 	public void getPants(Model model) throws Exception {
 		logger.info("팬츠 페이지 접속");
 		List<Product> Pantslist = adminService.PantsProductList();
-		model.addAttribute("PantsProduct",Pantslist);
+		model.addAttribute("PantsProduct", Pantslist);
 	}
 
 	// 수트 페이지 이동
@@ -101,7 +101,7 @@ public class MainController {
 	public void getSuit(Model model) throws Exception {
 		logger.info("수트 페이지 접속");
 		List<Product> Suitlist = adminService.SuitProductList();
-		model.addAttribute("SuitProduct",Suitlist);
+		model.addAttribute("SuitProduct", Suitlist);
 	}
 
 	// 백/슈즈 페이지 이동
@@ -109,7 +109,7 @@ public class MainController {
 	public void getBagShoes(Model model) throws Exception {
 		logger.info("백/슈즈 페이지 접속");
 		List<Product> BagShoeslist = adminService.BagShoesProductList();
-		model.addAttribute("BagShoesProduct",BagShoeslist);
+		model.addAttribute("BagShoesProduct", BagShoeslist);
 	}
 
 	// 악세사리 페이지 이동
@@ -117,8 +117,21 @@ public class MainController {
 	public void getAcc(Model model) throws Exception {
 		logger.info("악세사리 페이지 접속");
 		List<Product> Acclist = adminService.AccProductList();
-		model.addAttribute("AccProduct",Acclist);
+		model.addAttribute("AccProduct", Acclist);
 	}
- 
+
+	// 상품검색 불러오기
+	@RequestMapping(value = "search", method = RequestMethod.GET)
+	public void goodsearch(Criteria cri, Model model) throws Exception {
+		List list = adminService.selectproductList(cri);
+		if (!list.isEmpty()) {
+			model.addAttribute("produstList", list);
+		} else {
+			model.addAttribute("listCheck", "empty");
+			return;
+		}
+		/* 페이지 인터페이스 데이터 */
+		model.addAttribute("pageMaker", new PageMakerDTO(cri, adminService.goodsGetTotal(cri)));
+	}
 
 }

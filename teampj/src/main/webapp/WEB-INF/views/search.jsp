@@ -21,6 +21,108 @@
 	flex: 200px;
 	flex-wrap: wrap;
 }
+
+table {
+	width: 60%;
+	border: 1px solid #d3d8e1;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 10px 5px;
+	border: 1px solid #e9ebf0;
+	font-size: 17px;
+}
+/* 검색 영역 */
+.search_wrap {
+	margin-top: 15px;
+}
+
+.search_input {
+	position: relative;
+	text-align: center;
+}
+
+.search_input input[name='keyword'] {
+	padding: 4px 10px;
+	font-size: 15px;
+	height: 20px;
+	line-height: 20px;
+}
+
+.search_btn {
+	height: 32px;
+	width: 80px;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 20px;
+	position: absolute;
+	margin-left: 15px;
+	background-color: #c3daf7;
+}
+
+.deletebutton {
+	height: 32px;
+	width: 100px;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 20px;
+	position: absolute;
+	margin-left: 155px;
+	margin-top: -17px;
+	background-color: #c3daf7;
+}
+
+/* 페이지 버튼 인터페이스 */
+.pageMaker_wrap {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 40px;
+}
+
+.pageMaker {
+	list-style: none;
+	display: inline-block;
+}
+
+.pageMaker_btn {
+	float: left;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	margin-left: 20px;
+}
+
+.active {
+	border: 2px solid black;
+	font-weight: 400;
+}
+
+.next, .prev {
+	border: 1px solid #ccc;
+	padding: 0 10px;
+}
+
+.pageMaker_btn a:link {
+	color: black;
+}
+
+.pageMaker_btn a:visited {
+	color: black;
+}
+
+.pageMaker_btn a:active {
+	color: black;
+}
+
+.pageMaker_btn a:hover {
+	color: black;
+}
+
+.next a, .prev a {
+	color: #ccc;
+}
 </style>
 </head>
 <body>
@@ -66,10 +168,10 @@
 			</ul>
 		</div>
 		<div id="s_search">
-			<form action="">
+			<form action="/search" method="get">
 				<input type="text" id="search" name=""
 					placeholder="Store item search">
-			</form>
+				<button>Search</button>
 		</div>
 		<div id="s_footer">
 			<h1>고객센터 1522-4953</h1>
@@ -86,9 +188,101 @@
 			</p>
 		</div>
 	</div>
+	<div id="container_box" align="center">
+		<div>&nbsp;</div>
+		<h2>상품관리</h2>
+	</div>
+	<div align="center">
+		<c:if test="${listcheck != 'empty'}">
+			<table>
+				<c:forEach items="${produstList}" var="product">
+					<ul>
+						<li><a href=""><img
+								src="/resources/upload/${product.uploadPath}/${product.uuid}_${product.fileName}"
+								width="200px" height="200px"></a> <a href=""><h1>상품명</h1>
+								<c:out value="${product.productName}" /></a>
+							<p>
+								상품 가격 KRW:
+								<c:out value="${product.productPrice}" />
+							</p>
+					</ul>
+				</c:forEach>
+			</table>
+		</c:if>
 
+		<!-- 상품 리스트 X -->
+
+		<c:if test="${listCheck == 'empty'}">
+			<div class="table_empty">등록된 상품이 없습니다.</div>
+		</c:if>
+	</div>
+	</section>
+	<!-- 페이지 이름 인터페이스 영역 -->
+	<div class="pageMaker_wrap">
+		<ul class="pageMaker">
+
+			<!-- 이전 버튼 -->
+			<c:if test="${pageMaker.prev }">
+				<li class="pageMaker_btn prev"><a
+					href="${pageMaker.startPage -1}">이전</a></li>
+			</c:if>
+
+			<!-- 페이지 번호 -->
+			<c:forEach begin="${pageMaker.startPage }"
+				end="${pageMaker.endPage }" var="num">
+				<li
+					class="pageMaker_btn ${pageMaker.cri.pageNum == num ? 'active':''}">
+					<a href="${num}">${num}</a>
+				</li>
+			</c:forEach>
+
+			<!-- 다음 버튼 -->
+			<c:if test="${pageMaker.next}">
+				<li class="pageMaker_btn next"><a
+					href="${pageMaker.endPage + 1 }">다음</a></li>
+			</c:if>
+		</ul>
 	</div>
 
+	<form id="moveForm" action="\search" method="get">
+		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+		<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+		<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+	</form>
+
+	<script type="text/javascript">
+		let searchForm = $('#searchForm');
+		let moveForm = $('#moveForm');
+
+		/* 상품 검색 버튼 동작 */
+		$("#searchForm button").on("click", function(e) {
+
+			e.preventDefault();
+
+			/* 검색 키워드 유효성 검사 */
+			if (!searchForm.find("input[name='keyword']").val()) {
+				alert("키워드를 입력하십시오");
+				return false;
+			}
+
+			searchForm.find("input[name='pageNum']").val("1");
+
+			searchForm.submit();
+
+		});
+
+		/* 페이지 이동 버튼 */
+		$(".pageMaker_btn a").on("click", function(e) {
+
+			e.preventDefault();
+
+			moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+
+			moveForm.submit();
+
+		});
+	</script>
+	</section>
 	<div id="footer">
 		<div class="footer-text">
 			<p>고객센터</p>
@@ -111,6 +305,5 @@
 		</div>
 	</div>
 	</div>
-
 </body>
 </html>

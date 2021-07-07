@@ -148,8 +148,6 @@ public class AdminController {
 		}
 		/* 페이지 인터페이스 데이터 */
 		model.addAttribute("pageMaker", new PageMakerDTO(cri, adminService.goodsGetTotal(cri)));
-		
-
 	}
 
 	// 상품 선택삭제
