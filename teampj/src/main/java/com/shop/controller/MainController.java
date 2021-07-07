@@ -35,13 +35,10 @@ public class MainController {
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public void mainPageGET(Model model) throws Exception {
 		logger.info("메인 페이지 진입");
-		List<Product> list = adminService.selectMainProductList();
-<<<<<<< HEAD
+		List<Product> list = adminService.selectMainProductList(); 
 		model.addAttribute("MainProduct", list);
-		System.out.println(adminService.selectMainProductList());
-=======
-		model.addAttribute("MainProduct",list);
->>>>>>> refs/remotes/origin/teammaster
+		System.out.println(adminService.selectMainProductList()); 
+		model.addAttribute("MainProduct",list); 
 	}
 
 	@GetMapping("/display")
