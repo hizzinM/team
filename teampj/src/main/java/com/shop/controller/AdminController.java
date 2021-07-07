@@ -71,7 +71,7 @@ public class AdminController {
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
 	}
-
+	 
 	// 회원정보조회
 	@GetMapping("/AdminMemberUpdate")
 	public String profileUpdate(String userId, Model model) {
