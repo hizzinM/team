@@ -21,33 +21,6 @@
 	flex: 200px;
 	flex-wrap: wrap;
 }
-/* 검색 영역 */
-.search_wrap {
-	margin-top: 15px;
-}
-
-.search_input {
-	position: relative;
-	text-align: center;
-}
-
-.search_input input[name='keyword'] {
-	padding: 4px 10px;
-	font-size: 15px;
-	height: 20px;
-	line-height: 20px;
-}
-
-.search_btn {
-	height: 32px;
-	width: 80px;
-	font-weight: 600;
-	font-size: 18px;
-	line-height: 20px;
-	position: absolute;
-	margin-left: 15px;
-	background-color: #c3daf7;
-}
 
 /* 페이지 버튼 인터페이스 */
 .pageMaker_wrap {
@@ -142,12 +115,16 @@
 				<%@ include file="navigation.jsp"%>
 			</ul>
 		</div>
-		<div id="s_search">
-			<form action="/search" method="get">
-				<input type="text" id="search" name=""
-					placeholder="Store item search">
-				<button>Search</button>
+		<div class="search_wrap">
+			<div class="search_area">
+				<form action="/search" method="get">
+					<input type="text" name="keyword" id="search"
+						value="${pageMaker.cri.keyword }" placeholder="Store item search">
+					<button>Search</button>
+				</form>
+			</div>
 		</div>
+		<br>
 		<div id="s_footer">
 			<h1>고객센터 1522-4953</h1>
 			<br>
@@ -167,34 +144,30 @@
 		<div>&nbsp;</div>
 	</div>
 	<div align="center">
-		<div class="search_wrap">
-			<div class="search_area">
-				<input id="keyword" name="keyword" class="inputTypeText"
-					placeholder="" size="15" value="상품명" type="text"> <br><br>
-				<strong>카테고리</strong><select id="category_no" name="category_no">
-					<option value="" selected="selected">상품분류 선택</option>
-					<option value=" ">New Arrivals</option>
-					<option value=" ">BEST 30</option>
-					<option value=" ">Outer</option>
-					<option value=" ">Top</option>
-					<option value=" ">Shirts</option>
-					<option value=" ">Pants</option>
-					<option value=" ">Suit</option>
-					<option value=" ">Bag/Shoes</option>
-					<option value=" ">Acc</option>
-				</select> <strong>가격</strong><input id="product_price1" name="product_price1"
-					class="input01" placeholder="" size="15" value="" type="text">
-				~ <input id="product_price2" name="product_price2" class="input01"
-					placeholder="" size="15" value="" type="text"> <strong>검색정렬기준</strong><select
-					id="order_by" name="order_by">
-					<option value="" selected="selected">::: 기준선택 :::</option>
-					<option value="name">상품명순</option>
-					<option value="priceasc">낮은가격 순</option>
-					<option value="price">높은가격 순</option>
-				</select>
-				<button>Search</button>
-			</div>
-		</div>
+		<input id="search" name="keyword" placeholder="상품명" size="15"
+			value="${pageMaker.cri.keyword }" type="text"> <br> <br>
+		<strong>카테고리</strong><select id="category_no" name="category_no">
+			<option value="" selected="selected">상품분류 선택</option>
+			<option value=" ">New Arrivals</option>
+			<option value=" ">BEST 30</option>
+			<option value=" ">Outer</option>
+			<option value=" ">Top</option>
+			<option value=" ">Shirts</option>
+			<option value=" ">Pants</option>
+			<option value=" ">Suit</option>
+			<option value=" ">Bag/Shoes</option>
+			<option value=" ">Acc</option>
+		</select> <strong>가격</strong><input id="product_price1" name="product_price1"
+			placeholder="" size="15" value="" type="text"> ~ <input
+			id="product_price2" name="product_price2" placeholder="" size="15"
+			value="" type="text"> <strong>검색정렬기준</strong><select
+			id="order_by" name="order_by">
+			<option value="" selected="selected">::: 기준선택 :::</option>
+			<option value="name">상품명순</option>
+			<option value="priceasc">낮은가격 순</option>
+			<option value="price">높은가격 순</option>
+		</select>
+		<button>Search</button>
 		<hr>
 		<c:if test="${listcheck != 'empty'}">
 			<table>
@@ -219,7 +192,6 @@
 			<div class="table_empty">해당 상품이 없습니다.</div>
 		</c:if>
 	</div>
-	</section>
 	<!-- 페이지 이름 인터페이스 영역 -->
 	<div class="pageMaker_wrap">
 		<ul class="pageMaker">
@@ -285,7 +257,16 @@
 
 		});
 	</script>
-	</section>
+	<script>
+		let moveForm = $("#moveForm");
+		$(".search_area button").on("click", function(e) {
+			e.preventDefault();
+
+			let keyword = $(".search_area input[name='keyword']").val();
+			moveForm.find("input[name='keyword']").val(keyword);
+			moveForm.submit();
+		});
+	</script>
 	<div id="footer">
 		<div class="footer-text">
 			<p>고객센터</p>

@@ -72,6 +72,7 @@
 					<input type="text" name="keyword" id="search"
 						value="${pageMaker.cri.keyword }" placeholder="Store item search">
 					<button>Search</button>
+				</form>
 			</div>
 		</div>
 		<br>
@@ -152,7 +153,7 @@
 		$(".search_area button").on("click", function(e) {
 			e.preventDefault();
 
-			let keyword = $(".search_area input[name='keyword']").val(); 
+			let keyword = $(".search_area input[name='keyword']").val();
 			moveForm.find("input[name='keyword']").val(keyword);
 			moveForm.submit();
 		});
