@@ -116,10 +116,14 @@
 				<li><img src="/resources/img/slide-img_08.jpg" alt=""></li>
 			</ul>
 		</div>
+<<<<<<< HEAD
 		<c:set var="i" value="0" />
 		<c:set var="j" value="4" />
+=======
+>>>>>>> refs/remotes/origin/teammaster
 		<div class="product-list">
 			<c:forEach items="${MainProduct}" var="Product" end="7">
+<<<<<<< HEAD
 				<c:if test="${i%j == 0 }">
 					<tr>
 				</c:if>
@@ -138,6 +142,15 @@
 					</c:if>
 					<c:set var="i" value="${i+1 }" />
 				</ul>
+=======
+			<ul>
+				<li><a href=""><img src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}"/></a>
+					<a href=""><h1>상품명</h1><c:out value="${Product.productName}" /></a>
+					<hr>
+					<p>상품 가격 KRW:<c:out value="${Product.productPrice}"/></p>
+					<p>리뷰 개수</p></li>
+			</ul>
+>>>>>>> refs/remotes/origin/teammaster
 			</c:forEach>
 		</div>
 

@@ -10,6 +10,17 @@
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/main.css">
+<style type="text/css">
+.Outerproduct-list{
+    width: 1600px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex: 200px;
+    flex-wrap: wrap;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -54,6 +65,7 @@
 			</ul>
 
 		</div>
+		
 		<div id="s_footer">
 			<h1>고객센터 1522-4953</h1>
 			<br>
@@ -75,9 +87,17 @@
 		</div>
 	</div>
 	<div id="contents">
-
-		<div class="product-list">아우터</div>
-	</div>
+		<div class="product-list">
+			<c:forEach items="${OuterProduct}" var="Product">
+			<ul>
+				<li><a href=""><img src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}"/></a>
+					<a href=""><h1>상품명</h1><c:out value="${Product.productName}" /></a>
+					<hr>
+					<p>상품 가격 KRW:<c:out value="${Product.productPrice}"/></p>
+					<p>리뷰 개수</p></li>
+			</ul>
+			</c:forEach>
+		</div>
 	<div id="footer">
 		<div class="footer-text">
 			<p>고객센터</p>
@@ -99,7 +119,7 @@
 				있습니다. KG 이니시스 [서비스 가입사실 확인]</p>
 		</div>
 	</div>
-	</div>
+</div>
 
 </body>
 </html>

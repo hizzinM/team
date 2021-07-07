@@ -27,8 +27,7 @@
 
 
 	<!-- 상품목록(페이징) -->
-	<select id="selectproductList"
-		resultType="com.shop.model.Product">
+	<select id="selectproductList" resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
 		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
@@ -72,7 +71,7 @@
 		resultType="com.shop.model.AttachImageVO">
 		select*from product_img
 	</select>
-
+	<!-- 상품삭제 -->
 	<delete id="deleterProdect">
 		delete from product where product_id = #{productId}
 	</delete>
@@ -114,5 +113,48 @@
 		file_name=#{fileName},upload_path=#{uploadPath},uuid=#{uuid} where
 		product_id=#{productId}
 	</update>
+	<!-- Outer목록-->
+	<select id="OuterProductList" resultType="com.shop.model.Product">
+		select p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
+		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		join product_img i on p.product_id=i.product_id where p.product_category="Outer";
+	</select>
+	<!-- Top목록-->
+	<select id="TopProductList" resultType="com.shop.model.Product">
+		select p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
+		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		join product_img i on p.product_id=i.product_id where p.product_category="Top";
+	</select>
+	<!-- Shirts목록-->
+	<select id="ShirtsProductList" resultType="com.shop.model.Product">
+		select p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
+		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		join product_img i on p.product_id=i.product_id where p.product_category="Shirts";
+	</select>
+	<!-- Pants목록-->
+	<select id="PantsProductList" resultType="com.shop.model.Product">
+		select p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
+		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		join product_img i on p.product_id=i.product_id where p.product_category="Pants";
+	</select>
+	<!-- Suit목록-->
+	<select id="SuitProductList" resultType="com.shop.model.Product">
+		select p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
+		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		join product_img i on p.product_id=i.product_id where p.product_category="Suit";
+	</select>
+	<!-- BagShoes목록-->
+	<select id="BagShoesProductList" resultType="com.shop.model.Product">
+		select p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
+		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		join product_img i on p.product_id=i.product_id where p.product_category="Bag/Shose";
+	</select>
+	<!-- Acc목록-->
+	<select id="AccProductList" resultType="com.shop.model.Product">
+		select p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
+		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		join product_img i on p.product_id=i.product_id where p.product_category="Acc";
+	</select>
+	
 
 </mapper>
