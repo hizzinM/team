@@ -75,8 +75,75 @@
 			</form>
 		</div>
 	</div>
-	<div>${goodDetailData}</div>
-	
+	<div id="contents">
+
+		<div class="product-list">
+			<form action="">
+		<table style="width: 80%">
+			<tr>
+				<td style="width: 20%">
+					<img src="/resources/upload/${goodDetailData.uploadPath}/${goodDetailData.uuid}_${goodDetailData.fileName}" width="100%">
+				</td>
+				<td style="width: 50%; vertical-align: top;">
+					<table style="width: 100%">
+						<tr>
+							<td>번호 : </td>
+							<td>
+								<c:out value="${goodDetailData.productId}"/>
+							</td>
+						</tr>
+						<tr>
+							<td>품명 : </td>
+							<td><c:out value="${goodDetailData.productName}" /></td>
+						</tr>
+						<tr>
+							<td>가격 : </td>
+							<td><c:out value="${goodDetailData.productPrice}" /></td>
+						</tr>
+						<tr>
+							<td>카테고리 : </td>
+							<td><c:out value="${goodDetailData.productCategory}" /></td>
+						</tr>
+						<tr>
+							<td>사이즈 : </td>
+							<td><c:out value="${goodDetailData.productSize}" /></td>
+						</tr>
+						<tr>
+							<td>색상 : </td>
+							<td><c:out value="${goodDetailData.productColor}" /></td>
+						</tr>
+						<tr>
+							<td>재고 : </td>
+							<td><c:out value="${goodDetailData.productInventory}" /></td>
+						</tr>
+						<tr>	
+						<td>주문 : </td>
+							<td>
+								<input type="text" name="quantity" value="1" size="5" style="text-align: center;">
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td style="width: 30%; vertical-align: top;">
+					<b>* 상품 설명 *</b><br/>	
+				</td>
+			</tr>
+			<tr>
+
+				<td colspan="3" style="text-align: center;">
+
+					<input type="submit" value="장바구니에 담기">
+
+					<input type="button" value="이전으로 이동" onclick="history.back()">
+
+				</td>
+
+			</tr>
+
+		</table>
+
+	</form>
+		</div>
 	<div id="footer">
 		<div class="footer-text">
 			<p>고객센터</p>
