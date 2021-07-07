@@ -30,15 +30,13 @@ public class MainController {
 	@Autowired
 	AdminService adminService;
 
-	
 	private static final Logger logger = LoggerFactory.getLogger("MainController.class");
-	
-		
+
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public void mainPageGET(Model model) throws Exception {
 		logger.info("메인 페이지 진입");
 		List<Product> list = adminService.selectMainProductList();
-		model.addAttribute("MainProduct",list);
+		model.addAttribute("MainProduct", list);
 		System.out.println(adminService.selectMainProductList());
 	}
 
@@ -105,10 +103,6 @@ public class MainController {
 	public void getAcc() throws Exception {
 		logger.info("악세사리 페이지 접속");
 	}
-	
-	
-	
-	
-	
-	
+ 
+
 }

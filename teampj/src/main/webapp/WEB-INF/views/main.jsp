@@ -12,14 +12,14 @@
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/main.css">
 <style type="text/css">
-.product-list{
-    width: 1600px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex: 200px;
-    flex-wrap: wrap;
+.product-list {
+	width: 1600px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex: 200px;
+	flex-wrap: wrap;
 }
 </style>
 </head>
@@ -65,26 +65,37 @@
 				<%@ include file="navigation.jsp"%>
 			</ul>
 		</div>
-        <div id="s_search">
-            <form action="">
-                <input type="text" id="search" name="" placeholder="Store item search">
-            </form>
-        </div>
-        <div id ="s_footer">
-            <h1>고객센터　1522-4953</h1><br>
-            <p>
-                MON-FRI AM 11:00 – PM 6:00<br>
-                LUNCH TIME PM 13:00 – 14:00<br>
-                SAT.SUN.HOLIDAY OFF<br>
-            </p><br>
-            <h1>은행정보</h1><br>
-            <p>
-                농협 123-4567-8910-12<br>
-                국민 9876-54-3210<br>
-                예금주 : (주) 민박강
-            </p>
-        </div>
-    </div>
+		<!-- 
+		<div id="s_search">
+			<form action="">
+				<input type="text" id="search" name=""
+					placeholder="Store item search">
+			</form>
+			-->
+
+		<div id="s_search">
+			<form action="admin/goodsmanage" method="get">
+				<input class="input search-input" type="text" name="keyword"
+					placeholder="Enter your keyword">
+		</div>
+		<form id="moveForm" method="get"></form>
+
+
+		<div id="s_footer">
+			<h1>고객센터 1522-4953</h1>
+			<br>
+			<p>
+				MON-FRI AM 11:00 – PM 6:00<br> LUNCH TIME PM 13:00 – 14:00<br>
+				SAT.SUN.HOLIDAY OFF<br>
+			</p>
+			<br>
+			<h1>은행정보</h1>
+			<br>
+			<p>
+				농협 123-4567-8910-12<br> 국민 9876-54-3210<br> 예금주 : (주) 민박강
+			</p>
+		</div>
+	</div>
 	<div id="contents">
 		<h1>BEST SELLER</h1>
 		<ul class="side-img show-img">
@@ -105,26 +116,31 @@
 				<li><img src="/resources/img/slide-img_08.jpg" alt=""></li>
 			</ul>
 		</div>
-		 <c:set var="i" value="0" />
- 		 <c:set var="j" value="4" />
+		<c:set var="i" value="0" />
+		<c:set var="j" value="4" />
 		<div class="product-list">
 			<c:forEach items="${MainProduct}" var="Product" end="7">
 				<c:if test="${i%j == 0 }">
- 				<tr> 
-				</c:if> 
-			<ul>
-				<li><a href=""><img src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}"/></a>
-					<a href=""><h1>상품명</h1><c:out value="${Product.productName}" /></a>
-					<hr>
-					<p>상품 가격 KRW:<c:out value="${Product.productPrice}"/></p>
-					<p>리뷰 개수</p></li>
-					<c:if test="${i%j == j-1 }"> </tr> 
-					</c:if> 
-					<c:set var="i" value="${i+1 }" /> 
-			</ul>
+					<tr>
+				</c:if>
+				<ul>
+					<li><a href=""><img
+							src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}" /></a>
+						<a href=""><h1>상품명</h1> <c:out value="${Product.productName}" /></a>
+						<hr>
+						<p>
+							상품 가격 KRW:
+							<c:out value="${Product.productPrice}" />
+						</p>
+						<p>리뷰 개수</p></li>
+					<c:if test="${i%j == j-1 }">
+						</tr>
+					</c:if>
+					<c:set var="i" value="${i+1 }" />
+				</ul>
 			</c:forEach>
 		</div>
-	
+
 		<div id="footer">
 			<div class="footer-text">
 				<p>고객센터</p>
