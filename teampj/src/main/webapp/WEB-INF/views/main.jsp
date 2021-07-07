@@ -65,21 +65,12 @@
 				<%@ include file="navigation.jsp"%>
 			</ul>
 		</div>
-		<!-- 
 		<div id="s_search">
-			<form action="">
+			<form action="/search" method="get">
 				<input type="text" id="search" name=""
 					placeholder="Store item search">
-			</form>
-			-->
-
-		<div id="s_search">
-			<form action="admin/goodsmanage" method="get">
-				<input class="input search-input" type="text" name="keyword"
-					placeholder="Enter your keyword">
+				<button>Search</button>
 		</div>
-		<form id="moveForm" method="get"></form>
-
 
 		<div id="s_footer">
 			<h1>고객센터 1522-4953</h1>
@@ -118,13 +109,17 @@
 		</div>
 		<div class="product-list">
 			<c:forEach items="${MainProduct}" var="Product" end="7">
-			<ul>
-				<li><a href=""><img src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}"/></a>
-					<a href=""><h1>상품명</h1><c:out value="${Product.productName}" /></a>
-					<hr>
-					<p>상품 가격 KRW:<c:out value="${Product.productPrice}"/></p>
-					<p>리뷰 개수</p></li>
-			</ul>
+				<ul>
+					<li><a href=""><img
+							src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}" /></a>
+						<a href=""><h1>상품명</h1> <c:out value="${Product.productName}" /></a>
+						<hr>
+						<p>
+							상품 가격 KRW:
+							<c:out value="${Product.productPrice}" />
+						</p>
+						<p>리뷰 개수</p></li>
+				</ul>
 
 			</c:forEach>
 		</div>
