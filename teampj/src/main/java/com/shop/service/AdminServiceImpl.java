@@ -118,10 +118,61 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	/*메인페이지 상품목록*/
+	@Override
 	public List<Product> selectMainProductList() {
 		
 		return adminMapper.selectMainProductList();
 	}
+	//Outer목록
+	@Override
+	public List<Product> OuterProductList() {
+		
+		return adminMapper.OuterProductList();
+	}
+	//Top목록
+	@Override
+	public List<Product> TopProductList() {
+			
+		return adminMapper.TopProductList();
+	}
+	//Shirts목록
+	@Override
+	public List<Product> ShirtsProductList() {
+			
+		return adminMapper.ShirtsProductList();
+	}
+	//Pants목록
+	@Override
+	public List<Product> PantsProductList() {
+			
+	return adminMapper.PantsProductList();
+	}
+	//Suit목록
+	@Override
+	public List<Product> SuitProductList() {
+				
+	return adminMapper.SuitProductList();
+	}
+	//BagShoes목록
+	@Override
+	public List<Product> BagShoesProductList() {
+				
+	return adminMapper.BagShoesProductList();
+	}
+	//Acc목록
+	@Override
+	public List<Product> AccProductList() {
+				
+	return adminMapper.AccProductList();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

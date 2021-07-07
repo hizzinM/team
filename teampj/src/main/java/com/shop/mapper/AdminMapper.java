@@ -49,4 +49,18 @@ public interface AdminMapper {
 	
 	//메인페이지 상품
 	public List<Product> selectMainProductList();
+	//Outer목록
+	public List<Product> OuterProductList();
+	// Top목록
+	public List<Product> TopProductList();
+	//Shirts목록
+	public List<Product> ShirtsProductList();
+	//Pants목록
+	public List<Product> PantsProductList();
+	//Suit목록
+	public List<Product> SuitProductList();
+	//BagShoes목록
+	public List<Product> BagShoesProductList();
+	// Acc목록
+	public List<Product> AccProductList();
 }

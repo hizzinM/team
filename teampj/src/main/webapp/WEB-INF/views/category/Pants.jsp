@@ -76,8 +76,17 @@
 	</div>
 	<div id="contents">
 
-		<div class="product-list">팬츠</div>
-	</div>
+		<div class="product-list">
+		<c:forEach items="${PantsProduct}" var="Product">
+			<ul>
+				<li><a href=""><img src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}"/></a>
+					<a href=""><h1>상품명</h1><c:out value="${Product.productName}" /></a>
+					<hr>
+					<p>상품 가격 KRW:<c:out value="${Product.productPrice}"/></p>
+					<p>리뷰 개수</p></li>
+			</ul>
+			</c:forEach>
+		</div>
 	<div id="footer">
 		<div class="footer-text">
 			<p>고객센터</p>

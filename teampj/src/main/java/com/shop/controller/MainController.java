@@ -39,7 +39,6 @@ public class MainController {
 		logger.info("메인 페이지 진입");
 		List<Product> list = adminService.selectMainProductList();
 		model.addAttribute("MainProduct",list);
-		System.out.println(adminService.selectMainProductList());
 	}
 
 	@GetMapping("/display")
@@ -66,44 +65,59 @@ public class MainController {
 
 	// 아우터 페이지 이동
 	@RequestMapping(value = "/category/Outer", method = RequestMethod.GET)
-	public void getOuter() throws Exception {
+	public void getOuter(Model model) throws Exception {
 		logger.info("아우터 페이지 접속");
+		List<Product> Outerlist = adminService.OuterProductList();
+		model.addAttribute("OuterProduct",Outerlist);
+		System.out.println(adminService.OuterProductList());
 	}
 
 	// 탑 페이지 이동
 	@RequestMapping(value = "/category/Top", method = RequestMethod.GET)
-	public void getTop() throws Exception {
+	public void getTop(Model model) throws Exception {
+		List<Product> Toplist = adminService.TopProductList();
+		model.addAttribute("TopProduct",Toplist);
 		logger.info("탑 페이지 접속");
 	}
 
 	// 셔츠 페이지 이동
 	@RequestMapping(value = "/category/Shirts", method = RequestMethod.GET)
-	public void getShirts() throws Exception {
+	public void getShirts(Model model) throws Exception {
 		logger.info("셔츠 페이지 접속");
+		List<Product> Shirtslist = adminService.ShirtsProductList();
+		model.addAttribute("ShirtsProduct",Shirtslist);
 	}
 
 	// 팬츠 페이지 이동
 	@RequestMapping(value = "/category/Pants", method = RequestMethod.GET)
-	public void getPants() throws Exception {
+	public void getPants(Model model) throws Exception {
 		logger.info("팬츠 페이지 접속");
+		List<Product> Pantslist = adminService.PantsProductList();
+		model.addAttribute("PantsProduct",Pantslist);
 	}
 
 	// 수트 페이지 이동
 	@RequestMapping(value = "/category/Suit", method = RequestMethod.GET)
-	public void getSuit() throws Exception {
+	public void getSuit(Model model) throws Exception {
 		logger.info("수트 페이지 접속");
+		List<Product> Suitlist = adminService.SuitProductList();
+		model.addAttribute("SuitProduct",Suitlist);
 	}
 
 	// 백/슈즈 페이지 이동
 	@RequestMapping(value = "/category/BagShoes", method = RequestMethod.GET)
-	public void getBagShoes() throws Exception {
+	public void getBagShoes(Model model) throws Exception {
 		logger.info("백/슈즈 페이지 접속");
+		List<Product> BagShoeslist = adminService.BagShoesProductList();
+		model.addAttribute("BagShoesProduct",BagShoeslist);
 	}
 
 	// 악세사리 페이지 이동
 	@RequestMapping(value = "/category/Acc", method = RequestMethod.GET)
-	public void getAcc() throws Exception {
+	public void getAcc(Model model) throws Exception {
 		logger.info("악세사리 페이지 접속");
+		List<Product> Acclist = adminService.AccProductList();
+		model.addAttribute("AccProduct",Acclist);
 	}
 	
 	

@@ -105,22 +105,14 @@
 				<li><img src="/resources/img/slide-img_08.jpg" alt=""></li>
 			</ul>
 		</div>
-		 <c:set var="i" value="0" />
- 		 <c:set var="j" value="4" />
 		<div class="product-list">
 			<c:forEach items="${MainProduct}" var="Product" end="7">
-				<c:if test="${i%j == 0 }">
- 				<tr> 
-				</c:if> 
 			<ul>
 				<li><a href=""><img src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}"/></a>
 					<a href=""><h1>상품명</h1><c:out value="${Product.productName}" /></a>
 					<hr>
 					<p>상품 가격 KRW:<c:out value="${Product.productPrice}"/></p>
 					<p>리뷰 개수</p></li>
-					<c:if test="${i%j == j-1 }"> </tr> 
-					</c:if> 
-					<c:set var="i" value="${i+1 }" /> 
 			</ul>
 			</c:forEach>
 		</div>
