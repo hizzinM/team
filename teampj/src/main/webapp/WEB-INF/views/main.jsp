@@ -124,8 +124,7 @@
 						<p>리뷰 개수</p></li>
 				</ul>
 			</c:forEach>
-		</div>
-
+		</div> 
 		<div id="footer">
 			<div class="footer-text">
 				<p>고객센터</p>
