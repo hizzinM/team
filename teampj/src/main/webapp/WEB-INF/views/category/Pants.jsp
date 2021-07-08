@@ -52,7 +52,15 @@
 			<ul>
 				<%@ include file="../navigation.jsp"%>
 			</ul>
-
+		</div>
+		<div class="search_wrap">
+			<div class="search_area">
+				<form action="/search" method="get">
+					<input type="text" name="keyword" id="search"
+						value="${pageMaker.cri.keyword }" placeholder="Store item search">
+					<button>Search</button>
+				</form>
+			</div>
 		</div>
 		<div id="s_footer">
 			<h1>고객센터 1522-4953</h1>
@@ -68,47 +76,56 @@
 				농협 123-4567-8910-12<br> 국민 9876-54-3210<br> 예금주 : (주) 민박강
 			</p>
 		</div>
-		<div id="s_search">
-			<form action="">
-				<input type="text" id="search" name="">
-			</form>
-		</div>
 	</div>
 	<div id="contents">
 
 		<div class="product-list">
-		<c:forEach items="${PantsProduct}" var="Product">
-			<ul>
-				<li><a href="/detail?productId=${Product.productId}"><img src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}"/></a>
-					<a href="/detail?productId=${Product.productId}"><h1>상품명</h1><c:out value="${Product.productName}" /></a>
-					<hr>
-					<p>상품 가격 KRW:<c:out value="${Product.productPrice}"/></p>
-					<p>리뷰 개수</p></li>
-			</ul>
+			<c:forEach items="${PantsProduct}" var="Product">
+				<ul>
+					<li><a href="/detail?productId=${Product.productId}"><img
+							src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}" /></a>
+						<a href="/detail?productId=${Product.productId}"><h1>상품명</h1>
+							<c:out value="${Product.productName}" /></a>
+						<hr>
+						<p>
+							상품 가격 KRW:
+							<c:out value="${Product.productPrice}" />
+						</p>
+						<p>리뷰 개수</p></li>
+				</ul>
 			</c:forEach>
 		</div>
-	<div id="footer">
-		<div class="footer-text">
-			<p>고객센터</p>
-			<p>1522-4953</p>
-			<p>Mon-Fri AM 11:00 – PM 6:00</p>
-			<p>Lunch time PM 13:00 – 14:00</p>
-			<p>Sat.Sun.Holiday OFF</p>
-			<p>은행정보</p>
-			<p>농협 317-0011-4079-11</p>
-			<p>국민 242437-04-006967</p>
-			<p>예금주 : (주) 모던이프</p>
-		</div>
-		<div class="footer-text">
-			<P>주식회사 모던이프</P>
-			<p>대표이사 : 장재원 | 이메일 : modernif.co.kr@gmail.com</p>
-			<p>16490 경기도 수원시 팔달구 인계동 1031-2 성지빌딩 701호 모던이프</p>
-			<p>사업자등록번호 : 8858800485 [사업자정보확인] | 통신판매업신고번호 : 2017-수원팔달-0059호</p>
-			<p>고객님은 안전거래를 위해 현금 등으로 결제시 저희 쇼핑몰에서 가입한 PG 사의 구매안전서비스를 이용하실 수
-				있습니다. KG 이니시스 [서비스 가입사실 확인]</p>
+		<div id="footer">
+			<div class="footer-text">
+				<p>고객센터</p>
+				<p>1522-4953</p>
+				<p>Mon-Fri AM 11:00 – PM 6:00</p>
+				<p>Lunch time PM 13:00 – 14:00</p>
+				<p>Sat.Sun.Holiday OFF</p>
+				<p>은행정보</p>
+				<p>농협 317-0011-4079-11</p>
+				<p>국민 242437-04-006967</p>
+				<p>예금주 : (주) 모던이프</p>
+			</div>
+			<div class="footer-text">
+				<P>주식회사 모던이프</P>
+				<p>대표이사 : 장재원 | 이메일 : modernif.co.kr@gmail.com</p>
+				<p>16490 경기도 수원시 팔달구 인계동 1031-2 성지빌딩 701호 모던이프</p>
+				<p>사업자등록번호 : 8858800485 [사업자정보확인] | 통신판매업신고번호 : 2017-수원팔달-0059호</p>
+				<p>고객님은 안전거래를 위해 현금 등으로 결제시 저희 쇼핑몰에서 가입한 PG 사의 구매안전서비스를 이용하실 수
+					있습니다. KG 이니시스 [서비스 가입사실 확인]</p>
+			</div>
 		</div>
 	</div>
-	</div>
+	<script>
+		let moveForm = $("#moveForm");
+		$(".search_area button").on("click", function(e) {
+			e.preventDefault();
 
+			let keyword = $(".search_area input[name='keyword']").val();
+			moveForm.find("input[name='keyword']").val(keyword);
+			moveForm.submit();
+		});
+	</script>
 </body>
 </html>

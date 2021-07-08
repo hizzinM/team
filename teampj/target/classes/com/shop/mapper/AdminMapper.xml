@@ -55,6 +55,21 @@
 		limit #{skip}, #{amount}
 	</select>
 
+	<!-- 검색 조건문 -->
+	<sql id="criteria">
+		<trim prefix="where (" suffix=")" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'I'.toString()">
+							product_category like concat('%',#{keyword},'%')
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+
 	<!-- 상품 총 갯수 -->
 	<select id="goodsGetTotal" resultType="int">
 		select count(*) from product
@@ -114,8 +129,10 @@
 	<select id="goodsUpdateId" resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
-		join product_img i on p.product_id=i.product_id where p.product_id =
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
+		from product p
+		join product_img i on p.product_id=i.product_id where
+		p.product_id =
 		#{productId}
 
 	</select>
@@ -123,7 +140,8 @@
 	<update id="goodsUpdateProduct">
 		update product set product_name=#{productName},
 		product_price=#{productPrice},product_category=#{productCategory},product_size=#{productSize},product_color=#{productColor},
-		product_inventory=#{productInventory},product_comment=#{productComment} where product_id=#{productId};
+		product_inventory=#{productInventory},product_comment=#{productComment}
+		where product_id=#{productId};
 	</update>
 	<update id="goodsUpdateProductImg">
 		update product_img set
@@ -135,7 +153,8 @@
 		resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
+		from product p
 		join product_img i on p.product_id=i.product_id where
 		p.product_category="Outer";
 	</select>
@@ -143,7 +162,8 @@
 	<select id="TopProductList" resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
+		from product p
 		join product_img i on p.product_id=i.product_id where
 		p.product_category="Top";
 	</select>
@@ -152,7 +172,8 @@
 		resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
+		from product p
 		join product_img i on p.product_id=i.product_id where
 		p.product_category="Shirts";
 	</select>
@@ -161,7 +182,8 @@
 		resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
+		from product p
 		join product_img i on p.product_id=i.product_id where
 		p.product_category="Pants";
 	</select>
@@ -169,7 +191,8 @@
 	<select id="SuitProductList" resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
+		from product p
 		join product_img i on p.product_id=i.product_id where
 		p.product_category="Suit";
 	</select>
@@ -178,7 +201,8 @@
 		resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
+		from product p
 		join product_img i on p.product_id=i.product_id where
 		p.product_category="Bag/Shose";
 	</select>
@@ -186,15 +210,18 @@
 	<select id="AccProductList" resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
+		from product p
 		join product_img i on p.product_id=i.product_id where
 		p.product_category="Acc";
 	</select>
 	<!-- 상품상세조회(상품이름) -->
-	<select id="ProductDetailNameList" resultType="com.shop.model.Product">
+	<select id="ProductDetailNameList"
+		resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
+		from product p
 		join product_img i on p.product_id=i.product_id where
 		p.product_name=#{productName};
 	</select>

@@ -4,158 +4,168 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>마이페이지</title>
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<link rel="stylesheet" href="/resources/css/common-style/reset.css">
-	<link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
-	<link rel="stylesheet" href="/resources/css/common-style/contents.css">
-	<link rel="stylesheet" href="/resources/css/mypage/myindex.css">
+<meta charset="UTF-8">
+<title>마이페이지</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href="/resources/css/common-style/reset.css">
+<link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
+<link rel="stylesheet" href="/resources/css/common-style/contents.css">
+<link rel="stylesheet" href="/resources/css/mypage/myindex.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <!--
-            <ul>
-                <li><a href="#">장바구니</a></li>
-                <li><a href="#">마이페이지</a></li>
-                <li><a href="#">언어설정</a></li>
-            </ul>
-            -->
-        </nav>
-    </header>
-    <div id="side_navigation">
-        <h1><a href="/main">MINPARKANG</a></h1>
-        <div id="s_nav">
-            <ul>
-                <!-- 로그인 전 -->
-                <c:if test="${loginuser == null }">
-                    <li><a href="/member/login">로그인</a></li>
-                    <li><a href="/member/join">회원가입</a></li><br>
-                </c:if>
-                
-                <!-- 로그인 후 -->
-                <c:if test="${ loginuser!= null }">
-                    <li style="font-weight: bold; font-size: 11px;">${loginuser.userName}님 어서오세요.</li><br><br>
-                    <li><a href="/member/logout">로그아웃</a></li>
-                    <li><a href="/mypage/myindex">마이페이지</a></li>
-                    <c:if test="${ loginuser.adminck ==1 }">
-                        <li><a href="/admin/index">관리자화면</a></li>
-                    </c:if>
-                </c:if><br>
-                <li><a href="#">배송조회</a></li>
-                <li><a href="#">장바구니</a></li>
-                <li><a href="#">리뷰</a></li>
-                <li><a href="#">고객센터</a></li><br>
-            </ul>
-        </div>
+	<header>
+		<nav></nav>
+	</header>
+	<div id="side_navigation">
+		<h1>
+			<a href="/main">MINPARKANG</a>
+		</h1>
+		<div id="s_nav">
+			<ul>
+				<!-- 로그인 전 -->
+				<c:if test="${loginuser == null }">
+					<li><a href="/member/login">로그인</a></li>
+					<li><a href="/member/join">회원가입</a></li>
+					<br>
+				</c:if>
+
+				<!-- 로그인 후 -->
+				<c:if test="${ loginuser!= null }">
+					<li style="font-weight: bold; font-size: 11px;">${loginuser.userName}님
+						어서오세요.</li>
+					<br>
+					<br>
+					<li><a href="/member/logout">로그아웃</a></li>
+					<li><a href="/mypage/myindex">마이페이지</a></li>
+					<c:if test="${ loginuser.adminck ==1 }">
+						<li><a href="/admin/index">관리자화면</a></li>
+					</c:if>
+				</c:if>
+				<br>
+				<li><a href="#">배송조회</a></li>
+				<li><a href="#">장바구니</a></li>
+				<li><a href="#">리뷰</a></li>
+				<li><a href="#">고객센터</a></li>
+				<br>
+			</ul>
+		</div>
 		<div id="s_category">
 			<ul>
 				<%@ include file="../navigation.jsp"%>
 			</ul>
 		</div>
-        <div id="s_search">
-            <form action="">
-                <input type="text" id="search" name="" placeholder="Store item search">
-            </form>
-        </div>
-        <div id ="s_footer">
-            <h1>고객센터　1522-4953</h1><br>
-            <p>
-                MON-FRI AM 11:00 – PM 6:00<br>
-                LUNCH TIME PM 13:00 – 14:00<br>
-                SAT.SUN.HOLIDAY OFF<br>
-            </p><br>
-            <h1>은행정보</h1><br>
-            <p>
-                농협 123-4567-8910-12<br>
-                국민 9876-54-3210<br>
-                예금주 : (주) 민박강
-            </p>
-        </div>
-    </div>
-    <div id="contents">
-        <div class="table-frame">
-            <h2>MY PAGE</h2>
-            <h1>${loginuser.userName}님</h1>
-            <table class="mypage_table">
-                <thead class="mypage_thead">
-                    <tr>
-                        <td colspan="5">나의 주문 처리 현황</td>
-                    </tr>
-                </thead>
-                <tbody class="mypage_mid">
-                    <tr>
-                        <td>
-                            <p>입금전</p>
-                            <p>0</p>
-                        </td>
-                        <td>
-                            <p>배송준비중</p>
-                            <p>0</p>
-                        </td>
-                        <td>
-                            <p>배송중</p>
-                            <p>0</p>
-                        </td>
-                        <td>
-                            <p>배송완료</p>
-                            <p>0</p>
-                        </td>
-                        <td>
-                            <p>취소<span>0</span></p>
-                            <p>교환<span>0</span></p>
-                            <p>반품<span>0</span></p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="mypage-btn_frame">
-                <ul>
-                    <li>
-                        <div>
-                            <a href="/member/">
-                                <p>ORDER TRACKING</p>
-                                <p>주문내역조회</p>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="/mypage/profile?userId=${loginuser.userId}">
-                                <p>PROFILE</p>
-                                <p>회원정보</p>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="/member/">
-                                <p>ADDRESS</p>
-                                <p>배송 주소록 관리</p>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="/member/">
-                                <p>WISHLIST</p>
-                                <p>관심상품</p>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="/member/">
-                                <p>BOARD</p>
-                                <p>게시물관리</p>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
+		<div class="search_wrap">
+			<div class="search_area">
+				<form action="/search" method="get">
+					<input type="text" name="keyword" id="search"
+						value="${pageMaker.cri.keyword }" placeholder="Store item search">
+					<button>Search</button>
+				</form>
+			</div>
+		</div>
+		<div id="s_footer">
+			<h1>고객센터 1522-4953</h1>
+			<br>
+			<p>
+				MON-FRI AM 11:00 – PM 6:00<br> LUNCH TIME PM 13:00 – 14:00<br>
+				SAT.SUN.HOLIDAY OFF<br>
+			</p>
+			<br>
+			<h1>은행정보</h1>
+			<br>
+			<p>
+				농협 123-4567-8910-12<br> 국민 9876-54-3210<br> 예금주 : (주) 민박강
+			</p>
+		</div>
+	</div>
+	<div id="contents">
+		<div class="table-frame">
+			<h2>MY PAGE</h2>
+			<h1>${loginuser.userName}님</h1>
+			<table class="mypage_table">
+				<thead class="mypage_thead">
+					<tr>
+						<td colspan="5">나의 주문 처리 현황</td>
+					</tr>
+				</thead>
+				<tbody class="mypage_mid">
+					<tr>
+						<td>
+							<p>입금전</p>
+							<p>0</p>
+						</td>
+						<td>
+							<p>배송준비중</p>
+							<p>0</p>
+						</td>
+						<td>
+							<p>배송중</p>
+							<p>0</p>
+						</td>
+						<td>
+							<p>배송완료</p>
+							<p>0</p>
+						</td>
+						<td>
+							<p>
+								취소<span>0</span>
+							</p>
+							<p>
+								교환<span>0</span>
+							</p>
+							<p>
+								반품<span>0</span>
+							</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="mypage-btn_frame">
+				<ul>
+					<li>
+						<div>
+							<a href="/member/">
+								<p>ORDER TRACKING</p>
+								<p>주문내역조회</p>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="/mypage/profile?userId=${loginuser.userId}">
+								<p>PROFILE</p>
+								<p>회원정보</p>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="/member/">
+								<p>ADDRESS</p>
+								<p>배송 주소록 관리</p>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="/member/">
+								<p>WISHLIST</p>
+								<p>관심상품</p>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="/member/">
+								<p>BOARD</p>
+								<p>게시물관리</p>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		</div>
 		<div id="footer">
 			<div class="footer-text">
 				<p>고객센터</p>
@@ -173,11 +183,20 @@
 				<p>대표이사 : 장재원 | 이메일 : modernif.co.kr@gmail.com</p>
 				<p>16490 경기도 수원시 팔달구 인계동 1031-2 성지빌딩 701호 모던이프</p>
 				<p>사업자등록번호 : 8858800485 [사업자정보확인] | 통신판매업신고번호 : 2017-수원팔달-0059호</p>
-				<p>고객님은 안전거래를 위해 현금 등으로 결제시 저희 쇼핑몰에서 가입한 PG 사의 구매안전서비스를 이용하실 수 있습니다.
-   					G 이니시스 [서비스 가입사실 확인]</p>
+				<p>고객님은 안전거래를 위해 현금 등으로 결제시 저희 쇼핑몰에서 가입한 PG 사의 구매안전서비스를 이용하실 수
+					있습니다. G 이니시스 [서비스 가입사실 확인]</p>
 			</div>
 		</div>
 	</div>
+	<script>
+		let moveForm = $("#moveForm");
+		$(".search_area button").on("click", function(e) {
+			e.preventDefault();
+
+			let keyword = $(".search_area input[name='keyword']").val();
+			moveForm.find("input[name='keyword']").val(keyword);
+			moveForm.submit();
+		});
+	</script>
 </body>
-</html>
 </html>
