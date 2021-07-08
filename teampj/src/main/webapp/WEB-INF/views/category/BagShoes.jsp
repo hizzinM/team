@@ -52,8 +52,17 @@
 			<ul>
 				<%@ include file="../navigation.jsp"%>
 			</ul>
-
 		</div>
+		<script>
+		let moveForm = $("#moveForm");
+		$(".search_area button").on("click", function(e) {
+			e.preventDefault();
+
+			let keyword = $(".search_area input[name='keyword']").val();
+			moveForm.find("input[name='keyword']").val(keyword);
+			moveForm.submit();
+		});
+	</script>
 		<div id="s_footer">
 			<h1>고객센터 1522-4953</h1>
 			<br>
@@ -68,11 +77,7 @@
 				농협 123-4567-8910-12<br> 국민 9876-54-3210<br> 예금주 : (주) 민박강
 			</p>
 		</div>
-		<div id="s_search">
-			<form action="">
-				<input type="text" id="search" name="">
-			</form>
-		</div>
+
 	</div>
 	<div id="contents">
 
