@@ -10,6 +10,7 @@ public class Product {
 	private String productCategory;
 	private String productColor;
 	private int productInventory;
+	private String productComment;
 	private String fileName;
 	private String uploadPath;
 	private String uuid;
@@ -18,7 +19,7 @@ public class Product {
 		super();
 	}
 	public Product(int productId, String productName, String productPrice, String productSize, String productCategory,
-			String productColor, int productInventory, String fileName, String uploadPath, String uuid) {
+			String productColor, int productInventory, String productComment) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
@@ -27,10 +28,9 @@ public class Product {
 		this.productCategory = productCategory;
 		this.productColor = productColor;
 		this.productInventory = productInventory;
-		this.fileName = fileName;
-		this.uploadPath = uploadPath;
-		this.uuid = uuid;
+		this.productComment = productComment;
 	}
+	
 	public int getProductId() {
 		return productId;
 	}
@@ -73,6 +73,12 @@ public class Product {
 	public void setProductInventory(int productInventory) {
 		this.productInventory = productInventory;
 	}
+	public String getProductComment() {
+		return productComment;
+	}
+	public void setProductComment(String productComment) {
+		this.productComment = productComment;
+	}
 	public String getFileName() {
 		return fileName;
 	}
@@ -101,10 +107,10 @@ public class Product {
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice
 				+ ", productSize=" + productSize + ", productCategory=" + productCategory + ", productColor="
-				+ productColor + ", productInventory=" + productInventory + ", fileName=" + fileName + ", uploadPath="
-				+ uploadPath + ", uuid=" + uuid + ", imageList=" + imageList + "]";
+				+ productColor + ", productInventory=" + productInventory + ", productComment=" + productComment
+				+ ", fileName=" + fileName + ", uploadPath=" + uploadPath + ", uuid=" + uuid + ", imageList="
+				+ imageList + "]";
 	}
-
 	
 	
 }

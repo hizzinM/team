@@ -39,13 +39,13 @@
 						<label> </label> <input name="productId" value="0" hidden="">
 					</div>
 					<div class="form_section">
-						<label>옷 이름</label> <input name="productName">
+						<label>옷 이름:</label> <input name="productName">
 					</div>
 					<div class="form_section">
-						<label>옷 가격</label> <input name="productPrice">
+						<label>옷 가격:</label> <input name="productPrice">
 					</div>
 					<div class="form_section">
-						<label>카테고리</label><select name="productCategory">
+						<label>카테고리:</label><select name="productCategory">
 						<option value="Outer">Outer</option>
 						<option value="Top">Top</option>
 						<option value="Shirts">Shirts</option>
@@ -57,18 +57,21 @@
 						</select>
 					</div>
 					<div class="form_section">
-						<label>옷사이즈</label> <input name="productSize">
+						<label>옷사이즈:</label> <input name="productSize">
 					</div>
 					<div class="form_section">
-						<label>옷 색깔</label> <input name="productColor">
+						<label>옷 색깔:</label> <input name="productColor">
 					</div>
 					<div class="form_section">
-						<label>상품 재고</label> <input name="productInventory">
+						<label>상품 재고:</label> <input name="productInventory">
+					</div>
+					<div class="form_section">
+						<label></label><textarea rows="20" cols="50" name="productComment" placeholder="상품 코멘트"></textarea>
 					</div>
 					<br>
 					<div class="form_section">
                     		<div class="form_section_title">
-                    			<label>상품 이미지</label>
+                    			<label>상품 이미지:</label>
                     		</div>
                     		<div class="form_section_content">
                     		<input type="file" id ="productImg" name='uploadFile' style="height: 30px;">
