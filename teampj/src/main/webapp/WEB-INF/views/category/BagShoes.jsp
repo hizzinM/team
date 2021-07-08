@@ -54,15 +54,25 @@
 			</ul>
 		</div>
 		<script>
-		let moveForm = $("#moveForm");
-		$(".search_area button").on("click", function(e) {
-			e.preventDefault();
+			let moveForm = $("#moveForm");
+			$(".search_area button").on("click", function(e) {
+				e.preventDefault();
 
-			let keyword = $(".search_area input[name='keyword']").val();
-			moveForm.find("input[name='keyword']").val(keyword);
-			moveForm.submit();
-		});
-	</script>
+				let keyword = $(".search_area input[name='keyword']").val();
+				moveForm.find("input[name='keyword']").val(keyword);
+				moveForm.submit();
+			});
+		</script>
+		<script>
+			let moveForm = $("#moveForm");
+			$(".search_area button").on("click", function(e) {
+				e.preventDefault();
+
+				let keyword = $(".search_area input[name='keyword']").val();
+				moveForm.find("input[name='keyword']").val(keyword);
+				moveForm.submit();
+			});
+		</script>
 		<div id="s_footer">
 			<h1>고객센터 1522-4953</h1>
 			<br>
