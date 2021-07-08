@@ -160,15 +160,19 @@
 		</select> <strong>가격</strong><input id="product_price1" name="product_price1"
 			placeholder="" size="15" value="" type="text"> ~ <input
 			id="product_price2" name="product_price2" placeholder="" size="15"
-			value="" type="text"> <strong>검색정렬기준</strong><select
-			id="order_by" name="order_by">
+			value="" type="text">
+		<button>Search</button>
+		<hr>
+		총
+		<c:out value="${pageMaker.total}" />
+		개의 상품이 검색되었습니다.
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<strong>검색정렬기준</strong><select id="order_by" name="order_by">
 			<option value="" selected="selected">::: 기준선택 :::</option>
 			<option value="name">상품명순</option>
 			<option value="priceasc">낮은가격 순</option>
 			<option value="price">높은가격 순</option>
-		</select>
-		<button>Search</button>
-		<hr>
+		</select> <br><br><br>
 		<c:if test="${listcheck != 'empty'}">
 			<table>
 				<c:forEach items="${searchlist}" var="searchresult">
