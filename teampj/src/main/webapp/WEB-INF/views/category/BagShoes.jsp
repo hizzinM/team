@@ -53,26 +53,15 @@
 				<%@ include file="../navigation.jsp"%>
 			</ul>
 		</div>
-		<script>
-			let moveForm = $("#moveForm");
-			$(".search_area button").on("click", function(e) {
-				e.preventDefault();
-
-				let keyword = $(".search_area input[name='keyword']").val();
-				moveForm.find("input[name='keyword']").val(keyword);
-				moveForm.submit();
-			});
-		</script>
-		<script>
-			let moveForm = $("#moveForm");
-			$(".search_area button").on("click", function(e) {
-				e.preventDefault();
-
-				let keyword = $(".search_area input[name='keyword']").val();
-				moveForm.find("input[name='keyword']").val(keyword);
-				moveForm.submit();
-			});
-		</script>
+		<div class="search_wrap">
+			<div class="search_area">
+				<form action="/search" method="get">
+					<input type="text" name="keyword" id="search"
+						value="${pageMaker.cri.keyword }" placeholder="Store item search">
+					<button>Search</button>
+				</form>
+			</div>
+		</div>
 		<div id="s_footer">
 			<h1>고객센터 1522-4953</h1>
 			<br>
