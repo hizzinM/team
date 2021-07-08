@@ -120,12 +120,14 @@
 						<td>주문 : </td>
 							<td>
 								<input type="text" name="quantity" value="1" size="5" style="text-align: center;">
+								
 							</td>
 						</tr>
 					</table>
 				</td>
 				<td style="width: 30%; vertical-align: top;">
 					<b>* 상품 설명 *</b><br/>	
+					<td><textarea rows="10" cols="30"><c:out value="${goodDetailData.productComment}" /></textarea></td>
 				</td>
 			</tr>
 			<tr>

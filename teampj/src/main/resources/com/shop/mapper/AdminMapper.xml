@@ -13,8 +13,8 @@
 		</selectKey>
 		insert into product(product_id, product_name,
 		product_price,product_category,product_size, product_color,
-		product_inventory)
-		values(#{productId},#{productName},#{productPrice},#{productCategory},#{productSize},#{productColor},#{productInventory})
+		product_inventory,product_comment)
+		values(#{productId},#{productName},#{productPrice},#{productCategory},#{productSize},#{productColor},#{productInventory},#{productComment})
 
 	</insert>
 	<!-- 이미지 등록 -->
@@ -114,7 +114,7 @@
 	<select id="goodsUpdateId" resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
 		join product_img i on p.product_id=i.product_id where p.product_id =
 		#{productId}
 
@@ -123,7 +123,7 @@
 	<update id="goodsUpdateProduct">
 		update product set product_name=#{productName},
 		product_price=#{productPrice},product_category=#{productCategory},product_size=#{productSize},product_color=#{productColor},
-		product_inventory=#{productInventory} where product_id=#{productId};
+		product_inventory=#{productInventory},product_comment=#{productComment} where product_id=#{productId};
 	</update>
 	<update id="goodsUpdateProductImg">
 		update product_img set
@@ -135,7 +135,7 @@
 		resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
 		join product_img i on p.product_id=i.product_id where
 		p.product_category="Outer";
 	</select>
@@ -143,7 +143,7 @@
 	<select id="TopProductList" resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
 		join product_img i on p.product_id=i.product_id where
 		p.product_category="Top";
 	</select>
@@ -152,7 +152,7 @@
 		resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
 		join product_img i on p.product_id=i.product_id where
 		p.product_category="Shirts";
 	</select>
@@ -161,7 +161,7 @@
 		resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
 		join product_img i on p.product_id=i.product_id where
 		p.product_category="Pants";
 	</select>
@@ -169,7 +169,7 @@
 	<select id="SuitProductList" resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
 		join product_img i on p.product_id=i.product_id where
 		p.product_category="Suit";
 	</select>
@@ -178,7 +178,7 @@
 		resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
 		join product_img i on p.product_id=i.product_id where
 		p.product_category="Bag/Shose";
 	</select>
@@ -186,7 +186,7 @@
 	<select id="AccProductList" resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
 		join product_img i on p.product_id=i.product_id where
 		p.product_category="Acc";
 	</select>
@@ -194,7 +194,7 @@
 	<select id="ProductDetailNameList" resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid from product p
 		join product_img i on p.product_id=i.product_id where
 		p.product_name=#{productName};
 	</select>

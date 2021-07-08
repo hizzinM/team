@@ -55,7 +55,7 @@ th {
 							<th class="useraddress_width">사이즈</th>
 							<th class="useregdate_width">색깔</th>
 							<th class="useregdate_width">재고</th>
-
+							<th class="useregdate_width">코멘트</th>
 						</tr>
 					</thead>
 					<tr>
@@ -98,6 +98,7 @@ th {
 							value="${goodsUpdateData.productColor}" /></td>
 						<td><input type="text" name="productInventory"
 							value="${goodsUpdateData.productInventory}" /></td>
+						<td><textarea rows="20" cols="50" name="productComment"><c:out value="${goodsUpdateData.productComment}"/></textarea></td>
 					</tr>
 					
 				</table>
