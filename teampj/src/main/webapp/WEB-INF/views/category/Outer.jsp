@@ -90,8 +90,8 @@
 		<div class="product-list">
 			<c:forEach items="${OuterProduct}" var="Product">
 			<ul>
-				<li><a href=""><img src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}"/></a>
-					<a href=""><h1>상품명</h1><c:out value="${Product.productName}" /></a>
+				<li><a href="/detail?productId=${Product.productId}"><img src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}"/></a>
+					<a href="/detail?productId=${Product.productId}"><h1>상품명</h1><c:out value="${Product.productName}" /></a>
 					<hr>
 					<p>상품 가격 KRW:<c:out value="${Product.productPrice}"/></p>
 					<p>리뷰 개수</p></li>

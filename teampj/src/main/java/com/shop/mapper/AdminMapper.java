@@ -39,7 +39,9 @@ public interface AdminMapper {
 	
 	/* 상품 수정 페이지 */
 	public int goodsUpdateProduct(Product product);
-
+	
+	/* 상품 상세페이지이동 */
+	public Product ProductDetailNameList(String productName);
 	
 	// 회원정보 조회 기능
 	public User profileUpdateAdminId(String userId);

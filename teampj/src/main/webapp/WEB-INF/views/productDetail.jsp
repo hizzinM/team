@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>minparkang</title>
+<title>상품개별조회</title>
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/main.css">
 </head>
 <body>
-	<header>
+<header>
 		<nav></nav>
 	</header>
 	<div id="side_navigation">
@@ -50,7 +51,7 @@
 		</div>
 		<div id="s_category">
 			<ul>
-				<%@ include file="../navigation.jsp"%>
+				<%@ include file="navigation.jsp"%>
 			</ul>
 
 		</div>
@@ -77,15 +78,71 @@
 	<div id="contents">
 
 		<div class="product-list">
-			<c:forEach items="${BagShoesProduct}" var="Product">
-			<ul>
-				<li><a href="/detail?productId=${Product.productId}"><img src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}"/></a>
-					<a href="/detail?productId=${Product.productId}"><h1>상품명</h1><c:out value="${Product.productName}" /></a>
-					<hr>
-					<p>상품 가격 KRW:<c:out value="${Product.productPrice}"/></p>
-					<p>리뷰 개수</p></li>
-			</ul>
-			</c:forEach>
+			<form action="">
+		<table style="width: 80%">
+			<tr>
+				<td style="width: 20%">
+					<img src="/resources/upload/${goodDetailData.uploadPath}/${goodDetailData.uuid}_${goodDetailData.fileName}" width="100%">
+				</td>
+				<td style="width: 50%; vertical-align: top;">
+					<table style="width: 100%">
+						<tr>
+							<td>번호 : </td>
+							<td>
+								<c:out value="${goodDetailData.productId}"/>
+							</td>
+						</tr>
+						<tr>
+							<td>품명 : </td>
+							<td><c:out value="${goodDetailData.productName}" /></td>
+						</tr>
+						<tr>
+							<td>가격 : </td>
+							<td><c:out value="${goodDetailData.productPrice}" /></td>
+						</tr>
+						<tr>
+							<td>카테고리 : </td>
+							<td><c:out value="${goodDetailData.productCategory}" /></td>
+						</tr>
+						<tr>
+							<td>사이즈 : </td>
+							<td><c:out value="${goodDetailData.productSize}" /></td>
+						</tr>
+						<tr>
+							<td>색상 : </td>
+							<td><c:out value="${goodDetailData.productColor}" /></td>
+						</tr>
+						<tr>
+							<td>재고 : </td>
+							<td><c:out value="${goodDetailData.productInventory}" /></td>
+						</tr>
+						<tr>	
+						<td>주문 : </td>
+							<td>
+								<input type="text" name="quantity" value="1" size="5" style="text-align: center;">
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td style="width: 30%; vertical-align: top;">
+					<b>* 상품 설명 *</b><br/>	
+				</td>
+			</tr>
+			<tr>
+
+				<td colspan="3" style="text-align: center;">
+
+					<input type="submit" value="장바구니에 담기">
+
+					<input type="button" value="이전으로 이동" onclick="history.back()">
+
+				</td>
+
+			</tr>
+
+		</table>
+
+	</form>
 		</div>
 	<div id="footer">
 		<div class="footer-text">

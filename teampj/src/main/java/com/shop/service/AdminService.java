@@ -24,7 +24,10 @@ public interface AdminService {
 
 	/* 상품삭제 */
 	public int deleterProdect(String productId);
-
+	
+	/* 상품 상세페이지이동 */
+	public Product ProductDetailNameList(String productName);
+	
 	/* 회원삭제 */
 	public int userDelete(String userId);
 
