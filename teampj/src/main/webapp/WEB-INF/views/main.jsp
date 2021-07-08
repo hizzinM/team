@@ -114,17 +114,19 @@
 		<div class="product-list">
 			<c:forEach items="${MainProduct}" var="Product" end="7">
 				<ul>
-					<li><a href="/detail?productId=${Product.productId}">
-					<img src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}" /></a>
-						<a href="/detail?productId=${Product.productId}"><h1>상품명</h1><c:out value="${Product.productName}" /></a>
+					<li><a href="/detail?productId=${Product.productId}"> <img
+							src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}" /></a>
+						<a href="/detail?productId=${Product.productId}"><h1>상품명</h1>
+							<c:out value="${Product.productName}" /></a>
 						<hr>
 						<p>
-							상품 가격 KRW:<c:out value="${Product.productPrice}" />
+							상품 가격 KRW:
+							<c:out value="${Product.productPrice}" />
 						</p>
 						<p>리뷰 개수</p></li>
 				</ul>
 			</c:forEach>
-		</div> 
+		</div>
 		<div id="footer">
 			<div class="footer-text">
 				<p>고객센터</p>
@@ -147,14 +149,16 @@
 			</div>
 		</div>
 	</div>
+	<form id="moveForm" method="get">
+		<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
+	</form>
 	<script>
 		let moveForm = $("#moveForm");
 		$(".search_area button").on("click", function(e) {
 			e.preventDefault();
-
-			let keyword = $(".search_area input[name='keyword']").val();
 			moveForm.find("input[name='keyword']").val(keyword);
-			moveForm.submit();
+			let keyword = $(".search_area input[name='keyword']").val();
+			moveForm.submit(); 
 		});
 	</script>
 </body>

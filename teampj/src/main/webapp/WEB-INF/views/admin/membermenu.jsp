@@ -107,6 +107,8 @@ a:hover {
 					<h2>회원관리</h2>
 				</div>
 				<div align="center">
+					 결과:
+					<c:out value="${pageMaker.total}" />명
 					<table>
 						<thead>
 							<tr>
