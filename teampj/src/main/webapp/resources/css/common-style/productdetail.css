@@ -37,6 +37,9 @@
     resize: none;
     border: 1px solid RGB(221,221,221);
 }
+.textarea_style:focus{
+    outline: none;
+}
 .button_style{
 	background-color: white;
 	border:1px solid  black;

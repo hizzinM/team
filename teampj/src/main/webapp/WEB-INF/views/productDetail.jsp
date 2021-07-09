@@ -129,7 +129,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <textarea class="textarea_style" rows="10" cols="115%">
+                            <textarea class="textarea_style" rows="10" cols="115%" readonly>
                                 <c:out value="${goodDetailData.productComment}" />
                             </textarea>
                         </td>
