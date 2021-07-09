@@ -144,36 +144,36 @@
 		<div>&nbsp;</div>
 	</div>
 	<div align="center">
-		<input id="search" name="keyword" placeholder="상품명" size="15"
-			value="${pageMaker.cri.keyword }" type="text"> <br> <br>
-		<strong>카테고리</strong><select id="category_no" name="category_no">
-			<option value="" selected="selected">상품분류 선택</option>
-			<option value=" ">New Arrivals</option>
-			<option value=" ">BEST 30</option>
-			<option value=" ">Outer</option>
-			<option value=" ">Top</option>
-			<option value=" ">Shirts</option>
-			<option value=" ">Pants</option>
-			<option value=" ">Suit</option>
-			<option value=" ">Bag/Shoes</option>
-			<option value=" ">Acc</option>
-		</select> <strong>가격</strong><input id="product_price1" name="product_price1"
-			placeholder="" size="15" value="" type="text"> ~ <input
-			id="product_price2" name="product_price2" placeholder="" size="15"
-			value="" type="text">
-		<button>Search</button>
+		<form action="/search" method="get">
+			<input id="search" name="keyword" placeholder="상품명" size="15"
+				value="${pageMaker.cri.keyword }" type="text"> <br> <br>
+			<strong>카테고리</strong><select id="category_no" name="category_no">
+				<option value="" selected="selected">상품분류 선택</option>
+				<option value=" ">New Arrivals</option>
+				<option value=" ">BEST 30</option>
+				<option value=" ">Outer</option>
+				<option value=" ">Top</option>
+				<option value=" ">Shirts</option>
+				<option value=" ">Pants</option>
+				<option value=" ">Suit</option>
+				<option value=" ">Bag/Shoes</option>
+				<option value=" ">Acc</option>
+			</select> <strong>가격</strong><input id="product_price1" name="product_price1"
+				placeholder="" size="15" value="" type="text"> ~ <input
+				id="product_price2" name="product_price2" placeholder="" size="15"
+				value="" type="text">
+			<button>Search</button>
+		</form>
 		<hr>
 		총
 		<c:out value="${pageMaker.total}" />
 		개의 상품이 검색되었습니다.
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<strong>검색정렬기준</strong> 
+		<strong>검색정렬기준</strong>
 		<button>상품명순</button>
 		<button>낮은가격 순</button>
 		<button>높은가격 순</button>
-		<br>
-		<br>
-		<br>
+		<br> <br> <br>
 		<c:if test="${listcheck != 'empty'}">
 			<table>
 				<c:forEach items="${searchlist}" var="searchresult">
@@ -262,16 +262,6 @@
 
 		});
 	</script>
-	<script>
-		let moveForm = $("#moveForm");
-		$(".search_area button").on("click", function(e) {
-			e.preventDefault();
-
-			let keyword = $(".search_area input[name='keyword']").val();
-			moveForm.find("input[name='keyword']").val(keyword);
-			moveForm.submit();
-		});
-	</script>
 	<div id="footer">
 		<div class="footer-text">
 			<p>고객센터</p>
@@ -293,6 +283,17 @@
 				있습니다. KG 이니시스 [서비스 가입사실 확인]</p>
 		</div>
 	</div>
-	</div>
+	<form id="moveForm" method="get">
+		<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
+	</form>
+	<script>
+		let moveForm = $("#moveForm");
+		$(".search_area button").on("click", function(e) {
+			e.preventDefault();
+			moveForm.find("input[name='keyword']").val(keyword);
+			let keyword = $(".search_area input[name='keyword']").val();
+			moveForm.submit();
+		});
+	</script>
 </body>
 </html>
