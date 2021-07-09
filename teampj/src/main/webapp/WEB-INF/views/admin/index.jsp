@@ -1,23 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="/resources/css/admin/index.css">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/resources/css/common-style/reset.css">
+<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>관리자페이지</title>
 </head>
 <body>
-	<div class="top_gnb_area">
-		<ul class="list">
-			<li><a href="/main">메인 페이지</a></li>
-			<li><a href="/member/logout.do">로그아웃</a></li>
-		</ul>
-	</div>
+	<header>
+		<%@ include file="include/aside.jsp"%>
+	</header>
 	<section id="container">
-		<aside>
-			<%@ include file="include/aside.jsp"%>
-		</aside>
 		<div id="container_box">본문</div>
 	</section>
 

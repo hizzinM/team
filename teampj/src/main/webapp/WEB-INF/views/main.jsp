@@ -48,6 +48,9 @@
 					<br>
 					<li><a href="/member/logout">로그아웃</a></li>
 					<li><a href="/mypage/myindex">마이페이지</a></li>
+					<c:if test="${ loginuser.adminck ==0 }">
+						<li>    </li>
+					</c:if>
 					<c:if test="${ loginuser.adminck ==1 }">
 						<li><a href="/admin/index">관리자화면</a></li>
 					</c:if>

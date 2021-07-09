@@ -3,17 +3,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>상품개별조회</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품개별조회</title>
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
-<link rel="stylesheet" href="/resources/css/main.css">
+<link rel="stylesheet" href="/resources/css/common-style/productdetail.css">
 </head>
 <body>
-<header>
+	<header>
 		<nav></nav>
 	</header>
 	<div id="side_navigation">
@@ -37,6 +39,9 @@
 					<br>
 					<li><a href="/member/logout">로그아웃</a></li>
 					<li><a href="/mypage/myindex">마이페이지</a></li>
+					<c:if test="${ loginuser.adminck ==0 }">
+						<li>    </li>
+					</c:if>
 					<c:if test="${ loginuser.adminck ==1 }">
 						<li><a href="/admin/index">관리자화면</a></li>
 					</c:if>
@@ -55,6 +60,16 @@
 			</ul>
 
 		</div>
+		<div class="search_wrap">
+			<div class="search_area">
+				<form action="/search" method="get">
+					<input type="text" name="keyword" id="search"
+						value="${pageMaker.cri.keyword }" placeholder="Store item search">
+					<button>Search</button>
+				</form>
+			</div>
+		</div>
+		<br>
 		<div id="s_footer">
 			<h1>고객센터 1522-4953</h1>
 			<br>
@@ -69,105 +84,85 @@
 				농협 123-4567-8910-12<br> 국민 9876-54-3210<br> 예금주 : (주) 민박강
 			</p>
 		</div>
-		<div id="s_search">
-			<form action="">
-				<input type="text" id="search" name="">
-			</form>
-		</div>
 	</div>
-	<div id="contents">
-
-		<div class="product-list">
-			<form action="">
-		<table style="width: 80%">
-			<tr>
-				<td style="width: 20%">
-					<img src="/resources/upload/${goodDetailData.uploadPath}/${goodDetailData.uuid}_${goodDetailData.fileName}" width="100%">
-				</td>
-				<td style="width: 50%; vertical-align: top;">
-					<table style="width: 100%">
-						<tr>
-							<td>번호 : </td>
-							<td>
-								<c:out value="${goodDetailData.productId}"/>
-							</td>
-						</tr>
-						<tr>
-							<td>품명 : </td>
-							<td><c:out value="${goodDetailData.productName}" /></td>
-						</tr>
-						<tr>
-							<td>가격 : </td>
-							<td><c:out value="${goodDetailData.productPrice}" /></td>
-						</tr>
-						<tr>
-							<td>카테고리 : </td>
-							<td><c:out value="${goodDetailData.productCategory}" /></td>
-						</tr>
-						<tr>
-							<td>사이즈 : </td>
-							<td><c:out value="${goodDetailData.productSize}" /></td>
-						</tr>
-						<tr>
-							<td>색상 : </td>
-							<td><c:out value="${goodDetailData.productColor}" /></td>
-						</tr>
-						<tr>
-							<td>재고 : </td>
-							<td><c:out value="${goodDetailData.productInventory}" /></td>
-						</tr>
-						<tr>	
-						<td>주문 : </td>
-							<td>
-								<input type="text" name="quantity" value="1" size="5" style="text-align: center;">
-								
-							</td>
-						</tr>
-					</table>
-				</td>
-				<td style="width: 30%; vertical-align: top;">
-					<b>* 상품 설명 *</b><br/>	
-					<td><textarea rows="10" cols="30"><c:out value="${goodDetailData.productComment}" /></textarea></td>
-				</td>
-			</tr>
-			<tr>
-
-				<td colspan="3" style="text-align: center;">
-
-					<input type="submit" value="장바구니에 담기">
-
-					<input type="button" value="이전으로 이동" onclick="history.back()">
-
-				</td>
-
-			</tr>
-
-		</table>
-
-	</form>
-		</div>
-	<div id="footer">
-		<div class="footer-text">
-			<p>고객센터</p>
-			<p>1522-4953</p>
-			<p>Mon-Fri AM 11:00 – PM 6:00</p>
-			<p>Lunch time PM 13:00 – 14:00</p>
-			<p>Sat.Sun.Holiday OFF</p>
-			<p>은행정보</p>
-			<p>농협 317-0011-4079-11</p>
-			<p>국민 242437-04-006967</p>
-			<p>예금주 : (주) 모던이프</p>
-		</div>
-		<div class="footer-text">
-			<P>주식회사 모던이프</P>
-			<p>대표이사 : 장재원 | 이메일 : modernif.co.kr@gmail.com</p>
-			<p>16490 경기도 수원시 팔달구 인계동 1031-2 성지빌딩 701호 모던이프</p>
-			<p>사업자등록번호 : 8858800485 [사업자정보확인] | 통신판매업신고번호 : 2017-수원팔달-0059호</p>
-			<p>고객님은 안전거래를 위해 현금 등으로 결제시 저희 쇼핑몰에서 가입한 PG 사의 구매안전서비스를 이용하실 수
-				있습니다. KG 이니시스 [서비스 가입사실 확인]</p>
-		</div>
-	</div>
-	</div>
-
+    <div id="contents">
+        <div id="prodct-ex_warp">
+            <div>
+                <img src="/resources/upload/${goodDetailData.uploadPath}/${goodDetailData.uuid}_${goodDetailData.fileName}" alt="">
+            </div>
+            <div id="detail_warp">
+                <table>
+                    <tr>
+                        <td>제품 번호</td>
+                        <td><c:out value="${goodDetailData.productId}"/></td>
+                    </tr>
+                    <tr>
+                        <td>제품명</td>
+                        <td><c:out value="${goodDetailData.productName}" /></td>
+                    </tr>
+                    <tr>
+                        <td>가격</td>
+                        <td><c:out value="${goodDetailData.productPrice}" /></td>
+                    </tr>
+                    <tr>
+                        <td>카테고리</td>
+                        <td><c:out value="${goodDetailData.productCategory}" /></td>
+                    </tr>
+                    <tr>
+                        <td>사이즈</td>
+                        <td><c:out value="${goodDetailData.productSize}" /></td>
+                    </tr>
+                    <tr>
+                        <td>색상</td>
+                        <td><c:out value="${goodDetailData.productColor}" /></td>
+                    </tr>
+                    <tr>
+                        <td>재고</td>
+                        <td><c:out value="${goodDetailData.productInventory}" /></td>
+                    </tr>
+                    <tr>
+                        <td>수량</td>
+                        <td><input type="text" name="quantity" value="1" size="5"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">상품 설명</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <textarea class="textarea_style" rows="10" cols="115%">
+                                <c:out value="${goodDetailData.productComment}" />
+                            </textarea>
+                        </td>
+                    </tr>
+                </table>
+                <div id="btn-warp">					
+                    <input type="submit" class="button_style cart_btn" value="장바구니에 담기">
+					<input type="button" class="button_style back_btn" value="이전으로 이동" onclick="history.back()">
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="footer-text">
+                <p>고객센터</p>
+                <p>1522-4953</p>
+                <p>Mon-Fri AM 11:00 – PM 6:00</p>
+                <p>Lunch time PM 13:00 – 14:00</p>
+                <p>Sat.Sun.Holiday OFF</p>
+                <p>은행정보</p>
+                <p>농협 317-0011-4079-11</p>
+                <p>국민 242437-04-006967</p>
+                <p>예금주 : (주) 모던이프</p>
+            </div>
+            <div class="footer-text">
+                <P>주식회사 모던이프</P>
+                <p>대표이사 : 장재원 | 이메일 : modernif.co.kr@gmail.com</p>
+                <p>16490 경기도 수원시 팔달구 인계동 1031-2 성지빌딩 701호 모던이프</p>
+                <p>사업자등록번호 : 8858800485 [사업자정보확인] | 통신판매업신고번호 : 2017-수원팔달-0059호</p>
+                <p>고객님은 안전거래를 위해 현금 등으로 결제시 저희 쇼핑몰에서 가입한 PG 사의 구매안전서비스를 이용하실 수
+                    있습니다. KG 이니시스 [서비스 가입사실 확인]</p>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

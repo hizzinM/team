@@ -25,15 +25,9 @@ th {
 
 </head>
 <body>
-	<div class="top_gnb_area">
-		<ul class="list">
-			<li><a href="/main">메인 페이지</a></li>
-			<li><a href="/member/logout.do">로그아웃</a></li>
-		</ul>
-	</div>
-	<aside>
+	<header>
 		<%@ include file="include/aside.jsp"%>
-	</aside>
+	</header>
 	<section id="container">
 		<div id="container_box" align="center">
 			<div>&nbsp;</div>

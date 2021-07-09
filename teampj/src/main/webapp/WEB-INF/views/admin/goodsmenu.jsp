@@ -15,18 +15,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-	<div class="top_gnb_area">
-		<ul class="list">
-			<li><a href="/main">메인 페이지</a></li>
-			<li><a href="/member/logout.do">로그아웃</a></li>
-		</ul>
-	</div>
+	<header>
+		<%@ include file="include/aside.jsp"%>
+	</header>
 	<section id="container">
-		<aside>
-			<%@ include file="include/aside.jsp"%>
-		</aside>
-	
-
 		<section id=content>
 			<div id=title align="center">
 				<h2>상품등록</h2>

@@ -8,16 +8,10 @@
 <title>문의관리</title>
 </head>
 <body>
-	<div class="top_gnb_area">
-		<ul class="list">
-			<li><a href="/main">메인 페이지</a></li>
-			<li><a href="/member/logout.do">로그아웃</a></li>
-		</ul>
-	</div>
+	<header>
+		<%@ include file="include/aside.jsp"%>
+	</header>
 	<section id="container">
-		<aside>
-			<%@ include file="include/aside.jsp"%>
-		</aside>
 		<div id="container_box">문의관리</div>
 	</section>
 
