@@ -167,12 +167,13 @@
 		<c:out value="${pageMaker.total}" />
 		개의 상품이 검색되었습니다.
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<strong>검색정렬기준</strong><select id="order_by" name="order_by">
-			<option value="" selected="selected">::: 기준선택 :::</option>
-			<option value="name">상품명순</option>
-			<option value="priceasc">낮은가격 순</option>
-			<option value="price">높은가격 순</option>
-		</select> <br><br><br>
+		<strong>검색정렬기준</strong> 
+		<button>상품명순</button>
+		<button>낮은가격 순</button>
+		<button>높은가격 순</button>
+		<br>
+		<br>
+		<br>
 		<c:if test="${listcheck != 'empty'}">
 			<table>
 				<c:forEach items="${searchlist}" var="searchresult">
