@@ -9,6 +9,7 @@
 <title>admin 페이지</title>
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
+<link rel="stylesheet" href="/resources/css/admin/membermenu.css">
 </head>
 <body>
 	<header>
