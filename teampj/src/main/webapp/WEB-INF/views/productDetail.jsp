@@ -209,7 +209,10 @@
 		   	  cartProductsize:"${goodDetailData.productSize}",
 		   			cartPrice:"${goodDetailData.productPrice}",
 		   			cartProductColor:"${goodDetailData.productColor}",
-		   			cartQty:$("#amount").val()
+		   			cartQty:$("#amount").val(),
+		   			fileName:"${goodDetailData.fileName}",
+		   			uploadPath:"${goodDetailData.uploadPath}",
+		   			uuid:"${goodDetailData.uuid}"
 	   },
 	   success : function(result){
 	    

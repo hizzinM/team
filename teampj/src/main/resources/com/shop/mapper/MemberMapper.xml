@@ -116,7 +116,9 @@
 		,max(case when image_id=1 then file_name end) as file_name
 		,max(case when image_id=1 then upload_path end) as upload_path
 		,max(case when image_id=1 then uuid end) as uuid
-		from product_img group by product_id) i where p.product_id=i.product_id and p.product_id=c.product_id and c.user_id=u.user_id
+		from product_img group by product_id) i 
+        where p.product_id=i.product_id and p.product_id=c.product_id and c.user_id=u.user_id and u.user_id=#{userId}
+        
 	</select>
 	
 </mapper> 
