@@ -19,20 +19,21 @@ public class NoticeVO {
 	private int noticeBold;
 
 	/* 공지 작성일 */
-	private Date regdate;
+	private Date noticeWritedate;
 
 	public NoticeVO() {
 		super();
 	}
 
-	public NoticeVO(int bno, String noticeTitle, String noticeContent, String userId, int noticeBold, Date regdate) {
+	public NoticeVO(int bno, String noticeTitle, String noticeContent, String userId, int noticeBold,
+			Date noticeWritedate) {
 		super();
 		this.bno = bno;
 		this.noticeTitle = noticeTitle;
 		this.noticeContent = noticeContent;
 		this.userId = userId;
 		this.noticeBold = noticeBold;
-		this.regdate = regdate;
+		this.noticeWritedate = noticeWritedate;
 	}
 
 	public int getBno() {
@@ -75,18 +76,18 @@ public class NoticeVO {
 		this.noticeBold = noticeBold;
 	}
 
-	public Date getRegdate() {
-		return regdate;
+	public Date getNoticeWritedate() {
+		return noticeWritedate;
 	}
 
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setNoticeWritedate(Date noticeWritedate) {
+		this.noticeWritedate = noticeWritedate;
 	}
 
 	@Override
 	public String toString() {
 		return "NoticeVO [bno=" + bno + ", noticeTitle=" + noticeTitle + ", noticeContent=" + noticeContent
-				+ ", userId=" + userId + ", noticeBold=" + noticeBold + ", regdate=" + regdate + "]";
+				+ ", userId=" + userId + ", noticeBold=" + noticeBold + ", noticeWritedate=" + noticeWritedate + "]";
 	}
 
 }
