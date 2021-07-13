@@ -153,6 +153,7 @@ th, td {
 							<th><input type="checkbox" name="allCheck" id=allCheck /></th>
 							<th class="username_width">ID</th>
 							<th class="userid_width">상품이미지</th>
+							<th class="userid_width">사이즈 가이드</th>
 							<th class="userphone_width">상품명</th>
 							<th class="useremail_width">가격</th>
 							<th class="useremail_width">카테고리</th>
@@ -168,9 +169,8 @@ th, td {
 								value="${product.productId}"></td>
 							<td><a href="/admin/Update?productId=${product.productId}"><c:out
 										value="${product.productId}"></c:out></a></td>
-							<td><img
-								src="/resources/upload/${product.uploadPath}/${product.uuid}_${product.fileName}"
-								width="200px" height="200px"></td>
+							<td><img src="/resources/upload/${product.uploadPath}/${product.uuid}_${product.fileName}" width="200px" height="200px"></td>
+							<td><img src="/resources/upload/${product.uploadPath2}/${product.uuid2}_${product.fileName2}" width="200px" height="200px"></td>
 							<td><c:out value="${product.productName}" /></td>
 							<td><c:out value="${product.productPrice}" /></td>
 							<td><c:out value="${product.productCategory}" /></td>

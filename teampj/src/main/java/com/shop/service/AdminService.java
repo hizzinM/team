@@ -20,20 +20,21 @@ public interface AdminService {
 	/* 상품 수정 페이지 */
 	public int goodsUpdateProduct(Product product);
 
-	public int goodsUpdateProductImg(AttachImageVO vo);
-
 	/* 상품삭제 */
 	public int deleterProdect(String productId);
-	
+
 	/* 상품 상세페이지이동 */
 	public Product ProductDetailNameList(String productName);
-	
+
 	/* 회원삭제 */
 	public int userDelete(String userId);
 
 	/* 상품 목록(페이징) */
 	public List<Product> selectproductList(Criteria cri);
 
+	/* 상품 검색(페이징) */
+	public List<Product> searchproductList(Criteria cri);
+ 
 	/* 상품 총 개수 */
 	public int goodsGetTotal(Criteria cri);
 
@@ -42,21 +43,30 @@ public interface AdminService {
 
 	// 회원정보 조회 기능
 	public User profileUpdateAdminId(String userId);
-	
-	//메인페이지 상품
+
+	// 메인페이지 상품
 	public List<Product> selectMainProductList();
-	//Outer목록
+
+	// Outer목록
 	public List<Product> OuterProductList();
+
 	// Top목록
 	public List<Product> TopProductList();
-	//Shirts목록
+
+	// Shirts목록
 	public List<Product> ShirtsProductList();
-	//Pants목록
+
+	// Pants목록
 	public List<Product> PantsProductList();
-	//Suit목록
+
+	// Suit목록
 	public List<Product> SuitProductList();
-	//BagShoes목록
+
+	// BagShoes목록
 	public List<Product> BagShoesProductList();
+
 	// Acc목록
 	public List<Product> AccProductList();
+
+	public int goodsUpdateProductImg(AttachImageVO vo);
 }

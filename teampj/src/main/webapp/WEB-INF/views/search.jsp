@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,65 +12,65 @@
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/main.css">
-<style type="text/css">
-.product-list {
-	width: 1600px;
-	text-align: center;
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	flex: 200px;
-	flex-wrap: wrap;
-}
-
-/* 페이지 버튼 인터페이스 */
-.pageMaker_wrap {
-	text-align: center;
-	margin-top: 30px;
-	margin-bottom: 40px;
-}
-
-.pageMaker {
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
+<style>
+.pageInfo {
 	list-style: none;
 	display: inline-block;
+	margin: 50px 0 0 100px;
 }
 
-.pageMaker_btn {
+.pageInfo li {
 	float: left;
-	width: 40px;
-	height: 40px;
-	line-height: 40px;
-	margin-left: 20px;
+	font-size: 20px;
+	margin-left: 18px;
+	padding: 7px;
+	font-weight: 500;
+}
+
+a:link {
+	color: black;
+	text-decoration: none;
+}
+
+a:visited {
+	color: black;
+	text-decoration: none;
+}
+
+a:hover {
+	color: black;
+	text-decoration: underline;
 }
 
 .active {
-	border: 2px solid black;
-	font-weight: 400;
+	background-color: #cdd5ec;
 }
 
-.next, .prev {
-	border: 1px solid #ccc;
-	padding: 0 10px;
+.pageInfo_wrap {
+	text-align: center;
 }
 
-.pageMaker_btn a:link {
-	color: black;
+.search_wrap {
+	text-align: center;
 }
 
-.pageMaker_btn a:visited {
-	color: black;
+.search_area {
+	display: inline-block;
+	margin-top: 30px;
+	margin-left: 260px;
 }
 
-.pageMaker_btn a:active {
-	color: black;
+.search_area input {
+	height: 30px;
+	width: 250px;
 }
 
-.pageMaker_btn a:hover {
-	color: black;
-}
-
-.next a, .prev a {
-	color: #ccc;
+.search_area button {
+	width: 100px;
+	height: 36px;
 }
 </style>
 </head>
@@ -115,8 +116,8 @@
 				<%@ include file="navigation.jsp"%>
 			</ul>
 		</div>
-		<div class="search_wrap">
-			<div class="search_area">
+		<div class="search_wrap2">
+			<div class="search_area2">
 				<form action="/search" method="get">
 					<input type="text" name="keyword" id="search"
 						value="${pageMaker.cri.keyword }" placeholder="Store item search">
@@ -142,156 +143,126 @@
 	</div>
 	<div id="container_box" align="center">
 		<div>&nbsp;</div>
-	</div>
-	<div align="center">
-		<form action="/search" method="get">
-			<input id="search" name="keyword" placeholder="상품명" size="15"
-				value="${pageMaker.cri.keyword }" type="text"> <br> <br>
-			<strong>카테고리</strong><select id="category_no" name="category_no">
-				<option value="" selected="selected">상품분류 선택</option>
-				<option value=" ">New Arrivals</option>
-				<option value=" ">BEST 30</option>
-				<option value=" ">Outer</option>
-				<option value=" ">Top</option>
-				<option value=" ">Shirts</option>
-				<option value=" ">Pants</option>
-				<option value=" ">Suit</option>
-				<option value=" ">Bag/Shoes</option>
-				<option value=" ">Acc</option>
-			</select> <strong>가격</strong><input id="product_price1" name="product_price1"
-				placeholder="" size="15" value="" type="text"> ~ <input
-				id="product_price2" name="product_price2" placeholder="" size="15"
-				value="" type="text">
-			<button>Search</button>
-		</form>
-		<hr>
-		총
-		<c:out value="${pageMaker.total}" />
-		개의 상품이 검색되었습니다.
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<strong>검색정렬기준</strong>
-		<button>상품명순</button>
-		<button>낮은가격 순</button>
-		<button>높은가격 순</button>
-		<br> <br> <br>
-		<c:if test="${listcheck != 'empty'}">
-			<table>
-				<c:forEach items="${searchlist}" var="searchresult">
-					<ul>
-						<li><a href=""><img
-								src="/resources/upload/${searchresult.uploadPath}/${searchresult.uuid}_${searchresult.fileName}"
-								width="200px" height="200px"></a> <a href=""><h1>상품명</h1>
-								<c:out value="${searchresult.productName}" /></a>
-							<p>
-								상품 가격 KRW:
-								<c:out value="${searchresult.productPrice}" />
-							</p>
+		<div align="center">
+			<div class="search_wrap">
+				<div class="search_area">
+					<select name="type">
+						<option value="" selected="selected"
+							<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>상품분류
+							선택</option>
+						<option value="A"
+							<c:out value="${pageMaker.cri.type eq A?'selected':'' }"/>>Outer</option>
+						<option value="B"
+							<c:out value="${pageMaker.cri.type eq 'B'?'selected':'' }"/>>Top</option>
+						<option value="C"
+							<c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>Shirts</option>
+						<option value="D"
+							<c:out value="${pageMaker.cri.type eq 'D'?'selected':'' }"/>>Pants</option>
+						<option value="E"
+							<c:out value="${pageMaker.cri.type eq 'E'?'selected':'' }"/>>Suit</option>
+						<option value="F"
+							<c:out value="${pageMaker.cri.type eq 'F'?'selected':'' }"/>>Bag/Shoes</option>
+						<option value="G"
+							<c:out value="${pageMaker.cri.type eq 'G'?'selected':'' }"/>>Acc</option>
+					</select> <input type="text" name="keyword" id="search"
+						value="${pageMaker.cri.keyword }"> <strong>가격</strong>
+					<!--   <input id="product_price1"
+						name="product_price1" placeholder="" size="15" value=""
+						type="text"> ~ <input id="product_price2"
+						name="product_price2" placeholder="" size="15" value=""
+						type="text">-->
+					<button type="button">Search</button>
+				</div>
+			</div>
+			<hr>
+			<c:if test="${listcheck != 'empty'}">
+				총
+				<c:out value="${pageMaker.total}" />
+				개의 상품이 검색되었습니다.
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<strong>검색정렬기준</strong>
+				<button>상품명순</button>
+				<button>낮은가격 순</button>
+				<button>높은가격 순</button>
+				<br>
+				<br>
+				<br>
+				<table>
+					<c:forEach items="${searchlist}" var="searchresult">
+						<ul>
+							<li><a href=""><img
+									src="/resources/upload/${searchresult.uploadPath}/${searchresult.uuid}_${searchresult.fileName}"
+									width="200px" height="200px"></a> <a href=""><br>
+									상품명: <c:out value="${searchresult.productName}" /></a>
+								<p>
+									상품 가격: KRW
+									<c:out value="${searchresult.productPrice}" />
+								</p>
+						</ul>
+					</c:forEach>
+				</table>
+			</c:if>
+			<br>
+			 <c:if test="${listCheck == 'empty'}">
+				<div class="table_empty">등록된 상품이 없습니다.</div>
+			</c:if>
+			<div class="pageInfo_wrap">
+				<div class="pageInfo_area">
+					<ul id="pageInfo" class="pageInfo">
+						<!-- 이전페이지 버튼 -->
+						<c:if test="${pageMaker.prev}">
+							<li class="pageInfo_btn previous"><a
+								href="${pageMaker.startPage-1}">Previous</a></li>
+						</c:if>
+
+						<!-- 페이지 번호 버튼 -->
+						<c:forEach var="num" begin="${pageMaker.startPage}"
+							end="${pageMaker.endPage}">
+							<li class="pageInfo_btn ${pageMaker.cri.pageNum == num ? "active":"" }"><a
+								href="${num}">${num}</a></li>
+						</c:forEach>
+
+						<!-- 다음페이지 버튼 -->
+						<c:if test="${pageMaker.next}">
+							<li class="pageInfo_btn next"><a
+								href="${pageMaker.endPage + 1 }">Next</a></li>
+						</c:if>
+
 					</ul>
-				</c:forEach>
-			</table>
-		</c:if>
-
-		<!-- 상품 리스트 X -->
-
-		<c:if test="${listCheck == 'empty'}">
-			<div class="table_empty">해당 상품이 없습니다.</div>
-		</c:if>
-	</div>
-	<!-- 페이지 이름 인터페이스 영역 -->
-	<div class="pageMaker_wrap">
-		<ul class="pageMaker">
-
-			<!-- 이전 버튼 -->
-			<c:if test="${pageMaker.prev }">
-				<li class="pageMaker_btn prev"><a
-					href="${pageMaker.startPage -1}">이전</a></li>
-			</c:if>
-
-			<!-- 페이지 번호 -->
-			<c:forEach begin="${pageMaker.startPage }"
-				end="${pageMaker.endPage }" var="num">
-				<li
-					class="pageMaker_btn ${pageMaker.cri.pageNum == num ? 'active':''}">
-					<a href="${num}">${num}</a>
-				</li>
-			</c:forEach>
-
-			<!-- 다음 버튼 -->
-			<c:if test="${pageMaker.next}">
-				<li class="pageMaker_btn next"><a
-					href="${pageMaker.endPage + 1 }">다음</a></li>
-			</c:if>
-		</ul>
-	</div>
-
-	<form id="moveForm" action="\search" method="get">
-		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
-		<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-		<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-	</form>
-
-	<script type="text/javascript">
-		let searchForm = $('#searchForm');
-		let moveForm = $('#moveForm');
-
-		/* 상품 검색 버튼 동작 */
-		$("#searchForm button").on("click", function(e) {
-
-			e.preventDefault();
-
-			/* 검색 키워드 유효성 검사 */
-			if (!searchForm.find("input[name='keyword']").val()) {
-				alert("키워드를 입력하십시오");
-				return false;
-			}
-
-			searchForm.find("input[name='pageNum']").val("1");
-
-			searchForm.submit();
-
-		});
-
-		/* 페이지 이동 버튼 */
-		$(".pageMaker_btn a").on("click", function(e) {
-
-			e.preventDefault();
-
-			moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-
-			moveForm.submit();
-
-		});
-	</script>
-	<div id="footer">
-		<div class="footer-text">
-			<p>고객센터</p>
-			<p>1522-4953</p>
-			<p>Mon-Fri AM 11:00 – PM 6:00</p>
-			<p>Lunch time PM 13:00 – 14:00</p>
-			<p>Sat.Sun.Holiday OFF</p>
-			<p>은행정보</p>
-			<p>농협 317-0011-4079-11</p>
-			<p>국민 242437-04-006967</p>
-			<p>예금주 : (주) 모던이프</p>
-		</div>
-		<div class="footer-text">
-			<P>주식회사 모던이프</P>
-			<p>대표이사 : 장재원 | 이메일 : modernif.co.kr@gmail.com</p>
-			<p>16490 경기도 수원시 팔달구 인계동 1031-2 성지빌딩 701호 모던이프</p>
-			<p>사업자등록번호 : 8858800485 [사업자정보확인] | 통신판매업신고번호 : 2017-수원팔달-0059호</p>
-			<p>고객님은 안전거래를 위해 현금 등으로 결제시 저희 쇼핑몰에서 가입한 PG 사의 구매안전서비스를 이용하실 수
-				있습니다. KG 이니시스 [서비스 가입사실 확인]</p>
+				</div>
+			</div>
 		</div>
 	</div>
 	<form id="moveForm" method="get">
+		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
+		<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
 		<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
+		<input type="hidden" name="type" value="${pageMaker.cri.type}">
 	</form>
+
 	<script>
 		let moveForm = $("#moveForm");
+		$(".pageInfo a").on("click", function(e) {
+			e.preventDefault();
+			moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+			moveForm.attr("action", "/search");
+			moveForm.submit();
+		});
+
 		$(".search_area button").on("click", function(e) {
 			e.preventDefault();
-			moveForm.find("input[name='keyword']").val(keyword);
+
+			let type = $(".search_area select").val();
 			let keyword = $(".search_area input[name='keyword']").val();
+
+			if (!keyword) {
+				alert("키워드를 입력하세요.");
+				return false;
+			}
+			moveForm.find("input[name='type']").val(type);
+			moveForm.find("input[name='keyword']").val(keyword);
+			moveForm.find("input[name='amount']").val(10);
+			moveForm.find("input[name='pageNum']").val(1);
 			moveForm.submit();
 		});
 	</script>

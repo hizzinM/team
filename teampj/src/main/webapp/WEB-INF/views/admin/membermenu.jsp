@@ -147,23 +147,18 @@
 				moveForm.attr("action", "/admin/membermenu");
 				moveForm.submit();
 			});
-
 		$(".search_area button").on("click", function (e) {
 			e.preventDefault();
-
 			let type = $(".search_area select").val();
 			let keyword = $(".search_area input[name='keyword']").val();
-
 			if (!type) {
 				alert("검색 종류를 선택하세요.");
 				return false;
 			}
-
 			if (!keyword) {
 				alert("키워드를 입력하세요.");
 				return false;
 			}
-
 			moveForm.find("input[name='type']").val(type);
 			moveForm.find("input[name='keyword']").val(keyword);
 			moveForm.find("input[name='pageNum']").val(1);
@@ -176,7 +171,6 @@
 		$(function () {
 			var chkObj = document.getElementsByName("RowCheck");
 			var rowCnt = chkObj.length;
-
 			$("input[name='allCheck']").click(function () {
 				var chk_listArr = $("input[name='RowCheck']");
 				for (var i = 0; i < chk_listArr.length; i++) {

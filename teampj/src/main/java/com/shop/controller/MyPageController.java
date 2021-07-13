@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shop.mapper.MemberMapper;
+import com.shop.model.ShoppingCart;
 import com.shop.model.User;
 import com.shop.service.MemberService;
 
@@ -80,5 +82,17 @@ public class MyPageController {
 		memberservice.profileDelete(user);
 		session.invalidate();
 		return "redirect:/main";
+	}
+	// 카트 담기
+			@ResponseBody
+			@RequestMapping(value = "/addCart", method = RequestMethod.POST)
+			public void addCart(ShoppingCart cart, HttpSession session) throws Exception {
+				logger.info("카트 담기 진입");
+			 User user = (User)session.getAttribute("loginuser");
+			 cart.setUserId(user.getUserId());
+			 cart.setProductName(cart.getProductName());
+	
+			 memberservice.addCart(cart);
+			 
 	}
 }

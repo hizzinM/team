@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.shop.model.Criteria;
+import com.shop.model.ShoppingCart;
 import com.shop.model.User;
 
 public interface MemberService {
@@ -41,5 +42,7 @@ public interface MemberService {
 
 	// 회원정보 삭제
 	public int profileDelete(User user);
-
+	//카트담기
+	public void addCart(ShoppingCart cart) throws Exception;
+	
 }

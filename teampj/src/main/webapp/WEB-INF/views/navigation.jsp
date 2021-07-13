@@ -18,8 +18,7 @@ li{margin-bottom: 10px; font-weight: bolder;}
 		<li><a href="/category/Pants">Pants</a></li>
 		<li><a href="/category/Suit">Suit</a></li>
 		<li><a href="/category/BagShoes">Bag/Shoes</a></li>
-		<li><a href="/category/Acc">Acc</a></li>
-		<li><a href="/category/Sale">Sale</a></li>
+		<li><a href="/category/Acc">Acc</a></li> 
 	</ul>
 </body>
 </html>

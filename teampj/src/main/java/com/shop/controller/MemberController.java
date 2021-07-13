@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shop.mapper.MemberMapper;
+import com.shop.model.ShoppingCart;
 import com.shop.model.User;
 import com.shop.service.MemberService;
 
@@ -119,5 +120,11 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/main";
 	}
+	// 주문 페이지 이동
+		@RequestMapping(value = "order", method = RequestMethod.GET)
+		public void orderGET() {
+			logger.info("주문 페이지 진입");
+		}
+		
 
 }

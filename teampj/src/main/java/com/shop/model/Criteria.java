@@ -18,6 +18,12 @@ public class Criteria {
 	/* 검색 타입 */
 	private String type;
 
+	/* 카테고리 */
+	private String categoryselect;
+
+	/* 검색 정렬 */
+	private String sort;
+
 	/* 검색 타입 배열 */
 	private String[] typeArr;
 
@@ -85,10 +91,27 @@ public class Criteria {
 		this.typeArr = typeArr;
 	}
 
+	public String getCategoryselect() {
+		return categoryselect;
+	}
+
+	public void setCategoryselect(String categoryselect) {
+		this.categoryselect = categoryselect;
+	}
+
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+
 	@Override
 	public String toString() {
 		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", skip=" + skip + ", keyword=" + keyword
-				+ ", type=" + type + ", typeArr=" + Arrays.toString(typeArr) + "]";
+				+ ", type=" + type + ", categoryselect=" + categoryselect + ", sort=" + sort + ", typeArr="
+				+ Arrays.toString(typeArr) + "]";
 	}
 
 }

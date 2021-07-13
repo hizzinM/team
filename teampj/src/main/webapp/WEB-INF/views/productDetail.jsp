@@ -2,17 +2,34 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
     <title>상품개별조회</title>
+
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/common-style/productdetail.css">
+<style type="text/css">
+.goodsimg{
+    width:550px;
+    height: 700px;    
+}
+.size{
+	 width:775px;
+    height: 320px;   
+}
+</style>
 </head>
 <body>
 	<header>
@@ -86,11 +103,19 @@
 		</div>
 	</div>
     <div id="contents">
+    
         <div id="prodct-ex_warp">
             <div>
-                <img src="/resources/upload/${goodDetailData.uploadPath}/${goodDetailData.uuid}_${goodDetailData.fileName}" alt="">
+
+                <img src="/resources/upload/${goodDetailData.uploadPath}/${goodDetailData.uuid}_${goodDetailData.fileName}" alt="" class="goodsimg">
+            </div><br>
+            <div>
+            	<p>사이즈가이드:</p>
+                <img src="/resources/upload/${goodDetailData.uploadPath2}/${goodDetailData.uuid2}_${goodDetailData.fileName2}" alt="" class="size">
+
             </div>
             <div id="detail_warp">
+            
                 <table>
                     <tr>
                         <td>제품 번호</td>
@@ -122,7 +147,11 @@
                     </tr>
                     <tr>
                         <td>수량</td>
-                        <td><input type="text" name="quantity" value="1" size="5"></td>
+                        <td><select name="amount">
+   							 <c:forEach begin="1" end="10" var="i">
+       						 <option value="${i}">${i}</option>
+   								 </c:forEach>
+							</select></td>
                     </tr>
                     <tr>
                         <td colspan="2">상품 설명</td>
@@ -134,13 +163,18 @@
                             </textarea>
                         </td>
                     </tr>
+                  
                 </table>
-                <div id="btn-warp">					
-                    <input type="submit" class="button_style cart_btn" value="장바구니에 담기">
+                <div id="btn-warp">		
+             	
+                   	<input type="submit" class="button_style cart_btn" value="장바구니에 담기">
+                  
 					<input type="button" class="button_style back_btn" value="이전으로 이동" onclick="history.back()">
+					
                 </div>
             </div>
         </div>
+  	
         <div id="footer">
             <div class="footer-text">
                 <p>고객센터</p>
@@ -163,6 +197,11 @@
             </div>
         </div>
     </div>
+  
+   
+   
+   
+   
 </body>
 
 </html>

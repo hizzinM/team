@@ -102,4 +102,12 @@
 		delete from user where user_id = #{userId} and
 		password =#{password}
 	</delete>
+	<insert id="addCart">
+ 	 insert into shopping_cart (cart_id,user_id, product_name,cart_productsize,cart_productColor,cart_productOption,cart_price,cart_qty,cart_update)
+     values (#{cartId},#{userId},#{productName},#{cartProductsize},#{cartProductColor},#{cartProductOption},#{cartPrice},#{cartQty},#{cartUpdate})
+	</insert>
+	
+	
+	
+	
 </mapper> 

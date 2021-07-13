@@ -1,6 +1,7 @@
 package com.shop.service;
 
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.shop.mapper.MemberMapper;
 import com.shop.model.Criteria;
+import com.shop.model.ShoppingCart;
 import com.shop.model.User;
 
 @Service
@@ -90,5 +92,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int profileDelete(User user) {
 		return membermapper.profileDelete(user);
+	}
+	
+	@Override
+	public void addCart(ShoppingCart cart) throws Exception{
+		cart.setCartUpdate(LocalDateTime.now());
+		 membermapper.addCart(cart);
 	}
 }

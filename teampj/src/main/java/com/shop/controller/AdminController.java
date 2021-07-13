@@ -71,11 +71,11 @@ public class AdminController {
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
 	}
-	 
+
 	// 회원정보조회
 	@GetMapping("/AdminMemberUpdate")
 	public String profileUpdate(String userId, Model model) {
-
+		logger.info("회원정보조회 ");
 		User result = adminService.profileUpdateAdminId(userId);
 		System.out.println(result);
 
@@ -86,11 +86,11 @@ public class AdminController {
 
 	// 프로필 수정 기능
 	@PostMapping("/AdminMemberUpdate")
-	public String profileUpdatePOST(User user, RedirectAttributes rttr,Model model) {
+	public String profileUpdatePOST(User user, RedirectAttributes rttr, Model model) {
+		logger.info("프로필 수정 기능 ");
 		adminService.profileUpdateAdmin(user);
 		rttr.addFlashAttribute("profile", adminService.profileUpdateAdmin(user));
-		
-		
+
 		System.out.println(adminService.profileUpdateAdmin(user));
 		return "redirect:/admin/membermenu";
 	}
@@ -98,7 +98,7 @@ public class AdminController {
 	// 회원 선택삭제
 	@RequestMapping(value = "/userDelete")
 	public String ajaxTest2(HttpServletRequest request) throws Exception {
-
+		logger.info(" 회원 선택삭제");
 		String[] ajaxMsg = request.getParameterValues("valueArr");
 		int size = ajaxMsg.length;
 		for (int i = 0; i < size; i++) {
@@ -129,7 +129,7 @@ public class AdminController {
 		adminService.insertpro(product);
 
 		rttr.addFlashAttribute("insert_result", product.getProductName());
-
+		System.out.println(product);
 		return "redirect:/admin/goodsmenu";
 	}
 
@@ -153,7 +153,7 @@ public class AdminController {
 	// 상품 선택삭제
 	@RequestMapping(value = "/delete")
 	public String ajaxTest(HttpServletRequest request) throws Exception {
-
+		logger.info("상품 선택삭제");
 		String[] ajaxMsg = request.getParameterValues("valueArr");
 		int size = ajaxMsg.length;
 		for (int i = 0; i < size; i++) {
@@ -183,15 +183,16 @@ public class AdminController {
 	/* 상품 수정 */
 	@PostMapping("/Update")
 	public String goodsProductUpdate(RedirectAttributes rttr, Product product, AttachImageVO vo, MultipartFile file) {
+		logger.info("상품 업데이트");
 		adminService.goodsUpdateProduct(product);
-		// System.out.println(adminService.goodsUpdateProduct(product));
-		rttr.addFlashAttribute("resultProduct", adminService.goodsUpdateProduct(product));
+		rttr.addFlashAttribute("result", product.getProductName());
+		System.out.println(product);
 		return "redirect:/admin/goodsmanage";
 	}
 
 //	public String goodsProductUpdate(RedirectAttributes rttr, Product product, MultipartFile file,
 //			AttachImageVO attachImageVO) {
-//		adminService.goodsUpdateProduct(product);
+//		
 //		System.out.println(adminService.goodsUpdateProduct(product));
 //		rttr.addFlashAttribute("resultProduct", "resultProduct success");
 //		return "/admin/result";
@@ -260,11 +261,10 @@ public class AdminController {
 			String uploadFileName = multipartFile.getOriginalFilename();
 			vo.setFileName(uploadFileName);
 			vo.setUploadPath(datePath);
-
+			vo.setImageId(0);
 			/* uuid 적용 파일 이름 */
 			String uuid = UUID.randomUUID().toString();
 			vo.setUuid(uuid);
-
 			uploadFileName = uuid + "_" + uploadFileName;
 
 			/* 파일 위치, 파일 이름을 합친 File 객체 */
@@ -312,6 +312,7 @@ public class AdminController {
 		ResponseEntity<List<AttachImageVO>> result = new ResponseEntity<List<AttachImageVO>>(list, HttpStatus.OK);
 		return result;
 	}
+	
 
 	/* 이미지 파일 삭제 */
 	@PostMapping("/deleteFile")
@@ -346,4 +347,7 @@ public class AdminController {
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 
 	}
+	
+
+	
 }

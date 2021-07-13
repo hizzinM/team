@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.shop.model.Criteria;
+import com.shop.model.ShoppingCart;
 import com.shop.model.User;
 
 @Mapper
@@ -49,7 +50,9 @@ public interface MemberMapper {
 
 	// 회원정보 삭제 기능
 	public int profileDelete(User user);
-
+	//카트담기
+	public void addCart(ShoppingCart cart) throws Exception;
+	
 	// public User readMember(String userId);
 
 	// public int updatePw(User user) throws Exception;

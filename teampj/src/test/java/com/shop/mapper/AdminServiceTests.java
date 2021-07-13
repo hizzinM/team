@@ -27,7 +27,7 @@ public class AdminServiceTests {
 		// 상품 정보
 		product.setProductId(0);
 		product.setProductName("테스트DB2");		
-		product.setProductPrice("154");
+		product.setProductPrice(154);
 		product.setProductSize("L");
 		product.setProductColor("노랑");
 		product.setProductInventory(2);
