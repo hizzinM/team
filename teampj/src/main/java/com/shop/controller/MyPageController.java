@@ -107,8 +107,6 @@ public class MyPageController {
 		@ResponseBody
 		@RequestMapping(value = "/addCart", method =RequestMethod.POST)
 		   public int addCart(ShoppingCart cart, HttpSession session) throws Exception {
-			 
-			 
 			 int result=0;
 			
 			logger.info("카트 담기 진입");
@@ -120,12 +118,21 @@ public class MyPageController {
 		    memberservice.addCart(cart);
 		    result = 1;
 			 }
-			return	result;
-			
-			
-					 
+			return	result;		 
 		}
-		
+		// 카트 삭제
+		@RequestMapping(value = "/delete")
+		public String CartDelete(HttpServletRequest request) throws Exception {
+			logger.info("상품 선택삭제");
+			String[] ajaxMsg = request.getParameterValues("valueArr");
+			int size = ajaxMsg.length;
+			for (int i = 0; i < size; i++) {
+				membermapper.deleteCart(ajaxMsg[i]);
+				System.out.println(ajaxMsg[i]);
+			}
+			return "redirect:/mypage/addCart";
+		}
+
 		
 		
 		

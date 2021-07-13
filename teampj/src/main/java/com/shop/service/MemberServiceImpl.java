@@ -103,4 +103,10 @@ public class MemberServiceImpl implements MemberService {
 		return membermapper.selectCart(userId);
 		
 	}
+
+	@Override
+	public int deleteCart(String cartId) {
+		
+		return membermapper.deleteCart(cartId);
+	}
 }
