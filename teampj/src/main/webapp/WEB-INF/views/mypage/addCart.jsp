@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -78,7 +80,36 @@
 	<div id="contents">
 
 		<div class="product-list">
-			<c:out value="${cartList}"></c:out>
+			
+			<table style="border:1px black solid;">
+					<thead> 
+						<tr>
+							<th><input type="checkbox" name="allCheck" id=allCheck /></th>
+							<th class="username_width">카트ID</th>
+							<th class="useremail_width">유저ID</th>
+							<th class="userphone_width">상품ID</th>
+							<th class="useremail_width">상품명</th>
+							<th class="useraddress_width">상품사이즈</th>
+							<th class="useregdate_width">상품색상</th>
+							<th class="useregdate_width">가격</th>
+							<th class="useregdate_width">주문수량</th>
+						</tr>
+					</thead>
+					<c:forEach items="${cartList}" var="cartList">
+						<tr>
+							<td><input type="checkbox" name="RowCheck" class="RowCheck"
+								value="${cartList.cartId}"></td>
+							<td><c:out value="${cartList.cartId}" /></td>	
+							<td><c:out value="${cartList.userId}" /></td>
+							<td><c:out value="${cartList.productId}" /></td>
+							<td><c:out value="${cartList.productName}" /></td>
+							<td><c:out value="${cartList.cartProductsize}" /></td>
+							<td><c:out value="${cartList.cartProductColor}" /></td>
+							<td><c:out value="${cartList.cartPrice}" /></td>
+							<td><c:out value="${cartList.cartQty}" /></td>
+						</tr>
+					</c:forEach>
+				</table>
 		</div>
 		<div id="footer">
 			<div class="footer-text">

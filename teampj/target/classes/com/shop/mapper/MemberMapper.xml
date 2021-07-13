@@ -108,7 +108,7 @@
 	</insert>
 	
 	<select id="selectCart" resultType="com.shop.model.ShoppingCart">
-	select  c.cart_id,c.user_id,c.product_name,c.cart_productsize,c.cart_productColor,c.cart_price,
+	select  c.cart_id,c.user_id,c.product_id,c.product_name,c.cart_productsize,c.cart_productColor,c.cart_price,
 		c.cart_qty
 		from product p,shopping_cart c,user u
 		join (select
