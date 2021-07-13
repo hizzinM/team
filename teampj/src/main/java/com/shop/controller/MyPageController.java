@@ -1,5 +1,7 @@
 package com.shop.controller;
 
+import java.time.LocalDateTime;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -16,8 +18,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shop.mapper.MemberMapper;
+import com.shop.model.Product;
 import com.shop.model.ShoppingCart;
 import com.shop.model.User;
+import com.shop.service.AdminService;
 import com.shop.service.MemberService;
 
 @Controller
@@ -28,7 +32,9 @@ public class MyPageController {
 	MemberMapper membermapper;
 	@Autowired
 	MemberService memberservice;
-
+	@Autowired
+	AdminService adminService;
+	
 	private static final Logger logger = LoggerFactory.getLogger("MainController.class");
 
 	// 마이페이지 이동
@@ -83,18 +89,27 @@ public class MyPageController {
 		session.invalidate();
 		return "redirect:/main";
 	}
+	// 장바구니 진입
+		@RequestMapping(value = "/addCart", method = RequestMethod.GET)
+		public String GetaddCart() throws Exception {
+			logger.info("장바구니 진입");
+			return "mypage/addCart";
+		}
+	
 	// 카트 담기
 		@ResponseBody
-		@RequestMapping(value = "/addCart", method = RequestMethod.POST)
+		@RequestMapping(value = "/addCart", method =RequestMethod.POST)
 		   public int addCart(ShoppingCart cart, HttpSession session) throws Exception {
-			 logger.info("카트 담기 진입");
+			 
 			 
 			 int result=0;
-			 
+			
+			logger.info("카트 담기 진입");
 			User user = (User)session.getAttribute("loginuser");
 			
 			if(user != null) {
 		    cart.setUserId(user.getUserId());
+		    cart.setCartUpdate(LocalDateTime.now());
 		    memberservice.addCart(cart);
 		    result = 1;
 			 }
