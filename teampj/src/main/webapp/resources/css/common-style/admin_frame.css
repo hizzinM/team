@@ -8,9 +8,7 @@ header{
 nav>ul>li>a:link,
 nav>ul>li>a:visited,
 nav>ul>li>a:focus
-{
-    color:white;
-}
+{color:white;}
 #h_nav{
     width:100%;
     padding:80px 0;

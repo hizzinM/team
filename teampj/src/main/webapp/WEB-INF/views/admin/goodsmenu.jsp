@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품관리</title>
+<title>상품등록</title>
 	<link rel="icon" type="image/png" href="http://example.com/myicon.png">
 	<link rel="stylesheet" href="/resources/css/common-style/reset.css">
 	<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
@@ -39,9 +39,10 @@
 			<%@ include file="include/aside.jsp"%>
 		</nav>
 	</header>
+	
 		<div id="content">
 			<div id="table-warp">
-				<h1>상 품 관 리</h1>
+				<h1>상 품 등 록</h1>
 				<form action="/admin/goodsmenu" method="post" id="enrollForm">
 					<table>
 						<tr>
