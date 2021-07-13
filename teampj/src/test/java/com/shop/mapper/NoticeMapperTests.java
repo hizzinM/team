@@ -18,7 +18,7 @@ public class NoticeMapperTests {
 	private static final Logger log = LoggerFactory.getLogger(NoticeMapperTests.class);
 
 	@Autowired
-	private NoticeMapper noticeMapper;
+	private BoardMapper noticeMapper;
 
 	@Test
 	public void testEnroll() {
