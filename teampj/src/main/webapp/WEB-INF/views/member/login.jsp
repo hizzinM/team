@@ -15,14 +15,7 @@
 <body>
 	<!--상단 툴바-->
 	<header>
-		<nav>
-			<!--
-            <ul>
-                <li><a href="#">장바구니</a></li>
-                <li><a href="#">마이페이지</a></li>
-                <li><a href="#">언어설정</a></li>
-            </ul>
-            -->
+		<nav> 
 		</nav>
 	</header>
 	<div id="side_navigation">
@@ -51,10 +44,7 @@
 					</c:if>
 				</c:if>
 				<br>
-				<li><a href="#">배송조회</a></li>
-				<li><a href="#">장바구니</a></li>
-				<li><a href="#">리뷰</a></li>
-				<li><a href="#">고객센터</a></li>
+				<%@ include file="../smallmenu.jsp"%>
 				<br>
 			</ul>
 		</div>

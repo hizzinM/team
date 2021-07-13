@@ -104,10 +104,7 @@ a:hover {
 					</c:if>
 				</c:if>
 				<br>
-				<li><a href="#">배송조회</a></li>
-				<li><a href="#">장바구니</a></li>
-				<li><a href="#">리뷰</a></li>
-				<li><a href="#">고객센터</a></li>
+				<%@ include file="smallmenu.jsp"%>
 				<br>
 			</ul>
 		</div>
@@ -203,7 +200,7 @@ a:hover {
 				</table>
 			</c:if>
 			<br>
-			 <c:if test="${listCheck == 'empty'}">
+			<c:if test="${listCheck == 'empty'}">
 				<div class="table_empty">등록된 상품이 없습니다.</div>
 			</c:if>
 			<div class="pageInfo_wrap">

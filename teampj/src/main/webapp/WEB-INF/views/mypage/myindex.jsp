@@ -42,10 +42,7 @@
 					</c:if>
 				</c:if>
 				<br>
-				<li><a href="#">배송조회</a></li>
-				<li><a href="#">장바구니</a></li>
-				<li><a href="#">리뷰</a></li>
-				<li><a href="#">고객센터</a></li>
+		<%@ include file="../smallmenu.jsp"%>
 				<br>
 			</ul>
 		</div>
