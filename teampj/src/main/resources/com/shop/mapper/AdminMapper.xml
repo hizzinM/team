@@ -79,7 +79,10 @@
 		</if>
 		<if test="type != null">
 			<include refid="criteria"></include>
-		</if> 
+		</if>
+		<if test="keyword != null">
+			<include refid="descselect"></include>
+		</if>
 	</select>
 
 	<!-- 상품 총 갯수 -->
@@ -121,24 +124,19 @@
 		</trim>
 	</sql>
 
-	<select id="descselect" resultType="com.shop.model.Product">
-		select
-		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
-		join product_img i on p.product_id=i.product_id
+	<sql id="descselect">
 		<choose>
-			<when test="optiontype == 1">
+			<when test="sort == 1">
 				order by product_price desc;
 			</when>
-			<when test="optiontype == 2">
+			<when test="sort == 2">
 				order by product_price asc;
 			</when>
 			<otherwise>
-				order by product_name desc;
+				order by product_name asc;
 			</otherwise>
 		</choose>
-		limit #{skip}, #{amount}
-	</select>
+	</sql>
 
 	<!-- 회원정보 조회 -->
 	<select id="profileUpdateAdminId"

@@ -203,7 +203,7 @@ a:hover {
 				</table>
 			</c:if>
 			<br>
-			 <c:if test="${listCheck == 'empty'}">
+			<c:if test="${listCheck == 'empty'}">
 				<div class="table_empty">등록된 상품이 없습니다.</div>
 			</c:if>
 			<div class="pageInfo_wrap">
