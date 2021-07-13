@@ -102,11 +102,12 @@
 		delete from user where user_id = #{userId} and
 		password =#{password}
 	</delete>
+	<!-- 장바구니 추가-->
 	<insert id="addCart">
  	 insert into shopping_cart (cart_id,user_id,product_id,product_name,cart_productsize,cart_productColor,cart_productOption,cart_price,cart_qty,cart_update)
      values (#{cartId},#{userId},#{productId},#{productName},#{cartProductsize},#{cartProductColor},#{cartProductOption},#{cartPrice},#{cartQty},#{cartUpdate})
 	</insert>
-	
+	<!-- 장바구니 목록-->
 	<select id="selectCart" resultType="com.shop.model.ShoppingCart">
 	select  c.cart_id,c.user_id,c.product_id,c.product_name,c.cart_productsize,c.cart_productColor,c.cart_price,
 		c.cart_qty,i.file_name,i.upload_path,i.uuid
@@ -118,7 +119,13 @@
 		,max(case when image_id=1 then uuid end) as uuid
 		from product_img group by product_id) i 
         where p.product_id=i.product_id and p.product_id=c.product_id and c.user_id=u.user_id and u.user_id=#{userId}
-        
 	</select>
+	
+	<delete id="deleteCart">
+	delete from shopping_cart where cart_id = #{cartId}
+	</delete>
+	<delete id="deleterCartImgAll">
+		delete from product_img where product_id=${productId}
+	</delete>
 	
 </mapper> 
