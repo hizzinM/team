@@ -103,8 +103,8 @@ th, td {
 							<th><input type="checkbox" name="allCheck" id=allCheck /></th>
 							<th class="username_width">카트ID</th>
 							<th class="useremail_width">유저ID</th>
-							<th class="userphone_width">상품ID</th>
 							<th class="userphone_width">상품이미지</th>
+							<th class="userphone_width">상품ID</th>
 							<th class="useremail_width">상품명</th>
 							<th class="useraddress_width">상품사이즈</th>
 							<th class="useregdate_width">상품색상</th>
@@ -114,7 +114,7 @@ th, td {
 					</thead>
 					<c:forEach items="${cartList}" var="cartList">
 						<tr>
-							<td><input type="checkbox" name="RowCheck" class="RowCheck" value="${cartList.cartId}"></td>
+							<td><input type="checkbox" name="RowCheck" class="RowCheck" value="${cartList.productId}"></td>
 							<td><c:out value="${cartList.cartId}" /></td>	
 							<td><c:out value="${cartList.userId}" /></td>
 							<td><img src="/resources/upload/${cartList.uploadPath}/${cartList.uuid}_${cartList.fileName}" width="200px" height="200px"></td>
