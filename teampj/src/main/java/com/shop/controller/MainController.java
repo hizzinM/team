@@ -7,6 +7,8 @@ import java.nio.file.Files;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +21,22 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.shop.mapper.AdminMapper;
 import com.shop.model.Criteria;
 import com.shop.model.PageMakerDTO;
 import com.shop.model.Product;
+import com.shop.model.ShoppingCart;
+import com.shop.model.User;
 import com.shop.service.AdminService;
+import com.shop.service.MemberService;
 
 @Controller
 public class MainController {
 	@Autowired
 	AdminService adminService;
+
 
 	private static final Logger logger = LoggerFactory.getLogger("MainController.class");
 
@@ -57,6 +64,8 @@ public class MainController {
 
 		return "/productDetail";
 	}
+	
+	
 
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> getImage(String fileName) {

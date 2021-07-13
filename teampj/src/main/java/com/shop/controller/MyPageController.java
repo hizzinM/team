@@ -84,15 +84,23 @@ public class MyPageController {
 		return "redirect:/main";
 	}
 	// 카트 담기
-			@ResponseBody
-			@RequestMapping(value = "/addCart", method = RequestMethod.POST)
-			public void addCart(ShoppingCart cart, HttpSession session) throws Exception {
-				logger.info("카트 담기 진입");
-			 User user = (User)session.getAttribute("loginuser");
-			 cart.setUserId(user.getUserId());
-			 cart.setProductName(cart.getProductName());
-	
-			 memberservice.addCart(cart);
+		@ResponseBody
+		@RequestMapping(value = "/addCart", method = RequestMethod.POST)
+		   public int addCart(ShoppingCart cart, HttpSession session) throws Exception {
+			 logger.info("카트 담기 진입");
 			 
-	}
+			 int result=0;
+			 
+			User user = (User)session.getAttribute("loginuser");
+			
+			if(user != null) {
+		    cart.setUserId(user.getUserId());
+		    memberservice.addCart(cart);
+		    result = 1;
+			 }
+			return	result;
+			
+			
+					 
+		}
 }

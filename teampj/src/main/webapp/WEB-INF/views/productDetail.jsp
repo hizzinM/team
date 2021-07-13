@@ -167,7 +167,7 @@
                 </table>
                 <div id="btn-warp">		
              	
-                   	<input type="submit" class="button_style cart_btn" value="장바구니에 담기">
+                   	<input type="submit" class="button_style cart_btn" id="addcart" value="장바구니에 담기">
                   
 					<input type="button" class="button_style back_btn" value="이전으로 이동" onclick="history.back()">
 					
@@ -197,7 +197,31 @@
             </div>
         </div>
     </div>
-  
+  <script type="text/javascript">
+  $("#addcart").click(function(){
+	   var gdsNum = $("#gdsNum").val();
+	   var cartStock = $(".numBox").val();
+	      
+	   var data = {
+	     gdsNum : gdsNum,
+	     cartStock : cartStock
+	     };
+	   
+	   $.ajax({
+	    url : "/mypage/addCart",
+	    type : "post",
+	    data : data,
+	    success : function(result){
+	     alert("카트 담기 성공");
+	     $(".numBox").val("1");
+	    },
+	    error : function(){
+	     alert("카트 담기 실패");
+	    }
+	   });
+	  });
+
+  </script>
    
    
    
