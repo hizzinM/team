@@ -42,6 +42,7 @@
 							<th><input type="checkbox" name="allCheck" id="allCheck" /></th>
 							<th>ID</th>
 							<th>상품이미지</th>
+							<th>사이즈 가이드</th>
 							<th>상품명</th>
 							<th>가격</th>
 							<th>카테고리</th>
@@ -62,6 +63,9 @@
 							</td>
 							<td>
 								<img src="/resources/upload/${product.uploadPath}/${product.uuid}_${product.fileName}" width="280px" height="300px">
+							</td>
+							<td>
+								<img src="/resources/upload/${product.uploadPath2}/${product.uuid2}_${product.fileName2}" width="200px" height="200px">
 							</td>
 							<td>
 								<c:out value="${product.productName}" />
