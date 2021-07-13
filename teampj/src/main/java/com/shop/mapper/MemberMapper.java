@@ -52,6 +52,10 @@ public interface MemberMapper {
 	public int profileDelete(User user);
 	//카트담기
 	public void addCart(ShoppingCart cart) throws Exception;
+	//장바구니 리스트
+	public List<ShoppingCart> selectCart(String userId)  throws Exception;
+
+	
 	
 	// public User readMember(String userId);
 

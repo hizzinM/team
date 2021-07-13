@@ -1,6 +1,7 @@
 package com.shop.controller;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -91,9 +92,15 @@ public class MyPageController {
 	}
 	// 장바구니 진입
 		@RequestMapping(value = "/addCart", method = RequestMethod.GET)
-		public String GetaddCart() throws Exception {
+		public void GetaddCart(HttpSession session,Model model) throws Exception {
 			logger.info("장바구니 진입");
-			return "mypage/addCart";
+			User loginuser = (User)session.getAttribute("loginuser");
+			String userId=loginuser.getUserId();
+			
+			List<ShoppingCart> cartList=membermapper.selectCart(userId);
+			
+			model.addAttribute("cartList", cartList);
+			
 		}
 	
 	// 카트 담기
@@ -118,4 +125,11 @@ public class MyPageController {
 			
 					 
 		}
+		
+		
+		
+		
+		
+		
+		
 }

@@ -96,7 +96,11 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public void addCart(ShoppingCart cart) throws Exception{
-		cart.setCartUpdate(LocalDateTime.now());
 		 membermapper.addCart(cart);
+	}
+	@Override
+	public List<ShoppingCart> selectCart(String userId)  throws Exception{
+		return membermapper.selectCart(userId);
+		
 	}
 }

@@ -41,7 +41,7 @@
 					</c:if>
 				</c:if>
 				<br>
-			<%@ include file="../smallmenu.jsp"%>
+				<%@ include file="../smallmenu.jsp"%>
 				<br>
 			</ul>
 		</div>
@@ -73,13 +73,12 @@
 				농협 123-4567-8910-12<br> 국민 9876-54-3210<br> 예금주 : (주) 민박강
 			</p>
 		</div>
-		<div id="s_search">
-			<form action="">
-				<input type="text" id="search" name="">
-			</form>
-		</div>
+
 	</div>
 	<div id="contents">
+
+		<div class="product-list">
+			<c:out value="${cartList}"></c:out>
 		</div>
 		<div id="footer">
 			<div class="footer-text">
@@ -103,3 +102,15 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		let moveForm = $("#moveForm");
+		$(".search_area button").on("click", function(e) {
+			e.preventDefault();
+
+			let keyword = $(".search_area input[name='keyword']").val();
+			moveForm.find("input[name='keyword']").val(keyword);
+			moveForm.submit();
+		});
+	</script>
+</body>
+</html>

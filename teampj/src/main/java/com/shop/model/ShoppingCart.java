@@ -7,28 +7,32 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class ShoppingCart {
 	private int cartId;
 	private String userId;
+	private int productId;
 	private String productName;
 	private String cartProductsize;
 	private String cartProductColor;
 	private String cartProductOption;
 	private int cartPrice;
 	private int cartQty;
-	private String fileName;
-	private String uploadPath;
-	private String uuid;
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	private LocalDateTime cartUpdate;
 	
+	private String fileName;
+	private String uploadPath;
+	private String uuid;
 	
 	public ShoppingCart() {
 		super();
 	}
 
-	public ShoppingCart(int cartId, String userId, String productName, String cartProductsize, String cartProductColor,
-			String cartProductOption, int cartPrice, int cartQty, LocalDateTime cartUpdate) {
+	
+
+	public ShoppingCart(int cartId, String userId, int productId, String productName, String cartProductsize,
+			String cartProductColor, String cartProductOption, int cartPrice, int cartQty, LocalDateTime cartUpdate) {
 		super();
 		this.cartId = cartId;
 		this.userId = userId;
+		this.productId = productId;
 		this.productName = productName;
 		this.cartProductsize = cartProductsize;
 		this.cartProductColor = cartProductColor;
@@ -37,6 +41,8 @@ public class ShoppingCart {
 		this.cartQty = cartQty;
 		this.cartUpdate = cartUpdate;
 	}
+
+
 
 	public int getCartId() {
 		return cartId;
@@ -53,6 +59,18 @@ public class ShoppingCart {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
+	public int getProductId() {
+		return productId;
+	}
+
+
+
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
+
 
 	public String getProductName() {
 		return productName;
@@ -134,14 +152,18 @@ public class ShoppingCart {
 		this.uuid = uuid;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "ShoppingCart [cartId=" + cartId + ", userId=" + userId + ", productName=" + productName
-				+ ", cartProductsize=" + cartProductsize + ", cartProductColor=" + cartProductColor
+		return "ShoppingCart [cartId=" + cartId + ", userId=" + userId + ", productId=" + productId + ", productName="
+				+ productName + ", cartProductsize=" + cartProductsize + ", cartProductColor=" + cartProductColor
 				+ ", cartProductOption=" + cartProductOption + ", cartPrice=" + cartPrice + ", cartQty=" + cartQty
-				+ ", fileName=" + fileName + ", uploadPath=" + uploadPath + ", uuid=" + uuid + ", cartUpdate="
-				+ cartUpdate + "]";
+				+ ", cartUpdate=" + cartUpdate + ", fileName=" + fileName + ", uploadPath=" + uploadPath + ", uuid="
+				+ uuid + "]";
 	}
+
+	
 
 	
 	

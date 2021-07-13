@@ -103,11 +103,22 @@
 		password =#{password}
 	</delete>
 	<insert id="addCart">
- 	 insert into shopping_cart (cart_id,user_id, product_name,cart_productsize,cart_productColor,cart_productOption,cart_price,cart_qty,cart_update)
-     values (#{cartId},#{userId},#{productName},#{cartProductsize},#{cartProductColor},#{cartProductOption},#{cartPrice},#{cartQty},#{cartUpdate})
+ 	 insert into shopping_cart (cart_id,user_id,product_id,product_name,cart_productsize,cart_productColor,cart_productOption,cart_price,cart_qty,cart_update)
+     values (#{cartId},#{userId},#{productId},#{productName},#{cartProductsize},#{cartProductColor},#{cartProductOption},#{cartPrice},#{cartQty},#{cartUpdate})
 	</insert>
 	
-	
-	
+	<select id="selectCart" resultType="com.shop.model.ShoppingCart">
+	select  c.cart_id,c.user_id,c.product_name,c.cart_productsize,c.cart_productColor,c.cart_price,
+		c.cart_qty
+		from product p,shopping_cart c,user u
+		join (select
+		product_id
+		,max(case when image_id=1 then file_name end) as file_name
+		,max(case when image_id=1 then upload_path end) as upload_path
+		,max(case when image_id=1 then uuid end) as uuid
+		from product_img group by product_id) i 
+        where p.product_id=i.product_id and p.product_id=c.product_id and c.user_id=u.user_id and u.user_id=#{userId}
+        
+	</select>
 	
 </mapper> 

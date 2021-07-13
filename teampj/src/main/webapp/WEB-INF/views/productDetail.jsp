@@ -204,20 +204,24 @@
 	  $.ajax({
 	   url : "/mypage/addCart",
 	   type : "post",
-	   data : {productName:"${goodDetailData.productName}",
+	   data : {productId:"${goodDetailData.productId}",
+		   	   productName:"${goodDetailData.productName}",
 		   	  cartProductsize:"${goodDetailData.productSize}",
 		   			cartPrice:"${goodDetailData.productPrice}",
 		   			cartProductColor:"${goodDetailData.productColor}",
-		   			cartQty:$("#amount").val()
+		   			cartQty:$("#amount").val(),
+		   			fileName:"${goodDetailData.fileName}",
+		   			uploadPath:"${goodDetailData.uploadPath}",
+		   			uuid:"${goodDetailData.uuid}"
 	   },
 	   success : function(result){
 	    
 	    if(result == 1) {
 	     alert("카트 담기 성공");
-	     $("#amount").val("1");
+	     
 	    } else {
 	     alert("회원만 사용할 수 있습니다.")
-	     $("#amount").val("1");
+	   
 	    }
 	   },
 	   error : function(){
