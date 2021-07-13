@@ -17,10 +17,30 @@ table {
 	border-collapse: collapse;
 }
 
-th, td {
+thead, td {
 	padding: 10px 5px;
-	border: 1px solid #e9ebf0;
+	border: 1px solid black;
 	font-size: 17px;
+}
+.button_style{
+	background-color: white;
+	border:1px solid  black;
+	font-weight: bolder;
+	padding:7px 14px 7px 14px;
+	cursor: pointer;
+}
+.delete_btn{
+	float: right;
+   margin-top: 270px;
+   margin-right: 543px;
+}
+.button_style:hover{
+	background-color: black;
+	color:white;
+}
+.order_btn{
+    margin-top: 269px;
+    margin-left: -78px;
 }
 </style>
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
@@ -101,20 +121,20 @@ th, td {
 					<thead> 
 						<tr>
 							<th><input type="checkbox" name="allCheck" id=allCheck /></th>
-							<th class="username_width">카트ID</th>
-							<th class="useremail_width">유저ID</th>
-							<th class="userphone_width">상품이미지</th>
-							<th class="userphone_width">상품ID</th>
-							<th class="useremail_width">상품명</th>
-							<th class="useraddress_width">상품사이즈</th>
-							<th class="useregdate_width">상품색상</th>
-							<th class="useregdate_width">가격</th>
-							<th class="useregdate_width">주문수량</th>
+							<th>카트ID</th>
+							<th >유저ID</th>
+							<th>상품이미지</th>
+							<th>상품ID</th>
+							<th>상품명</th>
+							<th>상품사이즈</th>
+							<th>상품색상</th>
+							<th>가격</th>
+							<th>주문수량</th>
 						</tr>
 					</thead>
 					<c:forEach items="${cartList}" var="cartList">
 						<tr>
-							<td><input type="checkbox" name="RowCheck" class="RowCheck" value="${cartList.productId}"></td>
+							<td><input type="checkbox" name="RowCheck" class="RowCheck" value="${cartList.cartId}"></td>
 							<td><c:out value="${cartList.cartId}" /></td>	
 							<td><c:out value="${cartList.userId}" /></td>
 							<td><img src="/resources/upload/${cartList.uploadPath}/${cartList.uuid}_${cartList.fileName}" width="200px" height="200px"></td>
@@ -126,10 +146,16 @@ th, td {
 							<td><c:out value="${cartList.cartQty}" /></td>
 						</tr>
 					</c:forEach>
-				</table>
+				</table><br>
+				
+			<input type="button" value="주문하기" class="deletebutton button_style order_btn">
 				<!--물건 삭제 버튼-->
+				
 			<input type="button" value="물건삭제" class="deletebutton button_style delete_btn" onclick="deleteValue();">
+				
+
 		</div>
+		
 		<div id="footer">
 			<div class="footer-text">
 				<p>고객센터</p>

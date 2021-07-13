@@ -121,13 +121,14 @@ public class MyPageController {
 			return	result;		 
 		}
 		// 카트 삭제
-		@RequestMapping(value = "/delete")
+		@ResponseBody
+		@RequestMapping(value = "/delete", method = RequestMethod.POST)
 		public String CartDelete(HttpServletRequest request) throws Exception {
 			logger.info("상품 선택삭제");
 			String[] ajaxMsg = request.getParameterValues("valueArr");
 			int size = ajaxMsg.length;
 			for (int i = 0; i < size; i++) {
-				membermapper.deleteCart(ajaxMsg[i]);
+				memberservice.deleteCart(ajaxMsg[i]);
 				System.out.println(ajaxMsg[i]);
 			}
 			return "redirect:/mypage/addCart";
