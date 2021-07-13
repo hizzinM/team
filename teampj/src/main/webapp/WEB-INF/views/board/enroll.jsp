@@ -10,9 +10,6 @@
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/main.css">
-<script src="https://code.jquery.com/jquery-3.4.1.js"
-	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-	crossorigin="anonymous"></script>
 </head>
 <body>
 	<header>
@@ -82,7 +79,22 @@
 			</form>
 		</div>
 	</div>
-	<div id="contents">notice</div>
+	<div id="contents">
+		<h1>게시판 등록</h1>
+		<form action="/board/enroll" method="post">
+			<div class="input_wrap">
+				<label>Title</label> <input name="noticeTitle">
+			</div>
+			<div class="input_wrap">
+				<label>Content</label>
+				<textarea rows="3" name="noticeContent"></textarea>
+			</div>
+			<div class="input_wrap">
+				<label>Writer</label> <input name="userId">
+			</div>
+			<button class="btn">등록</button>
+		</form>
+	</div>
 	<div id="footer">
 		<div class="footer-text">
 			<p>고객센터</p>
@@ -112,19 +124,6 @@
 			let keyword = $(".search_area input[name='keyword']").val();
 			moveForm.find("input[name='keyword']").val(keyword);
 			moveForm.submit();
-		});
-
-		$(document).ready(function() {
-			let result = '<c:out value="${result}"/>';
-			checkAlert(result);
-			function checkAlert(result) {
-				if (result === '') {
-					reutrn;
-				}
-				if (result === "enrol success") {
-					alert("등록이 완료되었습니다.");
-				}
-			}
 		});
 	</script>
 </body>
