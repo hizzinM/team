@@ -8,6 +8,21 @@
 <head>
 <meta charset="UTF-8">
 <title>minparkang</title>
+<style type="text/css">
+
+table {
+	width: 60%;
+	border: 1px solid #d3d8e1;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 10px 5px;
+	border: 1px solid #e9ebf0;
+	font-size: 17px;
+}
+</style>
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
@@ -88,6 +103,7 @@
 							<th class="username_width">카트ID</th>
 							<th class="useremail_width">유저ID</th>
 							<th class="userphone_width">상품ID</th>
+							<th class="userphone_width">상품이미지</th>
 							<th class="useremail_width">상품명</th>
 							<th class="useraddress_width">상품사이즈</th>
 							<th class="useregdate_width">상품색상</th>
@@ -101,6 +117,7 @@
 								value="${cartList.cartId}"></td>
 							<td><c:out value="${cartList.cartId}" /></td>	
 							<td><c:out value="${cartList.userId}" /></td>
+							<td><img src="/resources/upload/${cartList.uploadPath}/${cartList.uuid}_${cartList.fileName}" width="200px" height="200px"></td>
 							<td><c:out value="${cartList.productId}" /></td>
 							<td><c:out value="${cartList.productName}" /></td>
 							<td><c:out value="${cartList.cartProductsize}" /></td>

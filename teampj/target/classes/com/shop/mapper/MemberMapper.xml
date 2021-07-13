@@ -109,7 +109,7 @@
 	
 	<select id="selectCart" resultType="com.shop.model.ShoppingCart">
 	select  c.cart_id,c.user_id,c.product_id,c.product_name,c.cart_productsize,c.cart_productColor,c.cart_price,
-		c.cart_qty
+		c.cart_qty,i.file_name,i.upload_path,i.uuid
 		from product p,shopping_cart c,user u
 		join (select
 		product_id
