@@ -65,7 +65,7 @@
 				</c:if>
 				<br>
 				<li><a href="#">배송조회</a></li>
-				<li><a href="#">장바구니</a></li>
+				<li><a href="/mypage/addCart">장바구니</a></li>
 				<li><a href="#">리뷰</a></li>
 				<li><a href="#">고객센터</a></li>
 				<br>
@@ -147,7 +147,7 @@
                     </tr>
                     <tr>
                         <td>수량</td>
-                        <td><select name="amount">
+                        <td><select id="amount">
    							 <c:forEach begin="1" end="10" var="i">
        						 <option value="${i}">${i}</option>
    								 </c:forEach>
@@ -167,7 +167,7 @@
                 </table>
                 <div id="btn-warp">		
              	
-                   	<input type="submit" class="button_style cart_btn" value="장바구니에 담기">
+                   	<input type="submit" class="button_style cart_btn" id="addcart" value="장바구니에 담기">
                   
 					<input type="button" class="button_style back_btn" value="이전으로 이동" onclick="history.back()">
 					
@@ -197,7 +197,35 @@
             </div>
         </div>
     </div>
-  
+  <script type="text/javascript">
+  $("#addcart").click(function(){
+	 
+	  
+	  $.ajax({
+	   url : "/mypage/addCart",
+	   type : "post",
+	   data : {productName:"${goodDetailData.productName}",
+		   	  cartProductsize:"${goodDetailData.productSize}",
+		   			cartPrice:"${goodDetailData.productPrice}",
+		   			cartProductColor:"${goodDetailData.productColor}",
+		   			cartQty:$("#amount").val()
+	   },
+	   success : function(result){
+	    
+	    if(result == 1) {
+	     alert("카트 담기 성공");
+	     $("#amount").val("1");
+	    } else {
+	     alert("회원만 사용할 수 있습니다.")
+	     $("#amount").val("1");
+	    }
+	   },
+	   error : function(){
+	    alert("카트 담기 실패");
+	   }
+	  });
+	 });
+  </script>
    
    
    

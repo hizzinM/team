@@ -55,6 +55,7 @@
 						<li><a href="/admin/index">관리자화면</a></li>
 					</c:if>
 				</c:if>
+				
 				<br>
 				<%@ include file="smallmenu.jsp"%>
 				<br>

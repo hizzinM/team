@@ -82,13 +82,13 @@
 						<div class="id_wrap">
 							<div class="id_input_box">
 								<input class="id_input text-frame" name="userId"
-									placeholder="아이디" value="test1">
+									placeholder="아이디" value="관리자">
 							</div>
 						</div>
 						<div class="pw_wrap">
 							<div class="pw_input_box">
 								<input class="pw_iput text-frame" type="password"
-									name="password" placeholder="비밀번호" value="test1">
+									name="password" placeholder="비밀번호" value="admin">
 								<!--<br> &nbsp;<span id="checklogin"></span><br>-->
 							</div>
 						</div>

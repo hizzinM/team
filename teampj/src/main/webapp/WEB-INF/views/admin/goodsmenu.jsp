@@ -7,14 +7,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" type="image/png" href="http://example.com/myicon.png">
-<link rel="stylesheet" href="/resources/css/admin/index.css">
 <meta charset="UTF-8">
 <title>상품관리</title>
-<link rel="stylesheet" href="/resources/css/common-style/reset.css">
-<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="icon" type="image/png" href="http://example.com/myicon.png">
+	<link rel="stylesheet" href="/resources/css/common-style/reset.css">
+	<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
+	<link rel="stylesheet" href="/resources/css/admin/membermenu.css">
+	<link rel="stylesheet" href="/resources/css/admin/index.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<style>
+		td:first-child{width:100px;}
+		.btn_section{ width:200px;text-align: center;margin: 0 auto;padding-top:20px;}
+		.del-btn{margin-right: 10px;}
+		.text-area{width:900px;height: 190px;resize: none;}
+	</style>
 </head>
 <body>
 	<header>
@@ -33,73 +39,74 @@
 			<%@ include file="include/aside.jsp"%>
 		</nav>
 	</header>
-	<section id="container">
-		<section id=content>
-			<div id=title align="center">
-				<h2>상품등록</h2>
-			</div>
-			<div align="center">
-				<br> <br>
-				<form action="/admin/goodsmenu" method="post" id="enrollForm" enctype="multipart/form-data">
-
-					<div class="form_section">
-						<label> </label> <input name="productId" value="0" hidden="">
-					</div>
-					<div class="form_section">
-						<label>옷 이름:</label> <input name="productName">
-					</div>
-					<div class="form_section">
-						<label>옷 가격:</label> <input name="productPrice">
-					</div>
-					<div class="form_section">
-						<label>카테고리:</label><select name="productCategory">
-						<option value="Outer">Outer</option>
-						<option value="Top">Top</option>
-						<option value="Shirts">Shirts</option>
-						<option value="Pants">Pants</option>
-						<option value="Suit">Suit</option>
-						<option value="Bag/Shose">Bag/Shose</option>
-						<option value="Acc">Acc</option>
-						<option value="Sale">Sale</option>
-						</select>
-					</div>
-					<div class="form_section">
-						<label>옷사이즈:</label> <input name="productSize">
-					</div>
-					<div class="form_section">
-						<label>옷 색깔:</label> <input name="productColor">
-					</div>
-					<div class="form_section">
-						<label>상품 재고:</label> <input name="productInventory">
-					</div>
-					<div class="form_section">
-						<label></label><textarea rows="20" cols="50" name="productComment" placeholder="상품 코멘트"></textarea>
-					</div>
-					<br>
-					<div class="form_section">
-                    		<div class="form_section_title">
-                    			<label>상품 이미지:</label>
-                    		</div>
-                    		<div class="form_section_content">
-                    		<input type="file" id ="productImg" name='uploadFile' style="height: 30px;" multiple="multiple"/>
- 							<div id="uploadResult"></div>
- 							<div class="form_section_title">
-                    			<label>사이즈 가이드:</label>
-                    		</div>
- 						    <input type="file" id ="productImg2" name='uploadFile2' style="height: 30px;" multiple="multiple"/>
- 							<div id="uploadResult2"></div>
- 							</div>
-                    			
-                    		</div>
-                       
+		<div id="content">
+			<div id="table-warp">
+				<h1>상 품 관 리</h1>
+				<form action="/admin/goodsmenu" method="post" id="enrollForm">
+					<table>
+						<tr>
+							<td>옷 이름</td>
+							<td><input type="text" class="text-frame" name="productName"></td>
+						</tr>
+						<tr>
+							<td>옷 가격</td>
+							<td><input type="text" class="text-frame" name="productPrice"></td>
+						</tr>
+						<tr>
+							<td>카테고리</td>
+							<td>
+								<select class="text-frame" style="width:150px" name="productCategory">
+									<option value="Outer">Outer</option>
+									<option value="Top">Top</option>
+									<option value="Shirts">Shirts</option>
+									<option value="Pants">Pants</option>
+									<option value="Suit">Suit</option>
+									<option value="Bag/Shose">Bag/Shose</option>
+									<option value="Acc">Acc</option>
+									<option value="Sale">Sale</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>옷사이즈</td>
+							<td><input type="text" class="text-frame" name="productSize"></td>
+						</tr>
+						<tr>
+							<td>옷 색깔</td>
+							<td><input type="text" class="text-frame" name="productColor"></td>
+						</tr>
+						<tr>
+							<td>상품 재고</td>
+							<td><input type="text" class="text-frame" name="productInventory"></td>
+						</tr>
+						<tr>
+							<td style="vertical-align:top;"><br>상품 내용</td>
+							<td>
+								<textarea class="text-area text-frame" name="productComment" placeholder="상품 코멘트"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td>상품 이미지</td>
+							<td>
+								<input type="file" id="productImg" name='uploadFile' multiple="multiple">
+								<div id="uploadResult"></div>
+							</td>
+						</tr>
+						<tr>
+							<td>사이즈 가이드</td>
+							<td>
+								<input type="file" id ="productImg2" name='uploadFile2' multiple="multiple"/>
+								<div id="uploadResult2"></div>
+							</td>
+						</tr>
+					</table>
 					<div class="btn_section">
-						<button id="cancelBtn" class="btn">취 소</button>
-						<button id="enrollBtn" class="btn enroll_btn">등 록</button>
-						
+						<button id="cancelBtn" class="button_style del-btn">취 소</button>
+						<button id="enrollBtn" class="button_style enroll_btn">등 록</button>
 					</div>
-				  </form> 
-				</div>
-		</section>
+				</form>
+			</div>
+		</div>
 		<script>
 			let enrollForm = $("#enrollForm")
 
