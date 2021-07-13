@@ -17,8 +17,8 @@ li {
 </head>
 <body>
 	<li><a href="/mypage/addCart">장바구니</a></li>
-	<li><a href="/category/notice">공지사항</a></li>
+	<li><a href="/board/notice">공지사항</a></li>
 	<li><a href="#">리뷰</a></li>
-	<li><a href="/category/qna">고객센터</a></li>
+	<li><a href="/board/qna">고객센터</a></li>
 </body>
 </html>

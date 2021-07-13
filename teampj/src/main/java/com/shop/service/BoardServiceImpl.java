@@ -10,10 +10,10 @@ import com.shop.model.NoticeVO;
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired
-	private BoardMapper noticemapper;
+	private BoardMapper boardmapper;
 
 	@Override
 	public void enroll(NoticeVO notice) {
-		noticemapper.enroll(notice);
+		boardmapper.enroll(notice);
 	}
 }

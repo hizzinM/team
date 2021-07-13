@@ -159,17 +159,5 @@ public class MainController {
 		int total = adminService.goodsGetTotal(cri);
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
-	}
-
-	// 공지사항 페이지 이동
-	@RequestMapping(value = "/category/notice", method = RequestMethod.GET)
-	public void getnotice(Model model) throws Exception {
-		logger.info("notice 페이지 접속");
-	}
-
-	// qna 페이지 이동
-	@RequestMapping(value = "/category/qna", method = RequestMethod.GET)
-	public void getQna(Model model) throws Exception {
-		logger.info("Qna 페이지 접속");
-	}
+	} 
 }
