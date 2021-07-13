@@ -42,6 +42,13 @@ public class AdminServiceImpl implements AdminService {
 		return adminMapper.selectproductList(cri);
 	}
 
+	/* 상품검색(페이징) */
+	@Override
+	public List<Product> searchproductList(Criteria cri) {
+		logger.info("searchproductList()......");
+		return adminMapper.searchproductList(cri);
+	} 
+	
 	/* 상품 총 갯수 */
 	public int goodsGetTotal(Criteria cri) {
 		logger.info("goodsGetTotal().........");
@@ -60,18 +67,18 @@ public class AdminServiceImpl implements AdminService {
 		logger.info("(service)goodsGetDetail......." + productId);
 		return adminMapper.goodsUpdateId(productId);
 	}
+
 	/* 상품 상세페이지 */
 	@Override
 	public Product ProductDetailNameList(String productName) {
 		logger.info("(service)goodsGetDetail......." + productName);
 		return adminMapper.ProductDetailNameList(productName);
 	}
-	
-	
+
 	/* 상품삭제 */
 	@Override
 	public int deleterProdect(String productId) {
-		adminMapper.deleterProdectImg(productId);
+		adminMapper.deleterProdectImgAll(productId);
 		return adminMapper.deleterProdect(productId);
 	}
 
@@ -84,34 +91,45 @@ public class AdminServiceImpl implements AdminService {
 	/* 상품 수정 페이지 */
 	@Override
 	public int goodsUpdateProduct(Product product) {
-		// logger.info("(service)goodsUpdateProduct........");
+
 		System.out.println("(service)goodsUpdateProduct........");
 		adminMapper.goodsUpdateProduct(product);
-		System.out.println("2222");
-		if (product.getImageList() == null || product.getImageList().size() <= 0) {
-			// System.out.println("1111");
 
-			// System.out.println( product.getImageList().size());
+		if (product.getImageList() == null || product.getImageList().size() <= 0) {
 			return 0;
 		}
-		System.out.println(product);
-		System.out.println(product.getImageList());
+		// System.out.println(product);
+		// System.out.println(product.getImageList());
 
 		product.getImageList().forEach(attach -> {
 			attach.setProductId(product.getProductId());
 			System.out.println(product.getImageList());
-			adminMapper.deleterProdectImg((String.valueOf(product.getProductId())));
+			adminMapper.deleterProdectImg(attach);
 			adminMapper.imageEnroll(attach);
 		});
-		return 1;
+		return 0;
+
+		// adminMapper.goodsUpdateProduct(product);
+
+		// logger.info("(service)goodsUpdateProduct........");
+		// adminMapper.deleterProdectImg(productId);
+		// adminMapper.deleterProdect(productId);
+		// adminMapper.insertpro(product);
+		// if (product.getImageList() == null || product.getImageList().size() <= 0) {
+		// return;
+		// }
+		// product.getImageList().forEach(attach -> {
+		// attach.setProductId(product.getProductId());
+		// adminMapper.imageEnroll(attach);
+		/// });
 	}
 
-	
 	@Override
 	public int goodsUpdateProductImg(AttachImageVO vo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	/* 회원정보수정조회 */
 	@Override
 	public User profileUpdateAdminId(String userId) {
@@ -123,63 +141,61 @@ public class AdminServiceImpl implements AdminService {
 	public int profileUpdateAdmin(User user) {
 		return adminMapper.profileUpdateAdmin(user);
 	}
-	
-	/*메인페이지 상품목록*/
+
+	/* 메인페이지 상품목록 */
 	@Override
 	public List<Product> selectMainProductList() {
-		
+
 		return adminMapper.selectMainProductList();
 	}
-	//Outer목록
+
+	// Outer목록
 	@Override
 	public List<Product> OuterProductList() {
-		
+
 		return adminMapper.OuterProductList();
 	}
-	//Top목록
+
+	// Top목록
 	@Override
 	public List<Product> TopProductList() {
-			
+
 		return adminMapper.TopProductList();
 	}
-	//Shirts목록
+
+	// Shirts목록
 	@Override
 	public List<Product> ShirtsProductList() {
-			
+
 		return adminMapper.ShirtsProductList();
 	}
-	//Pants목록
+
+	// Pants목록
 	@Override
 	public List<Product> PantsProductList() {
-			
-	return adminMapper.PantsProductList();
+
+		return adminMapper.PantsProductList();
 	}
-	//Suit목록
+
+	// Suit목록
 	@Override
 	public List<Product> SuitProductList() {
-				
-	return adminMapper.SuitProductList();
+
+		return adminMapper.SuitProductList();
 	}
-	//BagShoes목록
+
+	// BagShoes목록
 	@Override
 	public List<Product> BagShoesProductList() {
-				
-	return adminMapper.BagShoesProductList();
+
+		return adminMapper.BagShoesProductList();
 	}
-	//Acc목록
+
+	// Acc목록
 	@Override
 	public List<Product> AccProductList() {
-				
-	return adminMapper.AccProductList();
+
+		return adminMapper.AccProductList();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

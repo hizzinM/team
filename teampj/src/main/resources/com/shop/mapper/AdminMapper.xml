@@ -19,11 +19,10 @@
 	</insert>
 	<!-- 이미지 등록 -->
 	<insert id="imageEnroll">
-
-		insert into product_img(product_id, file_name,
-		upload_path, uuid) values
-		(#{productId}, #{fileName}, #{uploadPath},
-		#{uuid})
+		insert into product_img(product_id, image_id,
+		file_name,upload_path,uuid)
+		values
+		(#{productId},#{imageId},#{fileName},#{uploadPath},#{uuid})
 	</insert>
 
 
@@ -32,13 +31,26 @@
 		resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
-		join product_img i on p.product_id=i.product_id
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
+		,i.file_name2,i.upload_path2,i.uuid2 from product p
+		join (select
+		product_id
+		,max(case when image_id=1 then file_name end) as file_name
+		,max(case when image_id=1 then upload_path end) as upload_path
+		,max(case when image_id=1 then uuid end) as uuid
+		,max(case when
+		image_id=2 then file_name end) as file_name2
+		,max(case when image_id=2
+		then upload_path end) as upload_path2
+		,max(case when image_id=2 then
+		uuid end) as uuid2
+		from product_img
+		group by product_id) i on
+		p.product_id=i.product_id
 		<if test="keyword != null">
-			where (product_name like concat ('%', #{keyword}, '%'))
+			where product_name like concat('%' , #{keyword}, '%')
 		</if>
-		order by product_id desc
-		limit #{skip}, #{amount}
+		order by product_id desc limit #{skip}, #{amount}
 	</select>
 
 	<!-- 상품검색(페이징) -->
@@ -46,40 +58,87 @@
 		resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
-		join product_img i on p.product_id=i.product_id
+		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
+		,i.file_name2,i.upload_path2,i.uuid2 from product p
+		join (select
+		product_id
+		,max(case when image_id=1 then file_name end) as file_name
+		,max(case when image_id=1 then upload_path end) as upload_path
+		,max(case when image_id=1 then uuid end) as uuid
+		,max(case when
+		image_id=2 then file_name end) as file_name2
+		,max(case when image_id=2
+		then upload_path end) as upload_path2
+		,max(case when image_id=2 then
+		uuid end) as uuid2
+		from product_img
+		group by product_id) i on
+		p.product_id=i.product_id
 		<if test="keyword != null">
-			where (product_name like concat ('%', #{keyword}, '%'))
+			where product_name like concat('%' , #{keyword}, '%')
 		</if>
-		order by product_name desc
-		limit #{skip}, #{amount}
+		<if test="type != null">
+			<include refid="criteria"></include>
+		</if> 
 	</select>
-
-	<!-- 검색 조건문 -->
-	<sql id="criteria">
-		<trim prefix="where (" suffix=")" prefixOverrides="OR">
-			<foreach collection="typeArr" item="type">
-				<trim prefix="OR">
-					<choose>
-						<when test="type == 'I'.toString()">
-							product_category like concat('%',#{keyword},'%')
-						</when>
-					</choose>
-				</trim>
-			</foreach>
-		</trim>
-	</sql>
 
 	<!-- 상품 총 갯수 -->
 	<select id="goodsGetTotal" resultType="int">
 		select count(*) from product
 		<if test="keyword != null">
-
 			where product_name like concat('%' , #{keyword}, '%')
+		</if>
+		<if test="type != null">
+			<include refid="criteria"></include>
 		</if>
 	</select>
 
+	<sql id="criteria">
+		<trim prefix="and">
+			<choose>
+				<when test="type =='A'.toString()">
+					product_category="Outer";
+				</when>
+				<when test="type =='B'.toString()">
+					product_category="Top";
+				</when>
+				<when test="type == 'C'.toString()">
+					product_category="Shirts"
+				</when>
+				<when test="type == 'D'.toString()">
+					product_category="Pants"
+				</when>
+				<when test="type == 'E'.toString()">
+					product_category="Suit"
+				</when>
+				<when test="type == 'F'.toString()">
+					product_category="BagShoes"
+				</when>
+				<when test="type == 'G'.toString()">
+					product_category="Acc"
+				</when>
+			</choose>
+		</trim>
+	</sql>
 
+	<select id="descselect" resultType="com.shop.model.Product">
+		select
+		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
+		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
+		join product_img i on p.product_id=i.product_id
+		<choose>
+			<when test="optiontype == 1">
+				order by product_price desc;
+			</when>
+			<when test="optiontype == 2">
+				order by product_price asc;
+			</when>
+			<otherwise>
+				order by product_name desc;
+			</otherwise>
+		</choose>
+		limit #{skip}, #{amount}
+	</select>
 
 	<!-- 회원정보 조회 -->
 	<select id="profileUpdateAdminId"
@@ -112,8 +171,12 @@
 	</delete>
 
 	<delete id="deleterProdectImg">
-		delete from product_img where product_id =
-		#{productId}
+		delete from product_img where product_id=${productId}
+		and
+		image_id=${imageId}
+	</delete>
+	<delete id="deleterProdectImgAll">
+		delete from product_img where product_id=${productId}
 	</delete>
 
 	<!-- 메인페이지 상품 -->
@@ -122,7 +185,7 @@
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
 		p.product_inventory,i.file_name,i.upload_path,i.uuid from product p
-		join product_img i on p.product_id=i.product_id
+		join product_img i on p.product_id=i.product_id where i.image_id=1;
 	</select>
 
 	<!-- 상품 수정Id 조회 페이지 -->
@@ -130,10 +193,30 @@
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
 		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
+		,i.file_name2,i.upload_path2,i.uuid2
 		from product p
-		join product_img i on p.product_id=i.product_id where
-		p.product_id =
-		#{productId}
+		join (
+		select
+		product_id
+		, max(case when image_id=1 then file_name end) as file_name
+		, max(case when image_id=1 then upload_path end) as upload_path
+		,
+		max(case when image_id=1 then uuid end) as uuid
+		, max(case when
+		image_id=2 then file_name end) as file_name2
+		, max(case when image_id=2
+		then upload_path end) as upload_path2
+		, max(case when image_id=2 then
+		uuid end) as uuid2
+		from product_img
+		where product_id=#{productId}
+		group
+		by product_id
+
+
+		) i on p.product_id=i.product_id where p.product_id
+		=#{productId}
+
 
 	</select>
 	<!-- 상품 수정 -->
@@ -146,7 +229,7 @@
 	<update id="goodsUpdateProductImg">
 		update product_img set
 		file_name=#{fileName},upload_path=#{uploadPath},uuid=#{uuid} where
-		product_id=#{productId}
+		product_id=#{productId};
 	</update>
 	<!-- Outer목록 -->
 	<select id="OuterProductList"
@@ -156,7 +239,7 @@
 		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
 		from product p
 		join product_img i on p.product_id=i.product_id where
-		p.product_category="Outer";
+		p.product_category="Outer" and i.image_id=1;
 	</select>
 	<!-- Top목록 -->
 	<select id="TopProductList" resultType="com.shop.model.Product">
@@ -165,7 +248,7 @@
 		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
 		from product p
 		join product_img i on p.product_id=i.product_id where
-		p.product_category="Top";
+		p.product_category="Top" and i.image_id=1;
 	</select>
 	<!-- Shirts목록 -->
 	<select id="ShirtsProductList"
@@ -175,7 +258,7 @@
 		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
 		from product p
 		join product_img i on p.product_id=i.product_id where
-		p.product_category="Shirts";
+		p.product_category="Shirts" and i.image_id=1;
 	</select>
 	<!-- Pants목록 -->
 	<select id="PantsProductList"
@@ -185,7 +268,7 @@
 		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
 		from product p
 		join product_img i on p.product_id=i.product_id where
-		p.product_category="Pants";
+		p.product_category="Pants" and i.image_id=1;
 	</select>
 	<!-- Suit목록 -->
 	<select id="SuitProductList" resultType="com.shop.model.Product">
@@ -194,7 +277,7 @@
 		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
 		from product p
 		join product_img i on p.product_id=i.product_id where
-		p.product_category="Suit";
+		p.product_category="Suit" and i.image_id=1;
 	</select>
 	<!-- BagShoes목록 -->
 	<select id="BagShoesProductList"
@@ -204,7 +287,7 @@
 		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
 		from product p
 		join product_img i on p.product_id=i.product_id where
-		p.product_category="Bag/Shose";
+		p.product_category="Bag/Shose" and i.image_id=1;
 	</select>
 	<!-- Acc목록 -->
 	<select id="AccProductList" resultType="com.shop.model.Product">
@@ -213,16 +296,23 @@
 		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
 		from product p
 		join product_img i on p.product_id=i.product_id where
-		p.product_category="Acc";
+		p.product_category="Acc" and i.image_id=1;
 	</select>
 	<!-- 상품상세조회(상품이름) -->
 	<select id="ProductDetailNameList"
 		resultType="com.shop.model.Product">
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
+		p.product_inventory,max(case when image_id=1 then i.file_name end) as
+		file_name
+		,max(case when image_id=1 then i.upload_path end) as
+		upload_path
+		,max(case when image_id=1 then i.uuid end) as uuid
+		,max(case when image_id=2 then i.file_name end) as file_name2
+		,max(case when image_id=2 then i.upload_path end) as upload_path2
+		,max(case when image_id=2 then i.uuid end) as uuid2
 		from product p
-		join product_img i on p.product_id=i.product_id where
-		p.product_name=#{productName};
+		join
+		product_img i on p.product_id=i.product_id group by product_id
 	</select>
 </mapper>

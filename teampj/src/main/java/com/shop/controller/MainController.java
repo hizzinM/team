@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import java.nio.file.Files;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,9 +38,10 @@ public class MainController {
 		logger.info("메인 페이지 진입");
 		List<Product> list = adminService.selectMainProductList();
 		model.addAttribute("MainProduct", list);
-		
+
 	}
-	/*상품상세보기*/
+
+	/* 상품상세보기 */
 	@RequestMapping(value = "/detail")
 	public String goodsGetInfoGET(int productId, Criteria cri, Model model) {
 
@@ -55,9 +57,7 @@ public class MainController {
 
 		return "/productDetail";
 	}
-	
-	
-	
+
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> getImage(String fileName) {
 		logger.info("getImage()........" + fileName);
@@ -139,13 +139,15 @@ public class MainController {
 
 	@RequestMapping(value = "search", method = RequestMethod.GET)
 	public void goodsearch(Criteria cri, Model model) throws Exception {
-		List list = adminService.selectproductList(cri);
+		List list = adminService.searchproductList(cri);
 		if (!list.isEmpty()) {
 			model.addAttribute("searchlist", list);
 		} else {
 			model.addAttribute("listCheck", "empty");
 			return;
 		} /* 페이지 인터페이스 데이터 */
-		model.addAttribute("pageMaker", new PageMakerDTO(cri, adminService.goodsGetTotal(cri)));
+		int total = adminService.goodsGetTotal(cri);
+		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+		model.addAttribute("pageMaker", pageMake);
 	}
 }
