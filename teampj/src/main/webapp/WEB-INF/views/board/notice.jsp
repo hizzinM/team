@@ -82,7 +82,17 @@
 			</form>
 		</div>
 	</div>
-	<div id="contents">notice</div>
+	<div id="contents">
+		notice
+		<c:if test="${ loginuser!= null }">
+			<c:if test="${ loginuser.adminck ==0 }">
+			</c:if>
+			<c:if test="${ loginuser.adminck ==1 }">
+				<a href="/board/enroll"><input type="button" class="btn-style"
+					value="글쓰기"></a>
+			</c:if>
+		</c:if>
+	</div>
 	<div id="footer">
 		<div class="footer-text">
 			<p>고객센터</p>
