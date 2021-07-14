@@ -120,10 +120,20 @@
 		from product_img group by product_id) i 
         where p.product_id=i.product_id and p.product_id=c.product_id and c.user_id=u.user_id and u.user_id=#{userId}
 	</select>
+	
+	<!-- 수량변경 -->
+	<select id="selectCartId" resultType="com.shop.model.ShoppingCart">
+	select cart_id,product_name,cart_qty from shopping_cart where cart_id=#{cartId}
+	</select>
+	<update id="updateCartQty">
+	update shopping_cart set cart_qty=#{cartQty} where cart_id=#{cartId}
+	</update>
+	
 	<!-- 장바구니삭제 -->
 	<delete id="deleteCart">
 	delete from shopping_cart where cart_id =#{cartId}
 	</delete>
+	<!-- 주문 삽입 -->
 	<insert id="orderinsert">
 	 insert into user_order (order_id,user_id,product_name,order_price,order_inventory,order_size,order_date)
      values (#{orderId},#{userId},#{productName},#{orderPrice},#{orderInventory},#{orderSize},#{orderDate})

@@ -93,20 +93,32 @@ public class MemberServiceImpl implements MemberService {
 	public int profileDelete(User user) {
 		return membermapper.profileDelete(user);
 	}
-	
+	//장바구니 추가
 	@Override
 	public void addCart(ShoppingCart cart) throws Exception{
 		 membermapper.addCart(cart);
 	}
+	//장바구니 목록
 	@Override
 	public List<ShoppingCart> selectCart(String userId)  throws Exception{
 		return membermapper.selectCart(userId);
 		
 	}
-
+	//장바구니 삭제
 	@Override
 	public int deleteCart(String cartId) {
 		
 		return membermapper.deleteCart(cartId);
+	}
+	//장바구니 간단 조회
+	@Override
+	public ShoppingCart selectCartId(String cartId) {
+		return membermapper.selectCartId(cartId);
+	}
+	//장바구니 수량 변경
+	@Override
+	public int updateCartQty(ShoppingCart cart) {
+		
+		return membermapper.updateCartQty(cart);
 	}
 }

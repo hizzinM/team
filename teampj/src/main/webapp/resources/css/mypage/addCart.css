@@ -30,13 +30,13 @@ td{border-bottom:1px solid rgb(221, 221, 221);}
 }
 .delete_btn{
     position: absolute;
-    right: 233px;
+    right: 503px;
     bottom: 329px;
 }
 .order_btn{
    position: absolute;
-    top: 677px;
-    right: 326px;
+   top: 777px;
+   right: 600px;
 }
 .button_style:hover{
 	background-color: black;

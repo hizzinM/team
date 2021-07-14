@@ -48,4 +48,8 @@ public interface MemberService {
 	public List<ShoppingCart> selectCart(String userId)  throws Exception;
 	// 장바구니 삭제 기능
 	public int deleteCart(String cartId);
+	// 장바구니 물품 간단조회 기능
+	public ShoppingCart selectCartId(String cartId);
+		// 장바구니 물품 수량 수정 기능
+	public int updateCartQty(ShoppingCart cart);
 }

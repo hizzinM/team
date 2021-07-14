@@ -79,10 +79,10 @@
 		</div>
 
 	</div>
+		
 	<div id="contents">
-
+		<h2 style="text-align:center;">장바구니</h2>
 		<div class="product-list">
-			
 			<table style="border:1px black solid;">
 					<thead> 
 						<tr>
@@ -103,7 +103,7 @@
 					<c:forEach items="${cartList}" var="cartList">
 						<tr>
 							<td><input type="checkbox" name="RowCheck" class="RowCheck" value="${cartList.cartId}" ></td>
-							<td><c:out value="${cartList.cartId}" /></td>	
+							<td><a href="/mypage/cartUpdate?cartId=${cartList.cartId}"><c:out value="${cartList.cartId}" /></a></td>	
 							<td><c:out value="${cartList.userId}" /></td>
 							<td><img src="/resources/upload/${cartList.uploadPath}/${cartList.uuid}_${cartList.fileName}" width="200px" height="200px"></td>
 							<td><c:out value="${cartList.productId}" /></td>
@@ -118,6 +118,7 @@
 						<c:set var="sum" value="${sum + (cartList.cartPrice *cartList.cartQty)}" />
 					</c:forEach>
 				</table><br>
+				<p>카트ID번호 클릭하시면 수량 수정 가능(10개까지)</p>
 				<div class="listResult">
  			<div class="sum">
   			총 합계 : <fmt:formatNumber pattern="###,###,###" value="${sum}" />원
@@ -126,7 +127,6 @@
   			<button type="button" class="orderOpne_bnt">주문 정보 입력</button>
  			</div>
 				</div>
-			<input type="button" value="주문하기" class="deletebutton button_style order_btn">
 				<!--물건 삭제 버튼-->
 				
 			<input type="button" value="물건삭제" class="deletebutton button_style delete_btn" onclick="deleteValue();">

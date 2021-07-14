@@ -133,7 +133,27 @@ public class MyPageController {
 			return "redirect:/mypage/addCart";
 		}
 
-		
+		// 장바구니 간단조회
+		@GetMapping("/cartUpdate")
+		 public String cartQtyUpdate(String cartId, Model model) {
+				logger.info("장바구니 간단조회 ");
+				ShoppingCart result = memberservice.selectCartId(cartId);
+				System.out.println(result);
+
+				model.addAttribute("cart", memberservice.selectCartId(cartId));
+
+				return "/mypage/cartUpdate";
+			}
+
+			// 장바구니수량 수정
+		@PostMapping("/cartUpdate")
+		public String cartQtyUpdatePOST(ShoppingCart cart, RedirectAttributes rttr, Model model) {
+			logger.info("수량 수정 기능 ");
+			memberservice.updateCartQty(cart);
+			rttr.addFlashAttribute("cartQty", memberservice.updateCartQty(cart));
+				
+			return "redirect:/mypage/addCart";
+			}	
 		
 		
 		
