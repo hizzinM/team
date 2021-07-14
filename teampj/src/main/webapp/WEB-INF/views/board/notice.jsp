@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/main.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
 </head>
 <body>
 	<header>
@@ -41,7 +44,7 @@
 					</c:if>
 				</c:if>
 				<br>
-			<%@ include file="../smallmenu.jsp"%>
+				<%@ include file="../smallmenu.jsp"%>
 				<br>
 			</ul>
 		</div>
@@ -79,7 +82,17 @@
 			</form>
 		</div>
 	</div>
-	<div id="contents">notice</div>
+	<div id="contents">
+		notice
+		<c:if test="${ loginuser!= null }">
+			<c:if test="${ loginuser.adminck ==0 }">
+			</c:if>
+			<c:if test="${ loginuser.adminck ==1 }">
+				<a href="/board/enroll"><input type="button" class="btn-style"
+					value="글쓰기"></a>
+			</c:if>
+		</c:if>
+	</div>
 	<div id="footer">
 		<div class="footer-text">
 			<p>고객센터</p>
@@ -101,7 +114,6 @@
 				있습니다. KG 이니시스 [서비스 가입사실 확인]</p>
 		</div>
 	</div>
-	</div>
 	<script>
 		let moveForm = $("#moveForm");
 		$(".search_area button").on("click", function(e) {
@@ -110,6 +122,19 @@
 			let keyword = $(".search_area input[name='keyword']").val();
 			moveForm.find("input[name='keyword']").val(keyword);
 			moveForm.submit();
+		});
+
+		$(document).ready(function() {
+			let result = '<c:out value="${result}"/>';
+			checkAlert(result);
+			function checkAlert(result) {
+				if (result === '') {
+					reutrn;
+				}
+				if (result === "enrol success") {
+					alert("등록이 완료되었습니다.");
+				}
+			}
 		});
 	</script>
 </body>
