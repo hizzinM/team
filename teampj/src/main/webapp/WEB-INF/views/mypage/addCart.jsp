@@ -80,6 +80,20 @@
 		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
 	<script>
+	<!-- 금액 총 합계  -->
+	function itemSum(){
+        var str = "";
+        var sum = 0;
+        var count = $(".RowCheck").length;
+        for(var i=0; i < count; i++ ){
+            if( $(".RowCheck")[i].checked == true ){
+             sum += parseInt($(".RowCheck")[i].value);
+            }
+        }
+        $("#total_sum").html(sum+" 원");
+        $("#amount").val(sum);
+     }
+	
 	/*상품 삭제*/
 	$(function() {
 		var chkObj = document.getElementsByName("RowCheck");
@@ -99,6 +113,7 @@
 			}
 		});
 	});
+	
 	function deleteValue() {
 		var url = "/mypage/deleteAddCart"; // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
 		var valueArr = new Array();
