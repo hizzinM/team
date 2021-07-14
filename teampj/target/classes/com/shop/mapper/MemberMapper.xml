@@ -120,16 +120,14 @@
 		from product_img group by product_id) i 
         where p.product_id=i.product_id and p.product_id=c.product_id and c.user_id=u.user_id and u.user_id=#{userId}
 	</select>
-	<!-- 상품삭제 -->
+	<!-- 장바구니삭제 -->
 	<delete id="deleteCart">
 	delete from shopping_cart where cart_id =#{cartId}
 	</delete>
-	<delete id="deleterCartImgAll">
-		delete from product_img where product_id=#{productId}
-	</delete>
-	<delete id="deleterCartProdect">
-		delete from product where cart_id =#{cartId}
-	</delete>
+	<insert id="orderinsert">
+	 insert into user_order (order_id,user_id,product_name,order_price,order_inventory,order_size,order_date)
+     values (#{orderId},#{userId},#{productName},#{orderPrice},#{orderInventory},#{orderSize},#{orderDate})
+	</insert>
 	
 	
 </mapper> 

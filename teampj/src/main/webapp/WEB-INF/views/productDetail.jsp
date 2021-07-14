@@ -148,7 +148,7 @@
                     <tr>
                         <td>수량</td>
                         <td><select id="amount">
-   							 <c:forEach begin="1" end="10" var="i">
+   							 <c:forEach  begin="1" end="10" var="i">
        						 <option value="${i}">${i}</option>
    								 </c:forEach>
 							</select></td>

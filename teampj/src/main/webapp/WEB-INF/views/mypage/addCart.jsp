@@ -96,8 +96,10 @@
 							<th>상품색상</th>
 							<th>가격</th>
 							<th>주문수량</th>
+							<th>총가격</th>
 						</tr>
 					</thead>
+					<c:set var="sum" value="0" />
 					<c:forEach items="${cartList}" var="cartList">
 						<tr>
 							<td><input type="checkbox" name="RowCheck" class="RowCheck" value="${cartList.cartId}" ></td>
@@ -110,13 +112,20 @@
 							<td><c:out value="${cartList.cartProductColor}" /></td>
 							<td><c:out value="${cartList.cartPrice}" />원</td>
 							<td><c:out value="${cartList.cartQty}" /></td>
+							
+							<td><c:out value="${cartList.cartPrice *cartList.cartQty}" />원</td>
 						</tr>
+						<c:set var="sum" value="${sum + (cartList.cartPrice *cartList.cartQty)}" />
 					</c:forEach>
-						<tr>
-							<td colspan="10">총가격:</td>
-						</tr>
 				</table><br>
-				
+				<div class="listResult">
+ 			<div class="sum">
+  			총 합계 : <fmt:formatNumber pattern="###,###,###" value="${sum}" />원
+ 				</div>
+ 			<div class="orderOpne">
+  			<button type="button" class="orderOpne_bnt">주문 정보 입력</button>
+ 			</div>
+				</div>
 			<input type="button" value="주문하기" class="deletebutton button_style order_btn">
 				<!--물건 삭제 버튼-->
 				
