@@ -56,7 +56,7 @@
 		</div>
 		<div id="s_category">
 			<ul>
-				<%@ include file="../navigation.jsp"%>
+				<%@ include file="../include_collection/navigation.jsp"%>
 			</ul>
 		</div>
 		<div id="s_search">
