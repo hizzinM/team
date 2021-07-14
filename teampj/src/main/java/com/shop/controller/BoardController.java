@@ -27,6 +27,8 @@ public class BoardController {
 	@GetMapping(value = "/notice")
 	public void getnotice(Model model) throws Exception {
 		logger.info("공지사항 목록 페이지 접속");
+
+		model.addAttribute("list", boardService.getList());
 	}
 
 	// 공지글 작성 페이지 이동

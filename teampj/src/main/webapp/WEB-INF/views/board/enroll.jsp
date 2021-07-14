@@ -19,8 +19,7 @@
 	<div id="side_navigation">
 		<%@ include file="../include_collection/navigation.jsp"%>
 	</div>
-	<div id="contents">
-		<h1>게시판 등록</h1>
+	<div id="contents"> 
 		<form action="/board/enroll" method="post">
 			<div class="input_wrap">
 				<label>Title</label> <input name="noticeTitle">
