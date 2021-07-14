@@ -13,6 +13,23 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
+<style>
+a {
+	text-decoration: none;
+}
+
+table {
+	border-collapse: collapse;
+	width: 1000px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+td, th {
+	border: 1px solid black;
+	height: 50px;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -21,17 +38,37 @@
 	<div id="side_navigation">
 		<%@ include file="../include_collection/navigation.jsp"%>
 	</div>
-	<div id="contents">
-		notice
-		<c:if test="${ loginuser!= null }">
-			<c:if test="${ loginuser.adminck ==0 }">
+	<div class="table_wrap">
+		<div align="center">
+			notice <a href="/board/enroll" class="top_btn">게시판 등록</a>
+			<table>
+				<thead>
+					<tr>
+						<th class="bno_width">번호</th>
+						<th class="title_width">제목</th>
+						<th class="writer_width">작성자</th>
+						<th class="regdate_width">작성일</th>
+					</tr>
+				</thead>
+				<c:forEach items="${list}" var="list">
+					<tr>
+						<td><c:out value="${list.bno}" /></td>
+						<td><c:out value="${list.noticeTitle}" /></td>
+						<td><c:out value="${list.userId}" /></td>
+						<td><c:out value="${list.noticeWritedate}" /></td>
+					</tr>
+				</c:forEach>
+			</table>
+			<c:if test="${ loginuser!= null }">
+				<c:if test="${ loginuser.adminck ==0 }">
+				</c:if>
+				<c:if test="${ loginuser.adminck ==1 }">
+					<a href="/board/enroll"><input type="button" class="btn-style"
+						value="글쓰기"></a>
+				</c:if>
 			</c:if>
-			<c:if test="${ loginuser.adminck ==1 }">
-				<a href="/board/enroll"><input type="button" class="btn-style"
-					value="글쓰기"></a>
-			</c:if>
-		</c:if>
-		<%@ include file="../include_collection/footer.jsp"%>
+			<%@ include file="../include_collection/footer.jsp"%>
+		</div>
 	</div>
 	<script>
 		$(document).ready(function() {
