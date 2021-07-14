@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -55,10 +57,12 @@ td, th {
 						<td><c:out value="${list.bno}" /></td>
 						<td><c:out value="${list.noticeTitle}" /></td>
 						<td><c:out value="${list.userId}" /></td>
-						<td><c:out value="${list.noticeWritedate}" /></td>
+						<td><fmt:formatDate value="${list.noticeWritedate}"
+								pattern="yyyy년MM월dd일 HH시mm분" /></td>
 					</tr>
 				</c:forEach>
 			</table>
+			<br> <br>
 			<c:if test="${ loginuser!= null }">
 				<c:if test="${ loginuser.adminck ==0 }">
 				</c:if>
