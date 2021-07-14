@@ -25,9 +25,7 @@
 	<div id="contents">
 			<h2>수량변경(10개까지)</h2>
 		<div class="product-list">
-			
 			<form action="/mypage/cartUpdate" method="post"> 
-
 				<table>
 					<thead>
 						<tr>
@@ -48,7 +46,6 @@
 				
 				<br> <input type="submit" value="수정하기">
 			</form>
-				
 		</div>
 		<%@ include file="../include_collection/footer.jsp"%>
 	</div>

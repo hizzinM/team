@@ -54,8 +54,8 @@
 				</form>
 			</div>
 		</div>
-		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
+
 	<script>
 		/* 로그인 버튼 클릭 메서드 */
 		$(".login_button").click(function() {
@@ -64,6 +64,9 @@
 			$("#login_form").submit();
 		});
 	</script>
+	<div id="contents">
+		<%@ include file="../include_collection/footer.jsp"%>
+	</div>
 </body>
 </html>
 
