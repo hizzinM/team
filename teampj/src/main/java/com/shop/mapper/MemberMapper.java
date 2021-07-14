@@ -57,8 +57,7 @@ public interface MemberMapper {
 	public List<ShoppingCart> selectCart(String userId)  throws Exception;
 	// 장바구니 삭제 기능
 	public int deleteCart(String cartId);
-	/* 장바구니 이미지삭제 */
-	public int deleterCartImgAll(String productId);
+
 	
 	// public User readMember(String userId);
 
