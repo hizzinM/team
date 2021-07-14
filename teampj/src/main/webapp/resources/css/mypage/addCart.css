@@ -19,7 +19,7 @@ table{width:63%;}
 th,td{padding:10px 0 10px 10px;}
 th:first-child,td:first-child{text-align: center;padding-left: 0;}
 th{border-top: 1px solid black;border-bottom: 1px solid black;text-align: center;font-weight: 600;}
-td{border-bottom:1px solid rgb(221, 221, 221);}
+td{border-bottom:1px solid rgb(221, 221, 221); text-align:center;}
 
 .button_style{
 	background-color: white;

@@ -53,18 +53,20 @@
 							<td><c:out value="${cartList.productName}" /></td>
 							<td><c:out value="${cartList.cartProductsize}" /></td>
 							<td><c:out value="${cartList.cartProductColor}" /></td>
-							<td><c:out value="${cartList.cartPrice}" />원</td>
-							<td><c:out value="${cartList.cartQty}" /></td>
+							<td><fmt:formatNumber pattern="###,###,###" value="${cartList.cartPrice}" />원</td>
+							<td><c:out value="${cartList.cartQty}" /></td>				
+							<td><fmt:formatNumber pattern="###,###,###" value="${cartList.cartPrice *cartList.cartQty}" />원
+						 <input type="hidden" name="CartPrice" value="${cartList.cartPrice *cartList.cartQty}">
+							</td>
 							
-							<td><c:out value="${cartList.cartPrice *cartList.cartQty}" />원</td>
 						</tr>
 						<c:set var="sum" value="${sum + (cartList.cartPrice *cartList.cartQty)}" />
 					</c:forEach>
 				</table><br>
-				<p>카트ID번호 클릭하시면 수량 수정 가능(10개까지)</p>
+				<p>카트ID번호 클릭하시면 수량 수정가능(10개까지),총합계 클릭하면 선택한 물품 전체가격확인가능</p>
 				<div class="listResult">
  			<div class="sum">
-  			총 합계 : <fmt:formatNumber pattern="###,###,###" value="${sum}" />원
+  			<a href="javascript:sjk()">총합계:</a><span id="sumsum"></span>원
  				</div>
  			<div class="orderOpne">
   			<button type="button" class="orderOpne_bnt">주문 정보 입력</button>
@@ -80,21 +82,8 @@
 		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
 	<script>
-	<!-- 금액 총 합계  -->
-	function itemSum(){
-        var str = "";
-        var sum = 0;
-        var count = $(".RowCheck").length;
-        for(var i=0; i < count; i++ ){
-            if( $(".RowCheck")[i].checked == true ){
-             sum += parseInt($(".RowCheck")[i].value);
-            }
-        }
-        $("#total_sum").html(sum+" 원");
-        $("#amount").val(sum);
-     }
-	
-	/*상품 삭제*/
+
+	/*전체선택*/
 	$(function() {
 		var chkObj = document.getElementsByName("RowCheck");
 		var rowCnt = chkObj.length;
@@ -113,7 +102,26 @@
 			}
 		});
 	});
-	
+	/*총합계*/
+	function sjk(){
+		//alert(1)
+		//$("#sumsum").html("1111");
+		var list = $("input[name='RowCheck']");
+		var CartPrice = $("input[name='CartPrice']");
+		var sum=0
+		
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].checked) { //선택되어 있으면 배열에 값을 저장함
+				sum = Number(sum) + Number(CartPrice[i].value)
+				
+			}
+			
+		}
+		sum=sum.toLocaleString();
+		$("#sumsum").html(sum);
+		
+	}
+	/*상품삭제*/
 	function deleteValue() {
 		var url = "/mypage/deleteAddCart"; // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
 		var valueArr = new Array();
@@ -145,6 +153,7 @@
 				}
 			});
 		}
+	
 	}
 	</script>
 </body>
