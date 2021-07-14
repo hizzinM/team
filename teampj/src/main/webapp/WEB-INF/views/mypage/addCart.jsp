@@ -8,45 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <title>minparkang</title>
-<style type="text/css">
-
-table {
-	width: 60%;
-	border: 1px solid #d3d8e1;
-	text-align: center;
-	border-collapse: collapse;
-}
-
-thead, td {
-	padding: 10px 5px;
-	border: 1px solid black;
-	font-size: 17px;
-}
-.button_style{
-	background-color: white;
-	border:1px solid  black;
-	font-weight: bolder;
-	padding:7px 14px 7px 14px;
-	cursor: pointer;
-}
-.delete_btn{
-	float: right;
-   margin-top: 270px;
-   margin-right: 543px;
-}
-.button_style:hover{
-	background-color: black;
-	color:white;
-}
-.order_btn{
-    margin-top: 269px;
-    margin-left: -78px;
-}
-</style>
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/main.css">
+<link rel="stylesheet" href="/resources/css/mypage/addCart.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -134,7 +100,7 @@ thead, td {
 					</thead>
 					<c:forEach items="${cartList}" var="cartList">
 						<tr>
-							<td><input type="checkbox" name="RowCheck" class="RowCheck" value="${cartList.cartId}"></td>
+							<td><input type="checkbox" name="RowCheck" class="RowCheck" value="${cartList.cartId}" ></td>
 							<td><c:out value="${cartList.cartId}" /></td>	
 							<td><c:out value="${cartList.userId}" /></td>
 							<td><img src="/resources/upload/${cartList.uploadPath}/${cartList.uuid}_${cartList.fileName}" width="200px" height="200px"></td>
@@ -142,10 +108,13 @@ thead, td {
 							<td><c:out value="${cartList.productName}" /></td>
 							<td><c:out value="${cartList.cartProductsize}" /></td>
 							<td><c:out value="${cartList.cartProductColor}" /></td>
-							<td><c:out value="${cartList.cartPrice}" /></td>
+							<td><c:out value="${cartList.cartPrice}" />원</td>
 							<td><c:out value="${cartList.cartQty}" /></td>
 						</tr>
 					</c:forEach>
+						<tr>
+							<td colspan="10">총가격:</td>
+						</tr>
 				</table><br>
 				
 			<input type="button" value="주문하기" class="deletebutton button_style order_btn">
@@ -204,7 +173,7 @@ thead, td {
 		});
 	});
 	function deleteValue() {
-		var url = "/mypage/delete"; // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
+		var url = "/mypage/deleteAddCart"; // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
 		var valueArr = new Array();
 		var list = $("input[name='RowCheck']");
 		for (var i = 0; i < list.length; i++) {
@@ -217,7 +186,7 @@ thead, td {
 		} else {
 			var chk = confirm("정말 삭제하시겠습니까?");
 			$.ajax({
-				url : "/admin/delete", // 전송 URL
+				url : "/mypage/deleteAddCart", // 전송 URL
 				type : 'GET', // GET or POST 방식
 				traditional : true,
 				data : {

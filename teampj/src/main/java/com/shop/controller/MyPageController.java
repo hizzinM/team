@@ -121,8 +121,7 @@ public class MyPageController {
 			return	result;		 
 		}
 		// 카트 삭제
-		@ResponseBody
-		@RequestMapping(value = "/delete", method = RequestMethod.POST)
+		@RequestMapping(value = "/deleteAddCart")
 		public String CartDelete(HttpServletRequest request) throws Exception {
 			logger.info("상품 선택삭제");
 			String[] ajaxMsg = request.getParameterValues("valueArr");
