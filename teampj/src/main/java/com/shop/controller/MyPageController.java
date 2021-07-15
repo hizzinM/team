@@ -22,6 +22,7 @@ import com.shop.mapper.MemberMapper;
 import com.shop.model.Product;
 import com.shop.model.ShoppingCart;
 import com.shop.model.User;
+import com.shop.model.UserOrder;
 import com.shop.service.AdminService;
 import com.shop.service.MemberService;
 
@@ -143,7 +144,7 @@ public class MyPageController {
 				model.addAttribute("cart", memberservice.selectCartId(cartId));
 
 				return "/mypage/cartUpdate";
-			}
+		}
 
 			// 장바구니수량 수정
 		@PostMapping("/cartUpdate")
@@ -155,7 +156,17 @@ public class MyPageController {
 			return "redirect:/mypage/addCart";
 			}	
 		
-		
+		// 주문
+		@RequestMapping(value = "/order", method = RequestMethod.POST)
+		public void order(HttpSession session, UserOrder order) throws Exception {
+		 logger.info("order");
+		 
+		 User user = (User)session.getAttribute("loginuser");  
+		 String userId = user.getUserId();
+		 
+		 memberservice.orderinsert(order);  
+		 
+		}
 		
 		
 		

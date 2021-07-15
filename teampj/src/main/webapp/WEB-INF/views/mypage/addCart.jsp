@@ -12,9 +12,14 @@
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/mypage/addCart.css">
+
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
+
 </head>
 <body>
 	<header>
@@ -81,6 +86,66 @@
 						</tr>
 						<c:set var="sum" value="${sum + (cartList.cartPrice *cartList.cartQty)}" />
 					</c:forEach>
+
+				</table><br>
+				<p>카트ID번호 클릭하시면 수량 수정가능(10개까지),총합계 클릭하면 선택한 물품 전체가격확인가능</p>
+		<div class="listResult">
+ 			<div class="sum">
+  			<a href="javascript:sjk()">총합계:</a><span id="sumsum"></span>원
+ 			</div>
+ 			<div class="orderOpne">
+  			<button type="button" id="orderOpne_bnt">주문 정보 입력</button>
+  			<script>
+			 $("#orderOpne_bnt").click(function(){
+			  $(".orderInfo").slideDown();
+			  $(".orderOpne_bnt").slideUp();
+			 });      
+			</script>
+ 		</div>
+	</div>
+			<div class="orderInfo">
+			 <form role="form" method="post" autocomplete="off">
+			    
+			  <input type="hidden" name="amount" value="${sum}" />
+			    
+			  <div class="inputArea">
+			   <label for="">수령인</label>
+			   <input type="text" name="orderRec" id="orderRec" required="required" />
+			  </div>
+			  
+			  <div class="inputArea">
+			   <label for="orderPhon">수령인 연락처</label>
+			   <input type="text" name="orderPhon" id="orderPhon" required="required" />
+			  </div>
+			  
+			  <div class="inputArea">
+			   <label for="userAddr1">우편번호</label>
+			   <input type="text" name="userAddr1" id="userAddr1" required="required" />
+			  </div>
+			  
+			  <div class="inputArea">
+			   <label for="userAddr2">1차 주소</label>
+			   <input type="text" name="userAddr2" id="userAddr2" required="required" />
+			  </div>
+			  
+			  <div class="inputArea">
+			   <label for="userAddr3">2차 주소</label>
+			   <input type="text" name="userAddr3" id="userAddr3" required="required" />
+			  </div>
+			  
+			  <div class="inputArea">
+			   <button type="submit" class="orderinsert_btn">주문</button>
+			   <button type="button" class="cancel_btn">취소</button>
+			   <script>
+			   $(".cancel_btn").click(function(){
+					 $(".orderInfo").slideUp();
+					 $(".orderOpne_bnt").slideDown();
+					});      
+			   </script>
+			  </div>
+			 </form> 
+			</div>
+
 				</tbody>
 				<tfoot>
 					<tr>
@@ -91,10 +156,17 @@
 			</table>
 			<div class="btn-frame">
 				<button type="button" class="button_style">주문 정보 입력</button>
+
 				<!--물건 삭제 버튼-->
+
+				
+			<input type="button" value="물건삭제" class="deletebutton button_style delete_btn">
+				
+
 				<input type="button" value="물건삭제" class="button_style delete_btn"
 					onclick="deleteValue();">
 			</div>
+
 		</div>
 		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
@@ -150,6 +222,14 @@
 				});
 			}
 		}
+
+	
+	}
+	
+	
+	
+	
+
 	</script>
 </body>
 </html>
