@@ -22,4 +22,16 @@
 		select * from notice where bno =
 		#{bno}
 	</select>
+
+	<!-- 공지 수정 -->
+	<update id="modify">
+		update notice set notice_title = #{noticeTitle},
+		notice_content =
+		#{noticeContent} where bno = #{bno}
+	</update>
+
+	<!-- 공지 삭제 -->
+	<delete id="delete">
+		delete from notice where bno = #{bno}
+	</delete>
 </mapper>

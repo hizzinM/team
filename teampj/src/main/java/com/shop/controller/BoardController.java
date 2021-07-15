@@ -49,7 +49,29 @@ public class BoardController {
 	// 공지글 조회
 	@GetMapping("/get")
 	public void boardGetPageGET(int bno, Model model) {
-		model.addAttribute("noticeInfo", boardService.getPage(bno)); 
+		model.addAttribute("noticeInfo", boardService.getPage(bno));
+	}
+
+	// 공지글 수정페이지 이동
+	@GetMapping("/modify")
+	public void boardModifyGET(int bno, Model model) {
+		model.addAttribute("noticeInfo", boardService.getPage(bno));
+	}
+
+	// 공지글 수정
+	@PostMapping("/modify")
+	public String boardModifyPOST(NoticeVO notice, RedirectAttributes rttr) {
+		boardService.modify(notice);
+		rttr.addFlashAttribute("result", "modify success");
+		return "redirect:/board/notice";
+	}
+
+	// 공지글 삭제
+	@PostMapping("/delete")
+	public String boardDeletePOST(int bno, RedirectAttributes rttr) {
+		boardService.delete(bno);
+		rttr.addFlashAttribute("result", "delete success");
+		return "redirect:/board/notice";
 	}
 
 	// qna 페이지 이동

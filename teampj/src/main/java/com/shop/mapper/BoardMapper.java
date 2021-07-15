@@ -14,4 +14,10 @@ public interface BoardMapper {
 
 	/* 공지 조회 */
 	public NoticeVO getPage(int bno);
+
+	/* 공지 수정 */
+	public int modify(NoticeVO notice);
+
+	/* 공지 삭제 */
+	public int delete(int bno);
 }

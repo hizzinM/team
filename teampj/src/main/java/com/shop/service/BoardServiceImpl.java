@@ -29,4 +29,17 @@ public class BoardServiceImpl implements BoardService {
 
 		return boardmapper.getPage(bno);
 	}
+
+	/* 공지 수정 */
+	@Override
+	public int modify(NoticeVO notice) {
+
+		return boardmapper.modify(notice);
+	}
+
+	/* 공지 삭제 */
+	@Override
+	public int delete(int bno) {
+		return boardmapper.delete(bno);
+	}
 }

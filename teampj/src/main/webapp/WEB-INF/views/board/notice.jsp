@@ -91,7 +91,7 @@ td, th {
 					moveForm.attr("action", "/board/get");
 					moveForm.submit();
 				});
-		
+
 		$(document).ready(function() {
 			let result = '<c:out value="${result}"/>';
 			checkAlert(result);
@@ -101,6 +101,12 @@ td, th {
 				}
 				if (result === "enrol success") {
 					alert("등록이 완료되었습니다.");
+				}
+				if (result === "modify success") {
+					alert("수정이 완료되었습니다.");
+				}
+				if (result === "delete success") {
+					alert("삭제가 완료되었습니다.");
 				}
 			}
 		});
