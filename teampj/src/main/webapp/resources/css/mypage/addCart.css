@@ -1,85 +1,31 @@
 @charset "UTF-8";
-@charset "UTF-8";
-#content{
-    padding-left: 250px;
-    font-size: 12px;
+#contents{
+    padding-top:100px;
 }
-#table-warp{
-    width:1100px;
+#table-frame{
+    width:900px;
     margin:0 auto;
-    padding-top:150px;
+    margin-bottom: 200px;
 }
-#table-warp>h1{
+#table-frame>h1{
     font-size:15px;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
+    color:rgb(71, 71, 71)
 }
-
-table{width:63%;}
-th,td{padding:10px 0 10px 10px;}
-th:first-child,td:first-child{text-align: center;padding-left: 0;}
-th{border-top: 1px solid black;border-bottom: 1px solid black;text-align: center;font-weight: 600;}
-td{border-bottom:1px solid rgb(221, 221, 221); text-align:center;}
-
-.button_style{
-	background-color: white;
-	border:1px solid  black;
-	font-weight: bolder;
-	padding:7px 14px 7px 14px;
-	cursor: pointer;
+table{width:100%;font-size:12px;text-align: center;}
+th,td{border:1px solid #DFDFDF;text-align:center;padding:15px 0 15px 0;}
+th{background-color: #FAFAFA;color:#555555;}
+.text-style{
+    width:80%;
+    text-align:left;
+    border:none;
+    outline: none;
+    color:#555555;
 }
-.delete_btn{
-    position: absolute;
-    right: 503px;
-    bottom: 329px;
-}
-.order_btn{
-   position: absolute;
-   top: 777px;
-   right: 600px;
-}
-.button_style:hover{
-	background-color: black;
-	color:white;
-}
-.search_wrap{
-    text-align: center;
-    margin-top: 15px;
-}
-.text-frame{
-	position:relative;
-	border:1px solid RGB(221,221,221);
-	width: 300px;
-	height: 27px;
-    margin-right: 8px;
-}
-.text-frame:focus{
-	border:1px solid RGB(22,22,22);
-	outline: none;
-}
-.text-frame:hover{
-	border:1px solid RGB(22,22,22);
-}
-.text-frame-margin{
-    width:80px;
-	margin-bottom: 5px;
-    font-size: 12px;
-}
-.pageInfo_wrap{
-    margin-top: 25px;
-}
-.pageInfo{
-    width:200px;
-    margin: 0 auto;
+.num-btn{
+    width:50px;
+    border:1px solid rgb(99, 99, 99);
     text-align: center;
 }
-.pageInfo li {
-    float: left;
-    margin-right: 20px;
-}
-.listResult { padding:20px; background:#eee; }
-.listResult .sum { float:left; width:45%; font-size:22px; }
-
-.listResult .orderOpne { float:right; width:45%; text-align:right; }
-.listResult .orderOpne button { font-size:18px; padding:5px 10px; border:1px solid #999; background:#fff;}
-.listResult::after { content:""; display:block; clear:both; }
+.btn-frame{text-align: right;margin-top:20px;}

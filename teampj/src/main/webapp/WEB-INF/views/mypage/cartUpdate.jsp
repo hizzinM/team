@@ -23,8 +23,8 @@
 		<%@ include file="../include_collection/navigation.jsp"%>
 	</div>
 	<div id="contents">
-			<h2>수량변경(10개까지)</h2>
-		<div class="product-list">
+		<div id="table-frame">
+            <h1>수 량 변 경</h1>
 			<form action="/mypage/cartUpdate" method="post"> 
 				<table>
 					<thead>
@@ -34,19 +34,26 @@
 							<th>수량</th>
 						</tr>
 					</thead>
-					<tr>
-						<td><input type="text" readonly="readonly" name="cartId"
-							value="${cart.cartId}" /></td>
-						<td><input type="text" name="productName" readonly="readonly" value="${cart.productName}" /></td>
-						<td><input type="number" name="cartQty" min="1" max="10" value="${cart.cartQty}"/></td>
-
-					</tr>
-					
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="text" class="text-style" name="cartId" value="${cart.cartId}" readonly="readonly"/>
+                            </td>
+                            <td>
+                                <input type="text" class="text-style" name="productName" value="${cart.productName}"readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="number" class="text-style num-btn" name="cartQty" min="1" max="10" value="${cart.cartQty}"/>
+                            </td>
+                        </tr>
+                    </tbody>
 				</table>
-				
-				<br> <input type="submit" value="수정하기">
+                <div class="btn-frame">
+				    <input type="submit" class="button_style" value="수정하기">
+                </div>
 			</form>
 		</div>
 		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
-	<script>
+</body>
+</html>
