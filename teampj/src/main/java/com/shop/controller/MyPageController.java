@@ -1,6 +1,8 @@
 package com.shop.controller;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shop.mapper.MemberMapper;
+import com.shop.model.OrderDetail;
 import com.shop.model.Product;
 import com.shop.model.ShoppingCart;
 import com.shop.model.User;
@@ -158,14 +161,32 @@ public class MyPageController {
 		
 		// 주문
 		@RequestMapping(value = "/order", method = RequestMethod.POST)
-		public void order(HttpSession session, UserOrder order) throws Exception {
-		 logger.info("order");
+		public String order(HttpSession session, UserOrder order,OrderDetail detail) throws Exception {
+		 logger.info("주문하기 진입");
 		 
 		 User user = (User)session.getAttribute("loginuser");  
 		 String userId = user.getUserId();
 		 
-		 memberservice.orderinsert(order);  
+		 Calendar cal=Calendar.getInstance();
+		 int year = cal.get(Calendar.YEAR);
+		 String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
+		 String ymd = ym +  new DecimalFormat("00").format(cal.get(Calendar.DATE));
+		 String subNum = "";
 		 
+		 for(int i = 1; i <= 6; i ++) {
+			  subNum += (int)(Math.random() * 10);
+		 }
+		 String orderId = ymd + "_" + subNum;
+		 
+		 order.setOrderId(orderId);
+		 order.setUserId(userId);
+		 
+		 memberservice.orderinsert(order); 
+		 
+		 detail.setOrderId(orderId);
+		 memberservice.orderinsertDetail(detail);
+		 
+		 return "redirect:/mypage/orderList";
 		}
 		
 		

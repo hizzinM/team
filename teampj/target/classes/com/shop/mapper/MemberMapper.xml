@@ -135,12 +135,12 @@
 	</delete>
 	<!-- 주문 삽입 -->
 	<insert id="orderinsert">
-	 insert into user_order (order_id,user_id,order_address,order_address_detail,order_address_num,order_price,order_date)
-     values (#{orderId},#{userId},#{orderAddress},#{orderAddressDetail},#{orderAddressNum},#{orderPrice},#{orderDate})
+	 insert into user_order (order_id,user_id,order_phone,order_address,order_address_detail,order_address_num,order_price,order_date)
+     values (#{orderId},#{userId},#{orderPhone},#{orderAddress},#{orderAddressDetail},#{orderAddressNum},#{orderPrice},#{orderDate})
 	</insert>
 	<insert id="orderinsertDetail">
-	 insert into order_detail (order_detail_id,order_id,product_name,product_size,product_inventory)
-     select order_detail_id,#{orderId},product_name,product_size,product_inventory from product
+	 insert into order_detail(order_detail_id,order_id,product_name, order_size,order_inventory)
+     select  0,#{orderId},product_name, cart_productsize, cart_qty from shopping_cart; 
 	</insert>
 	
 	
