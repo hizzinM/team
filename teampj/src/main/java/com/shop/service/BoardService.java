@@ -11,4 +11,7 @@ public interface BoardService {
 
 	/* 공지 목록 */
 	public List<NoticeVO> getList();
+
+	/* 공지 조회 */
+	public NoticeVO getPage(int bno);
 }

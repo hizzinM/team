@@ -20,7 +20,13 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<NoticeVO> getList() { 
+	public List<NoticeVO> getList() {
 		return boardmapper.getList();
+	}
+
+	@Override
+	public NoticeVO getPage(int bno) {
+
+		return boardmapper.getPage(bno);
 	}
 }

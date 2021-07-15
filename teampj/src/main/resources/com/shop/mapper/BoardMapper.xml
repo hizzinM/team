@@ -16,4 +16,10 @@
 	<select id="getList" resultType="com.shop.model.NoticeVO">
 		select * from notice
 	</select>
+
+	<!-- 공지 조회 -->
+	<select id="getPage" resultType="com.shop.model.NoticeVO">
+		select * from notice where bno =
+		#{bno}
+	</select>
 </mapper>
