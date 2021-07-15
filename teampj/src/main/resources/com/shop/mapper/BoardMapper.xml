@@ -34,4 +34,17 @@
 	<delete id="delete">
 		delete from notice where bno = #{bno}
 	</delete>
+
+	<!-- 게시물 목록(페이징) -->
+	<select id="getListPaging" resultType="com.shop.model.NoticeVO">
+		select * from (
+		select *
+		from notice order by bno desc) as T1
+		limit #{skip},#{amount}
+	</select>
+
+	<!-- 게시물 총 개숫 -->
+	<select id="getTotal" resultType="int"> 
+		select count(*) from notice 
+	</select>
 </mapper>

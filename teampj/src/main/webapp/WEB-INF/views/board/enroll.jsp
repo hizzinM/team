@@ -19,7 +19,7 @@
 	<div id="side_navigation">
 		<%@ include file="../include_collection/navigation.jsp"%>
 	</div>
-	<div id="contents"> 
+	<div id="contents">
 		<form action="/board/enroll" method="post">
 			<div class="input_wrap">
 				<label>Title</label> <input name="noticeTitle">

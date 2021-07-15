@@ -2,6 +2,7 @@ package com.shop.service;
 
 import java.util.List;
 
+import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
 
 public interface BoardService {
@@ -20,4 +21,10 @@ public interface BoardService {
 
 	/* 공지 삭제 */
 	public int delete(int bno);
+
+	/* 게시판 목록(페이징 적용) */
+	public List<NoticeVO> getListPaging(Criteria cri);
+
+	/* 게시판 총 갯수 */
+	public int getTotal();
 }

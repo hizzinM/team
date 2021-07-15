@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
+import com.shop.model.PageMakerDTO;
 import com.shop.service.BoardService;
 
 @Controller
@@ -24,11 +26,13 @@ public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger("MainController.class");
 
 	// 공지사항 페이지 이동
-	@GetMapping(value = "/notice")
-	public void getnotice(Model model) throws Exception {
+	@GetMapping("/notice")
+	public void getnotice(Model model, Criteria cri) throws Exception {
 		logger.info("공지사항 목록 페이지 접속");
-
-		model.addAttribute("list", boardService.getList());
+		model.addAttribute("list", boardService.getListPaging(cri));
+		int total = boardService.getTotal();
+		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+		model.addAttribute("pageMaker", pageMake);
 	}
 
 	// 공지글 작성 페이지 이동

@@ -42,7 +42,7 @@ td, th {
 	</div>
 	<div class="table_wrap">
 		<div align="center">
-			notice <a href="/board/enroll" class="top_btn">게시판 등록</a>
+			notice
 			<table>
 				<thead>
 					<tr>
@@ -65,8 +65,6 @@ td, th {
 					</tr>
 				</c:forEach>
 			</table>
-			<form id="moveForm" method="get"></form>
-			<br> <br>
 			<c:if test="${ loginuser!= null }">
 				<c:if test="${ loginuser.adminck ==0 }">
 				</c:if>
@@ -75,6 +73,23 @@ td, th {
 						value="글쓰기"></a>
 				</c:if>
 			</c:if>
+			<div class="pageInfo_wrap">
+				<div class="pageInfo_area">
+					<ul id="pageInfo" class="pageInfo">
+						<!-- 각 번호 페이지 버튼 -->
+						<c:forEach var="num" begin="${pageMaker.startPage}"
+							end="${pageMaker.endPage}">
+							<li class="pageInfo_btn"><a href="${num}">${num}</a></li>
+						</c:forEach>
+					</ul>
+				</div>
+			</div>
+			<form id="moveForm" method="get">
+				<input type="hidden" name="pageNum"
+					value="${pageMaker.cri.pageNum }"> <input type="hidden"
+					name="amount" value="${pageMaker.cri.amount }">
+			</form>
+			<br> <br>
 			<%@ include file="../include_collection/footer.jsp"%>
 		</div>
 	</div>
@@ -91,6 +106,15 @@ td, th {
 					moveForm.attr("action", "/board/get");
 					moveForm.submit();
 				});
+
+		$(".pageInfo a").on("click", function(e) {
+
+			e.preventDefault();
+			moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+			moveForm.attr("action", "/board/notice");
+			moveForm.submit();
+
+		});
 
 		$(document).ready(function() {
 			let result = '<c:out value="${result}"/>';

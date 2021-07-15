@@ -38,26 +38,6 @@ textarea {
 	font-size: 15px;
 	padding: 10px;
 }
-
-.btn {
-	display: inline-block;
-	font-size: 22px;
-	padding: 6px 12px;
-	background-color: #fff;
-	border: 1px solid #ddd;
-	font-weight: 600;
-	width: 140px;
-	height: 41px;
-	line-height: 39px;
-	text-align: center;
-	margin-left: 30px;
-	cursor: pointer;
-}
-
-.btn_wrap {
-	padding-left: 80px;
-	margin-top: 50px;
-}
 </style>
 </head>
 <body>
@@ -87,8 +67,16 @@ textarea {
 				</div>
 
 				<div class="btn_wrap">
-					<a class="btn" id="list_btn">목록 페이지</a> <a class="btn"
-						id="modify_btn">수정 하기</a>
+					<a class="btn" id="list_btn">목록 페이지</a>
+
+					<c:if test="${ loginuser!= null }">
+						<c:if test="${ loginuser.adminck ==0 }">
+						</c:if>
+						<c:if test="${ loginuser.adminck ==1 }">
+							<a class="btn" id="modify_btn">수정 하기</a>
+						</c:if>
+					</c:if>
+
 				</div>
 				<form id="infoForm" action="/board/modify" method="get">
 					<input type="hidden" id="bno" name="bno"
