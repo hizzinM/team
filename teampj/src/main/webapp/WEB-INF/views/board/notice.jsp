@@ -55,13 +55,17 @@ td, th {
 				<c:forEach items="${list}" var="list">
 					<tr>
 						<td><c:out value="${list.bno}" /></td>
-						<td><c:out value="${list.noticeTitle}" /></td>
+						<td><a class="move"
+							href='/board/get?bno=<c:out value="${list.bno}"/>'> <c:out
+									value="${list.noticeTitle}" />
+						</a></td>
 						<td><c:out value="${list.userId}" /></td>
 						<td><fmt:formatDate value="${list.noticeWritedate}"
 								pattern="yyyy/MM/dd" /></td>
 					</tr>
 				</c:forEach>
 			</table>
+			<form id="moveForm" method="get"></form>
 			<br> <br>
 			<c:if test="${ loginuser!= null }">
 				<c:if test="${ loginuser.adminck ==0 }">
@@ -75,6 +79,19 @@ td, th {
 		</div>
 	</div>
 	<script>
+		let moveForm = $("#moveForm");
+
+		$(".move").on(
+				"click",
+				function(e) {
+					e.preventDefault();
+
+					moveForm.append("<input type='hidden' name='bno' value='"
+							+ $(this).attr("href") + "'>");
+					moveForm.attr("action", "/board/get");
+					moveForm.submit();
+				});
+		
 		$(document).ready(function() {
 			let result = '<c:out value="${result}"/>';
 			checkAlert(result);

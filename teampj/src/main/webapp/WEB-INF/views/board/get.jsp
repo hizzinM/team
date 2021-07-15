@@ -68,50 +68,48 @@ textarea {
 	<div class="table_wrap">
 		<div align="center">
 			<div class="input_wrap">
-				<label>게시판 번호</label> <input name="bno" readonly="readonly"
-					value='<c:out value="${noticeInfo.bno}"/>'>
+				<div class="input_wrap">
+					<!-- 제목 -->
+					<c:out value="${noticeInfo.noticeTitle}" />
+				</div>
+				<div class="input_wrap">
+					<!-- 작성자 -->
+					<c:out value="${noticeInfo.userId}" />
+				</div>
+				<div class="input_wrap">
+					<!-- 작성일 -->
+					<fmt:formatDate pattern="yyyy/MM/dd"
+						value="${noticeInfo.noticeWritedate}" />
+				</div>
+				<div class="input_wrap">
+					<!-- 공지내용 -->
+					<c:out value="${noticeInfo.noticeContent}" />
+				</div>
+
+				<div class="btn_wrap">
+					<a class="btn" id="list_btn">목록 페이지</a> <a class="btn"
+						id="modify_btn">수정 하기</a>
+				</div>
+				<form id="infoForm" action="/board/modify" method="get">
+					<input type="hidden" id="bno" name="bno"
+						value='<c:out value="${noticeInfo.bno}"/>'>
+				</form>
+				<%@ include file="../include_collection/footer.jsp"%>
 			</div>
-			<div class="input_wrap">
-				<label>게시판 제목</label> <input name="title" readonly="readonly"
-					value='<c:out value="${noticeInfo.noticeTitle}"/>'>
-			</div>
-			<div class="input_wrap">
-				<label>게시판 내용</label>
-				<textarea rows="3" name="content" readonly="readonly"><c:out
-						value="${noticeInfo.noticeContent}" /></textarea>
-			</div>
-			<div class="input_wrap">
-				<label>게시판 작성자</label> <input name="writer" readonly="readonly"
-					value='<c:out value="${noticeInfo.userId}"/>'>
-			</div>
-			<div class="input_wrap">
-				<label>게시판 등록일</label> <input name="regdater" readonly="readonly"
-					value='<fmt:formatDate pattern="yyyy/MM/dd" value="${noticeInfo.noticeWritedate}"/>'>
-			</div>
-			<div class="btn_wrap">
-				<a class="btn" id="list_btn">목록 페이지</a> <a class="btn"
-					id="modify_btn">수정 하기</a>
-			</div>
-			<form id="infoForm" action="/board/modify" method="get">
-				<input type="hidden" id="bno" name="bno"
-					value='<c:out value="${noticeInfo.bno}"/>'>
-			</form>
-			<%@ include file="../include_collection/footer.jsp"%>
 		</div>
-	</div>
-	<script>
-		let form = $("#infoForm");
+		<script>
+			let form = $("#infoForm");
 
-		$("#list_btn").on("click", function(e) {
-			form.find("#bno").remove();
-			form.attr("action", "/board/notice");
-			form.submit();
-		});
+			$("#list_btn").on("click", function(e) {
+				form.find("#bno").remove();
+				form.attr("action", "/board/notice");
+				form.submit();
+			});
 
-		$("#modify_btn").on("click", function(e) {
-			form.attr("action", "/board/modify");
-			form.submit();
-		});
-	</script>
+			$("#modify_btn").on("click", function(e) {
+				form.attr("action", "/board/modify");
+				form.submit();
+			});
+		</script>
 </body>
 </html>
