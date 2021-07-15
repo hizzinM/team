@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.shop.mapper.MemberMapper;
 import com.shop.model.Criteria;
+import com.shop.model.OrderDetail;
 import com.shop.model.ShoppingCart;
 import com.shop.model.User;
 import com.shop.model.UserOrder;
@@ -126,6 +127,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void orderinsert(UserOrder order) throws Exception {
 			membermapper.orderinsert(order);
+	}
+
+	@Override
+	public void orderinsertDetail(OrderDetail detail) throws Exception {
+		membermapper.orderinsertDetail(detail);
 		
 	}
 	

@@ -3,35 +3,32 @@ package com.shop.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class UserOrder {
-	private int orderId;
+	private String orderId;
 	private String userId;
-	private String productName;
+	private String orderPhone;
 	private String orderAddress;
 	private String orderAddressDetail;
 	private String orderAddressNum;
 	private int orderPrice;
-	private int orderInventory;
-	private String orderSize;
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	private String orderDate;
-	public UserOrder(int orderId, String userId, String productName, String orderAddress, String orderAddressDetail,
-			String orderAddressNum, int orderPrice, int orderInventory, String orderSize, String orderDate) {
+	public UserOrder(String orderId, String userId, String orderPhone, String orderAddress, String orderAddressDetail,
+			String orderAddressNum, int orderPrice,String orderDate) {
 		super();
 		this.orderId = orderId;
 		this.userId = userId;
-		this.productName = productName;
+		this.orderPhone = orderPhone;
 		this.orderAddress = orderAddress;
 		this.orderAddressDetail = orderAddressDetail;
 		this.orderAddressNum = orderAddressNum;
 		this.orderPrice = orderPrice;
-		this.orderInventory = orderInventory;
-		this.orderSize = orderSize;
+		
 		this.orderDate = orderDate;
 	}
-	public int getOrderId() {
+	public String getOrderId() {
 		return orderId;
 	}
-	public void setOrderId(int orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 	public String getUserId() {
@@ -40,11 +37,11 @@ public class UserOrder {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public String getProductName() {
-		return productName;
+	public String getOrderPhone() {
+		return orderPhone;
 	}
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setOrderPhone(String orderPhone) {
+		this.orderPhone = orderPhone;
 	}
 	public String getOrderAddress() {
 		return orderAddress;
@@ -70,18 +67,6 @@ public class UserOrder {
 	public void setOrderPrice(int orderPrice) {
 		this.orderPrice = orderPrice;
 	}
-	public int getOrderInventory() {
-		return orderInventory;
-	}
-	public void setOrderInventory(int orderInventory) {
-		this.orderInventory = orderInventory;
-	}
-	public String getOrderSize() {
-		return orderSize;
-	}
-	public void setOrderSize(String orderSize) {
-		this.orderSize = orderSize;
-	}
 	public String getOrderDate() {
 		return orderDate;
 	}
@@ -90,10 +75,9 @@ public class UserOrder {
 	}
 	@Override
 	public String toString() {
-		return "UserOrder [orderId=" + orderId + ", userId=" + userId + ", productName=" + productName
+		return "UserOrder [orderId=" + orderId + ", userId=" + userId + ", orderPhone=" + orderPhone
 				+ ", orderAddress=" + orderAddress + ", orderAddressDetail=" + orderAddressDetail + ", orderAddressNum="
-				+ orderAddressNum + ", orderPrice=" + orderPrice + ", orderInventory=" + orderInventory + ", orderSize="
-				+ orderSize + ", orderDate=" + orderDate + "]";
+				+ orderAddressNum + ", orderPrice=" + orderPrice + ", orderDate=" + orderDate + "]";
 	}
 	
 	

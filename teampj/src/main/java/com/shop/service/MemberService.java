@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.shop.model.Criteria;
+import com.shop.model.OrderDetail;
 import com.shop.model.ShoppingCart;
 import com.shop.model.User;
 import com.shop.model.UserOrder;
@@ -55,4 +56,6 @@ public interface MemberService {
 	public int updateCartQty(ShoppingCart cart);
 	//주문
 	public void orderinsert(UserOrder order) throws Exception;
+	//주문상세정보
+	public void orderinsertDetail(OrderDetail detail) throws Exception;
 }
