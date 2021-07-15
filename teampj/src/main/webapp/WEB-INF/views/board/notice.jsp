@@ -58,7 +58,7 @@ td, th {
 						<td><c:out value="${list.noticeTitle}" /></td>
 						<td><c:out value="${list.userId}" /></td>
 						<td><fmt:formatDate value="${list.noticeWritedate}"
-								pattern="yyyy년MM월dd일 HH시mm분" /></td>
+								pattern="yyyy/MM/dd" /></td>
 					</tr>
 				</c:forEach>
 			</table>

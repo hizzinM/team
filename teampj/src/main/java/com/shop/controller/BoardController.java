@@ -46,6 +46,12 @@ public class BoardController {
 		return "redirect:/board/notice";
 	}
 
+	// 공지글 조회
+	@GetMapping("/get")
+	public void boardGetPageGET(int bno, Model model) {
+		model.addAttribute("noticeInfo", boardService.getPage(bno)); 
+	}
+
 	// qna 페이지 이동
 	@RequestMapping(value = "qna", method = RequestMethod.GET)
 	public void getQna(Model model) throws Exception {
