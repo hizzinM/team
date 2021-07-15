@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.shop.model.Criteria;
 import com.shop.model.ShoppingCart;
 import com.shop.model.User;
+import com.shop.model.UserOrder;
 
 public interface MemberService {
 
@@ -50,6 +51,8 @@ public interface MemberService {
 	public int deleteCart(String cartId);
 	// 장바구니 물품 간단조회 기능
 	public ShoppingCart selectCartId(String cartId);
-		// 장바구니 물품 수량 수정 기능
+	// 장바구니 물품 수량 수정 기능
 	public int updateCartQty(ShoppingCart cart);
+	//주문
+	public void orderinsert(UserOrder order) throws Exception;
 }
