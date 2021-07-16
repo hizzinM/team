@@ -40,7 +40,7 @@
 	<select id="getListPaging" resultType="com.shop.model.NoticeVO">
 		select * from (
 		select *
-		from notice order by bno desc) as T1
+		from notice order by bno desc) as Page
 		limit #{skip},#{amount}
 	</select>
 
@@ -48,4 +48,5 @@
 	<select id="getTotal" resultType="int">
 		select count(*) from notice
 	</select>
+
 </mapper>
