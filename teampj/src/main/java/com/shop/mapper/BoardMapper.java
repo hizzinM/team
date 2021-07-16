@@ -26,5 +26,5 @@ public interface BoardMapper {
 	public List<NoticeVO> getListPaging(Criteria cri);
 
 	/* 게시판 총 갯수 */
-	public int getTotal();
+	public int getTotal(Criteria cri);
 }

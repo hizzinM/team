@@ -33,7 +33,7 @@ public class BoardServiceImpl implements BoardService {
 
 	/* 공지 수정 */
 	@Override
-	public int modify(NoticeVO notice) { 
+	public int modify(NoticeVO notice) {
 		return boardmapper.modify(notice);
 	}
 
@@ -51,7 +51,7 @@ public class BoardServiceImpl implements BoardService {
 
 	/* 게시물 총 갯수 */
 	@Override
-	public int getTotal() { 
-		return boardmapper.getTotal();
+	public int getTotal(Criteria cri) {
+		return boardmapper.getTotal(cri);
 	}
 }

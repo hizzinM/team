@@ -27,10 +27,10 @@ public class BoardController {
 
 	// 공지사항 페이지 이동
 	@GetMapping("/notice")
-	public void getnotice(Model model, Criteria cri) throws Exception {
+	public void getnotice(Model model, Criteria cri) {
 		logger.info("공지사항 목록 페이지 접속");
 		model.addAttribute("list", boardService.getListPaging(cri));
-		int total = boardService.getTotal();
+		int total = boardService.getTotal(cri);
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
 	}
@@ -52,14 +52,16 @@ public class BoardController {
 
 	// 공지글 조회
 	@GetMapping("/get")
-	public void boardGetPageGET(int bno, Model model) {
+	public void boardGetPageGET(int bno, Model model, Criteria cri) {
 		model.addAttribute("noticeInfo", boardService.getPage(bno));
+		model.addAttribute("cri", cri);
 	}
 
 	// 공지글 수정페이지 이동
 	@GetMapping("/modify")
-	public void boardModifyGET(int bno, Model model) {
+	public void boardModifyGET(int bno, Model model, Criteria cri) {
 		model.addAttribute("noticeInfo", boardService.getPage(bno));
+		model.addAttribute("cri", cri);
 	}
 
 	// 공지글 수정
