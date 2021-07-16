@@ -67,6 +67,9 @@ public interface MemberMapper {
 	public void orderinsert(UserOrder order) throws Exception;
 	//주문상세정보
 	public void orderinsertDetail(OrderDetail detail) throws Exception;
+	//주문목록
+	public List<UserOrder> orderList(UserOrder order) throws Exception;
+	
 	// public User readMember(String userId);
 
 	// public int updatePw(User user) throws Exception;

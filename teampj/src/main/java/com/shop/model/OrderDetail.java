@@ -3,10 +3,20 @@ package com.shop.model;
 public class OrderDetail {
 	private int orderDetailId;	
 	private String orderId;
+	
 	private String productName;
 	private String orderSize;
 	private String orderInventory;
+	public OrderDetail(int orderDetailId, String orderId, String productName, String orderSize,
+			String orderInventory) {
+		super();
+		this.orderDetailId = orderDetailId;
+		this.orderId = orderId;
 	
+		this.productName = productName;
+		this.orderSize = orderSize;
+		this.orderInventory = orderInventory;
+	}
 	public int getOrderDetailId() {
 		return orderDetailId;
 	}
@@ -37,18 +47,12 @@ public class OrderDetail {
 	public void setOrderInventory(String orderInventory) {
 		this.orderInventory = orderInventory;
 	}
-	public OrderDetail(int orderDetailId, String orderId, String productName, String orderSize, String orderInventory) {
-		super();
-		this.orderDetailId = orderDetailId;
-		this.orderId = orderId;
-		this.productName = productName;
-		this.orderSize = orderSize;
-		this.orderInventory = orderInventory;
-	}
 	@Override
 	public String toString() {
-		return "OrderDetail [orderDetailId=" + orderDetailId + ", orderId=" + orderId + ", productName=" + productName
-				+ ", orderSize=" + orderSize + ", orderInventory=" + orderInventory + "]";
+		return "OrderDetail [orderDetailId=" + orderDetailId + ", orderId=" + orderId + ", productName=" + productName + ", orderSize=" + orderSize + ", orderInventory=" + orderInventory
+				+ "]";
 	}
+	
+	
 	
 }

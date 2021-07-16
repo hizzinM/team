@@ -111,16 +111,17 @@ public class MyPageController {
 		@ResponseBody
 		@RequestMapping(value = "/addCart", method =RequestMethod.POST)
 		   public int addCart(ShoppingCart cart, HttpSession session) throws Exception {
-			 int result=0;
+	
+			int result=0;
 			
 			logger.info("카트 담기 진입");
 			User user = (User)session.getAttribute("loginuser");
 			
-			if(user != null) {
+			if(user!= null) {
 		    cart.setUserId(user.getUserId());
 		    cart.setCartUpdate(LocalDateTime.now());
 		    memberservice.addCart(cart);
-		    result = 1;
+		    result=1;
 			 }
 			return	result;		 
 		}
@@ -180,15 +181,30 @@ public class MyPageController {
 		 
 		 order.setOrderId(orderId);
 		 order.setUserId(userId);
+		 order.setOrderDate(ymd);
 		 
 		 memberservice.orderinsert(order); 
 		 
 		 detail.setOrderId(orderId);
 		 memberservice.orderinsertDetail(detail);
 		 
-		 return "redirect:/mypage/orderList";
+		 return "redirect:/mypage/addCart";
 		}
 		
+		// 주문 목록
+		@RequestMapping(value = "/orderview", method = RequestMethod.GET)
+		public void getOrderList(HttpSession session, UserOrder order, Model model) throws Exception {
+		 logger.info("get order list");
+		 
+		 User user = (User)session.getAttribute("loginuser"); 
+		 String userId = user.getUserId();
+		 
+		order.setUserId(userId);
+		 
+		 List<UserOrder> orderList = memberservice.orderList(order);
+		 
+		 model.addAttribute("orderList", orderList);
+		}
 		
 		
 }

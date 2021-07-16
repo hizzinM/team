@@ -109,7 +109,7 @@
 	</insert>
 	<!-- 장바구니 목록-->
 	<select id="selectCart" resultType="com.shop.model.ShoppingCart">
-	select c.cart_id,c.user_id,c.product_id,c.product_name,u.user_name,u.email,u.phone,u.address,u.account_num,c.cart_productsize,c.cart_productColor,c.cart_price,
+	select c.cart_id,c.user_id,c.product_id,c.product_name,u.user_name,u.phone,u.address,u.address_num,u.address_detail,c.cart_productsize,c.cart_productColor,c.cart_price,
 		c.cart_qty,i.file_name,i.upload_path,i.uuid
 		from product p,shopping_cart c,user u
 		join (select
@@ -138,11 +138,17 @@
 	 insert into user_order (order_id,user_id,order_phone,order_address,order_address_detail,order_address_num,order_price,order_date)
      values (#{orderId},#{userId},#{orderPhone},#{orderAddress},#{orderAddressDetail},#{orderAddressNum},#{orderPrice},#{orderDate})
 	</insert>
+	<!-- 주문 상세정보삽입 -->
 	<insert id="orderinsertDetail">
-	 insert into order_detail(order_detail_id,order_id,product_name, order_size,order_inventory)
-     select  0,#{orderId},product_name, cart_productsize, cart_qty from shopping_cart; 
+	insert into order_detail(order_detail_id,order_id,product_name, order_size,order_inventory)
+	select  #{orderDetailId},#{orderId},product_name,cart_productsize,cart_qty from shopping_cart; 
 	</insert>
 	
+	<select id="orderList" resultType="com.shop.model.UserOrder">
+	select order_id,user_id,order_phone,order_address,order_address_detail,order_address_num,order_price,order_date
+	from user_order where user_id = #{userId}
+	</select>
+
 	
 	
 </mapper> 
