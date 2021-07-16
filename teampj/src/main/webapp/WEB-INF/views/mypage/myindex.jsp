@@ -65,7 +65,7 @@
 				<ul>
 					<li>
 						<div>
-							<a href="/member/">
+							<a href="/mypage/orderview">
 								<p>ORDER TRACKING</p>
 								<p>주문내역조회</p>
 							</a>

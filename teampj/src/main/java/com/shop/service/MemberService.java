@@ -58,4 +58,6 @@ public interface MemberService {
 	public void orderinsert(UserOrder order) throws Exception;
 	//주문상세정보
 	public void orderinsertDetail(OrderDetail detail) throws Exception;
+	//주문목록
+	public List<UserOrder> orderList(UserOrder order) throws Exception;
 }

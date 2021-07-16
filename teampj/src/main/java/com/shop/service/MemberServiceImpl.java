@@ -134,5 +134,11 @@ public class MemberServiceImpl implements MemberService {
 		membermapper.orderinsertDetail(detail);
 		
 	}
+
+	@Override
+	public List<UserOrder> orderList(UserOrder order) throws Exception {
+		
+		return membermapper.orderList(order);
+	}
 	
 }

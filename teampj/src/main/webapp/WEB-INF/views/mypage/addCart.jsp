@@ -77,31 +77,34 @@
 			<div class="orderInfo">
 			 <form role="form" method="post" autocomplete="off" action="/mypage/order">
 			    
-			  <input type="hidden" name="orderPrice" value="${sum}"/>
-			    
+			 <input type="hidden" name="orderPrice" value="${sum}"/>
+			  
+			 <input type="hidden" name="orderDetailId" value="0"/> 
+			   
+			  <c:forEach items="${cartList}" var="cartList" end="0">
 			  <div class="inputArea">
 			   <label for="">수령인 아이디</label>
-			   <input type="text" name="userId" id="userId" required="required" />
+			   <input type="text" name="userId" id="userId" required="required" value="${cartList.userId}">
 			  </div>
 			  
 			  <div class="inputArea">
 			   <label for="orderPhon">수령인 연락처</label>
-			   <input type="text" name="orderPhone" id="orderPhone" required="required" />
+			   <input type="text" name="orderPhone" id="orderPhone" required="required" value="${cartList.phone}" />
 			  </div>
 			  
 			  <div class="inputArea">
 			   <label for="userAddr1">우편번호</label>
-			   <input type="text" name="orderAddressNum" id="orderAddressNum" required="required" />
+			   <input type="text" name="orderAddressNum" id="orderAddressNum" required="required" value="${cartList.addressNum}"  />
 			  </div>
 			  
 			  <div class="inputArea">
 			   <label for="userAddr2">1차 주소</label>
-			   <input type="text" name="orderAddress" id="orderAddress" required="required" />
+			   <input type="text" name="orderAddress" id="orderAddress" required="required" value="${cartList.address}"  />
 			  </div>
 			  
 			  <div class="inputArea">
 			   <label for="userAddr3">2차 주소</label>
-			   <input type="text" name="orderAddressDetail" id="orderAddressDetail" required="required" />
+			   <input type="text" name="orderAddressDetail" id="orderAddressDetail" required="required" value="${cartList.addressDetail}"  />
 			  </div>
 			  
 			  <div class="inputArea">
@@ -109,7 +112,9 @@
 			   <button type="button" class="cancel_btn">취소</button>
 			  
 			  </div>
-			 </form> 
+			  </c:forEach>
+			 </form>
+			  
 			</div>
 				<!--물건 삭제 버튼-->
 				
@@ -183,10 +188,12 @@
 				// 보내고자 하는 data 변수 설정
 				},
 				success : function(jdata) {
+					console.log(jdata)
 					if (jdata = 1) {
 						alert("삭제 성공");
 						location.replace("/mypage/addCart")
-					} else {
+					} 
+					else{
 						alert("삭제 실패");
 					}
 				}

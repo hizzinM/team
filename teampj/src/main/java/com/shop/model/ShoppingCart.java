@@ -20,6 +20,12 @@ public class ShoppingCart {
 	private String fileName;
 	private String uploadPath;
 	private String uuid;
+	private String addressNum;
+	private String address;
+	private String addressDetail;
+	private String phone;
+	
+	
 	
 	public ShoppingCart() {
 		super();
@@ -154,14 +160,67 @@ public class ShoppingCart {
 
 
 
+	public String getAddressNum() {
+		return addressNum;
+	}
+
+
+
+	public void setAddressNum(String addressNum) {
+		this.addressNum = addressNum;
+	}
+
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+
+	public String getAddressDetail() {
+		return addressDetail;
+	}
+
+
+
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
+	}
+
+
+
+	public String getPhone() {
+		return phone;
+	}
+
+
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "ShoppingCart [cartId=" + cartId + ", userId=" + userId + ", productId=" + productId + ", productName="
 				+ productName + ", cartProductsize=" + cartProductsize + ", cartProductColor=" + cartProductColor
 				+ ", cartProductOption=" + cartProductOption + ", cartPrice=" + cartPrice + ", cartQty=" + cartQty
 				+ ", cartUpdate=" + cartUpdate + ", fileName=" + fileName + ", uploadPath=" + uploadPath + ", uuid="
-				+ uuid + "]";
+				+ uuid + ", addressNum=" + addressNum + ", address=" + address + ", addressDetail=" + addressDetail
+				+ ", phone=" + phone + "]";
 	}
+
+
+
+	
 
 	
 
