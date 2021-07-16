@@ -2,6 +2,7 @@ package com.shop.mapper;
 
 import static org.junit.Assert.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -18,9 +19,10 @@ public class NoticeMapperTests {
 	private static final Logger log = LoggerFactory.getLogger(NoticeMapperTests.class);
 
 	@Autowired
-	private BoardMapper noticeMapper;
+	private BoardMapper boardmapper;
 
 	@Test
+	@Ignore
 	public void testEnroll() {
 
 		NoticeVO notice = new NoticeVO();
@@ -29,7 +31,21 @@ public class NoticeMapperTests {
 		notice.setNoticeContent("mapper test");
 		notice.setUserId("mapper test");
 
-		noticeMapper.enroll(notice);
+		boardmapper.enroll(notice);
+
+	}
+
+	/* 게시판 수정 */
+	@Test
+	public void testModify() {
+
+		NoticeVO notice = new NoticeVO();
+		notice.setBno(5);
+		notice.setNoticeTitle("수정 제목");
+		notice.setNoticeContent("수정 내용");
+		notice.setNoticeBold(1); 
+		int result = boardmapper.modify(notice);
+		log.info("result : " + result);
 
 	}
 

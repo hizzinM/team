@@ -33,8 +33,7 @@ public class BoardServiceImpl implements BoardService {
 
 	/* 공지 수정 */
 	@Override
-	public int modify(NoticeVO notice) {
-
+	public int modify(NoticeVO notice) { 
 		return boardmapper.modify(notice);
 	}
 

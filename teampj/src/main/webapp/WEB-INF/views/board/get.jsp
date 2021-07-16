@@ -49,6 +49,10 @@ textarea {
 		<div align="center">
 			<div class="input_wrap">
 				<div class="input_wrap">
+					<!-- 번호 -->
+					<c:out value="${noticeInfo.bno}" />
+				</div>
+				<div class="input_wrap">
 					<!-- 제목 -->
 					<c:out value="${noticeInfo.noticeTitle}" />
 				</div>

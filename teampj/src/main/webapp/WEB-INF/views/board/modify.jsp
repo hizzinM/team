@@ -51,23 +51,25 @@ textarea {
 	<div align="center">
 		<form id="modifyForm" action="/board/modify" method="post">
 			<div class="input_wrap">
-				<label>게시판 제목</label> <input name="title"
-					"
+				<label>게시판 번호</label> <input name="bno" readonly="readonly"
+					value='<c:out value="${noticeInfo.bno}"/>'>
+			</div>
+			<div class="input_wrap">
+				<label>게시판 제목</label> <input name="noticeTitle"
 					value='<c:out value="${noticeInfo.noticeTitle}"/>'>
 			</div>
 			<div class="input_wrap">
-				<label>게시판 작성자</label> <input name="writer"
-					"
+				<label>게시판 작성자</label> <input name="userId" readonly="readonly"
 					value='<c:out value="${noticeInfo.userId}"/>'>
 			</div>
 			<div class="input_wrap">
-				<label>게시판 등록일</label> <input name="regdater"
-					"
+				<label>게시판 등록일</label> <input name="noticeWritedate"
+					readonly="readonly"
 					value='<fmt:formatDate pattern="yyyy/MM/dd" value="${noticeInfo.noticeWritedate}"/>'>
 			</div>
 			<div class="input_wrap">
 				<label>게시판 내용</label>
-				<textarea rows="3" id="noticeContent" name="noticeContent""><c:out
+				<textarea rows="3" id="noticeContent" name="noticeContent"><c:out
 						value="${noticeInfo.noticeContent}" /></textarea>
 				<script>
 					var ckeditor_config = {
@@ -90,10 +92,10 @@ textarea {
 			<input type="hidden" id="bno" name="bno"
 				value='<c:out value="${noticeInfo.bno}"/>'>
 		</form>
-		<%@ include file="../include_collection/footer.jsp"%>
+		<div>
+			<%@ include file="../include_collection/footer.jsp"%>
+		</div>
 	</div>
-
-
 	<script>
 		let form = $("#infoForm");
 		let mForm = $("#modifyForm");

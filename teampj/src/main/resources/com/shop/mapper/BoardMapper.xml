@@ -27,7 +27,8 @@
 	<update id="modify">
 		update notice set notice_title = #{noticeTitle},
 		notice_content =
-		#{noticeContent} where bno = #{bno}
+		#{noticeContent}, notice_bold=#{noticeBold} where bno
+		= #{bno}
 	</update>
 
 	<!-- 공지 삭제 -->
@@ -44,7 +45,7 @@
 	</select>
 
 	<!-- 게시물 총 개숫 -->
-	<select id="getTotal" resultType="int"> 
-		select count(*) from notice 
+	<select id="getTotal" resultType="int">
+		select count(*) from notice
 	</select>
 </mapper>
