@@ -21,8 +21,8 @@ import com.shop.service.BoardService;
 public class BoardController {
 
 	@Autowired
-	private BoardService boardService; 
-	
+	private BoardService boardService;
+
 	private static final Logger logger = LoggerFactory.getLogger("MainController.class");
 
 	// 공지사항 페이지 이동

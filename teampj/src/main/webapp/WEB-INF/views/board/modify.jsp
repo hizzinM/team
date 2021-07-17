@@ -59,6 +59,11 @@ textarea {
 					value='<c:out value="${noticeInfo.noticeTitle}"/>'>
 			</div>
 			<div class="input_wrap">
+				<label>중요공지 등록</label> <input name="noticeBold"
+					value='<c:out value="${noticeInfo.noticeBold}"/>'>
+			</div>
+			0=일반 1=중요
+			<div class="input_wrap">
 				<label>게시판 작성자</label> <input name="userId" readonly="readonly"
 					value='<c:out value="${noticeInfo.userId}"/>'>
 			</div>
