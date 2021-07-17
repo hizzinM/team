@@ -29,49 +29,33 @@
 			<div id="table-frame">
 				<table>
 					<thead>
-						<tr>
-							<th class="bno_width">번호</th>
-							<th class="title_width">제목</th>
-							<th class="writer_width">작성자</th>
-							<th class="regdate_width">작성일</th>
-						</tr>
-					</thead>
-					<c:forEach items="${list}" var="list">
-						<tr>
-							<td><c:out value="${list.bno}" /></td>
-							<td><a class="move"
-								href='/board/get?bno=<c:out value="${list.bno}"/>'> <c:out
-										value="${list.noticeTitle}" />
-							</a></td>
-							<td><c:out value="${list.userId}" /></td>
-							<td><fmt:formatDate value="${list.noticeWritedate}"
-									pattern="yyyy/MM/dd" /></td>
-						</tr>
-					</c:forEach>
+					<tbody>
+						<c:forEach items="${list}" var="list">
+							<tr>
+								<td><c:out value="${list.bno}" /></td>
+								<td><a href="/board/get?bno=${list.bno}"> <c:out
+											value="${list.noticeTitle}">
+										</c:out>
+								</a></td>
+								<td><c:out value="${list.userId}" /></td>
+								<td><fmt:formatDate value="${list.noticeWritedate}"
+										pattern="yyyy/MM/dd" /></td>
+							</tr>
+						</c:forEach>
+					</tbody>
 				</table>
-				<c:if test="${ loginuser!= null }">
-					<c:if test="${ loginuser.adminck ==0 }">
-					</c:if>
-					<c:if test="${ loginuser.adminck ==1 }">
-						<a href="/board/enroll"><input type="button" class="btn-style"
-							value="글쓰기"></a>
-					</c:if>
-				</c:if>
 				<div class="pageInfo_wrap">
 					<div class="pageInfo_area">
 						<ul id="pageInfo" class="pageInfo">
-
 							<!-- 이전페이지 버튼 -->
 							<c:if test="${pageMaker.prev}">
 								<li class="pageInfo_btn previous"><a
 									href="${pageMaker.startPage-1}">Previous</a></li>
 							</c:if>
-
-							<!-- 페이지 번호 버튼 -->
+							<!-- 각 번호 페이지 버튼 -->
 							<c:forEach var="num" begin="${pageMaker.startPage}"
 								end="${pageMaker.endPage}">
-								<li class="pageInfo_btn ${pageMaker.cri.pageNum == num ? "active":"" }"><a
-									href="${num}">${num}</a></li>
+								<li class="pageInfo_btn"><a href="${num}">${num}</a></li>
 							</c:forEach>
 
 							<!-- 다음페이지 버튼 -->
@@ -82,23 +66,30 @@
 						</ul>
 					</div>
 				</div>
-				<form id="moveForm" method="get">
+
+				<form id="moveform2" method="get">
 					<input type="hidden" name="pageNum"
 						value="${pageMaker.cri.pageNum }"> <input type="hidden"
 						name="amount" value="${pageMaker.cri.amount }">
 				</form>
+				<c:if test="${ loginuser!= null }">
+					<c:if test="${ loginuser.adminck ==0 }">
+					</c:if>
+					<c:if test="${ loginuser.adminck ==1 }">
+						<a href="/board/enroll"><input type="button" class="btn-style"
+							value="글쓰기"></a>
+					</c:if>
+				</c:if>
 			</div>
 		</div>
 	</div>
-
 	<script>
-		let moveForm = $("#moveForm");
-
+		let moveform2 = $("#moveform2");
 		$(".pageInfo a").on("click", function(e) {
 			e.preventDefault();
-			moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-			moveForm.attr("action", "/board/notice");
-			moveForm.submit();
+			moveform2.find("input[name='pageNum']").val($(this).attr("href"));
+			moveform2.attr("action", "/board/notice");
+			moveform2.submit();
 		});
 
 		$(document).ready(function() {
@@ -122,5 +113,4 @@
 		});
 	</script>
 </body>
-
 </html>
