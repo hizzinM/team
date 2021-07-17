@@ -49,4 +49,50 @@
 		select count(*) from notice
 	</select>
 
+	<!-- QNA 등록 -->
+	<insert id="enrollQNA">
+		insert into
+		qna(qna_title,qna_category,user_id,qna_contents ) values
+		(#{qnaTitle},
+		#{qnaCategory},#{userId},#{qnaContents} )
+	</insert>
+
+	<!-- QNA 목록 -->
+	<select id="getQNAList" resultType="com.shop.model.QnaVO">
+		select * from qna
+	</select>
+
+	<!-- QNA 조회 -->
+	<select id="getQNAPage" resultType="com.shop.model.QnaVO">
+		select * from qna where
+		qna_id =
+		#{qnaId}
+	</select>
+
+	<!-- QNA 수정 -->
+	<update id="modifyQNA">
+		update notice set qna_title = #{qnaTitle},
+		qna_category =
+		#{qnaCategory}, qna_contents=#{qnaContents} where qna_id
+		= #{qnaId}
+	</update>
+
+	<!-- QNA 삭제 -->
+	<delete id="deleteQNA">
+		delete from qna where qna_id = #{qnaId}
+	</delete>
+
+	<!-- QNA 목록(페이징) -->
+	<select id="getListPaging" resultType="com.shop.model.QnaVO">
+		select * from (
+		select *
+		from notice order by qna_id desc) as Page2
+		limit #{skip},#{amount}
+	</select>
+
+	<!-- QNA 총 개숫 -->
+	<select id="getTotal" resultType="int">
+		select count(*) from qna
+	</select>
+
 </mapper>

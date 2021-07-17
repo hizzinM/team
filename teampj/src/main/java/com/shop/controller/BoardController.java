@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.shop.mapper.BoardMapper;
 import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
 import com.shop.model.PageMakerDTO;
@@ -21,8 +20,6 @@ import com.shop.service.BoardService;
 @RequestMapping("/board")
 public class BoardController {
 
-	@Autowired
-	private BoardMapper boardMapper;
 	@Autowired
 	private BoardService boardService;
 
