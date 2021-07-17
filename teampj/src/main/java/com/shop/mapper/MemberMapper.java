@@ -63,12 +63,13 @@ public interface MemberMapper {
 	public ShoppingCart selectCartId(String cartId);
 	// 장바구니 물품 수량 수정 기능
 	public int updateCartQty(ShoppingCart cart);
+	
 	//주문
-	public void orderinsert(UserOrder order) throws Exception;
+	public void orderinsert(UserOrder order);
 	//주문상세정보
-	public void orderinsertDetail(OrderDetail detail) throws Exception;
+	public void orderinsertDetail(OrderDetail detail);
 	//주문목록
-	public List<UserOrder> orderList(UserOrder order) throws Exception;
+	public List<UserOrder> orderList(UserOrder order);
 	
 	// public User readMember(String userId);
 

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,7 @@
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/mypage/myindex.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 </head>
 <body>
 	<header>
@@ -22,10 +25,9 @@
 	<div id="contents">
 		<div class="table-frame">
 			<h2>ORDER LIST</h2>
-			<h1>${loginuser.userName}님</h1>
 			<table>
 				<tr>
-					<td></td>
+					<c:out value="${orderList}" />
 				</tr>
 			</table>
 			<div>
