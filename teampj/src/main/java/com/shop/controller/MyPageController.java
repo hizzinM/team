@@ -180,8 +180,8 @@ public class MyPageController {
 		 logger.info(order.toString());
 		 
 		 
-		memberservice.orderinsert(order);
-		logger.info(order.toString());
+		//memberservice.orderinsert(order);
+		//logger.info(order.toString());
 		 
 		 
 		 

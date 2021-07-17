@@ -13,15 +13,8 @@ public class UserOrder {
 	private String orderAddressDetail;
 	private String orderAddressNum;
 	private int orderPrice;
-
-	private List<OrderDetail> orderDetail;	
+	private List<AttachImageVO> imageList;
 	
-	public List<OrderDetail> getOrderDetail() {
-		return orderDetail;
-	} 	
-	public void setOrderDetail(List<OrderDetail> orderDetail) {
-		this.orderDetail = orderDetail;
-	}
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	private LocalDateTime orderDate;
@@ -86,12 +79,19 @@ public class UserOrder {
 	public void setOrderDate(LocalDateTime orderDate) {
 		this.orderDate = orderDate;
 	}
+	public List<AttachImageVO> getImageList() {
+		return imageList;
+	}
+	public void setImageList(List<AttachImageVO> imageList) {
+		this.imageList = imageList;
+	}
 	@Override
 	public String toString() {
-		return "UserOrder [orderId=" + orderId + ", userId=" + userId + ", orderPhone=" + orderPhone
-				+ ", orderAddress=" + orderAddress + ", orderAddressDetail=" + orderAddressDetail + ", orderAddressNum="
-				+ orderAddressNum + ", orderPrice=" + orderPrice + ", orderDate=" + orderDate + ", orderDetail=" + orderDetail + "]";
+		return "UserOrder [orderId=" + orderId + ", userId=" + userId + ", orderPhone=" + orderPhone + ", orderAddress="
+				+ orderAddress + ", orderAddressDetail=" + orderAddressDetail + ", orderAddressNum=" + orderAddressNum
+				+ ", orderPrice=" + orderPrice + ", imageList=" + imageList + ", orderDate=" + orderDate + "]";
 	}
+	
 	
 	
 }

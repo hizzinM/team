@@ -84,13 +84,6 @@
 			  
 			  <c:forEach items="${cartList}" var="cartList" end="0">
 		
-			   <input type='hidden' name='productId' value="${cartList.productId}"/> 
-			   <input type='hidden' name='productName' value="${cartList.productName}"/> 
-			   <input type='hidden' name='orderSize' value="${cartList.cartProductsize}"/> 
-			   <input type="hidden" name="orderlPrice" value="${cartList.cartPrice}"/>
-			  <input type="hidden" name="orderColor" value="${cartList.cartProductColor}"/>
-			  <input type="hidden" name="orderQty" value="${cartList.cartQty}"/>
-			  
 			  <div class="inputArea">
 			   <label for="">수령인 아이디</label>
 			   <input type="text" name="userId" id="userId" required="required" value="${cartList.userId}">
@@ -123,7 +116,20 @@
 			  </div>
 			  </c:forEach>
 			
-			 
+				
+				
+				
+				<input type='hidden' name='imageList[0].fileName' value='1'>";
+				<input type='hidden' name='imageList[0].uuid' value='2'>";
+				<input type='hidden' name='imageList[0].uploadPath' value='3'>";
+				<input type='hidden' name='imageList[0].imageId' value='4'>";
+				<input type='hidden' name='imageList[0].productId' value='5'>";
+				
+				<input type='hidden' name='imageList[1].fileName' value='6'>";
+				<input type='hidden' name='imageList[1].uuid' value='7'>";
+				<input type='hidden' name='imageList[1].uploadPath' value='8'>";
+				<input type='hidden' name='imageList[1].imageId' value='9'>";
+				<input type='hidden' name='imageList[1].productId' value='10'>";  
 			 </form>
 			  
 			</div>
@@ -222,6 +228,14 @@
 			 $(".orderOpne_bnt").slideDown();
 			});      
 	
+	   
+	
+	   
+	   
+	   
+	   
+	   
+	   
 	</script>
 </body>
 </html>

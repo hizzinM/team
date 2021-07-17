@@ -128,17 +128,17 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void orderinsert(UserOrder order) throws Exception {
-		logger.info("(service)orderinsert........");
-			order.setOrderDate(LocalDateTime.now());
-			membermapper.orderinsert(order);
-		if (order.getOrderDetail() == null || order.getOrderDetail().size() <= 0) {
-				return;
-		}
-		order.getOrderDetail().forEach(orderdetail ->{
-			orderdetail.setOrderId(order.getOrderId());
-				membermapper.orderinsertDetail(orderdetail);
-		
-		});
+		//logger.info("(service)orderinsert........");
+//			order.setOrderDate(LocalDateTime.now());
+//			membermapper.orderinsert(order);
+//		if (order.getOrderDetail() == null || order.getOrderDetail().size() <= 0) {
+//				return;
+//		}
+//		order.getOrderDetail().forEach(orderdetail ->{
+//			orderdetail.setOrderId(order.getOrderId());
+//				membermapper.orderinsertDetail(orderdetail);
+//		
+//		});
 	}
 
 	
