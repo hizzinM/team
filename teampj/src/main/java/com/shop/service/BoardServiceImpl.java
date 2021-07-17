@@ -83,7 +83,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<QnaVO> getQnaVOListPaging(Criteria cri) {
-		return boardmapper.getQnaVOListPaging(cri);
+	public List<QnaVO> getQnaListPaging(Criteria cri) {
+		return boardmapper.getQnaListPaging(cri);
 	}
 }

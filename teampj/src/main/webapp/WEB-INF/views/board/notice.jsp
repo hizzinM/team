@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>회원관리</title>
+<title>공지사항</title>
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
