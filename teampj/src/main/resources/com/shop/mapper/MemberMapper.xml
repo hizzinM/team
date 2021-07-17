@@ -135,20 +135,26 @@
 	</delete>
 	<!-- 주문 삽입 -->
 	<insert id="orderinsert">
+	<selectKey resultType="int" keyProperty="orderId"
+			order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
 	 insert into user_order (order_id,user_id,order_phone,order_address,order_address_detail,order_address_num,order_price,order_date)
      values (#{orderId},#{userId},#{orderPhone},#{orderAddress},#{orderAddressDetail},#{orderAddressNum},#{orderPrice},#{orderDate})
 	</insert>
 	<!-- 주문 상세정보삽입 -->
 	<insert id="orderinsertDetail">
-	insert into order_detail(order_detail_id,order_id,product_name, order_size,order_inventory)
-	select  #{orderDetailId},#{orderId},product_name,cart_productsize,cart_qty from shopping_cart; 
+	insert into order_detail(order_detail_id,order_id,product_id,product_name,order_size,order_price,order_color,order_qty)
+	 values (#{orderDetailId},#{orderId},#{productId},#{productName},#{orderSize},#{orderPrice},#{orderColor},#{orderQty});
 	</insert>
 	
 	<select id="orderList" resultType="com.shop.model.UserOrder">
 	select order_id,user_id,order_phone,order_address,order_address_detail,order_address_num,order_price,order_date
 	from user_order where user_id = #{userId}
 	</select>
-
+	<delete id="cartAllDelete">
+	 delete from shopping_cart where user_id = #{userId}
+	</delete>
 	
 	
 </mapper> 

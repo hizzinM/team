@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,7 @@ import com.shop.model.UserOrder;
 
 @Service
 public class MemberServiceImpl implements MemberService {
+	private static final Logger logger = LoggerFactory.getLogger("MemberServiceImpl.class");
 	@Autowired
 	MemberMapper membermapper;
 	@Autowired
@@ -100,8 +103,7 @@ public class MemberServiceImpl implements MemberService {
 	public void addCart(ShoppingCart cart) throws Exception{
 		 membermapper.addCart(cart);
 	}
-	//장바구니 목록
-	@Override
+	//장바구니 목록 
 	public List<ShoppingCart> selectCart(String userId)  throws Exception{
 		return membermapper.selectCart(userId);
 		
@@ -126,14 +128,20 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void orderinsert(UserOrder order) throws Exception {
+		logger.info("(service)orderinsert........");
+			order.setOrderDate(LocalDateTime.now());
 			membermapper.orderinsert(order);
+		if (order.getOrderDetail() == null || order.getOrderDetail().size() <= 0) {
+				return;
+		}
+		order.getOrderDetail().forEach(orderdetail ->{
+			orderdetail.setOrderId(order.getOrderId());
+				membermapper.orderinsertDetail(orderdetail);
+		
+		});
 	}
 
-	@Override
-	public void orderinsertDetail(OrderDetail detail) throws Exception {
-		membermapper.orderinsertDetail(detail);
-		
-	}
+	
 
 	@Override
 	public List<UserOrder> orderList(UserOrder order) throws Exception {

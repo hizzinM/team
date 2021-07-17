@@ -67,21 +67,30 @@
 				<p>카트ID번호 클릭하시면 수량 수정가능(10개까지),총합계 클릭하면 선택한 물품 전체가격확인가능</p>
 		<div class="listResult">
  			<div class="sum">
-  			<!--<a href="javascript:sjk()">총합계:</a><span id="sumsum"></span>원-->
-  			총 합계 : <fmt:formatNumber pattern="###,###,###" value="${sum}" />원
+  			<!--  <a href="javascript:sjk()">총합계:</a><span id="sumsum"></span>원-->
+  			총 합계 : <fmt:formatNumber pattern="###,###,###" value="${sum}"/>원
  			</div>
  			<div class="orderOpne">
   			<button type="button" id="orderOpne_bnt">주문 정보 입력</button>
  		</div>
 	</div>
 			<div class="orderInfo">
-			 <form role="form" method="post" autocomplete="off" action="/mypage/order">
+			 <form role="form" method="post" action="/mypage/order">
 			    
 			 <input type="hidden" name="orderPrice" value="${sum}"/>
 			  
 			 <input type="hidden" name="orderDetailId" value="0"/> 
-			   
+			 <input type="hidden" name="orderId" value="0"/>
+			  
 			  <c:forEach items="${cartList}" var="cartList" end="0">
+		
+			   <input type='hidden' name='productId' value="${cartList.productId}"/> 
+			   <input type='hidden' name='productName' value="${cartList.productName}"/> 
+			   <input type='hidden' name='orderSize' value="${cartList.cartProductsize}"/> 
+			   <input type="hidden" name="orderlPrice" value="${cartList.cartPrice}"/>
+			  <input type="hidden" name="orderColor" value="${cartList.cartProductColor}"/>
+			  <input type="hidden" name="orderQty" value="${cartList.cartQty}"/>
+			  
 			  <div class="inputArea">
 			   <label for="">수령인 아이디</label>
 			   <input type="text" name="userId" id="userId" required="required" value="${cartList.userId}">
@@ -113,6 +122,8 @@
 			  
 			  </div>
 			  </c:forEach>
+			
+			 
 			 </form>
 			  
 			</div>

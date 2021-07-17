@@ -127,7 +127,7 @@ public class AdminController {
 		logger.info("goodsmenuPOST......" + product);
 
 		adminService.insertpro(product);
-
+logger.info(product.toString());
 		rttr.addFlashAttribute("insert_result", product.getProductName());
 		System.out.println(product);
 		return "redirect:/admin/goodsmenu";

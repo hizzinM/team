@@ -24,6 +24,7 @@ public class User {
 	private String accountName;
 	private String accountBank;
 	private String accountNum;
+	
 
 	public User() {
 		super();
