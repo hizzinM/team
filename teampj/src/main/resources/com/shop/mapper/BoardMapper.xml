@@ -48,7 +48,7 @@
 	<select id="getTotal" resultType="int">
 		select count(*) from notice
 	</select>
-
+ 
 	<!-- QNA 등록 -->
 	<insert id="enrollQNA">
 		insert into
@@ -71,7 +71,7 @@
 
 	<!-- QNA 수정 -->
 	<update id="modifyQNA">
-		update notice set qna_title = #{qnaTitle},
+		update qna set qna_title = #{qnaTitle},
 		qna_category =
 		#{qnaCategory}, qna_contents=#{qnaContents} where qna_id
 		= #{qnaId}
@@ -83,16 +83,17 @@
 	</delete>
 
 	<!-- QNA 목록(페이징) -->
-	<select id="getListPaging" resultType="com.shop.model.QnaVO">
+	<select id="getQnaListPaging" resultType="com.shop.model.QnaVO">
 		select * from (
 		select *
-		from notice order by qna_id desc) as Page2
+		from qna order by qna_id desc) as Page2
 		limit #{skip},#{amount}
 	</select>
 
 	<!-- QNA 총 개숫 -->
-	<select id="getTotal" resultType="int">
+	<select id="getQnaTotal" resultType="int">
 		select count(*) from qna
 	</select>
+
 
 </mapper>

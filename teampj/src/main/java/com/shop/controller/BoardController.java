@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
 import com.shop.model.PageMakerDTO;
+import com.shop.model.QnaVO;
 import com.shop.service.BoardService;
 
 @Controller
@@ -81,8 +82,58 @@ public class BoardController {
 	}
 
 	// qna 페이지 이동
-	@RequestMapping(value = "qna", method = RequestMethod.GET)
-	public void getQna(Model model) throws Exception {
-		logger.info("Qna 페이지 접속");
+	@GetMapping("/qna")
+	public void getQna(Model model, Criteria cri) {
+		logger.info("Qna 목록 페이지 접속");
+		model.addAttribute("Qnalist", boardService.getQnaListPaging(cri));
+		int total = boardService.getTotal(cri);
+		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+		model.addAttribute("pageMaker", pageMake);
 	}
+
+	// qna 작성 페이지 이동
+	@GetMapping("/qnaenroll")
+	public void getQnaenroll() {
+		logger.info("게시글 작성 페이지 진입");
+	}
+
+	// qna 등록
+	@PostMapping("/qnaenroll")
+	public String postQnaenroll(QnaVO qna, RedirectAttributes rttr) {
+		logger.info("QnaVO : " + qna);
+		boardService.enrollQNA(qna);
+		rttr.addFlashAttribute("result", "enrol success");
+		return "redirect:/board/qna";
+	}
+
+	// qna 조회
+	@GetMapping("/getqna")
+	public void QnaGetPageGET(int qnaId, Model model, Criteria cri) {
+		model.addAttribute("qnaInfo", boardService.getQNAPage(qnaId));
+		model.addAttribute("cri", cri);
+	}
+
+	// qna 수정페이지 이동
+	@GetMapping("/qnamodify")
+	public void QnaModifyGET(int qnaId, Model model, Criteria cri) {
+		model.addAttribute("qnaInfo", boardService.getQNAPage(qnaId));
+		model.addAttribute("cri", cri);
+	}
+
+	// qna 수정
+	@PostMapping("/qnamodify")
+	public String QnaModifyPOST(QnaVO qna, RedirectAttributes rttr) {
+		boardService.modifyQNA(qna);
+		rttr.addFlashAttribute("result", "modify success");
+		return "redirect:/board/qna";
+	}
+
+	// qna 삭제
+	@PostMapping("/qnadelete")
+	public String QnaDeletePOST(int qnaId, RedirectAttributes rttr) {
+		boardService.deleteQNA(qnaId);
+		rttr.addFlashAttribute("result", "delete success");
+		return "redirect:/board/qna";
+	}
+
 }

@@ -45,6 +45,6 @@ public interface BoardService {
 	public int deleteQNA(int qnaId);
 
 	/* QnaVO 목록(페이징 적용) */
-	public List<QnaVO> getQnaVOListPaging(Criteria cri);
+	public List<QnaVO> getQnaListPaging(Criteria cri);
 
 }
