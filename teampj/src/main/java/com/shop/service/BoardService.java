@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
+import com.shop.model.QnaVO;
 
 public interface BoardService {
 
@@ -27,4 +28,23 @@ public interface BoardService {
 
 	/* 게시판 총 갯수 */
 	public int getTotal(Criteria cri);
+
+	/* QNA 등록 */
+	public void enrollQNA(QnaVO qna);
+
+	/* QNA 목록 */
+	public List<QnaVO> getQNAList();
+
+	/* QNA 조회 */
+	public QnaVO getQNAPage(int qnaId);
+
+	/* QNA 수정 */
+	public int modifyQNA(QnaVO qna);
+
+	/* QNA 삭제 */
+	public int deleteQNA(int qnaId);
+
+	/* QnaVO 목록(페이징 적용) */
+	public List<QnaVO> getQnaVOListPaging(Criteria cri);
+
 }

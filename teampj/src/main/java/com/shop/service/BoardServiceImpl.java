@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.shop.mapper.BoardMapper;
 import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
+import com.shop.model.QnaVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -53,5 +54,36 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int getTotal(Criteria cri) {
 		return boardmapper.getTotal(cri);
+	}
+
+	@Override
+	public void enrollQNA(QnaVO qna) {
+		boardmapper.enrollQNA(qna);
+	}
+
+	@Override
+	public List<QnaVO> getQNAList() {
+		return boardmapper.getQNAList();
+	}
+
+	@Override
+	public QnaVO getQNAPage(int qnaId) {
+
+		return boardmapper.getQNAPage(qnaId);
+	}
+
+	@Override
+	public int modifyQNA(QnaVO qna) {
+		return boardmapper.modifyQNA(qna);
+	}
+
+	@Override
+	public int deleteQNA(int qnaId) {
+		return boardmapper.delete(qnaId);
+	}
+
+	@Override
+	public List<QnaVO> getQnaVOListPaging(Criteria cri) {
+		return boardmapper.getQnaVOListPaging(cri);
 	}
 }
