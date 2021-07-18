@@ -1,5 +1,7 @@
 package com.shop.controller;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.Calendar;
@@ -221,7 +223,15 @@ public class MyPageController {
 		 order.setUserId(userId);
 		 
 		 memberservice.orderinsert(order); 
-
+		 
+		 List<OrderDetail> list=memberservice.orderDetailList(order);
+		 
+		 Product product=new Product();
+		 for(OrderDetail i: list) {
+		 product.setProductId(Integer.parseInt(i.getProductId()));
+		 product.setProductInventory(Integer.parseInt(i.getOrderQty()));
+		 	membermapper.updateInven(product);
+		 }
 
 		 return "redirect:/mypage/addCart";
 		}

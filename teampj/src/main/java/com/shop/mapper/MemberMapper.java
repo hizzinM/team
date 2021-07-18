@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shop.model.Criteria;
 import com.shop.model.OrderDetail;
+import com.shop.model.Product;
 import com.shop.model.ShoppingCart;
 import com.shop.model.User;
 import com.shop.model.UserOrder;
@@ -79,6 +80,12 @@ public interface MemberMapper {
 	public int deleteOrderDetail(String orderId);
 	
 	// public User readMember(String userId);
+
+	public void updateInven(Product product);
+
+	
+
+	
 
 	// public int updatePw(User user) throws Exception;
 }

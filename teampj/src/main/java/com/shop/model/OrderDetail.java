@@ -119,14 +119,6 @@ public class OrderDetail {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
-
-	@Override
-	public String toString() {
-		return "OrderDetail [orderDetailId=" + orderDetailId + ", orderId=" + orderId + ", productId=" + productId
-				+ ", productName=" + productName + ", orderSize=" + orderSize + ", detailPrice=" + detailPrice
-				+ ", orderColor=" + orderColor + ", orderQty=" + orderQty + ", uploadPath=" + uploadPath + ", uuid="
-				+ uuid + ", fileName=" + fileName + "]";
-	}
 	
 	
 	

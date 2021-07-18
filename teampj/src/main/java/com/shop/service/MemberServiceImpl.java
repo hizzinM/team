@@ -138,7 +138,8 @@ public class MemberServiceImpl implements MemberService {
 		logger.info(orderDetailList.toString());
 			orderDetailList.setOrderId(order.getOrderId());
 			membermapper.orderinsertDetail(orderDetailList);
-		
+			 
+			 
 		});
 	}
 
