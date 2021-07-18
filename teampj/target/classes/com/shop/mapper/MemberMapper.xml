@@ -135,26 +135,48 @@
 	</delete>
 	<!-- 주문 삽입 -->
 	<insert id="orderinsert">
-	<selectKey resultType="int" keyProperty="orderId"
-			order="AFTER">
-			SELECT LAST_INSERT_ID()
-		</selectKey>
-	 insert into user_order (order_id,user_id,order_phone,order_address,order_address_detail,order_address_num,order_price,order_date)
-     values (#{orderId},#{userId},#{orderPhone},#{orderAddress},#{orderAddressDetail},#{orderAddressNum},#{orderPrice},#{orderDate})
+	 insert into user_order (order_id,user_id,user_name,order_phone,order_address,order_address_detail,order_address_num,order_price,order_date)
+     values (#{orderId},#{userId},#{userName},#{orderPhone},#{orderAddress},#{orderAddressDetail},#{orderAddressNum},#{orderPrice},sysdate())
 	</insert>
 	<!-- 주문 상세정보삽입 -->
 	<insert id="orderinsertDetail">
-	insert into order_detail(order_detail_id,order_id,product_id,product_name,order_size,order_price,order_color,order_qty)
-	 values (#{orderDetailId},#{orderId},#{productId},#{productName},#{orderSize},#{orderPrice},#{orderColor},#{orderQty});
+	insert into order_detail(order_detail_id,order_id,product_id,product_name,order_size,detail_price,order_color,order_qty)
+	 values (#{orderDetailId},#{orderId},#{productId},#{productName},#{orderSize},#{detailPrice},#{orderColor},#{orderQty});
 	</insert>
-	
+	<!-- 주문리스트 -->
 	<select id="orderList" resultType="com.shop.model.UserOrder">
-	select order_id,user_id,order_phone,order_address,order_address_detail,order_address_num,order_price,order_date
+	select order_id,user_id,user_name,order_phone,order_address,order_address_detail,order_address_num,order_price,DATE_FORMAT(order_date, '%Y-%m-%d %H:%i:%s') as order_date
 	from user_order where user_id = #{userId}
 	</select>
-	<delete id="cartAllDelete">
+	<!-- 주문 상세리스트 -->
+	<select id="orderDetailList" resultType="com.shop.model.OrderDetail">
+	   select o.order_detail_id,o.product_id,o.product_name,o.order_size,o.detail_price,o.order_color,o.order_qty,i.file_name,i.upload_path,i.uuid
+	from order_detail o,user_order u join (select
+		product_id
+		,max(case when image_id=1 then file_name end) as file_name
+		,max(case when image_id=1 then upload_path end) as upload_path
+		,max(case when image_id=1 then uuid end) as uuid
+		from product_img group by product_id) i where o.product_id=i.product_id  and u.order_id=o.order_id and u.order_id = #{orderId} and u.user_id=#{userId}
+	</select>
+	
+	<delete id="deleteOrder">
+	 delete from user_order where order_id = #{orderId}
+	</delete>
+	
+	<delete id="deleteOrderDetail">
+	 delete from order_detail where order_id = #{orderId}
+	</delete>
+	
+	
+	<delete id="cartSelectDelete">
 	 delete from shopping_cart where user_id = #{userId}
 	</delete>
 	
+	
+	
+	
+	<update id="updateInven">
+		update product set product_inventory=product_inventory-#{productInventory} where product_id=#{productId}
+	</update>
 	
 </mapper> 

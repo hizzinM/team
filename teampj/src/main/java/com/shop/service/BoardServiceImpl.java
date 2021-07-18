@@ -66,6 +66,7 @@ public class BoardServiceImpl implements BoardService {
 		return boardmapper.getQNAList();
 	}
 
+	
 	@Override
 	public QnaVO getQNAPage(int qnaId) {
 

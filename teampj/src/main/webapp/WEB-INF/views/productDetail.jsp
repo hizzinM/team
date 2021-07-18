@@ -77,10 +77,15 @@
                         <td>색상</td>
                         <td><c:out value="${goodDetailData.productColor}" /></td>
                     </tr>
+                    <c:if test="${goodDetailData.productInventory != 0}">
                     <tr>
                         <td>재고</td>
                         <td><c:out value="${goodDetailData.productInventory}" /></td>
                     </tr>
+                    </c:if>
+                    <c:if test="${goodDetailData.productInventory == 0}">
+                    	<p style="color:red;">재고가 없습니다</p>
+                    </c:if>
                     <tr>
                         <td>수량</td>
                         <td><select id="amount">
@@ -130,11 +135,12 @@
 		   			uuid:"${goodDetailData.uuid}"
 	   },
 	   success : function(result){
-		  console.log(result)
+		  console.log("sjk=" + result)
 	    if($.trim(result)==1) {
 	     alert("카트 담기 성공");
 	    }else{
 	     alert("회원만 사용할 수 있습니다.");
+	      
 	    }
 	   },
 	   error : function(){

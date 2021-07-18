@@ -16,7 +16,7 @@ public class ShoppingCart {
 	private int cartQty;
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	private LocalDateTime cartUpdate;
-	
+	private String userName;
 	private String fileName;
 	private String uploadPath;
 	private String uuid;
@@ -134,6 +134,18 @@ public class ShoppingCart {
 		this.cartUpdate = cartUpdate;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+
 	public String getFileName() {
 		return fileName;
 	}
@@ -213,10 +225,14 @@ public class ShoppingCart {
 		return "ShoppingCart [cartId=" + cartId + ", userId=" + userId + ", productId=" + productId + ", productName="
 				+ productName + ", cartProductsize=" + cartProductsize + ", cartProductColor=" + cartProductColor
 				+ ", cartProductOption=" + cartProductOption + ", cartPrice=" + cartPrice + ", cartQty=" + cartQty
-				+ ", cartUpdate=" + cartUpdate + ", fileName=" + fileName + ", uploadPath=" + uploadPath + ", uuid="
-				+ uuid + ", addressNum=" + addressNum + ", address=" + address + ", addressDetail=" + addressDetail
-				+ ", phone=" + phone + "]";
+				+ ", cartUpdate=" + cartUpdate + ", userName=" + userName + ", fileName=" + fileName + ", uploadPath="
+				+ uploadPath + ", uuid=" + uuid + ", addressNum=" + addressNum + ", address=" + address
+				+ ", addressDetail=" + addressDetail + ", phone=" + phone + "]";
 	}
+
+
+
+	
 
 
 

@@ -229,7 +229,7 @@
 				str += "<input type='hidden' name='imageList[0].uploadPath' value='"+ obj.uploadPath +"'>";
 				str += "<input type='hidden' name='imageList[0].imageId' value='1'>";
 				str += "</div>";
-				console.log(str)
+				
 				uploadResult.append(str);     
 			}
 			/* 이미지 출력 */

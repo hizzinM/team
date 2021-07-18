@@ -25,17 +25,130 @@
 	<div id="contents">
 		<div class="table-frame">
 			<h2>ORDER LIST</h2>
+				<h3>주문번호 클릭시 상세정보 열람가능</h3>
 			<table>
-				<tr>
-					<c:out value="${orderList}" />
+			  <thead>
+			  	<tr>
+				<td><input type="checkbox" name="allCheck" id=allCheck />전체선택</td>
 				</tr>
-			</table>
+			 </thead>
+			<c:forEach items="${orderList}" var="orderList">
+				<tbody>
+				<tr>
+					<td><input type="checkbox" name="RowCheck" class="RowCheck" value="${orderList.orderId}" >주문번호</td>
+					<td><a href="/mypage/orderDetail?n=${orderList.orderId}"><c:out value="${orderList.orderId}"></c:out></a></td>
+				</tr>
+				<tr>
+					<td>수령인아이디</td>
+					<td><c:out value="${orderList.userId}"></c:out></td>
+				</tr>
+				<tr>
+					<td>수령인</td>
+					<td><c:out value="${orderList.userName}"></c:out></td>
+				</tr>
+				<tr>
+					<td>휴대폰 번호</td>
+					<td><c:out value="${orderList.orderPhone}"></c:out></td>
+				</tr>
+				<tr>
+					<td>우편번호</td>
+					<td><c:out value="${orderList.orderAddressNum}"></c:out></td>
+				</tr>
+				<tr>
+					<td>주소</td>
+					<td><c:out value="${orderList.orderAddress}"></c:out></td>
+				</tr>
+				<tr>
+					<td>상세주소</td>
+					<td><c:out value="${orderList.orderAddressDetail}"></c:out></td>
+				</tr>
+				<tr>
+					<td>총가격</td>
+					<td><c:out value="${orderList.orderPrice}"></c:out></td>
+				</tr>
+				<tr>
+					<td>주문날짜</td>
+					<td><c:out value="${orderList.orderDate}"></c:out></td>
+				</tr>
+				</tbody>
+			</c:forEach>
+			
+		</table>
+			
 			<div>
-				
-			</div>
+				<input type="button" value="주문취소" class="deletebutton button_style delete_btn" onclick="deleteValue()">
+		</div>
 
 		</div>
 		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
+	<script type="text/javascript">
+	$(function() {
+		var chkObj = document.getElementsByName("RowCheck");
+		var rowCnt = chkObj.length;
+
+		$("input[name='allCheck']").click(function() {
+			var chk_listArr = $("input[name='RowCheck']");
+			for (var i = 0; i < chk_listArr.length; i++) {
+				chk_listArr[i].checked = this.checked;
+			}
+		});
+		$("input[name='RowCheck']").click(function() {
+			if ($("input[name='RowCheck']:checked").length == rowCnt) {
+				$("input[name='allCheck']")[0].checked = true;
+			} else {
+				$("input[name='allCheck']")[0].checked = false;
+			}
+		});
+	});
+	
+	/*주문 취소*/
+	function deleteValue() {
+		var url = "/mypage/orderDelete"; // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
+		var valueArr = new Array();
+		var list = $("input[name='RowCheck']");
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].checked) { //선택되어 있으면 배열에 값을 저장함
+				valueArr.push(list[i].value);
+			}
+		}
+		if (valueArr.length == 0) {
+			alert("선택된 글이 없습니다.");
+		} else {
+			var chk = confirm("정말 삭제하시겠습니까?");
+			$.ajax({
+				url : "/mypage/orderDelete", // 전송 URL
+				type : 'GET', // GET or POST 방식
+				traditional : true,
+				data : {
+					valueArr : valueArr
+				// 보내고자 하는 data 변수 설정
+				},
+				success : function(jdata) {
+					console.log(jdata)
+					if (jdata = 1) {
+						alert("삭제 성공");
+						location.replace("/mypage/orderList")
+					} 
+					else{
+						alert("삭제 실패");
+					}
+				}
+			});
+		}
+	
+	}
+	
+	
+	
+	
+	
+	
+	</script>
+	
+	
+	
+	
+	
 </body>
 </html>

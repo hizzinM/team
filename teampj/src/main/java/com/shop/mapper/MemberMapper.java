@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shop.model.Criteria;
 import com.shop.model.OrderDetail;
+import com.shop.model.Product;
 import com.shop.model.ShoppingCart;
 import com.shop.model.User;
 import com.shop.model.UserOrder;
@@ -70,8 +71,21 @@ public interface MemberMapper {
 	public void orderinsertDetail(OrderDetail detail);
 	//주문목록
 	public List<UserOrder> orderList(UserOrder order);
+	//주문상세목록
+	public List<OrderDetail> orderDetailList(UserOrder order) throws Exception;
+	/* 상품삭제 */
+	public int deleteOrder(String orderId);
+
+	/* 상품이미지 전체삭제 */
+	public int deleteOrderDetail(String orderId);
 	
 	// public User readMember(String userId);
+
+	public void updateInven(Product product);
+
+	
+
+	
 
 	// public int updatePw(User user) throws Exception;
 }
