@@ -25,14 +25,49 @@
 	<div id="contents">
 		<div class="table-frame">
 			<h2>ORDER LIST</h2>
+			<c:forEach items="${orderList}" var="orderList">
 			<table>
 				<tr>
-					<c:out value="${orderList}" />
+					<td>주문번호</td>
+					<td><a href="/mypage/orderDetail?n=${orderList.orderId}"><c:out value="${orderList.orderId}"></c:out></a></td>
+				</tr>
+				<tr>
+					<td>수령인아이디</td>
+					<td><c:out value="${orderList.userId}"></c:out></td>
+				</tr>
+				<tr>
+					<td>수령인</td>
+					<td><c:out value="${orderList.userName}"></c:out></td>
+				</tr>
+				<tr>
+					<td>휴대폰 번호</td>
+					<td><c:out value="${orderList.orderPhone}"></c:out></td>
+				</tr>
+				<tr>
+					<td>우편번호</td>
+					<td><c:out value="${orderList.orderAddressNum}"></c:out></td>
+				</tr>
+				<tr>
+					<td>주소</td>
+					<td><c:out value="${orderList.orderAddress}"></c:out></td>
+				</tr>
+				<tr>
+					<td>상세주소</td>
+					<td><c:out value="${orderList.orderAddressDetail}"></c:out></td>
+				</tr>
+				<tr>
+					<td>총가격</td>
+					<td><c:out value="${orderList.orderPrice}"></c:out></td>
+				</tr>
+				<tr>
+					<td>주문날짜</td>
+					<td><c:out value="${orderList.orderDate}"></c:out></td>
 				</tr>
 			</table>
+			</c:forEach>
 			<div>
 				
-			</div>
+		</div>
 
 		</div>
 		<%@ include file="../include_collection/footer.jsp"%>

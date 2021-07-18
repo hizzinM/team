@@ -59,4 +59,7 @@ public interface MemberService {
 	
 	//주문목록
 	public List<UserOrder> orderList(UserOrder order) throws Exception;
+	
+	//주문상세목록
+	public List<OrderDetail> orderDetailList(UserOrder order) throws Exception;
 }

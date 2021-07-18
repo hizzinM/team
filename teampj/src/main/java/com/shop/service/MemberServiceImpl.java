@@ -125,28 +125,36 @@ public class MemberServiceImpl implements MemberService {
 		
 		return membermapper.updateCartQty(cart);
 	}
-
+	//주문 삽입
 	@Override
 	public void orderinsert(UserOrder order) throws Exception {
-		//logger.info("(service)orderinsert........");
-//			order.setOrderDate(LocalDateTime.now());
-//			membermapper.orderinsert(order);
-//		if (order.getOrderDetail() == null || order.getOrderDetail().size() <= 0) {
-//				return;
-//		}
-//		order.getOrderDetail().forEach(orderdetail ->{
-//			orderdetail.setOrderId(order.getOrderId());
-//				membermapper.orderinsertDetail(orderdetail);
-//		
-//		});
+		logger.info("(service)orderinsert........");
+			//order.setOrderDate(LocalDateTime.now());
+			membermapper.orderinsert(order);
+	if (order.getOrderDetailList() == null || order.getOrderDetailList().size() <= 0) {
+				return;
+		}
+		order.getOrderDetailList().forEach(orderDetailList ->{
+		logger.info(orderDetailList.toString());
+			orderDetailList.setOrderId(order.getOrderId());
+			membermapper.orderinsertDetail(orderDetailList);
+		
+		});
 	}
 
 	
-
+	//주문리스트
 	@Override
 	public List<UserOrder> orderList(UserOrder order) throws Exception {
 		
 		return membermapper.orderList(order);
 	}
+
+	@Override
+	public List<OrderDetail> orderDetailList(UserOrder order) throws Exception {
+		
+		return membermapper.orderDetailList(order);
+	}
+	
 	
 }

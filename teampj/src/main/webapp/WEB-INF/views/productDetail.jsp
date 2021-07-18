@@ -130,11 +130,12 @@
 		   			uuid:"${goodDetailData.uuid}"
 	   },
 	   success : function(result){
-		  console.log(result)
+		  console.log("sjk=" + result)
 	    if($.trim(result)==1) {
 	     alert("카트 담기 성공");
 	    }else{
 	     alert("회원만 사용할 수 있습니다.");
+	      
 	    }
 	   },
 	   error : function(){

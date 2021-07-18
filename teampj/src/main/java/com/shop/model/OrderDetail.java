@@ -1,41 +1,44 @@
 package com.shop.model;
 
 public class OrderDetail {
-	private int orderDetailId;	
-	private int orderId;
+	private String orderDetailId;	
+	private String orderId;
 	private String productId;
 	private String productName;
 	private String orderSize;
-	private String orderlPrice;
+	private String detailPrice;
 	private String orderColor;
 	private String orderQty;
+	private String uploadPath;
+	private String uuid;
+	private String fileName;
 	
-	public OrderDetail(int orderDetailId, int orderId, String productId, String productName, String orderSize,
-			String orderlPrice, String orderColor, String orderQty) {
+	public OrderDetail(String orderDetailId, String orderId, String productId, String productName, String orderSize,
+			String detailPrice, String orderColor, String orderQty) {
 		super();
 		this.orderDetailId = orderDetailId;
 		this.orderId = orderId;
 		this.productId = productId;
 		this.productName = productName;
 		this.orderSize = orderSize;
-		this.orderlPrice = orderlPrice;
+		this.detailPrice = detailPrice;
 		this.orderColor = orderColor;
 		this.orderQty = orderQty;
 	}
 
-	public int getOrderDetailId() {
+	public String getOrderDetailId() {
 		return orderDetailId;
 	}
 
-	public void setOrderDetailId(int orderDetailId) {
+	public void setOrderDetailId(String orderDetailId) {
 		this.orderDetailId = orderDetailId;
 	}
 
-	public int getOrderId() {
+	public String getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(int orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 
@@ -63,12 +66,12 @@ public class OrderDetail {
 		this.orderSize = orderSize;
 	}
 
-	public String getOrderlPrice() {
-		return orderlPrice;
+	public String getDetailPrice() {
+		return detailPrice;
 	}
 
-	public void setOrderlPrice(String orderlPrice) {
-		this.orderlPrice = orderlPrice;
+	public void setDetailPrice(String detailPrice) {
+		this.detailPrice = detailPrice;
 	}
 
 	public String getOrderColor() {
@@ -87,11 +90,42 @@ public class OrderDetail {
 		this.orderQty = orderQty;
 	}
 
+	
+
+	public OrderDetail() {
+		super();
+	}
+
+	public String getUploadPath() {
+		return uploadPath;
+	}
+
+	public void setUploadPath(String uploadPath) {
+		this.uploadPath = uploadPath;
+	}
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	@Override
 	public String toString() {
 		return "OrderDetail [orderDetailId=" + orderDetailId + ", orderId=" + orderId + ", productId=" + productId
-				+ ", productName=" + productName + ", orderSize=" + orderSize + ", orderlPrice=" + orderlPrice
-				+ ", orderColor=" + orderColor + ", orderQty=" + orderQty + "]";
+				+ ", productName=" + productName + ", orderSize=" + orderSize + ", detailPrice=" + detailPrice
+				+ ", orderColor=" + orderColor + ", orderQty=" + orderQty + ", uploadPath=" + uploadPath + ", uuid="
+				+ uuid + ", fileName=" + fileName + "]";
 	}
 	
 	

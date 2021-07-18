@@ -42,6 +42,7 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+	border: 1px black solid;
 }
 /*사각형 버튼*/
 .button_style{

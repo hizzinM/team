@@ -70,6 +70,8 @@ public interface MemberMapper {
 	public void orderinsertDetail(OrderDetail detail);
 	//주문목록
 	public List<UserOrder> orderList(UserOrder order);
+	//주문상세목록
+	public List<OrderDetail> orderDetailList(UserOrder order) throws Exception;
 	
 	// public User readMember(String userId);
 

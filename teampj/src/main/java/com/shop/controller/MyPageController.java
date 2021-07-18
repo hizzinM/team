@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -110,7 +111,7 @@ public class MyPageController {
 	// 카트 담기
 		@ResponseBody
 		@RequestMapping(value = "/addCart", method =RequestMethod.POST)
-		   public int addCart(ShoppingCart cart, HttpSession session) throws Exception {
+		   public String addCart(ShoppingCart cart, HttpSession session) throws Exception {
 	
 			int result=0;
 			
@@ -123,7 +124,8 @@ public class MyPageController {
 		    memberservice.addCart(cart);
 		    result=1;
 			 }
-			return	result;		 
+			System.out.println(result);
+			return	String.valueOf(result);		 
 		}
 		// 카트 삭제
 		@RequestMapping(value = "/deleteAddCart")
@@ -159,20 +161,34 @@ public class MyPageController {
 				
 			return "redirect:/mypage/addCart";
 			}	
-		// 주문 목록
-				@RequestMapping(value = "/orderList", method = RequestMethod.GET)
-				public void getOrderList(HttpSession session, UserOrder order, Model model) throws Exception {
+		 //주문 목록
+		
+			@RequestMapping(value = "/orderList", method = RequestMethod.GET)
+				public void getOrderList(HttpSession session,UserOrder order, Model model) throws Exception {
 				 logger.info("주문리스트 진입");
 				 User user = (User)session.getAttribute("loginuser"); 
 				 String userId = user.getUserId();
-				 
-				order.setUserId(userId);
+				 //UserOrder order = new UserOrder();
+				 order.setUserId(userId);
 				 
 				 List<UserOrder> orderList = memberservice.orderList(order);
 				 
 				 model.addAttribute("orderList", orderList);
 				 
-				}
+			}
+			@RequestMapping(value = "/orderDetail", method = RequestMethod.GET)
+			public void getOrderList(HttpSession session,@RequestParam("n") String orderId,
+			      UserOrder order, Model model) throws Exception {
+			 logger.info("get order view");
+			 
+			 order.setOrderId(orderId);
+			 
+			 List<OrderDetail> orderView = memberservice.orderDetailList(order);
+			 
+			 model.addAttribute("orderView", orderView);
+			}
+			
+			
 		// 주문
 		@RequestMapping(value = "/order", method = RequestMethod.POST)
 		public String order(HttpSession session, UserOrder order,RedirectAttributes rttr) throws Exception {
@@ -180,40 +196,32 @@ public class MyPageController {
 		 logger.info(order.toString());
 		 
 		 
-		//memberservice.orderinsert(order);
-		//logger.info(order.toString());
+		
+		logger.info(order.toString());
 		 
+		 User user = (User)session.getAttribute("loginuser");  
+		 String userId = user.getUserId();
 		 
+		 Calendar cal=Calendar.getInstance();
+		 int year = cal.get(Calendar.YEAR);
+	 String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
+		 String ymd = ym +  new DecimalFormat("00").format(cal.get(Calendar.DATE));
+		 String subNum = "";
 		 
+		 	for(int i = 1; i <= 6; i ++) {
+			  subNum += (int)(Math.random() * 10);
+		 }
+		 String orderId = ymd + "_" + subNum;
+	 
+		 order.setOrderId(orderId);
+		 order.setUserId(userId);
+		
 		 
+		 memberservice.orderinsert(order); 
 		 
+		
 		 
-		 
-		 
-//		 User user = (User)session.getAttribute("loginuser");  
-//		 String userId = user.getUserId();
-//		 
-//		 Calendar cal=Calendar.getInstance();
-//		 int year = cal.get(Calendar.YEAR);
-//		 String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
-//		 String ymd = ym +  new DecimalFormat("00").format(cal.get(Calendar.DATE));
-//		 String subNum = "";
-//		 
-//		 for(int i = 1; i <= 6; i ++) {
-//			  subNum += (int)(Math.random() * 10);
-//		 }
-//		 String orderId = ymd + "_" + subNum;
-//		 
-//		 order.setOrderId(orderId);
-//		 order.setUserId(userId);
-//		 order.setOrderDate(LocalDateTime.now());
-//		 
-//		 memberservice.orderinsert(order); 
-//		 
-//		 detail.setOrderId(orderId);
-//		 memberservice.orderinsertDetail(detail);
-		 
-		 return "redirect:/mypage/orderList";
+		 return "redirect:/mypage/addCart";
 		}
 		
 		
