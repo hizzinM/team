@@ -155,6 +155,12 @@ public class MemberServiceImpl implements MemberService {
 		
 		return membermapper.orderDetailList(order);
 	}
+	//주문삭제
+	@Override
+	public int deleteOrder(String orderId) {
+		membermapper.deleteOrderDetail(orderId);
+		return membermapper.deleteOrder(orderId);
+	}
 	
 	
 }

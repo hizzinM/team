@@ -219,15 +219,24 @@ public class MyPageController {
 	 
 		 order.setOrderId(orderId);
 		 order.setUserId(userId);
-		
 		 
 		 memberservice.orderinsert(order); 
-		 
-		
-		 
+
+
 		 return "redirect:/mypage/addCart";
 		}
-		
+		//주문취소
+		@RequestMapping(value = "/orderDelete")
+		public String ajaxTest(HttpServletRequest request) throws Exception {
+			logger.info("주문 선택취소");
+			String[] ajaxMsg = request.getParameterValues("valueArr");
+			int size = ajaxMsg.length;
+			for (int i = 0; i < size; i++) {
+				memberservice.deleteOrder(ajaxMsg[i]);
+				System.out.println(ajaxMsg[i]);
+			}
+			return "redirect:/mypage/orderList";
+		}
 		
 		
 		

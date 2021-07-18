@@ -62,4 +62,6 @@ public interface MemberService {
 	
 	//주문상세목록
 	public List<OrderDetail> orderDetailList(UserOrder order) throws Exception;
+	//주문삭제
+	public int deleteOrder(String orderId);
 }
