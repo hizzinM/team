@@ -181,6 +181,10 @@ public class MyPageController {
 			      UserOrder order, Model model) throws Exception {
 			 logger.info("get order view");
 			 
+			 User user = (User)session.getAttribute("loginuser"); 
+			 String userId = user.getUserId();
+			 
+			 order.setUserId(userId);
 			 order.setOrderId(orderId);
 			 
 			 List<OrderDetail> orderView = memberservice.orderDetailList(order);

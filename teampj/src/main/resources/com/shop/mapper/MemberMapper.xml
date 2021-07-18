@@ -155,7 +155,7 @@
 		,max(case when image_id=1 then file_name end) as file_name
 		,max(case when image_id=1 then upload_path end) as upload_path
 		,max(case when image_id=1 then uuid end) as uuid
-		from product_img group by product_id) i where o.product_id=i.product_id and u.order_id = #{orderId}
+		from product_img group by product_id) i where o.product_id=i.product_id  and u.order_id=o.order_id and u.order_id = #{orderId} and u.user_id=#{userId}
 	</select>
 	
 	<delete id="cartSelectDelete">
