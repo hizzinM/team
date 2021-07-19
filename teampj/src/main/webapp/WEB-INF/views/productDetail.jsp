@@ -77,12 +77,13 @@
                         <td>색상</td>
                         <td><c:out value="${goodDetailData.productColor}" /></td>
                     </tr>
-                    <c:if test="${goodDetailData.productInventory != 0}">
+                    
                     <tr>
                         <td>재고</td>
-                        <td><c:out value="${goodDetailData.productInventory}" /></td>
+                        <td><c:out value="${goodDetailData.productInventory}"/>
+                        	<input type='hidden' id='productInventory' name='productInventory' value="${goodDetailData.productInventory}"/></td>													</td>
                     </tr>
-                    </c:if>
+                    
                     <c:if test="${goodDetailData.productInventory == 0}">
                     	<p style="color:red;">재고가 없습니다</p>
                     </c:if>
@@ -90,7 +91,7 @@
                         <td>수량</td>
                         <td><select id="amount">
    							 <c:forEach  begin="1" end="10" var="i">
-       						 <option value="${i}">${i}</option>
+       						 <option id="qty" value="${i}">${i}</option>
    								 </c:forEach>
 							</select></td>
                     </tr>
@@ -109,17 +110,25 @@
                 <div id="btn-warp">		
              	
                    	<input type="submit" class="button_style cart_btn" id="addcart" value="장바구니에 담기">
-                  
-					<input type="button" class="button_style back_btn" value="이전으로 이동" onclick="history.back()">
-					
+					<input type="button" class="button_style back_btn" value="이전으로 이동" onclick="history.back()"><br>
+					<span id=noinven></span>
                 </div>
             </div>
         </div>
 		<%@ include file="include_collection/footer.jsp"%>
     </div>
+    
+    
+    
+    
+    
   <script type="text/javascript">
   $("#addcart").click(function(){
-	 
+	  
+	  if($("#productInventory").val()<$("#qty").val()){
+		  alert("재고가비었습니다.");  	
+	      return false;
+	    }
 	  
 	  $.ajax({
 	   url : "/mypage/addCart",
@@ -133,18 +142,19 @@
 		   			fileName:"${goodDetailData.fileName}",
 		   			uploadPath:"${goodDetailData.uploadPath}",
 		   			uuid:"${goodDetailData.uuid}"
+		   			
 	   },
 	   success : function(result){
 		  console.log("sjk=" + result)
+		  
 	    if($.trim(result)==1) {
 	     alert("카트 담기 성공");
 	    }else{
 	     alert("회원만 사용할 수 있습니다.");
-	      
 	    }
 	   },
 	   error : function(){
-	    alert("카트 담기 실패");
+		
 	   }
 	  });
 	 });
