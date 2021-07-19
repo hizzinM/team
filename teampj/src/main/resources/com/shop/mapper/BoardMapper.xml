@@ -106,16 +106,15 @@
 	</select>
 
 	<!-- 댓글 작성 -->
-	<insert id="replyWrite" parameterType="com.shop.model.ReplyVO">
-		insert into reply(bno,
-		user_id, reply_content, reply_writedate)
-		value(#{bno}, #{userId},
-		#{replyContent},
-		#{replyWritedate})
+	<insert id="writereply" parameterType="com.shop.model.ReplyVO">
+		insert into
+		reply(bno,reply_content,user_id) values
+		(#{bno},
+		#{replyContent},#{userId})
 	</insert>
-
+	
 	<!-- 댓글 수정 -->
-	<update id="replyModify" parameterType="com.shop.model.ReplyVO">
+	<update id="modifyreply" parameterType="com.shop.model.ReplyVO">
 		update reply set
 		reply_content =
 		#{replyContent}
@@ -125,7 +124,7 @@
 	</update>
 
 	<!-- 댓글 삭제 -->
-	<delete id="replyDelete" parameterType="com.shop.model.ReplyVO">
+	<delete id="deletereply" parameterType="com.shop.model.ReplyVO">
 		delete from reply
 		where
 		rno = #{rno}

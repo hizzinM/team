@@ -105,12 +105,14 @@ textarea {
 					<form method="post" action="/reply/write">
 
 						<p>
-							<label>댓글 작성자</label> <input type="text" name="writer">
+							<label>댓글 작성자</label> <input type="text" name="userId"
+								value="${loginuser.userId}">
 						</p>
 						<p>
-							<textarea rows="5" cols="50" name="content"></textarea>
+							<textarea rows="5" cols="50" name="replyContent"></textarea>
 						</p>
 						<p>
+							<input type="hidden" name="bno" value="${qnaInfo.bno}">
 							<button type="submit">댓글 작성</button>
 						</p>
 					</form>
