@@ -83,7 +83,10 @@ public interface MemberMapper {
 
 	public void updateInven(Product product);
 
-	
+	//주문수정조회
+	public UserOrder orderselect(String userId);
+		
+	public int orderupdate(UserOrder order);
 
 	
 

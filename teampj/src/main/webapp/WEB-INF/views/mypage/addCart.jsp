@@ -71,7 +71,7 @@
 							<input type="hidden" name="cartQty" value="${cartList.cartQty}"></td>
 											
 							<td><fmt:formatNumber pattern="###,###,###" value="${cartList.cartPrice *cartList.cartQty}" />원
-						 <input type="hidden" name="CartPrice" value="${cartList.cartPrice *cartList.cartQty}">
+						 <input type="hidden" name="TotalPrice" value="${cartList.cartPrice *cartList.cartQty}">
 							</td>
 							
 						</tr>
@@ -168,12 +168,12 @@
 		//alert(1)
 		//$("#sumsum").html("1111");
 		var list = $("input[name='RowCheck']");
-		var CartPrice = $("input[name='cartPrice']");
+		var TotalPrice = $("input[name='TotalPrice']");
 		var sum= 0;
 		
 		for (var i = 0; i < list.length; i++) {
 			if (list[i].checked) { //선택되어 있으면 배열에 값을 저장함
-				sum = Number(sum) + Number(CartPrice[i].value)
+				sum = Number(sum) + Number(TotalPrice[i].value)
 				
 			}
 			

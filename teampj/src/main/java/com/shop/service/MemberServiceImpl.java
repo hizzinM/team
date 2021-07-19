@@ -150,7 +150,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		return membermapper.orderList(order);
 	}
-
+	//주문정보상세리스트
 	@Override
 	public List<OrderDetail> orderDetailList(UserOrder order) throws Exception {
 		
@@ -161,6 +161,18 @@ public class MemberServiceImpl implements MemberService {
 	public int deleteOrder(String orderId) {
 		membermapper.deleteOrderDetail(orderId);
 		return membermapper.deleteOrder(orderId);
+	}
+	//주문정보 수정조회
+	@Override
+	public UserOrder orderselect(String userId) {
+		
+		return membermapper.orderselect(userId);
+	}
+	//주문정보 수정
+	@Override
+	public int orderupdate(UserOrder order) {
+		
+		return membermapper.orderupdate(order);
 	}
 	
 	

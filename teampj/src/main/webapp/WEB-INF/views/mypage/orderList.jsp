@@ -40,7 +40,7 @@
 				</tr>
 				<tr>
 					<td>수령인아이디</td>
-					<td><c:out value="${orderList.userId}"></c:out></td>
+					<td><a href="/mypage/orderupdate?userId=${orderList.userId}"><c:out value="${orderList.userId}"></c:out></a></td>
 				</tr>
 				<tr>
 					<td>수령인</td>
