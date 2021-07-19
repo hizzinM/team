@@ -8,22 +8,19 @@ public class QnaVO {
 	private String qnaCategory;
 	private String userId;
 	private String qnaContents;
-	private int qnaState;
 	private Date qnaWritedate;
 
 	public QnaVO() {
 		super();
 	}
 
-	public QnaVO(int bno, String qnaTitle, String qnaCategory, String userId, String qnaContents, int qnaState,
-			Date qnaWritedate) {
+	public QnaVO(int bno, String qnaTitle, String qnaCategory, String userId, String qnaContents, Date qnaWritedate) {
 		super();
 		this.bno = bno;
 		this.qnaTitle = qnaTitle;
 		this.qnaCategory = qnaCategory;
 		this.userId = userId;
 		this.qnaContents = qnaContents;
-		this.qnaState = qnaState;
 		this.qnaWritedate = qnaWritedate;
 	}
 
@@ -67,14 +64,6 @@ public class QnaVO {
 		this.qnaContents = qnaContents;
 	}
 
-	public int getQnaState() {
-		return qnaState;
-	}
-
-	public void setQnaState(int qnaState) {
-		this.qnaState = qnaState;
-	}
-
 	public Date getQnaWritedate() {
 		return qnaWritedate;
 	}
@@ -85,9 +74,8 @@ public class QnaVO {
 
 	@Override
 	public String toString() {
-		return "QnaVO [bno=" + bno + ", qnaTitle=" + qnaTitle + ", qnaCategory=" + qnaCategory + ", userId="
-				+ userId + ", qnaContents=" + qnaContents + ", qnaState=" + qnaState + ", qnaWritedate=" + qnaWritedate
-				+ "]";
+		return "QnaVO [bno=" + bno + ", qnaTitle=" + qnaTitle + ", qnaCategory=" + qnaCategory + ", userId=" + userId
+				+ ", qnaContents=" + qnaContents + "qnaWritedate=" + qnaWritedate + "]";
 	}
 
 }

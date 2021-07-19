@@ -90,8 +90,11 @@ public class BoardController {
 		logger.info("Qna 목록 페이지 접속");
 		model.addAttribute("Qnalist", boardService.getQnaListPaging(cri));
 		int total = boardService.getTotal(cri);
+		int replytotal = boardService.getreplyTotal(cri);
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+		PageMakerDTO replypageMake = new PageMakerDTO(cri, replytotal);
 		model.addAttribute("pageMaker", pageMake);
+		model.addAttribute("replycount", replypageMake);
 	}
 
 	// qna 작성 페이지 이동

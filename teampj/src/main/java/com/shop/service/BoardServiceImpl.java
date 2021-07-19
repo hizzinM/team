@@ -109,4 +109,10 @@ public class BoardServiceImpl implements BoardService {
 	public void deletereply(ReplyVO reply) {
 		boardmapper.deletereply(reply);
 	}
+
+	/* 게시물 총 갯수 */
+	@Override
+	public int getreplyTotal(Criteria cri) {
+		return boardmapper.getreplyTotal(cri);
+	}
 }
