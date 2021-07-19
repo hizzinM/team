@@ -9,6 +9,7 @@ import com.shop.mapper.BoardMapper;
 import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
 import com.shop.model.QnaVO;
+import com.shop.model.ReviewVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -69,7 +70,6 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public QnaVO getQNAPage(int qnaId) {
-
 		return boardmapper.getQNAPage(qnaId);
 	}
 
@@ -87,4 +87,37 @@ public class BoardServiceImpl implements BoardService {
 	public List<QnaVO> getQnaListPaging(Criteria cri) {
 		return boardmapper.getQnaListPaging(cri);
 	}
+	/*리뷰*/
+
+	@Override
+	public void enrollReview(ReviewVO review) {
+		boardmapper.enrollReview(review);
+	}
+
+	@Override
+	public List<ReviewVO> getReviewList() {
+		return boardmapper.getReviewList();
+	}
+
+	@Override
+	public ReviewVO getPageReview(int reviewId) {
+		return boardmapper.getReviewPage(reviewId);
+	}
+
+	@Override
+	public int modifyReview(ReviewVO review) {
+		return boardmapper.modifyReview(review);
+	}
+
+	@Override
+	public int deleteReview(int reviewId) {
+		return boardmapper.deleteReview(reviewId);
+	}
+
+	@Override
+	public List<ReviewVO> getReviewListPaging(Criteria cri) {
+		return boardmapper.getReviewListPaging(cri);
+	}
+
+
 }
