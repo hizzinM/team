@@ -100,6 +100,20 @@
 								<div id="uploadResult2"></div>
 							</td>
 						</tr>
+						<tr>
+							<td>상품상세이미지1</td>
+							<td>
+								<input type="file" id ="productImg3" name='uploadFile3' multiple="multiple"/>
+								<div id="uploadResult3"></div>
+							</td>
+						</tr>
+						<tr>
+							<td>상품상세이미지2</td>
+							<td>
+								<input type="file" id ="productImg4" name='uploadFile4' multiple="multiple"/>
+								<div id="uploadResult4"></div>
+							</td>
+						</tr>
 					</table>
 					<div class="btn_section">
 						<button id="cancelBtn" class="button_style del-btn">취 소</button>
@@ -127,7 +141,7 @@
 
 			});
 		
-			/* 이미지 업로드 */
+			/* 이미지 업로드(상품대표이미지) */
 			$("input[name='uploadFile']").on("change", function(e){
 				/* 이미지 존재시 삭제 */
 				if($(".imgDeleteBtn").length > 0){
@@ -160,7 +174,7 @@
 			    	}
 				});	
 			});		
-			/* 이미지 업로드 */
+			/* 이미지 업로드(사이즈가이드) */
 			$("input[name='uploadFile2']").on("change", function(e){
 				/* 이미지 존재시 삭제 */
 				if($(".imgDeleteBtn2").length > 0){
@@ -192,7 +206,73 @@
 			    		alert("이미지 파일이 아닙니다.");
 			    	}
 				});	
-			});		
+			});
+			/* 이미지 업로드(상품상세이미지1) */
+			$("input[name='uploadFile3']").on("change", function(e){
+				/* 이미지 존재시 삭제 */
+				if($(".imgDeleteBtn3").length > 0){
+					deleteFile3();
+				}
+				let formData = new FormData();
+				let fileInput = $('input[name="uploadFile3"]');
+				let fileList = fileInput[0].files;
+				let fileObj = fileList[0];
+				
+				/*
+				if(!fileCheck(fileObj.name, fileObj.size)){
+					return false;
+				}*/
+				
+				formData.append("uploadFile", fileObj);
+				$.ajax({
+					url: '/admin/uploadAjaxAction',
+			    	processData : false,
+			    	contentType : false,
+			    	data : formData,
+			    	type : 'POST',
+			    	dataType : 'json',
+			    	success : function(result){
+			    		console.log(result);
+			    		showUploadImage3(result);
+			    	},
+			    	error : function(result){
+			    		alert("이미지 파일이 아닙니다.");
+			    	}
+				});	
+			});
+			/* 이미지 업로드(상품상세이미지4) */
+			$("input[name='uploadFile4']").on("change", function(e){
+				/* 이미지 존재시 삭제 */
+				if($(".imgDeleteBtn4").length > 0){
+					deleteFile4();
+				}
+				let formData = new FormData();
+				let fileInput = $('input[name="uploadFile4"]');
+				let fileList = fileInput[0].files;
+				let fileObj = fileList[0];
+				
+				/*
+				if(!fileCheck(fileObj.name, fileObj.size)){
+					return false;
+				}*/
+				
+				formData.append("uploadFile", fileObj);
+				$.ajax({
+					url: '/admin/uploadAjaxAction',
+			    	processData : false,
+			    	contentType : false,
+			    	data : formData,
+			    	type : 'POST',
+			    	dataType : 'json',
+			    	success : function(result){
+			    		console.log(result);
+			    		showUploadImage4(result);
+			    	},
+			    	error : function(result){
+			    		alert("이미지 파일이 아닙니다.");
+			    	}
+				});	
+			});
 			/* var, method related with attachFile */
 			let regex = new RegExp("(.*?)\.(jpg|png)$");
 			let maxSize = 1048576; //1MB	
@@ -232,6 +312,7 @@
 				
 				uploadResult.append(str);     
 			}
+			
 			/* 이미지 출력 */
 			function showUploadImage2(uploadResultArr){
 				/* 전달받은 데이터 검증 */
@@ -251,6 +332,47 @@
 				str += "</div>";
 				console.log(str)
 				uploadResult.append(str);     
+			}
+			
+			/* 이미지 출력3 */
+			function showUploadImage3(uploadResultArr){
+				/* 전달받은 데이터 검증 */
+				if(!uploadResultArr || uploadResultArr.length == 0){return}
+				let uploadResult = $("#uploadResult3");
+				let obj = uploadResultArr[0];
+				let str = "";
+				let fileCallPath = encodeURIComponent(obj.uploadPath.replace(/\\/g, '/') + "/s_" + obj.uuid + "_" + obj.fileName);
+				
+				str += "<div id='result_card3'>";
+				str += "<img src='/display?fileName=" + fileCallPath +"'>";
+				str += "<div class='imgDeleteBtn3' data-file='" + fileCallPath + "'>x</div>";
+				str += "<input type='hidden' name='imageList[2].fileName' value='"+ obj.fileName +"'>";
+				str += "<input type='hidden' name='imageList[2].uuid' value='"+ obj.uuid +"'>";
+				str += "<input type='hidden' name='imageList[2].uploadPath' value='"+ obj.uploadPath +"'>";	
+				str += "<input type='hidden' name='imageList[2].imageId' value='3'>";
+				str += "</div>";
+				console.log(str)
+				uploadResult.append(str);     
+			}			
+			/* 이미지 출력4*/
+			function showUploadImage4(uploadResultArr){
+				/* 전달받은 데이터 검증 */
+				if(!uploadResultArr || uploadResultArr.length == 0){return}
+				let uploadResult = $("#uploadResult4");
+				let obj = uploadResultArr[0];
+				let str = "";
+				let fileCallPath = encodeURIComponent(obj.uploadPath.replace(/\\/g, '/') + "/s_" + obj.uuid + "_" + obj.fileName);
+				
+				str += "<div id='result_card4'>";
+				str += "<img src='/display?fileName=" + fileCallPath +"'>";
+				str += "<div class='imgDeleteBtn4' data-file='" + fileCallPath + "'>x</div>";
+				str += "<input type='hidden' name='imageList[3].fileName' value='"+ obj.fileName +"'>";
+				str += "<input type='hidden' name='imageList[3].uuid' value='"+ obj.uuid +"'>";
+				str += "<input type='hidden' name='imageList[3].uploadPath' value='"+ obj.uploadPath +"'>";	
+				str += "<input type='hidden' name='imageList[3].imageId' value='4'>";
+				str += "</div>";
+				console.log(str)
+				uploadResult.append(str);     
 			}			
 			/* 이미지 삭제 버튼 동작 */
 			$("#uploadResult").on("click", ".imgDeleteBtn", function(e){
@@ -263,6 +385,19 @@
 				deleteFile2();
 				
 			});
+			$("#uploadResult3").on("click", ".imgDeleteBtn3", function(e){
+				
+				deleteFile3();
+				
+			});
+			$("#uploadResult4").on("click", ".imgDeleteBtn4", function(e){
+				
+				deleteFile4();
+				
+			});
+			
+			
+			
 			/* 파일 삭제 메서드 */
 			function deleteFile(){
 				
@@ -289,6 +424,7 @@
 					}
 				});
 			}
+			
 				function deleteFile2(){
 				
 				let targetFile = $(".imgDeleteBtn2").data("file");
@@ -314,6 +450,59 @@
 					}
 				});
 				}
+				
+				function deleteFile3(){
+					
+					let targetFile = $(".imgDeleteBtn3").data("file");
+					
+					let targetDiv = $("#result_card3");
+					
+					$.ajax({
+						url: '/admin/deleteFile',
+						data : {fileName : targetFile},
+						dataType : 'text',
+						type : 'POST',
+						success : function(result){
+							console.log(result);
+							
+							targetDiv.remove();
+							$("input[type='file3']").val("");
+							
+						},
+						error : function(result){
+							console.log(result);
+							
+							alert("파일을 삭제하지 못하였습니다.")
+						}
+					});
+					}
+				
+				function deleteFile4(){
+					
+					let targetFile = $(".imgDeleteBtn4").data("file");
+					
+					let targetDiv = $("#result_card4");
+					
+					$.ajax({
+						url: '/admin/deleteFile',
+						data : {fileName : targetFile},
+						dataType : 'text',
+						type : 'POST',
+						success : function(result){
+							console.log(result);
+							
+							targetDiv.remove();
+							$("input[type='file4']").val("");
+							
+						},
+						error : function(result){
+							console.log(result);
+							
+							alert("파일을 삭제하지 못하였습니다.")
+						}
+					});
+				}
+						
 		</script>
 </body>
 </html>
