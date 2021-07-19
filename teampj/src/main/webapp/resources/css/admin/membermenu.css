@@ -19,6 +19,7 @@ th,td{padding:10px 0 10px 10px;}
 th:first-child,td:first-child{text-align: center;padding-left: 0;}
 th{border-top: 1px solid black;border-bottom: 1px solid black;text-align: left;font-weight: 600;}
 td{border-bottom:1px solid rgb(221, 221, 221);}
+table{border:1px solid black;}
 
 .button_style{
 	background-color: white;

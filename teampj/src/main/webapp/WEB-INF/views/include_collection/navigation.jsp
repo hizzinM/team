@@ -9,9 +9,7 @@
 		<c:if test="${loginuser == null }">
 			<li><a href="/member/login">로그인</a></li>
 			<li><a href="/member/join">회원가입</a></li>
-			<br>
 		</c:if>
-
 		<!-- 로그인 후 -->
 		<c:if test="${ loginuser!= null }">
 			<li style="font-weight: bold; font-size: 11px;">${loginuser.userName}님
@@ -23,11 +21,11 @@
 			<c:if test="${ loginuser.adminck ==1 }">
 				<li><a href="/admin/index">관리자화면</a></li>
 			</c:if>
+			<br>
+				<li><a href="/mypage/addCart">장바구니</a></li>
+				<li><a href="#">주문내역</a></li>
 		</c:if>
-		<br>
-			<li><a href="/mypage/addCart">장바구니</a></li>
 			<li><a href="/board/notice">공지사항</a></li>
-			<li><a href="#">리뷰</a></li>
 			<li><a href="/board/qna">고객센터</a></li>
 		<br>
 	</ul>
