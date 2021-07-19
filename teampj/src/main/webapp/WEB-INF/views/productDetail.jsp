@@ -50,6 +50,7 @@
                 <img src="/resources/upload/${goodDetailData.uploadPath2}/${goodDetailData.uuid2}_${goodDetailData.fileName2}" alt="" class="size">
 
             </div>
+            
             <div id="detail_warp">
             
                 <table>
@@ -124,8 +125,9 @@
     
   <script type="text/javascript">
   $("#addcart").click(function(){
-	  
-	  if($("#productInventory").val()<$("#qty").val()){
+	  var productInventory=$("#productInventory").val();
+	  var qty=$("#amount option:selected").val();
+	  if(productInventory < qty){
 		  alert("재고가비었습니다.");  	
 	      return false;
 	    }
@@ -138,7 +140,7 @@
 		   	  cartProductsize:"${goodDetailData.productSize}",
 		   			cartPrice:"${goodDetailData.productPrice}",
 		   			cartProductColor:"${goodDetailData.productColor}",
-		   			cartQty:$("#amount").val(),
+		   			cartQty:$("#amount option:selected").val(),
 		   			fileName:"${goodDetailData.fileName}",
 		   			uploadPath:"${goodDetailData.uploadPath}",
 		   			uuid:"${goodDetailData.uuid}"
