@@ -17,6 +17,14 @@ public class Product {
 	private String fileName2;
 	private String uploadPath2;
 	private String uuid2;
+	
+	private String fileName3;
+	private String uploadPath3;
+	private String uuid3;
+	
+	private String fileName4;
+	private String uploadPath4;
+	private String uuid4;
 	private List<AttachImageVO> imageList;
 
 	public Product() {
@@ -136,6 +144,54 @@ public class Product {
 	public String getUploadPath2() {
 		return uploadPath2;
 	}
+	public String getFileName3() {
+		return fileName3;
+	}
+
+	public void setFileName3(String fileName3) {
+		this.fileName3 = fileName3;
+	}
+
+	public String getUploadPath3() {
+		return uploadPath3;
+	}
+
+	public void setUploadPath3(String uploadPath3) {
+		this.uploadPath3 = uploadPath3;
+	}
+
+	public String getUuid3() {
+		return uuid3;
+	}
+
+	public void setUuid3(String uuid3) {
+		this.uuid3 = uuid3;
+	}
+
+	public String getFileName4() {
+		return fileName4;
+	}
+
+	public void setFileName4(String fileName4) {
+		this.fileName4 = fileName4;
+	}
+
+	public String getUploadPath4() {
+		return uploadPath4;
+	}
+
+	public void setUploadPath4(String uploadPath4) {
+		this.uploadPath4 = uploadPath4;
+	}
+
+	public String getUuid4() {
+		return uuid4;
+	}
+
+	public void setUuid4(String uuid4) {
+		this.uuid4 = uuid4;
+	}
+
 	public void setUploadPath2(String uploadPath2) {
 		this.uploadPath2 = uploadPath2;
 	}
@@ -155,6 +211,10 @@ public class Product {
 				+ ", productSize=" + productSize + ", productCategory=" + productCategory + ", productColor="
 				+ productColor + ", productInventory=" + productInventory + ", productComment=" + productComment
 				+ ", fileName=" + fileName + ", uploadPath=" + uploadPath + ", uuid=" + uuid + ", fileName2="
-				+ fileName2 + ", uploadPath2=" + uploadPath2 + ", uuid2=" + uuid2 + ", imageList=" + imageList + "]";
-	} 
+				+ fileName2 + ", uploadPath2=" + uploadPath2 + ", uuid2=" + uuid2 + ", fileName3=" + fileName3
+				+ ", uploadPath3=" + uploadPath3 + ", uuid3=" + uuid3 + ", fileName4=" + fileName4 + ", uploadPath4="
+				+ uploadPath4 + ", uuid4=" + uuid4 + ", imageList=" + imageList + "]";
+	}
+
+	
 }
