@@ -150,7 +150,7 @@
 	</select>
 	<!-- 주문 상세리스트 -->
 	<select id="orderDetailList" resultType="com.shop.model.OrderDetail">
-	   select o.order_detail_id,o.product_id,o.product_name,o.order_size,o.detail_price,o.order_color,o.order_qty,i.file_name,i.upload_path,i.uuid
+	   select o.order_detail_id,o.order_id,o.product_id,o.product_name,o.order_size,o.detail_price,o.order_color,o.order_qty,i.file_name,i.upload_path,i.uuid
 	from order_detail o,user_order u join (select
 		product_id
 		,max(case when image_id=1 then file_name end) as file_name
@@ -172,11 +172,11 @@
 	
 	<!-- 배송지 수정 -->
 	<select id="orderselect" resultType="com.shop.model.UserOrder">
-	select*from user_order where where user_id=#{userId}
+	select*from user_order where order_id=#{orderId}
 	</select>
 	<update id="orderupdate">
 	update user_order set user_name=#{userName},order_phone=#{orderPhone},order_address=#{orderAddress},order_address_detail=#{orderAddressDetail},
-	order_address_num=#{orderAddressNum} where user_id=#{userId}
+	order_address_num=#{orderAddressNum} where order_id=#{orderId}
 	</update>
 	
 	

@@ -145,7 +145,7 @@ public class MainController {
 		List<Product> Acclist = adminService.AccProductList();
 		model.addAttribute("AccProduct", Acclist);
 	}
-
+	
 	// 검색
 	@RequestMapping(value = "search", method = RequestMethod.GET)
 	public void goodsearch(Criteria cri, Model model) throws Exception {

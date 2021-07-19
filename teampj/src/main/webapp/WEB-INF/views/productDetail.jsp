@@ -63,7 +63,7 @@
                     </tr>
                     <tr>
                         <td>가격</td>
-                        <td><c:out value="${goodDetailData.productPrice}" /></td>
+                        <td><fmt:formatNumber pattern="###,###,###" value="${goodDetailData.productPrice}" />원</td>
                     </tr>
                     <tr>
                         <td>카테고리</td>

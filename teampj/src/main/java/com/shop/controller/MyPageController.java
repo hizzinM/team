@@ -249,19 +249,24 @@ public class MyPageController {
 		}
 
 		// 장바구니 간단조회
-		/*
-		 * @GetMapping("/orderupdate") public String orderIdSelect(String userId, Model
-		 * model) { logger.info("장바구니 간단조회 "); UserOrder result =
-		 * memberservice.orderselect(userId); System.out.println(result);
-		 * model.addAttribute("order", result); return "/mypage/orderupdate"; }
-		 * 
-		 * // 장바구니수량 수정
-		 * 
-		 * @PostMapping("/cartUpdate") public String orderIdUpdatePOST(UserOrder order,
-		 * RedirectAttributes rttr, Model model) { logger.info("수량 수정 기능 ");
-		 * memberservice.orderupdate(order); rttr.addFlashAttribute("orderupdate",
-		 * memberservice.orderupdate(order));
-		 * 
-		 * return "redirect:/mypage/orderList"; }
-		 */
+		
+		 @GetMapping("/orderupdate") public String orderIdSelect(String orderId, Model model) { 
+		logger.info("장바구니 간단조회 "); 
+		UserOrder result =memberservice.orderselect(orderId);
+		 System.out.println(result);
+		 model.addAttribute("order", result); 
+		 return "/mypage/orderupdate"; 
+		 }
+		 
+		 // 장바구니수량 수정
+		 
+		  @PostMapping("/orderupdate") public String orderIdUpdatePOST(UserOrder order,RedirectAttributes rttr,Model model) { 
+		  logger.info("수량 수정 기능 ");
+		  memberservice.orderupdate(order); 
+		  rttr.addFlashAttribute("orderupdate",memberservice.orderupdate(order));
+		 
+		  return "redirect:/mypage/orderList"; 
+		  
+		  }
+		 
 }

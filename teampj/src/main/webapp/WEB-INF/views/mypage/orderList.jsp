@@ -40,7 +40,7 @@
 				</tr>
 				<tr>
 					<td>수령인아이디</td>
-					<td><a href="/mypage/orderupdate?userId=${orderList.userId}"><c:out value="${orderList.userId}"></c:out></a></td>
+					<td><a href="/mypage/orderupdate?orderId=${orderList.orderId}"><c:out value="${orderList.userId}"></c:out></a></td>
 				</tr>
 				<tr>
 					<td>수령인</td>
@@ -64,7 +64,7 @@
 				</tr>
 				<tr>
 					<td>총가격</td>
-					<td><c:out value="${orderList.orderPrice}"></c:out></td>
+					<td><fmt:formatNumber pattern="###,###,###" value="${orderList.orderPrice}" />원</td>
 				</tr>
 				<tr>
 					<td>주문날짜</td>

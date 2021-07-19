@@ -65,7 +65,7 @@ public interface MemberService {
 	//주문삭제
 	public int deleteOrder(String orderId);
 	//주문수정조회
-	public UserOrder orderselect(String userId);	
+	public UserOrder orderselect(String orderId);	
 	public int orderupdate(UserOrder order);
 	
 	

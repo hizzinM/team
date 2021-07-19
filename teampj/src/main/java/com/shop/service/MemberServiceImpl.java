@@ -164,9 +164,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 	//주문정보 수정조회
 	@Override
-	public UserOrder orderselect(String userId) {
+	public UserOrder orderselect(String orderId) {
 		
-		return membermapper.orderselect(userId);
+		return membermapper.orderselect(orderId);
 	}
 	//주문정보 수정
 	@Override
