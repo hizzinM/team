@@ -27,9 +27,9 @@
 	<div id="contents">
 		<h2 style="text-align:center;">주문상세정보</h2>
 		<div class="product-list">
-		
-			<h2>주문번호:</h2>
-			
+			<c:forEach items="${orderView}" var="order" end="0">
+			<h2>주문번호:${order.orderId}</h2>
+			</c:forEach>
 			<table style="border:1px black solid;">
 					<thead> 
 						<tr>

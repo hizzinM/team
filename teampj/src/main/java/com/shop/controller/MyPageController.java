@@ -116,7 +116,7 @@ public class MyPageController {
 		   public String addCart(ShoppingCart cart, HttpSession session) throws Exception {
 	
 			int result=0;
-			
+			Product product=new Product();
 			logger.info("카트 담기 진입");
 			User user = (User)session.getAttribute("loginuser");
 			
