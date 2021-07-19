@@ -96,7 +96,7 @@
 			</form>
 		</div>
 		<%@ include file="../include_collection/footer.jsp"%>
-		>>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
+		
 	</div>
 
 	<script>

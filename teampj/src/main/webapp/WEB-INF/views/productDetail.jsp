@@ -15,7 +15,7 @@
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
     <title>상품개별조회</title>
-
+<script src="/resources/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
@@ -107,7 +107,7 @@
                         </td>
                     </tr>
                   
-                </table>
+                </table><br>
                 <div id="btn-warp">		
              	
                    	<input type="submit" class="button_style cart_btn" id="addcart" value="장바구니에 담기">
@@ -115,6 +115,21 @@
 					<span id=noinven></span>
                 </div>
             </div>
+            <div class="inputArea">
+            <label for="Detail">디테일</label>
+            <textarea rows="5" cols="50" id="Detail" name="Detail"></textarea>
+            <script>
+            	var ckeditor_config = {
+   				resize_enaleb : false,
+  	 			enterMode : CKEDITOR.ENTER_BR,
+   				shiftEnterMode : CKEDITOR.ENTER_P,
+   				filebrowserUploadUrl : "/admin/ckUpload"
+				 };
+ 
+				 CKEDITOR.replace("Detail", ckeditor_config);
+			</script>
+           </div>
+        
         </div>
 		<%@ include file="include_collection/footer.jsp"%>
     </div>
@@ -127,6 +142,7 @@
   $("#addcart").click(function(){
 	  var productInventory=$("#productInventory").val();
 	  var qty=$("#amount option:selected").val();
+	  
 	  if(productInventory < qty){
 		  alert("재고가비었습니다.");  	
 	      return false;
@@ -147,8 +163,8 @@
 		   			
 	   },
 	   success : function(result){
-		  console.log("sjk=" + result)
-		  
+		  console.log(productInventory)
+	      console.log(qty)
 	    if($.trim(result)==1) {
 	     alert("카트 담기 성공");
 	    }else{
