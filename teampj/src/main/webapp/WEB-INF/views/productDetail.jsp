@@ -29,6 +29,10 @@
 	 width:775px;
     height: 320px;   
 }
+.goodsdetail{
+   width: 1200px;
+   height: 9100px;   
+}
 </style>
 </head>
 <body>
@@ -117,9 +121,9 @@
             </div>
             
             <div class="inputArea">
-            <label for="Detail">디테일</label>
-            	 <img src="/resources/upload/${goodDetailData.uploadPath3}/${goodDetailData.uuid3}_${goodDetailData.fileName3}" alt="" class="goodsimg"><br>
-            	 <img src="/resources/upload/${goodDetailData.uploadPath4}/${goodDetailData.uuid4}_${goodDetailData.fileName4}" alt="" class="goodsimg">
+            <label for="Detail">디테일</label><br>
+            	 <img src="/resources/upload/${goodDetailData.uploadPath3}/${goodDetailData.uuid3}_${goodDetailData.fileName3}" alt="" class="goodsdetail"><br>
+            	 <img src="/resources/upload/${goodDetailData.uploadPath4}/${goodDetailData.uuid4}_${goodDetailData.fileName4}" alt="" class="goodsdetail">
             	
             
             
