@@ -141,6 +141,7 @@
 	<!-- 리뷰 총 개숫 -->
 	<select id="getReviewTotal" resultType="int">
 		select count(*) from review
+	</select>	
 	<!-- 댓글 조회 -->
 	<select id="replyList" parameterType="int"
 		resultType="com.shop.model.ReplyVO">
