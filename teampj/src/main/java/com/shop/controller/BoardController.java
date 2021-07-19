@@ -17,6 +17,7 @@ import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
 import com.shop.model.PageMakerDTO;
 import com.shop.model.QnaVO;
+import com.shop.model.ReviewVO;
 import com.shop.model.ReplyVO;
 import com.shop.service.BoardService;
 
@@ -145,5 +146,19 @@ public class BoardController {
 		boardService.deleteQNA(bno);
 		rttr.addFlashAttribute("result", "delete success");
 		return "redirect:/board/qna";
+	}	
+	// 리뷰 페이지 이동
+	@GetMapping("/review")
+	public void getreview(Model model, Criteria cri) {
+		logger.info("리뷰 목록 페이지 접속");
+		model.addAttribute("Reviewlist", boardService.getReviewListPaging(cri));
+		int total = boardService.getTotal(cri);
+		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+		model.addAttribute("pageMaker", pageMake);
+	}
+	// 리뷰 등록
+	@GetMapping("/reviewenroll")
+	public void getreviewenroll() {
+		logger.info("게시글 작성 페이지 진입");
 	}
 }

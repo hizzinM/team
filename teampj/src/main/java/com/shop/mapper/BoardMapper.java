@@ -5,6 +5,7 @@ import java.util.List;
 import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
 import com.shop.model.QnaVO;
+import com.shop.model.ReviewVO;
 import com.shop.model.ReplyVO;
 
 public interface BoardMapper {
@@ -47,6 +48,25 @@ public interface BoardMapper {
 
 	/* QnaVO 목록(페이징 적용) */
 	public List<QnaVO> getQnaListPaging(Criteria cri);
+	
+	/* 리뷰 등록 */
+	public void enrollReview(ReviewVO review);
+
+	/* 리뷰 목록 */
+	public List<ReviewVO> getReviewList();
+
+	/* 리뷰 조회 */
+	public ReviewVO getReviewPage(int reviewId);
+
+	/* 리뷰 수정 */
+	public int modifyReview(ReviewVO review);
+
+	/* 리뷰 삭제 */
+	public int deleteReview(int reviewId);
+
+	/* ReviewVO 목록(페이징 적용) */
+	public List<ReviewVO> getReviewListPaging(Criteria cri);
+	
 
 	// 댓글 조회
 	public List<ReplyVO> replyList(int bno);
