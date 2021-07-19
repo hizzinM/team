@@ -27,11 +27,13 @@
 	<div id="contents">
 		<h2 style="text-align:center;">주문상세정보</h2>
 		<div class="product-list">
+			<c:forEach items="${orderView}" var="order" end="0">
+			<h2>주문번호:${order.orderId}</h2>
+			</c:forEach>
 			<table style="border:1px black solid;">
 					<thead> 
 						<tr>
-							<th><input type="checkbox" name="allCheck" id=allCheck /></th>
-							<th>상세ID</th>
+							<th>상품상세주문ID</th>
 							<th>상품이미지</th>
 							<th>상품ID</th>
 							<th>상품명</th>
@@ -45,7 +47,6 @@
 					<c:set var="sum" value="0" />
 					<c:forEach items="${orderView}" var="orderView">
 						<tr>
-							<td><input type="checkbox" name="RowCheck" class="RowCheck" value="${orderView.orderDetailId}" ></td>
 							<td><c:out value="${orderView.orderDetailId}" /></td>	
 							
 							

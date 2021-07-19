@@ -6,6 +6,7 @@ import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
 import com.shop.model.QnaVO;
 import com.shop.model.ReviewVO;
+import com.shop.model.ReplyVO;
 
 public interface BoardService {
 
@@ -37,13 +38,13 @@ public interface BoardService {
 	public List<QnaVO> getQNAList();
 
 	/* QNA 조회 */
-	public QnaVO getQNAPage(int qnaId);
+	public QnaVO getQNAPage(int bno);
 
 	/* QNA 수정 */
 	public int modifyQNA(QnaVO qna);
 
 	/* QNA 삭제 */
-	public int deleteQNA(int qnaId);
+	public int deleteQNA(int bno);
 
 	/* QnaVO 목록(페이징 적용) */
 	public List<QnaVO> getQnaListPaging(Criteria cri);
@@ -65,5 +66,21 @@ public interface BoardService {
 
 	/* 리뷰 목록(페이징 적용) */
 	public List<ReviewVO> getReviewListPaging(Criteria cri);
+
+	// 댓글 조회
+	public List<ReplyVO> replyList(int bno);
+
+	// 댓글 조회
+	public void writereply(ReplyVO reply);
+
+	// 댓글 수정
+	public void modifyreply(ReplyVO reply);
+
+	// 댓글 삭제
+	public void deletereply(ReplyVO reply);
+	
+	// 댓글 갯수
+		public int getreplyTotal(Criteria cri);
+
 
 }

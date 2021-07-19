@@ -25,10 +25,13 @@
 
 	<!-- 공지 수정 -->
 	<update id="modify">
-		update notice set notice_title = #{noticeTitle},
+		update notice set notice_title =
+		#{noticeTitle},
 		notice_content =
-		#{noticeContent}, notice_bold=#{noticeBold} where bno
-		= #{bno}
+		#{noticeContent},
+		notice_bold=#{noticeBold} where bno
+		=
+		#{bno}
 	</update>
 
 	<!-- 공지 삭제 -->
@@ -40,7 +43,7 @@
 	<select id="getListPaging" resultType="com.shop.model.NoticeVO">
 		select * from (
 		select *
-		from notice order by bno desc) as Page
+		from notice order by notice_bold desc, notice_writedate desc) as Page
 		limit #{skip},#{amount}
 	</select>
 
@@ -48,7 +51,7 @@
 	<select id="getTotal" resultType="int">
 		select count(*) from notice
 	</select>
- 
+
 	<!-- QNA 등록 -->
 	<insert id="enrollQNA">
 		insert into
@@ -65,28 +68,28 @@
 	<!-- QNA 조회 -->
 	<select id="getQNAPage" resultType="com.shop.model.QnaVO">
 		select * from qna where
-		qna_id =
-		#{qnaId}
+		bno =
+		#{bno}
 	</select>
 
 	<!-- QNA 수정 -->
 	<update id="modifyQNA">
 		update qna set qna_title = #{qnaTitle},
 		qna_category =
-		#{qnaCategory}, qna_contents=#{qnaContents} where qna_id
-		= #{qnaId}
+		#{qnaCategory}, qna_contents=#{qnaContents} where bno
+		= #{bno}
 	</update>
 
 	<!-- QNA 삭제 -->
 	<delete id="deleteQNA">
-		delete from qna where qna_id = #{qnaId}
+		delete from qna where bno = #{bno}
 	</delete>
 
 	<!-- QNA 목록(페이징) -->
 	<select id="getQnaListPaging" resultType="com.shop.model.QnaVO">
 		select * from (
 		select *
-		from qna order by qna_id desc) as Page2
+		from qna order by bno desc) as Page2
 		limit #{skip},#{amount}
 	</select>
 
@@ -103,7 +106,6 @@
 		review(review_title,review_title,product_name,product_img,review_board,user_id) values
 		(#{reviewTitle},#{reviewTitle},#{productName},#{productImg},#{reviewBoard},#{userId} )
 	</insert>
-
 	<!-- 리뷰 목록 -->
 	<select id="getReviewList" resultType="com.shop.model.ReviewVO">
 		select * from review
@@ -139,6 +141,41 @@
 	<!-- 리뷰 총 개숫 -->
 	<select id="getReviewTotal" resultType="int">
 		select count(*) from review
+	<!-- 댓글 조회 -->
+	<select id="replyList" parameterType="int"
+		resultType="com.shop.model.ReplyVO">
+		select * from reply where bno
+		= #{bno}
 	</select>
 
+	<!-- 댓글 작성 -->
+	<insert id="writereply" parameterType="com.shop.model.ReplyVO">
+		insert into
+		reply(bno,reply_content,user_id) values
+		(#{bno},
+		#{replyContent},#{userId})
+	</insert>
+
+	<!-- 댓글 수정 -->
+	<update id="modifyreply" parameterType="com.shop.model.ReplyVO">
+		update reply set
+		reply_content =
+		#{replyContent}
+		where rno = #{rno}
+		and bno =
+		#{bno}
+	</update>
+
+	<!-- 댓글 삭제 -->
+	<delete id="deletereply" parameterType="com.shop.model.ReplyVO">
+		delete from reply
+		where
+		rno = #{rno}
+		and bno = ${bno}
+	</delete>
+
+	<!-- 게시물 총 개숫 -->
+	<select id="getreplyTotal" resultType="int">
+		select count(*) from reply
+	</select>
 </mapper>

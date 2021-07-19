@@ -9,7 +9,9 @@ import com.shop.mapper.BoardMapper;
 import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
 import com.shop.model.QnaVO;
+
 import com.shop.model.ReviewVO;
+import com.shop.model.ReplyVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -57,6 +59,7 @@ public class BoardServiceImpl implements BoardService {
 		return boardmapper.getTotal(cri);
 	}
 
+	// QNA
 	@Override
 	public void enrollQNA(QnaVO qna) {
 		boardmapper.enrollQNA(qna);
@@ -67,10 +70,14 @@ public class BoardServiceImpl implements BoardService {
 		return boardmapper.getQNAList();
 	}
 
-	
 	@Override
 	public QnaVO getQNAPage(int qnaId) {
 		return boardmapper.getQNAPage(qnaId);
+	}
+	
+	@Override
+	public QnaVO getQNAPage(int bno) {
+		return boardmapper.getQNAPage(bno);
 	}
 
 	@Override
@@ -79,8 +86,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int deleteQNA(int qnaId) {
-		return boardmapper.delete(qnaId);
+	public int deleteQNA(int bno) {
+		return boardmapper.delete(bno);
 	}
 
 	@Override
@@ -118,6 +125,30 @@ public class BoardServiceImpl implements BoardService {
 	public List<ReviewVO> getReviewListPaging(Criteria cri) {
 		return boardmapper.getReviewListPaging(cri);
 	}
+	// 댓글
+	@Override
+	public List<ReplyVO> replyList(int bno) {
+		return boardmapper.replyList(bno);
+	}
 
+	@Override
+	public void writereply(ReplyVO reply) {
+		boardmapper.writereply(reply);
+	}
 
+	@Override
+	public void modifyreply(ReplyVO reply) {
+		boardmapper.modifyreply(reply);
+	}
+
+	@Override
+	public void deletereply(ReplyVO reply) {
+		boardmapper.deletereply(reply);
+	}
+
+	/* 게시물 총 갯수 */
+	@Override
+	public int getreplyTotal(Criteria cri) {
+		return boardmapper.getreplyTotal(cri);
+	}
 }

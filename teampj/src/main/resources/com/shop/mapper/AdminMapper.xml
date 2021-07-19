@@ -212,8 +212,7 @@
 		by product_id
 
 
-		) i on p.product_id=i.product_id where p.product_id
-		=#{productId}
+		) i on p.product_id=i.product_id where p.product_id=#{productId}
 
 
 	</select>

@@ -29,17 +29,26 @@
 			<div id="table-frame">
 				<table>
 					<thead>
+						<tr>
+							<th>NO.</th>
+							<th>STATE</th>
+							<th>TITLE</th>
+							<th>DATE</th>
+						</tr>
+					</thead>
 					<tbody>
 						<c:forEach items="${Qnalist}" var="Qnalist">
 							<tr>
-								<td><c:out value="${Qnalist.qnaId}" /></td>
-								<td><c:out value="${Qnalist.qnaCategory}" /></td>
-								<td><a href="/board/getqna?qnaId=${Qnalist.qnaId}"> <c:out
+								<td><c:out value="${Qnalist.bno}" /></td>
+								<td><c:if test="${replycount.total==0}">
+								미답변
+									</c:if> <c:if test="${replycount.total>=1}">
+									답변완료
+									</c:if></td>
+								<td><a href="/board/getqna?bno=${Qnalist.bno}"> <c:out
 											value="${Qnalist.qnaTitle}">
 										</c:out>
 								</a></td>
-								<td><c:out value="${Qnalist.qnaState}" /></td>
-								<td><c:out value="${Qnalist.userId}" /></td>
 								<td><fmt:formatDate value="${Qnalist.qnaWritedate}"
 										pattern="yyyy/MM/dd" /></td>
 							</tr>
@@ -75,12 +84,8 @@
 						name="amount" value="${pageMaker.cri.amount }">
 				</form>
 				<c:if test="${ loginuser!= null }">
-					<c:if test="${ loginuser.adminck ==0 }">
-					</c:if>
-					<c:if test="${ loginuser.adminck ==1 }">
-						<a href="/board/qnaenroll"><input type="button"
-							class="btn-style" value="글쓰기"></a>
-					</c:if>
+					<a href="/board/qnaenroll"><input type="button"
+						class="btn-style" value="글쓰기"></a>
 				</c:if>
 			</div>
 		</div>

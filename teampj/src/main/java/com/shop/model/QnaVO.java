@@ -3,36 +3,33 @@ package com.shop.model;
 import java.util.Date;
 
 public class QnaVO {
-	private int qnaId;
+	private int bno;
 	private String qnaTitle;
 	private String qnaCategory;
 	private String userId;
 	private String qnaContents;
-	private int qnaState;
 	private Date qnaWritedate;
 
 	public QnaVO() {
 		super();
 	}
 
-	public QnaVO(int qnaId, String qnaTitle, String qnaCategory, String userId, String qnaContents, int qnaState,
-			Date qnaWritedate) {
+	public QnaVO(int bno, String qnaTitle, String qnaCategory, String userId, String qnaContents, Date qnaWritedate) {
 		super();
-		this.qnaId = qnaId;
+		this.bno = bno;
 		this.qnaTitle = qnaTitle;
 		this.qnaCategory = qnaCategory;
 		this.userId = userId;
 		this.qnaContents = qnaContents;
-		this.qnaState = qnaState;
 		this.qnaWritedate = qnaWritedate;
 	}
 
-	public int getQnaId() {
-		return qnaId;
+	public int getbno() {
+		return bno;
 	}
 
-	public void setQnaId(int qnaId) {
-		this.qnaId = qnaId;
+	public void setbno(int bno) {
+		this.bno = bno;
 	}
 
 	public String getQnaTitle() {
@@ -67,14 +64,6 @@ public class QnaVO {
 		this.qnaContents = qnaContents;
 	}
 
-	public int getQnaState() {
-		return qnaState;
-	}
-
-	public void setQnaState(int qnaState) {
-		this.qnaState = qnaState;
-	}
-
 	public Date getQnaWritedate() {
 		return qnaWritedate;
 	}
@@ -85,9 +74,8 @@ public class QnaVO {
 
 	@Override
 	public String toString() {
-		return "QnaVO [qnaId=" + qnaId + ", qnaTitle=" + qnaTitle + ", qnaCategory=" + qnaCategory + ", userId="
-				+ userId + ", qnaContents=" + qnaContents + ", qnaState=" + qnaState + ", qnaWritedate=" + qnaWritedate
-				+ "]";
+		return "QnaVO [bno=" + bno + ", qnaTitle=" + qnaTitle + ", qnaCategory=" + qnaCategory + ", userId=" + userId
+				+ ", qnaContents=" + qnaContents + "qnaWritedate=" + qnaWritedate + "]";
 	}
 
 }

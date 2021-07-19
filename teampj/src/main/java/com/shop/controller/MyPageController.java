@@ -116,7 +116,7 @@ public class MyPageController {
 		   public String addCart(ShoppingCart cart, HttpSession session) throws Exception {
 	
 			int result=0;
-			
+			Product product=new Product();
 			logger.info("카트 담기 진입");
 			User user = (User)session.getAttribute("loginuser");
 			
@@ -136,7 +136,7 @@ public class MyPageController {
 			String[] ajaxMsg = request.getParameterValues("valueArr");
 			int size = ajaxMsg.length;
 			for (int i = 0; i < size; i++) {
-				memberservice.deleteCart(ajaxMsg[i]);
+				memberservice.deleteCart(String.valueOf(ajaxMsg[i]));
 				System.out.println(ajaxMsg[i]);
 			}
 			return "redirect:/mypage/addCart";
@@ -233,7 +233,7 @@ public class MyPageController {
 		 	membermapper.updateInven(product);
 		 }
 
-		 return "redirect:/mypage/addCart";
+		 return "redirect:/mypage/orderList";
 		}
 		//주문취소
 		@RequestMapping(value = "/orderDelete")
@@ -247,7 +247,26 @@ public class MyPageController {
 			}
 			return "redirect:/mypage/orderList";
 		}
+
+		// 장바구니 간단조회
 		
-		
-		
+		 @GetMapping("/orderupdate") public String orderIdSelect(String orderId, Model model) { 
+		logger.info("장바구니 간단조회 "); 
+		UserOrder result =memberservice.orderselect(orderId);
+		 System.out.println(result);
+		 model.addAttribute("order", result); 
+		 return "/mypage/orderupdate"; 
+		 }
+		 
+		 // 장바구니수량 수정
+		 
+		  @PostMapping("/orderupdate") public String orderIdUpdatePOST(UserOrder order,RedirectAttributes rttr,Model model) { 
+		  logger.info("수량 수정 기능 ");
+		  memberservice.orderupdate(order); 
+		  rttr.addFlashAttribute("orderupdate",memberservice.orderupdate(order));
+		 
+		  return "redirect:/mypage/orderList"; 
+		  
+		  }
+		 
 }
