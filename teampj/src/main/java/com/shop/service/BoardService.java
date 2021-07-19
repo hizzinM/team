@@ -52,12 +52,16 @@ public interface BoardService {
 	public List<ReplyVO> replyList(int bno);
 
 	// 댓글 조회
-	public void writereply(ReplyVO vo);
+	public void writereply(ReplyVO reply);
 
 	// 댓글 수정
-	public void modifyreply(ReplyVO vo);
+	public void modifyreply(ReplyVO reply);
 
 	// 댓글 삭제
-	public void deletereply(ReplyVO vo);
+	public void deletereply(ReplyVO reply);
+	
+	// 댓글 갯수
+		public int getreplyTotal(Criteria cri);
+
 
 }

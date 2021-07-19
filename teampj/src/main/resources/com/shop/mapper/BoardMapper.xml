@@ -112,7 +112,7 @@
 		(#{bno},
 		#{replyContent},#{userId})
 	</insert>
-	
+
 	<!-- 댓글 수정 -->
 	<update id="modifyreply" parameterType="com.shop.model.ReplyVO">
 		update reply set
@@ -130,4 +130,9 @@
 		rno = #{rno}
 		and bno = ${bno}
 	</delete>
+
+	<!-- 게시물 총 개숫 -->
+	<select id="getreplyTotal" resultType="int">
+		select count(*) from reply
+	</select>
 </mapper>
