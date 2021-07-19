@@ -39,7 +39,8 @@
 				</script>
 			</div>
 			<div class="input_wrap">
-				<label>Writer</label> <input name="userId">
+				<label>Writer</label> <input name="userId"
+					value="${loginuser.userId}">
 			</div>
 			<button class="btn">등록</button>
 		</form>

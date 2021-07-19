@@ -3,7 +3,7 @@ package com.shop.model;
 import java.util.Date;
 
 public class QnaVO {
-	private int qnaId;
+	private int bno;
 	private String qnaTitle;
 	private String qnaCategory;
 	private String userId;
@@ -15,10 +15,10 @@ public class QnaVO {
 		super();
 	}
 
-	public QnaVO(int qnaId, String qnaTitle, String qnaCategory, String userId, String qnaContents, int qnaState,
+	public QnaVO(int bno, String qnaTitle, String qnaCategory, String userId, String qnaContents, int qnaState,
 			Date qnaWritedate) {
 		super();
-		this.qnaId = qnaId;
+		this.bno = bno;
 		this.qnaTitle = qnaTitle;
 		this.qnaCategory = qnaCategory;
 		this.userId = userId;
@@ -27,12 +27,12 @@ public class QnaVO {
 		this.qnaWritedate = qnaWritedate;
 	}
 
-	public int getQnaId() {
-		return qnaId;
+	public int getbno() {
+		return bno;
 	}
 
-	public void setQnaId(int qnaId) {
-		this.qnaId = qnaId;
+	public void setbno(int bno) {
+		this.bno = bno;
 	}
 
 	public String getQnaTitle() {
@@ -85,7 +85,7 @@ public class QnaVO {
 
 	@Override
 	public String toString() {
-		return "QnaVO [qnaId=" + qnaId + ", qnaTitle=" + qnaTitle + ", qnaCategory=" + qnaCategory + ", userId="
+		return "QnaVO [bno=" + bno + ", qnaTitle=" + qnaTitle + ", qnaCategory=" + qnaCategory + ", userId="
 				+ userId + ", qnaContents=" + qnaContents + ", qnaState=" + qnaState + ", qnaWritedate=" + qnaWritedate
 				+ "]";
 	}

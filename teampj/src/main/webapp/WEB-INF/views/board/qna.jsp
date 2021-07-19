@@ -39,9 +39,9 @@
 					<tbody>
 						<c:forEach items="${Qnalist}" var="Qnalist">
 							<tr>
-								<td><c:out value="${Qnalist.qnaId}" /></td>
+								<td><c:out value="${Qnalist.bno}" /></td>
 								<td><c:out value="${Qnalist.qnaState}" /></td>
-								<td><a href="/board/getqna?qnaId=${Qnalist.qnaId}"> <c:out
+								<td><a href="/board/getqna?bno=${Qnalist.bno}"> <c:out
 											value="${Qnalist.qnaTitle}">
 										</c:out>
 								</a></td> 

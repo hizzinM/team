@@ -1,5 +1,7 @@
 package com.shop.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
 import com.shop.model.PageMakerDTO;
 import com.shop.model.QnaVO;
+import com.shop.model.ReplyVO;
 import com.shop.service.BoardService;
 
 @Controller
@@ -108,15 +111,20 @@ public class BoardController {
 
 	// qna 조회
 	@GetMapping("/getqna")
-	public void QnaGetPageGET(int qnaId, Model model, Criteria cri) {
-		model.addAttribute("qnaInfo", boardService.getQNAPage(qnaId));
+	public void QnaGetPageGET(int bno, Model model, Criteria cri) {
+		model.addAttribute("qnaInfo", boardService.getQNAPage(bno));
 		model.addAttribute("cri", cri);
+
+		// 댓글 조회
+		List<ReplyVO> reply = null;
+		reply = boardService.replyList(bno);
+		model.addAttribute("reply", reply);
 	}
 
 	// qna 수정페이지 이동
 	@GetMapping("/qnamodify")
-	public void QnaModifyGET(int qnaId, Model model, Criteria cri) {
-		model.addAttribute("qnaInfo", boardService.getQNAPage(qnaId));
+	public void QnaModifyGET(int bno, Model model, Criteria cri) {
+		model.addAttribute("qnaInfo", boardService.getQNAPage(bno));
 		model.addAttribute("cri", cri);
 	}
 
@@ -130,10 +138,9 @@ public class BoardController {
 
 	// qna 삭제
 	@PostMapping("/qnadelete")
-	public String QnaDeletePOST(int qnaId, RedirectAttributes rttr) {
-		boardService.deleteQNA(qnaId);
+	public String QnaDeletePOST(int bno, RedirectAttributes rttr) {
+		boardService.deleteQNA(bno);
 		rttr.addFlashAttribute("result", "delete success");
 		return "redirect:/board/qna";
 	}
-
 }

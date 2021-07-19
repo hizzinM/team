@@ -49,7 +49,7 @@ textarea {
 		<div class="input_wrap">
 			<div class="input_wrap">
 				<!-- 번호 -->
-				<c:out value="${qnaInfo.qnaId}" />
+				<c:out value="${qnaInfo.bno}" />
 			</div>
 			<div class="input_wrap">
 				<!-- 카테고리 -->
@@ -82,11 +82,47 @@ textarea {
 						<a class="btn" id="modify_btn">수정 하기</a>
 					</c:if>
 				</c:if>
-
 			</div>
+
+			<!-- 덧글시작 -->
+			<hr />
+			<ul>
+				<c:forEach items="${reply}" var="reply">
+					<li>
+						<div>
+							<p>${reply.userId}/<fmt:formatDate
+									value="${reply.replyWritedate}" pattern="yyyy-MM-dd" />
+							</p>
+							<p>${reply.replyContent }</p>
+						</div>
+					</li>
+				</c:forEach>
+			</ul>
+
+			<div>
+				<div>
+
+					<form method="post" action="/reply/write">
+
+						<p>
+							<label>댓글 작성자</label> <input type="text" name="userId"
+								value="${loginuser.userId}">
+						</p>
+						<p>
+							<textarea rows="5" cols="50" name="replyContent"></textarea>
+						</p>
+						<p>
+							<input type="hidden" name="bno" value="${qnaInfo.bno}">
+							<button type="submit">댓글 작성</button>
+						</p>
+					</form>
+
+				</div>
+			</div>
+			<!-- 덧글끝 -->
 			<form id="infoForm" action="/board/qnamodify" method="get">
-				<input type="hidden" id="qnaId" name="qnaId"
-					value='<c:out value="${qnaInfo.qnaId}"/>'>
+				<input type="hidden" id="bno" name="bno"
+					value='<c:out value="${qnaInfo.bno}"/>'>
 			</form>
 			<%@ include file="../include_collection/footer.jsp"%>
 		</div>
@@ -95,7 +131,7 @@ textarea {
 		let form = $("#infoForm");
 
 		$("#list_btn").on("click", function(e) {
-			form.find("#qnaId").remove();
+			form.find("#bno").remove();
 			form.attr("action", "/board/qna");
 			form.submit();
 		});
