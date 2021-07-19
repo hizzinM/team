@@ -29,17 +29,22 @@
 			<div id="table-frame">
 				<table>
 					<thead>
+						<tr>
+							<th>NO.</th>
+							<th>STATE</th>
+							<th>TITLE</th>
+							<th>DATE</th>
+						</tr>
+					</thead>
 					<tbody>
 						<c:forEach items="${Qnalist}" var="Qnalist">
 							<tr>
 								<td><c:out value="${Qnalist.qnaId}" /></td>
-								<td><c:out value="${Qnalist.qnaCategory}" /></td>
+								<td><c:out value="${Qnalist.qnaState}" /></td>
 								<td><a href="/board/getqna?qnaId=${Qnalist.qnaId}"> <c:out
 											value="${Qnalist.qnaTitle}">
 										</c:out>
-								</a></td>
-								<td><c:out value="${Qnalist.qnaState}" /></td>
-								<td><c:out value="${Qnalist.userId}" /></td>
+								</a></td> 
 								<td><fmt:formatDate value="${Qnalist.qnaWritedate}"
 										pattern="yyyy/MM/dd" /></td>
 							</tr>

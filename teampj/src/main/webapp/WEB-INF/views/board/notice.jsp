@@ -23,154 +23,61 @@
 	<div id="side_navigation">
 		<%@ include file="../include_collection/navigation.jsp"%>
 	</div>
-<<<<<<< HEAD
-	<div id="content">
-		<div id="table-warp">
-			<div id="table-frame">
-				<table>
-					<thead>
+	<div id="contents">
+		<h1>NOTICE</h1>
+		<div id="table_wrap">
+			<table>
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성일</th>
+					</tr>
+				</thead>
+				<c:forEach items="${list}" var="list">
+					<tbody>
 						<tr>
-							<th>NO.</th>
-							<th>TITLE</th>
-							<th>POSTED BY</th>
-							<th>DATE</th>
+							<td><c:out value="${list.bno}" /></td>
+							<td><a class="move"
+								href='/board/get?bno=<c:out value="${list.bno}"/>'> <c:out
+										value="${list.noticeTitle}" />
+							</a></td>
+							<td><c:out value="${list.userId}" /></td>
+							<td><fmt:formatDate value="${list.noticeWritedate}"
+									pattern="yyyy/MM/dd" /></td>
 						</tr>
-					</thead>
-					<c:forEach items="${list}" var="list">
-						<c:if test="${ list.noticeBold ==1 }">
-							<tbody style="font-weight: bold;">
-								<tr>
-									<td><c:out value="${list.bno}" /></td>
-									<td><a href="/board/get?bno=${list.bno}"> <c:out
-												value="${list.noticeTitle}">
-											</c:out>
-									</a></td>
-									<td><c:out value="${list.userId}" /></td>
-									<td><fmt:formatDate value="${list.noticeWritedate}"
-											pattern="yyyy/MM/dd" /></td>
-								</tr>
-							</tbody>
-						</c:if>
-					</c:forEach>
-					<c:forEach items="${list}" var="list">
-						<c:if test="${list.noticeBold ==0 }">
-							<tbody>
-								<tr>
-									<td><c:out value="${list.bno}" /></td>
-									<td><a href="/board/get?bno=${list.bno}"> <c:out
-												value="${list.noticeTitle}">
-											</c:out>
-									</a></td>
-									<td><c:out value="${list.userId}" /></td>
-									<td><fmt:formatDate value="${list.noticeWritedate}"
-											pattern="yyyy/MM/dd" /></td>
-								</tr>
-							</tbody>
-						</c:if>
-					</c:forEach>
-
-				</table>
-				<div class="pageInfo_wrap">
-					<div class="pageInfo_area">
-						<ul id="pageInfo" class="pageInfo">
-							<!-- 이전페이지 버튼 -->
-							<c:if test="${pageMaker.prev}">
-								<li class="pageInfo_btn previous"><a
-									href="${pageMaker.startPage-1}">Previous</a></li>
-							</c:if>
-							<!-- 각 번호 페이지 버튼 -->
-							<c:forEach var="num" begin="${pageMaker.startPage}"
-								end="${pageMaker.endPage}">
-								<li class="pageInfo_btn"><a href="${num}">${num}</a></li>
-							</c:forEach>
-
-							<!-- 다음페이지 버튼 -->
-							<c:if test="${pageMaker.next}">
-								<li class="pageInfo_btn next"><a
-									href="${pageMaker.endPage + 1 }">Next</a></li>
-							</c:if>
-						</ul>
-					</div>
-				</div>
-
-				<form id="moveform2" method="get">
-					<input type="hidden" name="pageNum"
-						value="${pageMaker.cri.pageNum }"> <input type="hidden"
-						name="amount" value="${pageMaker.cri.amount }">
-				</form>
-				<c:if test="${ loginuser!= null }">
-					<c:if test="${ loginuser.adminck ==0 }">
-					</c:if>
-					<c:if test="${ loginuser.adminck ==1 }">
-						<a href="/board/enroll"><input type="button" class="btn-style"
-							value="글쓰기"></a>
-					</c:if>
-				</c:if>
-			</div>
+					</tbody>
+				</c:forEach>
+			</table>
 		</div>
-=======
-    <div id="contents">
-        <h1>NOTICE</h1>
-        <div id="table_wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>번호</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>작성일</th>
-                    </tr>
-                </thead>
-                <c:forEach items="${list}" var="list">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <c:out value="${list.bno}" />
-                            </td>
-                            <td>
-                                <a class="move" href='/board/get?bno=<c:out value="${list.bno}"/>'>
-                                    <c:out value="${list.noticeTitle}" />
-                                </a>
-                            </td>
-                            <td>
-                                <c:out value="${list.userId}" />
-                            </td>
-                            <td>
-                                <fmt:formatDate value="${list.noticeWritedate}" pattern="yyyy/MM/dd" />
-                            </td>
-                        </tr>
-                    </tbody> 
-                </c:forEach>
-            </table>
-        </div>
-        <div id="btn-wrap">
-            <c:if test="${ loginuser!= null }">
-                <c:if test="${ loginuser.adminck ==0 }">
-                </c:if>
-                <c:if test="${ loginuser.adminck ==1 }">
-                    <div class="btn-box">
-                        <button type="button" class="button_style write-btn"
-                            onclick="location.href='/board/enroll' ">글쓰기</button>
-                    </div>
-                </c:if>
-            </c:if>
-            <div class="pageInfo_area">
-                <ul id="pageInfo" class="pageInfo">
-                    <!-- 각 번호 페이지 버튼 -->
-                    <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-                        <li class="pageInfo_btn">
-                            <a href="${num}">${num}</a>
-                        </li>
-                    </c:forEach>
-                </ul>
-            </div>
-            <form id="moveForm" method="get">
-                <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }"> <input type="hidden" name="amount"
-                    value="${pageMaker.cri.amount }">
-            </form>
-        </div>
-        <%@ include file="../include_collection/footer.jsp"%>
->>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
+		<div id="btn-wrap">
+			<c:if test="${ loginuser!= null }">
+				<c:if test="${ loginuser.adminck ==0 }">
+				</c:if>
+				<c:if test="${ loginuser.adminck ==1 }">
+					<div class="btn-box">
+						<button type="button" class="button_style write-btn"
+							onclick="location.href='/board/enroll' ">글쓰기</button>
+					</div>
+				</c:if>
+			</c:if>
+			<div class="pageInfo_area">
+				<ul id="pageInfo" class="pageInfo">
+					<!-- 각 번호 페이지 버튼 -->
+					<c:forEach var="num" begin="${pageMaker.startPage}"
+						end="${pageMaker.endPage}">
+						<li class="pageInfo_btn"><a href="${num}">${num}</a></li>
+					</c:forEach>
+				</ul>
+			</div>
+			<form id="moveForm" method="get">
+				<input type="hidden" name="pageNum"
+					value="${pageMaker.cri.pageNum }"> <input type="hidden"
+					name="amount" value="${pageMaker.cri.amount }">
+			</form>
+		</div>
+		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
 
 	<script>
