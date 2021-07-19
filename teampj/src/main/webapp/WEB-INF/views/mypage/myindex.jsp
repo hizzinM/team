@@ -82,14 +82,6 @@
 					<li>
 						<div>
 							<a href="/member/">
-								<p>ADDRESS</p>
-								<p>배송 주소록 관리</p>
-							</a>
-						</div>
-					</li>
-					<li>
-						<div>
-							<a href="/member/">
 								<p>WISHLIST</p>
 								<p>관심상품</p>
 							</a>
@@ -98,8 +90,16 @@
 					<li>
 						<div>
 							<a href="/member/">
-								<p>BOARD</p>
-								<p>게시물관리</p>
+								<p>MYREVIEW</p>
+								<p>내가 쓴 리뷰</p>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="/member/">
+								<p>MYQNA</p>
+								<p>내가 한 질문</p>
 							</a>
 						</div>
 					</li>

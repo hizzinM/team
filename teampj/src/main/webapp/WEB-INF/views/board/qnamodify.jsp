@@ -51,8 +51,8 @@ textarea {
 	<div align="center">
 		<form id="modifyForm" action="/board/qnamodify" method="post">
 			<div class="input_wrap">
-				<label>질문 번호</label> <input name="qnaId" readonly="readonly"
-					value='<c:out value="${qnaInfo.qnaId}"/>'>
+				<label>질문 번호</label> <input name="bno" readonly="readonly"
+					value='<c:out value="${qnaInfo.bno}"/>'>
 			</div>
 			<div class="input_wrap">
 				<label>질문 카테고리</label> <input name="qnaCategory"
@@ -92,8 +92,8 @@ textarea {
 			</div>
 		</form>
 		<form id="infoForm" action="/board/qnamodify" method="get">
-			<input type="hidden" id="qnaId" name="qnaId"
-				value='<c:out value="${pageInfo.qnaId}"/>'> <input
+			<input type="hidden" id="bno" name="bno"
+				value='<c:out value="${pageInfo.bno}"/>'> <input
 				type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
 			<input type="hidden" name="amount"
 				value='<c:out value="${cri.amount}"/>'>
@@ -108,7 +108,7 @@ textarea {
 
 		/* 목록 페이지 이동 버튼 */
 		$("#list_btn").on("click", function(e) {
-			form.find("#qnaId").remove();
+			form.find("#bno").remove();
 			form.attr("action", "/board/qna");
 			form.submit();
 		});
