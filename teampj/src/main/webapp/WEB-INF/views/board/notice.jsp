@@ -29,20 +29,46 @@
 			<div id="table-frame">
 				<table>
 					<thead>
-					<tbody>
-						<c:forEach items="${list}" var="list">
-							<tr>
-								<td><c:out value="${list.bno}" /></td>
-								<td><a href="/board/get?bno=${list.bno}"> <c:out
-											value="${list.noticeTitle}">
-										</c:out>
-								</a></td>
-								<td><c:out value="${list.userId}" /></td>
-								<td><fmt:formatDate value="${list.noticeWritedate}"
-										pattern="yyyy/MM/dd" /></td>
-							</tr>
-						</c:forEach>
-					</tbody>
+						<tr>
+							<th>NO.</th>
+							<th>TITLE</th>
+							<th>POSTED BY</th>
+							<th>DATE</th>
+						</tr>
+					</thead>
+					<c:forEach items="${list}" var="list">
+						<c:if test="${ list.noticeBold ==1 }">
+							<tbody style="font-weight: bold;">
+								<tr>
+									<td><c:out value="${list.bno}" /></td>
+									<td><a href="/board/get?bno=${list.bno}"> <c:out
+												value="${list.noticeTitle}">
+											</c:out>
+									</a></td>
+									<td><c:out value="${list.userId}" /></td>
+									<td><fmt:formatDate value="${list.noticeWritedate}"
+											pattern="yyyy/MM/dd" /></td>
+								</tr>
+							</tbody>
+						</c:if>
+					</c:forEach>
+					<c:forEach items="${list}" var="list">
+						<c:if test="${list.noticeBold ==0 }">
+							<tbody>
+								<tr>
+									<td><c:out value="${list.bno}" /></td>
+									<td><a href="/board/get?bno=${list.bno}"> <c:out
+												value="${list.noticeTitle}">
+											</c:out>
+									</a></td>
+									<td><c:out value="${list.userId}" /></td>
+									<td><fmt:formatDate value="${list.noticeWritedate}"
+											pattern="yyyy/MM/dd" /></td>
+								</tr>
+							</tbody>
+						</c:if>
+					</c:forEach>
+
 				</table>
 				<div class="pageInfo_wrap">
 					<div class="pageInfo_area">
