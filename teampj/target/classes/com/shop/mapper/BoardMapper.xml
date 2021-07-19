@@ -25,10 +25,13 @@
 
 	<!-- 공지 수정 -->
 	<update id="modify">
-		update notice set notice_title = #{noticeTitle},
+		update notice set notice_title =
+		#{noticeTitle},
 		notice_content =
-		#{noticeContent}, notice_bold=#{noticeBold} where bno
-		= #{bno}
+		#{noticeContent},
+		notice_bold=#{noticeBold} where bno
+		=
+		#{bno}
 	</update>
 
 	<!-- 공지 삭제 -->
@@ -40,7 +43,7 @@
 	<select id="getListPaging" resultType="com.shop.model.NoticeVO">
 		select * from (
 		select *
-		from notice order by bno desc) as Page
+		from notice order by notice_bold desc, notice_writedate desc) as Page
 		limit #{skip},#{amount}
 	</select>
 
@@ -48,7 +51,7 @@
 	<select id="getTotal" resultType="int">
 		select count(*) from notice
 	</select>
- 
+
 	<!-- QNA 등록 -->
 	<insert id="enrollQNA">
 		insert into
