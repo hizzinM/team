@@ -97,14 +97,16 @@
 	<select id="getQnaTotal" resultType="int">
 		select count(*) from qna
 	</select>
-	
-	<!--  -->
-	
+
+	<!-- -->
+
 	<!-- 리뷰 등록 -->
 	<insert id="enrollReview">
 		insert into
-		review(review_title,review_title,product_name,product_img,review_board,user_id) values
-		(#{reviewTitle},#{reviewTitle},#{productName},#{productImg},#{reviewBoard},#{userId} )
+		review(review_title,review_title,product_name,product_img,review_board,user_id)
+		values
+		(#{reviewTitle},#{reviewTitle},#{productName},#{productImg},#{reviewBoard},#{userId}
+		)
 	</insert>
 	<!-- 리뷰 목록 -->
 	<select id="getReviewList" resultType="com.shop.model.ReviewVO">
@@ -120,9 +122,10 @@
 
 	<!-- 리뷰 수정 -->
 	<update id="modifyReview">
-		update review set 
+		update review set
 		review_title = #{reviewTitle},
-		review_board = #{reviewBoard}, where review_id= #{reviewId}
+		review_board = #{reviewBoard}, where review_id=
+		#{reviewId}
 	</update>
 
 	<!-- 리뷰 삭제 -->
@@ -131,17 +134,20 @@
 	</delete>
 
 	<!-- 리뷰 목록(페이징) -->
-	<select id="getReviewListPaging" resultType="com.shop.model.ReviewVO">
+	<select id="getReviewListPaging"
+		resultType="com.shop.model.ReviewVO">
 		select * from (
 		select *
-		from review order by review_id desc) as Page2
+		from review order by review_id desc)
+		as Page2
 		limit #{skip},#{amount}
 	</select>
 
 	<!-- 리뷰 총 개숫 -->
 	<select id="getReviewTotal" resultType="int">
-		select count(*) from review
-	</select>	
+		select count(*) from
+		review
+	</select>
 	<!-- 댓글 조회 -->
 	<select id="replyList" parameterType="int"
 		resultType="com.shop.model.ReplyVO">

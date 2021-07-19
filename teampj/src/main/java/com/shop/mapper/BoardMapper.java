@@ -48,7 +48,7 @@ public interface BoardMapper {
 
 	/* QnaVO 목록(페이징 적용) */
 	public List<QnaVO> getQnaListPaging(Criteria cri);
-	
+
 	/* 리뷰 등록 */
 	public void enrollReview(ReviewVO review);
 
@@ -66,7 +66,6 @@ public interface BoardMapper {
 
 	/* ReviewVO 목록(페이징 적용) */
 	public List<ReviewVO> getReviewListPaging(Criteria cri);
-	
 
 	// 댓글 조회
 	public List<ReplyVO> replyList(int bno);
