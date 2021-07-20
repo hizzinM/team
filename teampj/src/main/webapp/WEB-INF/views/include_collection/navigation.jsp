@@ -12,8 +12,7 @@
 		</c:if>
 		<!-- 로그인 후 -->
 		<c:if test="${ loginuser!= null }">
-			<li style="font-weight: bold; font-size: 11px;">${loginuser.userName}님
-				어서오세요.</li>
+			<li style="font-weight: bold; font-size: 11px;">${loginuser.userName}님 어서오세요.</li>
 			<br>
 			<br>
 			<li><a href="/member/logout">로그아웃</a></li>

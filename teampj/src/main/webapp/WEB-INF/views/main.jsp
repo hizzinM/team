@@ -47,11 +47,11 @@
         <div id="product-warp">
             <div id="product_column">
                 <div class="product_unit">
-                    <a href="#">
+                    <a href="/detail?productId=${Product.productId}">
                         <img class="puoduct_img" src="/resources/img/slide-img_000.jpg" alt="" onerror="this.src='/resources/img/noimg.jpg'">
                     </a>
                     <ul>
-                        <li><a href="#">디언 린넨 슬릿 니트</a></li>
+                        <li><a href="/detail?productId=${Product.productId}">디언 린넨 슬릿 니트</a></li>
                         <hr>
                         <li>KRW 40,000</li>
                     </ul>
