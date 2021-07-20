@@ -9,31 +9,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.js"
-	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-	crossorigin="anonymous"></script>
     <title>상품개별조회</title>
-<script src="/resources/ckeditor/ckeditor.js"></script>
-<link rel="stylesheet" href="/resources/css/common-style/reset.css">
-<link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
-<link rel="stylesheet" href="/resources/css/common-style/contents.css">
-<link rel="stylesheet" href="/resources/css/common-style/productdetail.css">
-<style type="text/css">
-.goodsimg{
-    width:550px;
-    height: 700px;    
-}
-.size{
-	 width:775px;
-    height: 320px;   
-}
-.goodsdetail{
-   width: 1200px;
-   height: 9100px;   
-}
-</style>
+	<link rel="stylesheet" href="/resources/css/common-style/reset.css">
+	<link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
+	<link rel="stylesheet" href="/resources/css/common-style/contents.css">
+	<link rel="stylesheet" href="/resources/css/common-style/productdetail.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+	<script src="/resources/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 	<header>
@@ -43,92 +26,80 @@
 		<%@ include file="include_collection/navigation.jsp"%>
 	</div>
     <div id="contents">
-    
-        <div id="prodct-ex_warp">
-            <div>
-
-                <img src="/resources/upload/${goodDetailData.uploadPath}/${goodDetailData.uuid}_${goodDetailData.fileName}" alt="" class="goodsimg">
-            </div><br>
-            <div>
-            	<p>사이즈가이드:</p>
-                <img src="/resources/upload/${goodDetailData.uploadPath2}/${goodDetailData.uuid2}_${goodDetailData.fileName2}" alt="" class="size">
-
+        <div id="prodct-ex_wrap">
+            <div class="product_img">
+                <img src="/resources/upload/${goodDetailData.uploadPath}/${goodDetailData.uuid}_${goodDetailData.fileName}" alt="">
             </div>
-            
-            <div id="detail_warp">
-            
-                <table>
-                    <tr>
-                        <td>제품 번호</td>
-                        <td><c:out value="${goodDetailData.productId}"/></td>
-                    </tr>
-                    <tr>
-                        <td>제품명</td>
-                        <td><c:out value="${goodDetailData.productName}" /></td>
-                    </tr>
-                    <tr>
-                        <td>가격</td>
-                        <td><fmt:formatNumber pattern="###,###,###" value="${goodDetailData.productPrice}" />원</td>
-                    </tr>
-                    <tr>
-                        <td>카테고리</td>
-                        <td><c:out value="${goodDetailData.productCategory}" /></td>
-                    </tr>
-                    <tr>
-                        <td>사이즈</td>
-                        <td><c:out value="${goodDetailData.productSize}" /></td>
-                    </tr>
-                    <tr>
-                        <td>색상</td>
-                        <td><c:out value="${goodDetailData.productColor}" /></td>
-                    </tr>
-                    
-                    <tr>
-                        <td>재고</td>
-                        <td><c:out value="${goodDetailData.productInventory}"/>
-                        	<input type='hidden' id='productInventory' name='productInventory' value="${goodDetailData.productInventory}"/></td>													</td>
-                    </tr>
-                    
-                    <c:if test="${goodDetailData.productInventory == 0}">
-                    	<p style="color:red;">재고가 없습니다</p>
-                    </c:if>
-                    <tr>
-                        <td>수량</td>
-                        <td><select id="amount">
-   							 <c:forEach  begin="1" end="10" var="i">
-       						 <option id="qty" value="${i}">${i}</option>
-   								 </c:forEach>
-							</select></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">상품 설명</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <textarea class="textarea_style" rows="10" cols="115%" readonly>
-                                <c:out value="${goodDetailData.productComment}" />
-                            </textarea>
-                        </td>
-                    </tr>
-                  
-                </table><br>
-                <div id="btn-warp">		
-             	
-                   	<input type="submit" class="button_style cart_btn" id="addcart" value="장바구니에 담기">
-					<input type="button" class="button_style back_btn" value="이전으로 이동" onclick="history.back()"><br>
-					<span id=noinven></span>
+
+            <div id="detail_wrap">
+                <div class="detail-title-box">
+                    <p class="productId"><c:out value="${goodDetailData.productId}" />112-112</p>
+                    <p class="productName"><c:out value="${goodDetailData.productName}" />1+1 윙스 린넨 라운드 티셔츠<span><c:out value="${goodDetailData.productCategory}" />outer</span></p>
+                    <p class="productPrice"><fmt:formatNumber pattern="###,###,###" value="${goodDetailData.productPrice}" />30,000원</p>
+                </div>
+                <div class="detail-Ex-box"> 
+                    <button class="button_style guide-btn">SIZE GUIDE</button>
+                    <button class="button_style comment-btn">COMMENT</button>
+                    <!-- <div class="img-guide">
+                        <img src="/resources/upload/${goodDetailData.uploadPath2}/${goodDetailData.uuid2}_${goodDetailData.fileName2}" alt="">
+                    </div> -->
+                    <div class="product-comment">
+                        <textarea class="textarea_style text-frame" rows="10" cols="115%" readonly><c:out value="${goodDetailData.productComment}" /></textarea>
+                    </div>
+                </div>
+                <table class="detail-char-box">
+                    <tbody>
+                        <tr>
+                            <td>사이즈</td>
+                            <td colspan="2">
+                                <c:out value="${goodDetailData.productSize}" /> XL
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>색상</td>
+                            <td colspan="2">
+                                <c:out value="${goodDetailData.productColor}" /> red
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>수량</td>
+                            <td>
+                                <c:if test="${goodDetailData.productInventory != 0}">
+                                    <input type="number" name="product_amount" class="product_amount text-frame" maxlength="1" oninput="numberMaxLength(this);" placeholder="${goodDetailData.productInventory}7개 남음"/>
+                                    <input type='hidden' id='productInventory' name='productInventory' value="${goodDetailData.productInventory}" />
+                                    <script>
+                                        function numberMaxLength(e){
+                                            if(e.value.length > e.maxLength){
+                                                e.value = e.value.slice(0, e.maxLength);
+                                            }
+                                        }
+                                    </script>
+                                </c:if>
+
+                                <c:if test="${goodDetailData.productInventory == 0}">
+                                    <p style="color:red;">재고가 없습니다</p>
+                                </c:if>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="btn-wrap">
+                    <input type="submit" class="button_style cart_btn" id="addcart" value="장바구니에 담기">
+                    <input type="button" class="button_style back_btn" value="이전으로 이동" onclick="history.back()"><br>
+                    <span id=noinven></span>
                 </div>
             </div>
+
+        </div>
+        <div id="prodct-img-ex_wrap">
+            <img src="/resources/upload/${goodDetailData.uploadPath3}/${goodDetailData.uuid3}_${goodDetailData.fileName3}" alt="" class="prodct-img-ex">
+            <img src="/resources/upload/${goodDetailData.uploadPath4}/${goodDetailData.uuid4}_${goodDetailData.fileName4}" alt="" class="prodct-img-ex">
+        </div>
             
-            <div class="inputArea">
-            <label for="Detail">디테일</label><br>
-            	 <img src="/resources/upload/${goodDetailData.uploadPath3}/${goodDetailData.uuid3}_${goodDetailData.fileName3}" alt="" class="goodsdetail"><br>
-            	 <img src="/resources/upload/${goodDetailData.uploadPath4}/${goodDetailData.uuid4}_${goodDetailData.fileName4}" alt="" class="goodsdetail">
-            	
-            
-            
-            
-            
+        <div id="review_wrap">
+			<%@ include file="board/review.jsp"%>
+        </div>  
            <!--  <textarea rows="5" cols="50" id="Detail" name="Detail"></textarea>
             <script>
             	var ckeditor_config = {

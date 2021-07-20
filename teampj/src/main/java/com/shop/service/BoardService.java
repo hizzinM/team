@@ -48,7 +48,7 @@ public interface BoardService {
 
 	/* QnaVO 목록(페이징 적용) */
 	public List<QnaVO> getQnaListPaging(Criteria cri);
-	
+
 	/* 리뷰 등록 */
 	public void enrollReview(ReviewVO review);
 
@@ -78,9 +78,8 @@ public interface BoardService {
 
 	// 댓글 삭제
 	public void deletereply(ReplyVO reply);
-	
-	// 댓글 갯수
-		public int getreplyTotal(Criteria cri);
 
+	// 댓글 갯수
+	public int getreplyTotal(Criteria cri);
 
 }
