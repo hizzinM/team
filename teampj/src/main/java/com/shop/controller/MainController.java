@@ -36,8 +36,7 @@ import com.shop.service.MemberService;
 public class MainController {
 	@Autowired
 	AdminService adminService;
-
-
+ 
 	private static final Logger logger = LoggerFactory.getLogger("MainController.class");
 
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
