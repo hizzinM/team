@@ -31,8 +31,15 @@
                             <td><input name="reviewTitle" class="text-frame"></td>
                         </tr>
                         <tr>
-                            <td>작성자</td>
-                            <td><input name="userName" class="text-frame userId_box" value="${loginuser.userName}" readonly></td>
+                        	<td>작성자</td>
+                        	<c:if test="${loginuser == null }">
+								<td>비회원</td>
+							</c:if>
+							<c:if test="${loginuser != null }">
+								<td>
+									<input name="userName" class="text-frame userId_box" value="${loginuser.userName}" readonly>
+								</td>
+                            </c:if>
                         </tr>
                         <tr>
                             <td colspan="2">
