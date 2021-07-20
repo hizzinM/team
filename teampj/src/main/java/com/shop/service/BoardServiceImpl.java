@@ -89,7 +89,7 @@ public class BoardServiceImpl implements BoardService {
 	public List<QnaVO> getQnaListPaging(Criteria cri) {
 		return boardmapper.getQnaListPaging(cri);
 	}
-	/*리뷰*/
+	/* 리뷰 */
 
 	@Override
 	public void enrollReview(ReviewVO review) {
@@ -120,6 +120,7 @@ public class BoardServiceImpl implements BoardService {
 	public List<ReviewVO> getReviewListPaging(Criteria cri) {
 		return boardmapper.getReviewListPaging(cri);
 	}
+
 	// 댓글
 	@Override
 	public List<ReplyVO> replyList(int bno) {

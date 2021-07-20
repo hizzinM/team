@@ -146,7 +146,8 @@ public class BoardController {
 		boardService.deleteQNA(bno);
 		rttr.addFlashAttribute("result", "delete success");
 		return "redirect:/board/qna";
-	}	
+	}
+
 	// 리뷰 페이지 이동
 	@GetMapping("/review")
 	public void getreview(Model model, Criteria cri) {
@@ -156,6 +157,7 @@ public class BoardController {
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
 	}
+
 	// 리뷰 등록
 	@GetMapping("/reviewenroll")
 	public void getreviewenroll() {

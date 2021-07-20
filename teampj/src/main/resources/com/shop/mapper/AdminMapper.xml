@@ -19,10 +19,7 @@
 	</insert>
 	<!-- 이미지 등록 -->
 	<insert id="imageEnroll">
-		insert into product_img(product_id, image_id,
-		file_name,upload_path,uuid)
-		values
-		(#{productId},#{imageId},#{fileName},#{uploadPath},#{uuid})
+		insert into product_img(product_id, image_id,file_name,upload_path,uuid) values (#{productId},#{imageId},#{fileName},#{uploadPath},#{uuid})
 	</insert>
 
 
@@ -191,28 +188,20 @@
 		select
 		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
 		p.product_inventory,p.product_comment,i.file_name,i.upload_path,i.uuid
-		,i.file_name2,i.upload_path2,i.uuid2
-		from product p
-		join (
-		select
-		product_id
-		, max(case when image_id=1 then file_name end) as file_name
-		, max(case when image_id=1 then upload_path end) as upload_path
-		,
-		max(case when image_id=1 then uuid end) as uuid
-		, max(case when
-		image_id=2 then file_name end) as file_name2
-		, max(case when image_id=2
-		then upload_path end) as upload_path2
-		, max(case when image_id=2 then
-		uuid end) as uuid2
-		from product_img
-		where product_id=#{productId}
-		group
-		by product_id
-
-
-		) i on p.product_id=i.product_id where p.product_id=#{productId}
+		,i.file_name2,i.upload_path2,i.uuid2,i.file_name3,i.upload_path3,i.uuid3,i.file_name4,i.upload_path4,i.uuid4 
+		from product p join (select product_id ,max(case when image_id=1 then file_name end) as file_name
+		,max(case when image_id=1 then upload_path end) as upload_path
+		,max(case when image_id=1 then uuid end) as uuid
+		,max(case when image_id=2 then file_name end) as file_name2
+		,max(case when image_id=2 then upload_path end) as upload_path2
+		,max(case when image_id=2 then uuid end) as uuid2
+        ,max(case when image_id=3 then file_name end) as file_name3
+		,max(case when image_id=3 then upload_path end) as upload_path3
+		,max(case when image_id=3 then uuid end) as uuid3
+        ,max(case when image_id=4 then file_name end) as file_name4
+		,max(case when image_id=4 then upload_path end) as upload_path4
+		,max(case when image_id=4 then uuid end) as uuid4
+		from product_img where product_id=#{productId} group by product_id) i on p.product_id=i.product_id where p.product_id=#{productId}
 
 
 	</select>

@@ -14,7 +14,21 @@
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/mypage/myindex.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<style type="text/css">
+.orderview{
+	font-size: 20px;
+	width: 60%;
+}
+.orderthead{
+	border:1px black solid;
+}
+.ordertbody{
+	border:3px black solid;
+}
+
+</style>
 </head>
+
 <body>
 	<header>
 		<nav></nav>
@@ -25,18 +39,18 @@
 	<div id="contents">
 		<div class="table-frame">
 			<h2>ORDER LIST</h2>
-				<h3>주문번호 클릭시 상세정보 열람가능</h3>
-			<table>
-			  <thead>
+				<h3 style="font-size:15px; color: red;">주문번호 클릭시 상세정보 열람가능,수령인 아이디 클릭시 배송지 변경가능</h3>
+			<table class="orderview">
+			  <thead class="orderthead">
 			  	<tr>
 				<td><input type="checkbox" name="allCheck" id=allCheck />전체선택</td>
 				</tr>
 			 </thead>
 			<c:forEach items="${orderList}" var="orderList">
-				<tbody>
+				<tbody class="ordertbody">
 				<tr>
 					<td><input type="checkbox" name="RowCheck" class="RowCheck" value="${orderList.orderId}" >주문번호</td>
-					<td><a href="/mypage/orderDetail?n=${orderList.orderId}"><c:out value="${orderList.orderId}"></c:out></a></td>
+					<td style="color: blue;"><a href="/mypage/orderDetail?n=${orderList.orderId}"><c:out value="${orderList.orderId}"></c:out></a></td>
 				</tr>
 				<tr>
 					<td>수령인아이디</td>

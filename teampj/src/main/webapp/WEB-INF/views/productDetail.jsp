@@ -29,6 +29,10 @@
 	 width:775px;
     height: 320px;   
 }
+.goodsdetail{
+   width: 1200px;
+   height: 9100px;   
+}
 </style>
 </head>
 <body>
@@ -115,9 +119,17 @@
 					<span id=noinven></span>
                 </div>
             </div>
+            
             <div class="inputArea">
-            <label for="Detail">디테일</label>
-            <textarea rows="5" cols="50" id="Detail" name="Detail"></textarea>
+            <label for="Detail">디테일</label><br>
+            	 <img src="/resources/upload/${goodDetailData.uploadPath3}/${goodDetailData.uuid3}_${goodDetailData.fileName3}" alt="" class="goodsdetail"><br>
+            	 <img src="/resources/upload/${goodDetailData.uploadPath4}/${goodDetailData.uuid4}_${goodDetailData.fileName4}" alt="" class="goodsdetail">
+            	
+            
+            
+            
+            
+           <!--  <textarea rows="5" cols="50" id="Detail" name="Detail"></textarea>
             <script>
             	var ckeditor_config = {
    				resize_enaleb : false,
@@ -127,7 +139,7 @@
 				 };
  
 				 CKEDITOR.replace("Detail", ckeditor_config);
-			</script>
+			</script> -->
            </div>
         
         </div>
