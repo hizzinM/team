@@ -92,11 +92,10 @@ textarea {
 			</div>
 		</form>
 		<form id="infoForm" action="/board/qnamodify" method="get">
-			<input type="hidden" id="bno" name="bno"
-				value='<c:out value="${pageInfo.bno}"/>'> <input
-				type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
-			<input type="hidden" name="amount"
-				value='<c:out value="${cri.amount}"/>'>
+			<input id="bno" name="bno" value='<c:out value="${qnaInfo.bno}"/>'>
+			<input type="hidden" name="pageNum"
+				value='<c:out value="${cri.pageNum}"/>'> <input
+				type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
 		</form>
 		<div>
 			<%@ include file="../include_collection/footer.jsp"%>

@@ -77,9 +77,6 @@
 						</ul>
 					</div>
 				</div>
-				<div>
-					<%@ include file="../include_collection/footer.jsp"%>
-				</div>
 
 				<form id="moveform3" method="get">
 					<input type="hidden" name="pageNum"
@@ -91,7 +88,10 @@
 						class="btn-style" value="글쓰기"></a>
 				</c:if>
 			</div>
-		</div>
+			<div>
+				<%@ include file="../include_collection/footer.jsp"%>
+			</div>
+		</div> 
 	</div>
 	<script>
 		let moveform3 = $("#moveform3");
@@ -103,7 +103,7 @@
 		});
 
 		$(document).ready(function() {
-			
+
 			let result = '<c:out value="${result}"/>';
 			checkAlert(result);
 			console.log(result);

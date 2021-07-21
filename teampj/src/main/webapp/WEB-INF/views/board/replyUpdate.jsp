@@ -16,7 +16,32 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
+<style>
+<
+style type ="text /css ">.input_wrap {
+	padding: 5px 20px;
+}
+
+label {
+	display: block;
+	margin: 10px 0;
+	font-size: 20px;
+}
+
+input {
+	padding: 5px;
+	font-size: 17px;
+}
+
+textarea {
+	width: 800px;
+	height: 200px;
+	font-size: 15px;
+	padding: 10px;
+}
+</style>
 </head>
+
 <body>
 	<header>
 		<nav></nav>
@@ -25,8 +50,6 @@
 		<%@ include file="../include_collection/navigation.jsp"%>
 	</div>
 	<div id="content">
-		<div>글번호 : ${replyUpdate.bno}</div>
-
 		<section id="container">
 			<form role="form" method="post" autocomplete="off">
 
