@@ -157,11 +157,18 @@ public class BoardController {
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
 	}
-
-	// 리뷰 등록
+	// 리뷰작성페이지이동
 	@GetMapping("/reviewenroll")
 	public void getreviewenroll() {
 		logger.info("게시글 작성 페이지 진입");
+	}
+	// 리뷰공지글 등록
+	@PostMapping("/reviewenroll")
+	public String postReviewenroll(ReviewVO review, RedirectAttributes rttr) {
+		logger.info("ReviewVO : " + review);
+		boardService.enrollReview(review);
+		rttr.addFlashAttribute("result", "enrol success");
+		return "redirect:/board/review";
 	}
 	// 리뷰 조회
 	@GetMapping("/reviewget")

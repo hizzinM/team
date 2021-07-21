@@ -103,9 +103,9 @@
 	<!-- 리뷰 등록 -->
 	<insert id="enrollReview">
 		insert into
-		review(review_title,review_title,product_name,product_img,review_board,user_id)
+		review(review_title,product_name,product_img,review_board,user_id)
 		values
-		(#{reviewTitle},#{reviewTitle},#{productName},#{productImg},#{reviewBoard},#{userId}
+		(#{reviewTitle},#{productName},#{productImg},#{reviewBoard},#{userId}
 		)
 	</insert>
 	<!-- 리뷰 목록 -->

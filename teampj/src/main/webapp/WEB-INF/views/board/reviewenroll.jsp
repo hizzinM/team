@@ -31,13 +31,17 @@
                             <td><input name="reviewTitle" class="text-frame"></td>
                         </tr>
                         <tr>
+                            <td>상품명</td>
+                            <td><input name="productName" class="text-frame"></td>
+                        </tr>
+                        <tr>
                         	<td>작성자</td>
                         	<c:if test="${loginuser == null }">
-								<td>비회원</td>
+								<td><input name="userId" class="text-frame userId_box" value="비회원" readonly></td>
 							</c:if>
 							<c:if test="${loginuser != null }">
 								<td>
-									<input name="userName" class="text-frame userId_box" value="${loginuser.userName}" readonly>
+									<input name="userId" class="text-frame userId_box" value="${loginuser.userName}" readonly>
 								</td>
                             </c:if>
                         </tr>
@@ -57,8 +61,7 @@
                         </tr>
                         <tr>
                             <td>이미지</td>
-                            <!--<td><input type="file" id="productImg" name='uploadFile' style="height: 30px;" multiple="multiple" />
-                            </td>  -->
+                            <td><input type="file" id="productImg" name="productImg" style="height: 30px;" multiple="multiple" /></td>
                         </tr>
                     <tbody>
                 </table>
