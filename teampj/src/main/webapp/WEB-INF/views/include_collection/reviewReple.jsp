@@ -26,30 +26,4 @@
 		</c:forEach>
 	</tbody>
 </table>
-
-<div id="review-btn-wrap">
-	<button type="button" class="button_style write-btn"
-		onclick="location.href='/reviewWrite'">글쓰기</button>
-</div>
-
-<script>
-	$(document).ready(function() {
-		let result = '<c:out value="${result}"/>';
-		checkAlert(result);
-		console.log(result);
-		function checkAlert(result) {
-			if (result === '') {
-				return;
-			}
-			if (result === "enrol success") {
-				alert("등록이 완료되었습니다.");
-			}
-			if (result === "modify success") {
-				alert("수정이 완료되었습니다.");
-			}
-			if (result === "delete success") {
-				alert("삭제가 완료되었습니다.");
-			}
-		}
-	});
 </script>
