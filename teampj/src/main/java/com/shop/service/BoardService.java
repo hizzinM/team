@@ -91,7 +91,7 @@ public interface BoardService {
 	// 댓글삭제
 	public void deleteboardreply(int bno);
 
-	// 댓글 갯수
-	public int getreplyTotal(Criteria cri); 
+	// 답변완료체크
+	public int getreplyTotal(int bno); 
 
 }

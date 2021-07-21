@@ -40,9 +40,9 @@
 						<c:forEach items="${Qnalist}" var="Qnalist">
 							<tr>
 								<td><c:out value="${Qnalist.bno}" /></td>
-								<td><c:if test="${replycount.total==0}">
+								<td><c:if test="${Qnalist.rc==0}">
 								미답변
-									</c:if> <c:if test="${replycount.total>=1}">
+									</c:if> <c:if test="${Qnalist.rc>=1}">
 									답변완료
 									</c:if></td>
 								<td><a href="/board/getqna?bno=${Qnalist.bno}"> <c:out
@@ -91,7 +91,7 @@
 			<div>
 				<%@ include file="../include_collection/footer.jsp"%>
 			</div>
-		</div> 
+		</div>
 	</div>
 	<script>
 		let moveform3 = $("#moveform3");
