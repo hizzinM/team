@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.shop.model.AttachImageVO;
 import com.shop.model.Criteria;
+import com.shop.model.OrderDetail;
 import com.shop.model.Product;
 import com.shop.model.User;
 import com.shop.model.UserOrder;
@@ -70,7 +71,8 @@ public interface AdminService {
 	public List<Product> AccProductList();
 
 	public int goodsUpdateProductImg(AttachImageVO vo);
-	
+	//주문상세조회
+	public List<OrderDetail> selectorderadmin(UserOrder order)throws Exception;
 	/* 주문 목록(페이징) */
 	public List<UserOrder> orderAdminList(Criteria cri);
 }
