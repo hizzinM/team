@@ -14,6 +14,6 @@
 #table_wrap>table>thead tr>th:nth-child(4){width:70px;}
 #table_wrap>table>thead tr>th:nth-child(5){width:100px;}
 #table_wrap>table>tbody tr>td:nth-child(2){width:110px;height:140px;padding:5px 0;}
-#table_wrap>table>tbody tr>td:nth-child(2)>img{width:100px;height:130px;border:1px solid red;}
+#table_wrap>table>tbody tr>td:nth-child(2)>img{width:100px;height:130px;}
 .btn-box{text-align: right;margin-top:20px}
 .pageInfo_area{text-align: center;margin-top:10px;}

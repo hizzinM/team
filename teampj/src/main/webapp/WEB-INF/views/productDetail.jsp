@@ -98,7 +98,7 @@
         </div>
             
         <div id="review_wrap">
-			<%@ include file="board/review.jsp"%>
+			<%@ include file="include_collection/reviewReple.jsp"%>
         </div>  
            <!--  <textarea rows="5" cols="50" id="Detail" name="Detail"></textarea>
             <script>
