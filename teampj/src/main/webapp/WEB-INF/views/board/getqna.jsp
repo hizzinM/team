@@ -94,11 +94,17 @@ textarea {
 									value="${reply.replyWritedate}" pattern="yyyy-MM-dd" />
 							</p>
 							<p>${reply.replyContent }</p>
+							<div>
+								<button type="button" class="replyUpdate"
+									data-rno="${reply.rno}">M</button>
+								<button type="button" class="replyDelete"
+									data-rno="${reply.rno}">D</button>
+
+							</div>
 						</div>
 					</li>
 				</c:forEach>
 			</ul>
-
 			<div>
 				<div>
 
@@ -140,6 +146,18 @@ textarea {
 			form.attr("action", "/board/qnamodify");
 			form.submit();
 		});
+
+		$(".replyUpdate").click(
+				function() {
+					self.location = "/board/replyUpdate?bno=${qnaInfo.bno}"
+							+ "&rno=" + $(this).attr("data-rno");
+				});
+
+		$(".replyDelete").click(
+				function() {
+					self.location = "/board/replyDelete?bno=${qnaInfo.bno}"
+							+ "&rno=" + $(this).attr("data-rno");
+				});
 	</script>
 </body>
 </html>

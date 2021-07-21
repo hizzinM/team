@@ -11,8 +11,7 @@
 	<annotation-driven />
 
 	<!-- servlet_context.xml -->
-	<context:component-scan
-		base-package="com.shop.controller">
+	<context:component-scan base-package="com.shop.controller">
 	</context:component-scan>
 
 	<!-- 뷰 리졸버 -->
