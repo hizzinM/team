@@ -12,11 +12,13 @@
 		<c:if test="${loginuser == null }">
 			<li><a href="/member/login">로그인</a></li>
 			<li><a href="/member/join">회원가입</a></li>
-			<li><a href="/board/review">리뷰</a></li><br>
+			<li><a href="/board/review">리뷰</a></li>
+			<br>
 		</c:if>
 		<!-- 로그인 후 -->
 		<c:if test="${ loginuser!= null }">
-			<li style="font-weight: bold; font-size: 11px;">${loginuser.userName}님 어서오세요.</li>
+			<li style="font-weight: bold; font-size: 11px;">${loginuser.userName}님
+				어서오세요.</li>
 			<br>
 			<br>
 			<li><a href="/member/logout">로그아웃</a></li>
@@ -26,11 +28,11 @@
 			</c:if>
 			<li><a href="/board/review">리뷰</a></li>
 			<br>
-				<li><a href="/mypage/addCart">장바구니</a></li>
-				<li><a href="#">주문내역</a></li>
+			<li><a href="/mypage/addCart">장바구니</a></li>
+			<li><a href="/mypage/orderList">주문내역</a></li>
 		</c:if>
-			<li><a href="/board/notice">공지사항</a></li>
-			<li><a href="/board/qna">고객센터</a></li>
+		<li><a href="/board/notice">공지사항</a></li>
+		<li><a href="/board/qna">고객센터</a></li>
 		<br>
 	</ul>
 </div>
@@ -42,7 +44,7 @@
 		<li><a href="/category/Pants">Pants</a></li>
 		<li><a href="/category/Suit">Suit</a></li>
 		<li><a href="/category/BagShoes">Bag/Shoes</a></li>
-		<li><a href="/category/Acc">Acc</a></li> 
+		<li><a href="/category/Acc">Acc</a></li>
 	</ul>
 </div>
 <div class="search_wrap">
@@ -70,11 +72,11 @@
 	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
 </form>
 <script>
-		let moveForm = $("#moveForm");
-		$(".search_area button").on("click", function(e) {
-			e.preventDefault();
-			moveForm.find("input[name='keyword']").val(keyword);
-			let keyword = $(".search_area input[name='keyword']").val();
-			moveForm.submit(); 
-		});
+	let moveForm = $("#moveForm");
+	$(".search_area button").on("click", function(e) {
+		e.preventDefault();
+		moveForm.find("input[name='keyword']").val(keyword);
+		let keyword = $(".search_area input[name='keyword']").val();
+		moveForm.submit();
+	});
 </script>
