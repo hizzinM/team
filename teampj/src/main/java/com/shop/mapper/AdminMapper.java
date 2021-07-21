@@ -91,5 +91,6 @@ public interface AdminMapper {
 	
 	/*관리자메인페이지(최신주문)*/
 	public List<UserOrder> selectAdminindex();
-	
+	/*관리자메인페이지(최신회원)*/
+	public List<User> selectAdminUser();
 }

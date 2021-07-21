@@ -176,11 +176,7 @@ public class MemberServiceImpl implements MemberService {
 		return membermapper.orderupdate(order);
 	}
 
-	@Override
-	public List<UserOrder> selectAdminindex() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 	
 }

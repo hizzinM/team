@@ -65,8 +65,10 @@ public class AdminController {
 
 	// 관리자 페이지 이동
 	@RequestMapping(value = "index", method = RequestMethod.GET)
-	public void getindex() throws Exception {
+	public void getindex(Model model) throws Exception {
 		logger.info("관리자 페이지 ");
+		model.addAttribute("mainorder",adminService.selectAdminindex());
+		model.addAttribute("mainUser",adminService.selectAdminUser());
 	}
 
 	/* 게시판 목록 페이지 접속(페이징 적용) */
