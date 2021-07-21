@@ -28,36 +28,36 @@
 		<div>글번호 : ${replyUpdate.bno}</div>
 
 		<section id="container">
-			<form name="updateForm" role="form" method="post"
-				action="/board/replyUpdate">
-				<input type="hidden" name="board_number" value="${replyUpdate.bno}"
-					readonly="readonly" /> <input type="hidden" id="reply_number"
-					name="reply_number" value="${replyUpdate.rno}" /> <label
-					for="replytext">댓글 내용</label><input type="text" id="replytext"
-					name="replytext" value="${replyUpdate.replyContent}" />
+			<form role="form" method="post" autocomplete="off">
 
-				<div>
-					<button type="submit" class="update_btn">저장</button>
-					<button type="button" class="cancel_btn">취소</button>
-				</div>
+				<input type="hidden" id="bno" name="bno" value="${replyUpdate.bno}"
+					readonly="readonly" /> <input type="hidden" id="rno" name="rno"
+					value="${replyUpdate.rno}" readonly="readonly" />
+
+				<p>
+					<label for="replyContent">글 내용</label>
+					<textarea id="replyContent" name="replyContent">${replyUpdate.replyContent}</textarea>
+				</p>
+
+				<p>
+					<button type="submit">수정</button>
+					<button type="button" id="cancel_btn">취소</button>
+
+					<script>
+						// 폼을 변수에 저장
+						var formObj = $("form[role='form']");
+
+						// 취소 버튼 클릭
+						$("#cancel_btn")
+								.click(
+										function() {
+											self.location = "/board/getqna?bno=${replyUpdate.bno}";
+										});
+					</script>
+				</p>
 			</form>
 		</section>
-		</form>
 	</div>
-	<script>
-		$(document)
-				.ready(
-						function() {
-							var formObj = $("form[name='updateForm']");
 
-							$(".cancel_btn")
-									.on(
-											"click",
-											function() {
-												location.href = "/board/readView?bno=${qnaInfo.bno}"
-														+ reply.getBno();
-											})
-						})
-	</script>
 </body>
 </html>

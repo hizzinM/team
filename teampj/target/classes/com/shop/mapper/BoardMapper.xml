@@ -98,8 +98,6 @@
 		select count(*) from qna
 	</select>
 
-	<!-- -->
-
 	<!-- 리뷰 등록 -->
 	<insert id="enrollReview">
 		insert into
@@ -107,6 +105,7 @@
 		values
 		(#{reviewTitle},#{reviewTitle},#{productName},#{productImg},#{reviewBoard},#{userId}
 		)
+
 	</insert>
 	<!-- 리뷰 목록 -->
 	<select id="getReviewList" resultType="com.shop.model.ReviewVO">
@@ -148,12 +147,20 @@
 		select count(*) from
 		review
 	</select>
-	
+
 	<!-- 댓글 조회 -->
 	<select id="replyList" parameterType="int"
 		resultType="com.shop.model.ReplyVO">
 		select * from reply where bno
 		= #{bno}
+	</select>
+
+	<!-- 선택된 댓글 조회 -->
+	<select id="selectReply" resultType="com.shop.model.ReplyVO">
+		select * from reply
+		where
+		rno
+		= #{rno}
 	</select>
 
 	<!-- 댓글 작성 -->
@@ -164,13 +171,11 @@
 		#{replyContent},#{userId})
 	</insert>
 
-
 	<!-- 댓글 수정 -->
 	<update id="updateReply" parameterType="com.shop.model.ReplyVO">
 		update reply
 		set
-		reply_content
-		= #{replyContent}
+		reply_content = #{replyContent}
 		where rno = #{rno}
 	</update>
 
@@ -181,14 +186,6 @@
 		where rno
 		= #{rno}
 	</delete>
-
-	<!-- 선택된 댓글 조회 -->
-	<select id="selectReply" resultType="com.shop.model.ReplyVO">
-		select * from reply
-		where
-		rno
-		= #{rno}
-	</select>
 
 	<!-- 게시물 총 개수 -->
 	<select id="getreplyTotal" resultType="int">

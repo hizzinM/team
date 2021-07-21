@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shop.model.Criteria;
@@ -164,25 +165,22 @@ public class BoardController {
 		logger.info("게시글 작성 페이지 진입");
 	}
 
-	@RequestMapping(value = "/replyUpdate", method = RequestMethod.GET)
+	@RequestMapping(value = "/replyUpdate", method = RequestMethod.POST)
+	public String replyUpdate(ReplyVO vo, RedirectAttributes ra) {
+		logger.info("reply Write");
+		boardService.updateReply(vo);
+		ra.addAttribute("bno", vo.getBno());
 
-	public String replyUpdate(ReplyVO vo, Model model) throws Exception {
-		logger.info("reply write");
-
-		ReplyVO reply = boardService.selectReply(vo.getRno());
-		logger.info("댓글번호 : " + reply.getRno());
-		model.addAttribute("replyUpdate", boardService.selectReply(vo.getRno()));
-
-		return "board/replyUpdate";
+		return "redirect:/board/getqna?bno=" + vo.getBno();
 	}
 
-	@RequestMapping(value = "/replyUpdate", method = RequestMethod.POST)
-	public String replyUpdate(ReplyVO reply, RedirectAttributes ra) throws Exception {
-		logger.info("reply Write");
-		boardService.updateReply(reply);
-		ra.addAttribute("board_number", reply.getBno());
-
-		return "redirect:/board/qna";
+	// 댓글 수정 GET
+	@RequestMapping(value = "/replyUpdate", method = RequestMethod.GET)
+	public void replyUpdate(@RequestParam("rno") int rno, Model model) {
+		logger.info("reply update");
+		ReplyVO vo = null;
+		vo = boardService.selectReply(rno);
+		model.addAttribute("replyUpdate", vo);
 	}
 
 	@RequestMapping(value = "/replyDelete", method = RequestMethod.GET)
@@ -199,7 +197,7 @@ public class BoardController {
 	public String replyDelete(ReplyVO vo, RedirectAttributes ra) throws Exception {
 		logger.info("reply delete");
 		boardService.deleteReply(vo);
-		ra.addAttribute("board_number", vo.getBno());
+		ra.addAttribute("bno", vo.getBno());
 		return "redirect:/board/qna";
 	}
 
