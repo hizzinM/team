@@ -66,7 +66,10 @@ public interface BoardMapper {
 
 	/* ReviewVO 목록(페이징 적용) */
 	public List<ReviewVO> getReviewListPaging(Criteria cri);
-
+	
+	// 리뷰 갯수
+	public int getReviewTotal(Criteria cri);
+	
 	// 댓글 조회
 	public List<ReplyVO> replyList(int bno);
 
