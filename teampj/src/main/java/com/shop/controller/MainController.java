@@ -27,16 +27,19 @@ import com.shop.mapper.AdminMapper;
 import com.shop.model.Criteria;
 import com.shop.model.PageMakerDTO;
 import com.shop.model.Product;
+import com.shop.model.ReviewVO;
 import com.shop.model.ShoppingCart;
 import com.shop.model.User;
 import com.shop.service.AdminService;
+import com.shop.service.BoardService;
 import com.shop.service.MemberService;
 
 @Controller
 public class MainController {
 	@Autowired
-	AdminService adminService;
- 
+	AdminService adminService; 
+	BoardService boardService;
+	 
 	private static final Logger logger = LoggerFactory.getLogger("MainController.class");
 
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
@@ -54,13 +57,14 @@ public class MainController {
 		logger.info("goodsGetInfo()........." + productId);
 
 		Product result = adminService.goodsUpdateId(productId);
+		
 		System.out.println(result);
 		/* 목록 페이지 조건 정보 */
 		model.addAttribute("cri", cri);
 
 		/* 조회 페이지 정보 */
 		model.addAttribute("goodDetailData", result);
-
+		
 		return "/productDetail";
 	}
 	

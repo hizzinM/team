@@ -56,7 +56,7 @@
 .prodct-img-ex{width:100%;height: 9100px;}
 /*review*/
 #footer{margin-top:230px;}
-#review_wrap{width: 1470px;border:1px solid red;margin:0 auto;}
+#review_wrap{width: 1470px;margin:0 auto;}
 #review_wrap>table{margin-top: 50px;width:100%;border:1px solid #D7D5D5;}
 #review_wrap>table>thead>tr>th,#review_wrap>table>tbody>tr>td{padding:15px 0 15px 0;border:1px solid #D7D5D5;text-align: center;}
 #review_wrap>table>thead>tr>th{background-color:#FAFAFA;}
