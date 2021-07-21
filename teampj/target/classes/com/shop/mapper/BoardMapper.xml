@@ -183,6 +183,6 @@
 
 	<!-- 게시물 총 개수 -->
 	<select id="getreplyTotal" resultType="int">
-		select count(*) from reply 
+		<!--  -->select count(*) from reply 
 	</select>
 </mapper>

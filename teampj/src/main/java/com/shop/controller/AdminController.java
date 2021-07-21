@@ -3,7 +3,10 @@ package com.shop.controller;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
@@ -14,6 +17,7 @@ import java.util.UUID;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -127,7 +131,7 @@ public class AdminController {
 		logger.info("goodsmenuPOST......" + product);
 
 		adminService.insertpro(product);
-logger.info(product.toString());
+		logger.info(product.toString());
 		rttr.addFlashAttribute("insert_result", product.getProductName());
 		System.out.println(product);
 		return "redirect:/admin/goodsmenu";
@@ -312,7 +316,6 @@ logger.info(product.toString());
 		ResponseEntity<List<AttachImageVO>> result = new ResponseEntity<List<AttachImageVO>>(list, HttpStatus.OK);
 		return result;
 	}
-	
 
 	/* 이미지 파일 삭제 */
 	@PostMapping("/deleteFile")
@@ -347,7 +350,5 @@ logger.info(product.toString());
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 
 	}
-	
 
-	
 }

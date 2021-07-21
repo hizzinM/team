@@ -37,9 +37,9 @@ import com.shop.service.MemberService;
 @Controller
 public class MainController {
 	@Autowired
-	AdminService adminService;
+	AdminService adminService; 
 	BoardService boardService;
-	
+	 
 	private static final Logger logger = LoggerFactory.getLogger("MainController.class");
 
 	@RequestMapping(value = "/main", method = RequestMethod.GET)

@@ -32,7 +32,7 @@
 						resize_enaleb : false,
 						enterMode : CKEDITOR.ENTER_BR,
 						shiftEnterMode : CKEDITOR.ENTER_P,
-						filebrowserUploadUrl : "주소임시"
+						filebrowserUploadUrl : "업로드주소"
 					};
 
 					CKEDITOR.replace("noticeContent", ckeditor_config);
