@@ -162,7 +162,7 @@
 		/* 이미지 출력 */
 		/*
 		function showUploadImage(uploadResultArr) {
-			/* 전달받은 데이터 검증 *//*
+			/* 전달받은 데이터 검증 */
 			if (!uploadResultArr || uploadResultArr.length == 0) {
 				return
 			}
@@ -183,7 +183,7 @@
 			str += "</div>";
 			console.log(str)
 			uploadResult.append(str);
-		}*/
+		}
 
 		/* 이미지 삭제 버튼 동작 */
 		$("#uploadResult").on("click", ".imgDeleteBtn", function(e) {

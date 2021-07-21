@@ -405,7 +405,7 @@ public class MyPageController {
 		String datePath = str.replace("-", File.separator);
 
 		/* 폴더 생성 */
-		File uploadPath = new File(uploadFolder);
+		File uploadPath = new File(uploadFolder, datePath);
 
 		if (uploadPath.exists() == false) {
 			uploadPath.mkdirs();
@@ -423,9 +423,9 @@ public class MyPageController {
 			vo.setUploadPath(datePath);
 			vo.setImageId(0);
 			/* uuid 적용 파일 이름 */
-			/*String uuid = UUID.randomUUID().toString();
-			vo.setUuid(uuid);*/
-			
+			String uuid = UUID.randomUUID().toString();
+			vo.setUuid(uuid);
+			uploadFileName = uuid + "_" + uploadFileName;
 
 			/* 파일 위치, 파일 이름을 합친 File 객체 */
 			File saveFile = new File(uploadPath, uploadFileName);
