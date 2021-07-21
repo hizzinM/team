@@ -61,10 +61,10 @@
 				</table>
 				
 				<div class="btn_wrap">
-					<div class="button_style"><a id="list_btn">목록 페이지</a></div>
-					<div class="button_style"><a id="modify_btn">수정 완료</a></div>
-					<div class="button_style"><a id="delete_btn">삭제</a></div>
-					<div class="button_style"><a id="cancel_btn">수정 취소</a></div>
+					<button id="list_btn" class="button_style">목록 페이지</button>
+					<button id="modify_btn" class="button_style">수정 완료</button>
+					<button id="delete_btn" class="button_style">삭제</button>
+					<button id="cancel_btn" class="button_style">수정 취소</button>
 				</div>
 				<input type="hidden" name='reviewId' value="${reviewInfo.reviewId}">
 			</form>
@@ -80,13 +80,14 @@
 		</div>
 	</div>
 	<script>
+		/* 목록 페이지 이동 버튼 */
 		let form = $("#infoForm");
 		let mForm = $("#modifyForm");
 
 		/* 목록 페이지 이동 버튼 */
 		$("#list_btn").on("click", function(e) {
 			form.find("#bno").remove();
-			form.attr("action", "/board/veview");
+			form.attr("action", "/board/review");
 			form.submit();
 		});
 
@@ -103,11 +104,12 @@
 
 		/* 삭제 버튼 */
 		$("#delete_btn").on("click", function(e) {
-			form.attr("action", "/board/review");
+			form.attr("action", "/board/reviewdelete");
 			form.attr("method", "post");
 			form.submit();
 		});
-		
+	</script>
+	<script>
 		$("input[name='productImg']").on("change", function(e) {
 			/* 이미지 존재시 삭제 */
 			if ($(".imgDeleteBtn").length > 0) {
