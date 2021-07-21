@@ -30,7 +30,7 @@
                     <p class="top-box-child"><c:out value="${MyreviewInfo.productName}" /></p>
                 </div>
                 <div>
-                    <c:out value="${MyreviewInfo.productImg}" /><img src="#" alt="">
+                    <img src="/resources/upload/${MyreviewInfo.productImg}" alt="">
                 </div>
             </div>
             <div id="bottom-box">
@@ -46,14 +46,15 @@
         </div>
 		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
-		<script>
+	<script>
 		let form = $("#infoForm");
-
 
 		$("#modify_btn").on("click", function(e) {
 			form.attr("action", "/mypage/myreviewmodify");
 			form.submit();
 		});
-	</script>
+	</
+		
+
 </body>
 </html>

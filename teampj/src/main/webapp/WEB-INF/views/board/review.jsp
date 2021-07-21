@@ -38,7 +38,7 @@
 					<c:forEach items="${Reviewlist}" var="Reviewlist">
 						<tr>
 							<td><c:out value="${Reviewlist.reviewId}" /></td>
-							<td><img src="" alt=""></td>
+							<td><img src="${MyReviewlist.productImg}" alt=""></td>
 							<td>
 							<a href="/board/reviewget?rno=${Reviewlist.reviewId}"> 
 								<c:out value="${Reviewlist.reviewTitle}" />

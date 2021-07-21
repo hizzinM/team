@@ -30,7 +30,7 @@
                     <p class="top-box-child"><c:out value="${reviewInfo.productName}" /></p>
                 </div>
                 <div>
-                    <c:out value="${reviewInfo.productImg}" /><img src="#" alt="">
+                    <c:out value="${reviewInfo.productImg}" /><img src="${MyReviewlist.productImg}" alt="">
                 </div>
             </div>
             <div id="bottom-box">

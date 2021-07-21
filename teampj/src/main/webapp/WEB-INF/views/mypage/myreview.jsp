@@ -36,7 +36,7 @@
 				<tbody>
 					<c:forEach items="${MyReviewlist}" var="MyReviewlist">
 						<tr>
-							<td><img src="" alt=""></td>
+							<td><img src="/resources/upload/${MyReviewlist.productImg}" alt=""></td>
 							<td>
 							<a href="/mypage/myreviewget?rno=${MyReviewlist.reviewId}"> 
 								<c:out value="${MyReviewlist.reviewTitle}" />
@@ -73,7 +73,7 @@
 		$(".pageInfo a").on("click", function(e) {
 			e.preventDefault();
 			moveform3.find("input[name='pageNum']").val($(this).attr("href"));
-			moveform3.attr("action", "/board/qna");
+			moveform3.attr("action", "/mypage/review");
 			moveform3.submit();
 		});
 
