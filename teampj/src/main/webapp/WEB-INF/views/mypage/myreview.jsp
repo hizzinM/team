@@ -51,9 +51,6 @@
 			</table>
 		</div>
         <div id="btn-wrap">
-        	<div class="btn-box">
-            	<button type="button" class="button_style write-btn" onclick="location.href='/mypage/myreviewenroll' ">글쓰기</button>
-            </div>
             <div class="pageInfo_area">
                 <ul id="pageInfo" class="pageInfo">
                     <!-- 각 번호 페이지 버튼 -->
@@ -81,7 +78,7 @@
 		});
 
 		$(document).ready(function() {
-			let result = '<c:out value="${result}"/>';
+			let result = '<c:out value="${Myresult}"/>';
 			checkAlert(result);
 			console.log(result);
 			function checkAlert(result) {

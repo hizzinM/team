@@ -338,7 +338,7 @@ public class MyPageController {
 	// 리뷰 삭제
 	@PostMapping("/myreviewdelete")
 	public String reviewDeletePOST(int rno, RedirectAttributes rttr) {
-		boardService.deleteQNA(rno);
+		boardService.deleteReview(rno);
 		rttr.addFlashAttribute("Myresult", "delete success");
 		return "redirect:/mypage/myreview";
 	}

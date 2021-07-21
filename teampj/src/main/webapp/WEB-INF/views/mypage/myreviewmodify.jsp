@@ -48,53 +48,59 @@ textarea {
 	<div id="side_navigation">
 		<%@ include file="../include_collection/navigation.jsp"%>
 	</div>
-	<div align="center">
-		<form id="modifyForm" action="/board/modify" method="post">
-			<div class="input_wrap">
-				<label>게시판 번호</label> <input name="bno" readonly="readonly"
-					value='<c:out value="${reviewInfo.reviewId}"/>'>
-			</div>
-			<div class="input_wrap">
-				<label>게시판 제목</label> <input name="noticeTitle"
-					value='<c:out value="${reviewInfo.reviewTitle}"/>'>
-			</div>
-			<div class="input_wrap">
-				<label>게시판 작성자</label> <input name="userId" readonly="readonly"
-					value='<c:out value="${reviewInfo.userId}"/>'>
-			</div>
-			<div class="input_wrap">
-				<label>게시판 등록일</label> <input name="noticeWritedate"
-					readonly="readonly"
-					value='<fmt:formatDate pattern="yyyy/MM/dd" value="${reviewInfo.reviewWritedate}"/>'>
-			</div>
-			<div class="input_wrap">
-				<label>게시판 내용</label>
-				<textarea rows="3" id="noticeContent" name="noticeContent"><c:out
-						value="${reviewInfo.reviewBoard}" /></textarea>
-				<script>
-					var ckeditor_config = {
-						resize_enaleb : false,
-						enterMode : CKEDITOR.ENTER_BR,
-						shiftEnterMode : CKEDITOR.ENTER_P,
-						filebrowserUploadUrl : "주소임시"
-					};
-					CKEDITOR.replace("noticeContent", ckeditor_config);
-				</script>
-			</div>
-
-			<div class="btn_wrap">
-				<a class="btn" id="list_btn">목록 페이지</a> <a class="btn"
-					id="modify_btn">수정 완료</a> <a class="btn" id="delete_btn">삭제</a> <a
-					class="btn" id="cancel_btn">수정 취소</a>
-			</div>
-		</form>
-		<form id="infoForm" action="/board/modify" method="get">
-			<input type="hidden" id="bno" name="bno"
-				value='<c:out value="${reviewInfo.reviewId}"/>'> <input
-				type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
-			<input type="hidden" name="amount"
-				value='<c:out value="${cri.amount}"/>'>
-		</form>
+	<div id="contents">
+		<div id="table-wrap">
+			<h1>리뷰 수정</h1>
+			<form id="modifyForm" action="/mypage/myreviewmodify" method="post">
+				<table id="review-table">
+					<tbody>
+						<tr>
+							<td>제목</td>
+							<td><input name="reviewTitle" class="text-frame"></td>
+						</tr>
+						<tr>
+							<td>작성자</td>
+							<td><input name="userName" class="text-frame userId_box"
+								value="${loginuser.userName}" readonly></td>
+						</tr>
+						<tr>
+							<td colspan="2"><textarea id="reviewBoard" name="reviewBoard" class="text-frame"></textarea> 
+								<script>
+									var ckeditor_config = {
+										resize_enaleb : false,
+										enterMode : CKEDITOR.ENTER_BR,
+										shiftEnterMode : CKEDITOR.ENTER_P,
+										filebrowserUploadUrl : "주소임시"
+									};
+									CKEDITOR.replace("reviewBoard", ckeditor_config);
+								</script>
+							</td>
+						</tr>
+						<tr>
+							<td>이미지</td>
+							<td><input type="file" id="productImg" name='uploadFile' style="height: 30px;" multiple="multiple" /></td>
+						</tr>
+						<tr>
+							<td>이미지</td>
+							<td><input type="text" name='reviewId' value="${MyreviewInfo.reviewId}"></td>
+						</tr>
+					<tbody>
+				</table>
+				
+				<div class="btn_wrap">
+					<a class="btn" id="list_btn">목록 페이지</a> 
+					<a class="btn" id="modify_btn">수정 완료</a> 
+					<a class="btn" id="delete_btn">삭제</a> <a class="btn" id="cancel_btn">수정 취소</a>
+				</div>
+				
+			</form>
+			
+			<form id="infoForm" action="/mypage/myreviewmodify" method="get">
+				<input type="hidden" id="rno" name="rno" value='<c:out value="${MyreviewInfo.reviewId}"/>'> 
+				<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'> 
+				<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+			</form>
+		</div>
 		<div>
 			<%@ include file="../include_collection/footer.jsp"%>
 		</div>
@@ -105,8 +111,8 @@ textarea {
 
 		/* 목록 페이지 이동 버튼 */
 		$("#list_btn").on("click", function(e) {
-			form.find("#bno").remove();
-			form.attr("action", "/board/veview");
+			form.find("#rno").remove();
+			form.attr("action", "/mypage/myreview");
 			form.submit();
 		});
 
@@ -117,13 +123,13 @@ textarea {
 
 		/* 취소 버튼 */
 		$("#cancel_btn").on("click", function(e) {
-			form.attr("action", "/board/reviewget");
+			form.attr("action", "/mypage/myreviewget");
 			form.submit();
 		});
 
 		/* 삭제 버튼 */
 		$("#delete_btn").on("click", function(e) {
-			form.attr("action", "/board/review");
+			form.attr("action", "/mypage/myreview");
 			form.attr("method", "post");
 			form.submit();
 		});

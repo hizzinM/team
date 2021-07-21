@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
-<link rel="stylesheet" href="/resources/css/board/getreview.css">
+<link rel="stylesheet" href="/resources/css/mypage/mygetreview.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
@@ -37,10 +37,23 @@
                 <p><c:out value="${MyreviewInfo.reviewBoard}" /></p>
             </div>
             <div class="btn_box">
-                <a href="board/review" class="button_style">목록</a>
+                <a href="myreview" class="button_style">목록</a>
+                <div class="button_style update_btn"><a class="btn" id="modify_btn" >수정 하기</a></div>
+                <form id="infoForm" action="/board/modify" method="get">
+					<input type="hidden" id="bno" name="rno" value='<c:out value="${MyreviewInfo.reviewId}"/>'>
+			</form>
             </div>
         </div>
 		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
+		<script>
+		let form = $("#infoForm");
+
+
+		$("#modify_btn").on("click", function(e) {
+			form.attr("action", "/mypage/myreviewmodify");
+			form.submit();
+		});
+	</script>
 </body>
 </html>

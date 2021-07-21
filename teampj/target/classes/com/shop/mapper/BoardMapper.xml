@@ -121,16 +121,13 @@
 	<!-- 리뷰 조회 -->
 	<select id="getReviewPage" resultType="com.shop.model.ReviewVO">
 		select * from review where
-		review_id =
-		#{reviewId}
+		review_id = #{reviewId}
 	</select>
 
 	<!-- 리뷰 수정 -->
 	<update id="modifyReview">
-		update review set
-		review_title = #{reviewTitle},
-		review_board = #{reviewBoard}, where review_id=
-		#{reviewId}
+		update review set review_title = #{reviewTitle},review_board = #{reviewBoard}
+		where review_id=#{reviewId}
 	</update>
 
 	<!-- 리뷰 삭제 -->
