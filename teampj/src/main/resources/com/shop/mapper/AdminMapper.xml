@@ -329,7 +329,7 @@
 			</foreach>
 		</trim>
 	</sql>
-	
+	<!--관리자 주문 수정정보조회-->
 	 <select id="selectorderadmin" resultType="com.shop.model.OrderDetail">
 	    select o.order_detail_id,o.order_id,o.product_id,o.product_name,o.order_size,o.detail_price,o.order_color,o.order_qty,i.file_name,i.upload_path,i.uuid
 		from order_detail o,user_order u join (select
@@ -340,8 +340,10 @@
 		from product_img group by product_id) i where o.product_id=i.product_id  and u.order_id=o.order_id and u.order_id = #{orderId}
 	 </select>
 	
-	
-	
+	<!--관리자 메인페이지(주문)-->
+	<select id="selectAdminindex" resultType="com.shop.model.UserOrder">
+	SELECT * FROM user_order ORDER BY order_date DESC
+	</select>
 	
 	
 	

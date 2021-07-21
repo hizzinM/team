@@ -239,10 +239,14 @@ public class MyPageController {
 		@RequestMapping(value = "/orderDelete")
 		public String ajaxTest(HttpServletRequest request,UserOrder order) throws Exception {
 			logger.info("주문 선택취소");
-			
-			OrderDetail detail=new OrderDetail();
-			
-			
+			String[] ajaxMsg = request.getParameterValues("valueArr");
+			int size = ajaxMsg.length;
+			Product product=new Product();
+			for (int i = 0; i < size; i++) {
+				memberservice.deleteOrder(ajaxMsg[i]);
+				System.out.println(ajaxMsg[i]);
+			}
+			return "redirect:/mypage/orderList";
 			
 //			 List<OrderDetail> list=memberservice.orderDetailList(order);
 //			Product product=new Product();
@@ -251,14 +255,6 @@ public class MyPageController {
 //			 product.setProductInventory(Integer.parseInt(i.getOrderQty()));
 //			 	membermapper.updateInvenPuls(product);
 //			 }
-			 
-			String[] ajaxMsg = request.getParameterValues("valueArr");
-			int size = ajaxMsg.length;
-			for (int i = 0; i < size; i++) {
-				memberservice.deleteOrder(ajaxMsg[i]);
-				System.out.println(ajaxMsg[i]);
-			}
-			return "redirect:/mypage/orderList";
 		}
 
 		// 장바구니 간단조회

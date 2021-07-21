@@ -89,6 +89,7 @@ public interface AdminMapper {
 	/* 주문관리삭제(상세) */
 	public int deleteOrderDetail(String orderId);
 	
-	
+	/*관리자메인페이지(최신주문)*/
+	public List<UserOrder> selectAdminindex();
 	
 }

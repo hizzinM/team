@@ -75,9 +75,9 @@ public interface MemberMapper {
 	public List<OrderDetail> orderDetailList(UserOrder order) throws Exception;
 	/* 상품삭제 */
 	public int deleteOrder(String orderId);
-
 	/* 상품이미지 전체삭제 */
 	public int deleteOrderDetail(String orderId);
+	public int orderDetailPuls(String orderId);
 	
 	// public User readMember(String userId);
 	/*주문시 재고감소*/

@@ -67,6 +67,7 @@ public interface MemberService {
 	//주문수정조회
 	public UserOrder orderselect(String orderId);	
 	public int orderupdate(UserOrder order);
-	
+	/*관리자메인페이지(최신주문)*/
+	public List<UserOrder> selectAdminindex();
 	
 }
