@@ -33,39 +33,57 @@
 
             <div id="detail_wrap">
                 <div class="detail-title-box">
-                    <p class="productId"><c:out value="${goodDetailData.productId}" />112-112</p>
-                    <p class="productName"><c:out value="${goodDetailData.productName}" />1+1 윙스 린넨 라운드 티셔츠<span><c:out value="${goodDetailData.productCategory}" />outer</span></p>
-                    <p class="productPrice"><fmt:formatNumber pattern="###,###,###" value="${goodDetailData.productPrice}" />30,000원</p>
+                    <p class="productId"><c:out value="${goodDetailData.productId}" /></p>
+                    <p class="productName"><c:out value="${goodDetailData.productName}" /><span><c:out value="${goodDetailData.productCategory}" /></span></p>
+                    <p class="productPrice"><fmt:formatNumber pattern="###,###,###" value="${goodDetailData.productPrice}" />원</p>
                 </div>
-                <div class="detail-Ex-box"> 
-                    <button class="button_style guide-btn">SIZE GUIDE</button>
-                    <button class="button_style comment-btn">COMMENT</button>
-                    <!-- <div class="img-guide">
+                <div class="detail-Ex-box">
+                    <input type="button" onclick="showComment();" id="commentBtn" class="button_style comment-btn" value="COMMENT">
+                    <input type="button" onclick="showGuide();" id="guideBtn" class="button_style guide-btn" value="SIZE GUIDE">
+                    <div id="img-guide">
                         <img src="/resources/upload/${goodDetailData.uploadPath2}/${goodDetailData.uuid2}_${goodDetailData.fileName2}" alt="">
-                    </div> -->
-                    <div class="product-comment">
+                    </div>
+                    <div id="product-comment">
                         <textarea class="textarea_style text-frame" rows="10" cols="115%" readonly><c:out value="${goodDetailData.productComment}" /></textarea>
                     </div>
+                    <script type="text/javascript">
+                        function showComment() {
+                            document.getElementById("product-comment").style.display = "block";
+                            document.getElementById("img-guide").style.display = "none";
+                            document.getElementById("commentBtn").style.background = "black";
+                            document.getElementById("commentBtn").style.color = "white";
+                            document.getElementById("guideBtn").style.background = "white";
+                            document.getElementById("guideBtn").style.color = "black";
+                        }
+                        function showGuide() {
+                            document.getElementById("img-guide").style.display = "block";
+                            document.getElementById("product-comment").style.display = "none";
+                            document.getElementById("guideBtn").style.background = "black";
+                            document.getElementById("guideBtn").style.color = "white";
+                            document.getElementById("commentBtn").style.background = "white";
+                            document.getElementById("commentBtn").style.color = "black";
+                        }
+                    </script>
                 </div>
                 <table class="detail-char-box">
                     <tbody>
                         <tr>
                             <td>사이즈</td>
                             <td colspan="2">
-                                <c:out value="${goodDetailData.productSize}" /> XL
+                                <c:out value="${goodDetailData.productSize}" /> 
                             </td>
                         </tr>
                         <tr>
                             <td>색상</td>
                             <td colspan="2">
-                                <c:out value="${goodDetailData.productColor}" /> red
+                                <c:out value="${goodDetailData.productColor}" />
                             </td>
                         </tr>
                         <tr>
                             <td>수량</td>
                             <td>
                                 <c:if test="${goodDetailData.productInventory != 0}">
-                                    <input type="number" name="product_amount" class="product_amount text-frame" maxlength="1" oninput="numberMaxLength(this);" placeholder="${goodDetailData.productInventory}7개 남음"/>
+                                    <input type="number" id="product_amount" name="product_amount" class="product_amount text-frame" maxlength="1" oninput="numberMaxLength(this);" placeholder="${goodDetailData.productInventory}개 남음"/>
                                     <input type='hidden' id='productInventory' name='productInventory' value="${goodDetailData.productInventory}" />
                                     <script>
                                         function numberMaxLength(e){
@@ -124,8 +142,11 @@
   <script type="text/javascript">
   $("#addcart").click(function(){
 	  var productInventory=$("#productInventory").val();
-	  var qty=$("#amount option:selected").val();
-	  
+	  var qty=$("#product_amount").val();
+	  productInventory=parseInt(productInventory);
+	  qty=parseInt(qty);
+	  console.log(productInventory)
+      console.log(qty)
 	  if(productInventory < qty){
 		  alert("재고가비었습니다.");  	
 	      return false;
@@ -139,7 +160,7 @@
 		   	  cartProductsize:"${goodDetailData.productSize}",
 		   			cartPrice:"${goodDetailData.productPrice}",
 		   			cartProductColor:"${goodDetailData.productColor}",
-		   			cartQty:$("#amount option:selected").val(),
+		   			cartQty:qty,
 		   			fileName:"${goodDetailData.fileName}",
 		   			uploadPath:"${goodDetailData.uploadPath}",
 		   			uuid:"${goodDetailData.uuid}"

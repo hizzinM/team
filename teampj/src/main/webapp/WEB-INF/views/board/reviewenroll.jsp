@@ -57,8 +57,8 @@
                         </tr>
                         <tr>
                             <td>이미지</td>
-                            <td><input type="file" id="productImg" name='uploadFile' style="height: 30px;" multiple="multiple" />
-                            </td>
+                            <!--<td><input type="file" id="productImg" name='uploadFile' style="height: 30px;" multiple="multiple" />
+                            </td>  -->
                         </tr>
                     <tbody>
                 </table>

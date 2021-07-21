@@ -52,30 +52,25 @@ textarea {
 		<form id="modifyForm" action="/board/modify" method="post">
 			<div class="input_wrap">
 				<label>게시판 번호</label> <input name="bno" readonly="readonly"
-					value='<c:out value="${noticeInfo.bno}"/>'>
+					value='<c:out value="${reviewInfo.reviewId}"/>'>
 			</div>
 			<div class="input_wrap">
 				<label>게시판 제목</label> <input name="noticeTitle"
-					value='<c:out value="${noticeInfo.noticeTitle}"/>'>
+					value='<c:out value="${reviewInfo.reviewTitle}"/>'>
 			</div>
-			<div class="input_wrap">
-				<label>중요공지 등록</label> <input name="noticeBold"
-					value='<c:out value="${noticeInfo.noticeBold}"/>'>
-			</div>
-			0=일반 1=중요
 			<div class="input_wrap">
 				<label>게시판 작성자</label> <input name="userId" readonly="readonly"
-					value='<c:out value="${noticeInfo.userId}"/>'>
+					value='<c:out value="${reviewInfo.userId}"/>'>
 			</div>
 			<div class="input_wrap">
 				<label>게시판 등록일</label> <input name="noticeWritedate"
 					readonly="readonly"
-					value='<fmt:formatDate pattern="yyyy/MM/dd" value="${noticeInfo.noticeWritedate}"/>'>
+					value='<fmt:formatDate pattern="yyyy/MM/dd" value="${reviewInfo.reviewWritedate}"/>'>
 			</div>
 			<div class="input_wrap">
 				<label>게시판 내용</label>
 				<textarea rows="3" id="noticeContent" name="noticeContent"><c:out
-						value="${noticeInfo.noticeContent}" /></textarea>
+						value="${reviewInfo.reviewBoard}" /></textarea>
 				<script>
 					var ckeditor_config = {
 						resize_enaleb : false,
@@ -95,7 +90,7 @@ textarea {
 		</form>
 		<form id="infoForm" action="/board/modify" method="get">
 			<input type="hidden" id="bno" name="bno"
-				value='<c:out value="${pageInfo.bno}"/>'> <input
+				value='<c:out value="${reviewInfo.reviewId}"/>'> <input
 				type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
 			<input type="hidden" name="amount"
 				value='<c:out value="${cri.amount}"/>'>
@@ -111,7 +106,7 @@ textarea {
 		/* 목록 페이지 이동 버튼 */
 		$("#list_btn").on("click", function(e) {
 			form.find("#bno").remove();
-			form.attr("action", "/board/notice");
+			form.attr("action", "/board/veview");
 			form.submit();
 		});
 
@@ -122,13 +117,13 @@ textarea {
 
 		/* 취소 버튼 */
 		$("#cancel_btn").on("click", function(e) {
-			form.attr("action", "/board/get");
+			form.attr("action", "/board/reviewget");
 			form.submit();
 		});
 
 		/* 삭제 버튼 */
 		$("#delete_btn").on("click", function(e) {
-			form.attr("action", "/board/delete");
+			form.attr("action", "/board/review");
 			form.attr("method", "post");
 			form.submit();
 		});

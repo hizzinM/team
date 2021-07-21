@@ -56,7 +56,7 @@ public interface BoardService {
 	public List<ReviewVO> getReviewList();
 
 	/* 리뷰 조회 */
-	public ReviewVO getPageReview(int reviewId);
+	public ReviewVO getReviewPage(int reviewId);
 
 	/* 리뷰 수정 */
 	public int modifyReview(ReviewVO review);
@@ -66,6 +66,9 @@ public interface BoardService {
 
 	/* 리뷰 목록(페이징 적용) */
 	public List<ReviewVO> getReviewListPaging(Criteria cri);
+	
+	/* 리뷰 총 갯수 */
+	public int getReviewTotal(Criteria cri);
 
 	// 댓글 조회
 	public List<ReplyVO> replyList(int bno);

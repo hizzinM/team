@@ -165,6 +165,7 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/replyUpdate", method = RequestMethod.GET)
+
 	public String replyUpdate(ReplyVO vo, Model model) throws Exception {
 		logger.info("reply write");
 
@@ -199,7 +200,36 @@ public class BoardController {
 		logger.info("reply delete");
 		boardService.deleteReply(vo);
 		ra.addAttribute("board_number", vo.getBno());
-
 		return "redirect:/board/qna";
+	}
+
+	// 리뷰 조회
+	@GetMapping("/reviewget")
+	public void reviewGetPageGET(int rno, Model model, Criteria cri) {
+		model.addAttribute("reviewInfo", boardService.getReviewPage(rno));
+		model.addAttribute("cri", cri);
+	}
+
+	// 리뷰 수정페이지 이동
+	@GetMapping("/reviewmodify")
+	public void reviewModifyGET(int rno, Model model, Criteria cri) {
+		model.addAttribute("reviewInfo", boardService.getReviewPage(rno));
+		model.addAttribute("cri", cri);
+	}
+
+	// 리뷰 수정
+	@PostMapping("/reviewmodify")
+	public String reviewModifyPOST(ReviewVO review, RedirectAttributes rttr) {
+		boardService.modifyReview(review);
+		rttr.addFlashAttribute("result", "modify success");
+		return "redirect:/board/review";
+	}
+
+	// 리뷰 삭제
+	@PostMapping("/reviewdelete")
+	public String reviewDeletePOST(int rno, RedirectAttributes rttr) {
+		boardService.deleteQNA(rno);
+		rttr.addFlashAttribute("result", "delete success");
+		return "redirect:/board/review";
 	}
 }

@@ -98,6 +98,7 @@ aside ul li a:active {
 #result_card {
 		position: relative;
 	}
+	
 .imgDeleteBtn{
 	    position: absolute;
 	    top: 0;
@@ -114,4 +115,31 @@ aside ul li a:active {
 	    display: block;
 	    cursor: pointer;	
 	}
+	
+.ordertable{
+	position: absolute;
+    left: 293px;
+    top: 85px;
+    border: 1px solid black;
+    width: 79%;
+}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	

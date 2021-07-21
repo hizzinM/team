@@ -102,7 +102,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public ReviewVO getPageReview(int reviewId) {
+	public ReviewVO getReviewPage(int reviewId) {
 		return boardmapper.getReviewPage(reviewId);
 	}
 
@@ -120,7 +120,11 @@ public class BoardServiceImpl implements BoardService {
 	public List<ReviewVO> getReviewListPaging(Criteria cri) {
 		return boardmapper.getReviewListPaging(cri);
 	}
-
+	@Override
+	public int getReviewTotal(Criteria cri) {
+		return boardmapper.getReviewTotal(cri);
+	}
+	
 	// 댓글
 	@Override
 	public List<ReplyVO> replyList(int bno) {
@@ -152,4 +156,6 @@ public class BoardServiceImpl implements BoardService {
 	public int getreplyTotal(Criteria cri) {
 		return boardmapper.getreplyTotal(cri);
 	}
+
+
 }
