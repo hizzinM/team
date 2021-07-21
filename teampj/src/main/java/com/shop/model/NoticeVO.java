@@ -20,7 +20,7 @@ public class NoticeVO {
 
 	/* 공지 작성일 */
 	private Date noticeWritedate;
-
+ 
 	public NoticeVO() {
 		super();
 	}

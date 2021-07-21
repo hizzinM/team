@@ -153,10 +153,10 @@ public class BoardServiceImpl implements BoardService {
 		boardmapper.deleteReply(reply);
 	}
 
-	/* 게시물 총 갯수 */
+	// 답변완료체크
 	@Override
-	public int getreplyTotal(Criteria cri) {
-		return boardmapper.getreplyTotal(cri);
+	public int getreplyTotal(int bno) {
+		return boardmapper.getreplyTotal(bno);
 	}
 
 	@Override

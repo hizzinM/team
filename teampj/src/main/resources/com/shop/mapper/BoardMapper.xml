@@ -195,9 +195,12 @@
 		= #{bno}
 	</delete>
 
-	<!-- 게시물 총 개수 -->
-	<select id="getreplyTotal" resultType="int">
-		<!-- -->
-		select count(*) from reply
-	</select>
+	<!-- 답변완료 체크 -->
+	<update id="getreplyTotal" parameterType="int">
+		<!-- update q.*,(select count(*) from reply r where r.bno=q.bno)as rc from 
+			qna q -->
+		update qna q
+		set q.rc = (select count(*) from reply where bno = #{bno})
+		where q.bno = #{bno}
+	</update>
 </mapper>
