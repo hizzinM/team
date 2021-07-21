@@ -12,6 +12,7 @@
 		<c:if test="${loginuser == null }">
 			<li><a href="/member/login">로그인</a></li>
 			<li><a href="/member/join">회원가입</a></li>
+			<li><a href="/board/review">리뷰</a></li><br>
 		</c:if>
 		<!-- 로그인 후 -->
 		<c:if test="${ loginuser!= null }">
@@ -23,6 +24,7 @@
 			<c:if test="${ loginuser.adminck ==1 }">
 				<li><a href="/admin/index">관리자화면</a></li>
 			</c:if>
+			<li><a href="/board/review">리뷰</a></li>
 			<br>
 				<li><a href="/mypage/addCart">장바구니</a></li>
 				<li><a href="#">주문내역</a></li>

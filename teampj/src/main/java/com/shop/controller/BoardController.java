@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shop.model.Criteria;
@@ -157,10 +158,81 @@ public class BoardController {
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
 	}
-
-	// 리뷰 등록
+	// 리뷰작성페이지이동
 	@GetMapping("/reviewenroll")
 	public void getreviewenroll() {
 		logger.info("게시글 작성 페이지 진입");
+	}
+	// 리뷰공지글 등록
+	@PostMapping("/reviewenroll")
+	public String postReviewenroll(ReviewVO review, RedirectAttributes rttr) {
+		logger.info("ReviewVO : " + review);
+		boardService.enrollReview(review);
+		rttr.addFlashAttribute("result", "enrol success");
+		return "redirect:/board/review";
+	}
+	@RequestMapping(value = "/replyUpdate", method = RequestMethod.POST)
+	public String replyUpdate(ReplyVO vo, RedirectAttributes ra) {
+		logger.info("reply Write");
+		boardService.updateReply(vo);
+		ra.addAttribute("bno", vo.getBno());
+
+		return "redirect:/board/getqna?bno=" + vo.getBno();
+	}
+
+	// 댓글 수정 GET
+	@RequestMapping(value = "/replyUpdate", method = RequestMethod.GET)
+	public void replyUpdate(@RequestParam("rno") int rno, Model model) {
+		logger.info("reply update");
+		ReplyVO vo = null;
+		vo = boardService.selectReply(rno);
+		model.addAttribute("replyUpdate", vo);
+	}
+
+	@RequestMapping(value = "/replyDelete", method = RequestMethod.GET)
+	public String replyDelete(ReplyVO vo, Model model) throws Exception {
+		logger.info("reply Delete");
+
+		model.addAttribute("replyDelete", boardService.selectReply(vo.getRno()));
+		System.out.println("댓글 번호 : " + boardService.selectReply(vo.getRno()));
+
+		return "board/replyDelete";
+	}
+
+	@RequestMapping(value = "/replyDelete", method = RequestMethod.POST)
+	public String replyDelete(ReplyVO vo, RedirectAttributes ra) throws Exception {
+		logger.info("reply delete");
+		boardService.deleteReply(vo);
+		ra.addAttribute("bno", vo.getBno());
+		return "redirect:/board/qna";
+	}
+	// 리뷰 조회
+	@GetMapping("/reviewget")
+	public void reviewGetPageGET(int rno, Model model, Criteria cri) {
+		model.addAttribute("reviewInfo", boardService.getReviewPage(rno));
+		model.addAttribute("cri", cri);
+	}
+
+	// 리뷰 수정페이지 이동
+	@GetMapping("/reviewmodify")
+	public void reviewModifyGET(int rno, Model model, Criteria cri) {
+		model.addAttribute("reviewInfo", boardService.getReviewPage(rno));
+		model.addAttribute("cri", cri);
+	}
+
+	// 리뷰 수정
+	@PostMapping("/reviewmodify")
+	public String reviewModifyPOST(ReviewVO review, RedirectAttributes rttr) {
+		boardService.modifyReview(review);
+		rttr.addFlashAttribute("result", "modify success");
+		return "redirect:/board/review";
+	}
+
+	// 리뷰 삭제
+	@PostMapping("/reviewdelete")
+	public String reviewDeletePOST(int rno, RedirectAttributes rttr) {
+		boardService.deleteQNA(rno);
+		rttr.addFlashAttribute("result", "delete success");
+		return "redirect:/board/review";
 	}
 }

@@ -39,7 +39,11 @@
 						<tr>
 							<td><c:out value="${Reviewlist.reviewId}" /></td>
 							<td><img src="" alt=""></td>
-							<td><c:out value="${Reviewlist.reviewTitle}" /></td>
+							<td>
+							<a href="/board/reviewget?rno=${Reviewlist.reviewId}"> 
+								<c:out value="${Reviewlist.reviewTitle}" />
+							</a>
+							</td>
 							<td><c:out value="${Reviewlist.userId}" /></td>
 							<td><fmt:formatDate value="${Reviewlist.reviewWritedate}"
 									pattern="yyyy/MM/dd" /></td>

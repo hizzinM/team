@@ -66,18 +66,24 @@ public interface BoardMapper {
 
 	/* ReviewVO 목록(페이징 적용) */
 	public List<ReviewVO> getReviewListPaging(Criteria cri);
-
+	
+	// 리뷰 갯수
+	public int getReviewTotal(Criteria cri);
+	
 	// 댓글 조회
 	public List<ReplyVO> replyList(int bno);
 
-	// 댓글 조회
+	// 특정댓글 조회
+	public ReplyVO selectReply(int rno);
+
+	// 댓글 작성
 	public void writereply(ReplyVO reply);
 
 	// 댓글 수정
-	public void modifyreply(ReplyVO reply);
+	public void updateReply(ReplyVO vo);
 
 	// 댓글 삭제
-	public void deletereply(ReplyVO reply);
+	public void deleteReply(ReplyVO vo);
 
 	// 댓글 갯수
 	public int getreplyTotal(Criteria cri);

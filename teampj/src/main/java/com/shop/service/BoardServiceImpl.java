@@ -102,7 +102,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public ReviewVO getPageReview(int reviewId) {
+	public ReviewVO getReviewPage(int reviewId) {
 		return boardmapper.getReviewPage(reviewId);
 	}
 
@@ -120,11 +120,20 @@ public class BoardServiceImpl implements BoardService {
 	public List<ReviewVO> getReviewListPaging(Criteria cri) {
 		return boardmapper.getReviewListPaging(cri);
 	}
-
+	@Override
+	public int getReviewTotal(Criteria cri) {
+		return boardmapper.getReviewTotal(cri);
+	}
+	
 	// 댓글
 	@Override
 	public List<ReplyVO> replyList(int bno) {
 		return boardmapper.replyList(bno);
+	}
+
+	@Override
+	public ReplyVO selectReply(int rno) {
+		return boardmapper.selectReply(rno);
 	}
 
 	@Override
@@ -133,13 +142,13 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void modifyreply(ReplyVO reply) {
-		boardmapper.modifyreply(reply);
+	public void updateReply(ReplyVO reply) {
+		boardmapper.updateReply(reply);
 	}
 
 	@Override
-	public void deletereply(ReplyVO reply) {
-		boardmapper.deletereply(reply);
+	public void deleteReply(ReplyVO reply) {
+		boardmapper.deleteReply(reply);
 	}
 
 	/* 게시물 총 갯수 */
@@ -147,4 +156,6 @@ public class BoardServiceImpl implements BoardService {
 	public int getreplyTotal(Criteria cri) {
 		return boardmapper.getreplyTotal(cri);
 	}
+
+
 }

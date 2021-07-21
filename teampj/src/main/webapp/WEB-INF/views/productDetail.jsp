@@ -37,15 +37,33 @@
                     <p class="productName"><c:out value="${goodDetailData.productName}" /><span><c:out value="${goodDetailData.productCategory}" /></span></p>
                     <p class="productPrice"><fmt:formatNumber pattern="###,###,###" value="${goodDetailData.productPrice}" />원</p>
                 </div>
-                <div class="detail-Ex-box"> 
-                    <button class="button_style guide-btn">SIZE GUIDE</button>
-                    <button class="button_style comment-btn">COMMENT</button>
-                    <!-- <div class="img-guide">
+                <div class="detail-Ex-box">
+                    <input type="button" onclick="showComment();" id="commentBtn" class="button_style comment-btn" value="COMMENT">
+                    <input type="button" onclick="showGuide();" id="guideBtn" class="button_style guide-btn" value="SIZE GUIDE">
+                    <div id="img-guide">
                         <img src="/resources/upload/${goodDetailData.uploadPath2}/${goodDetailData.uuid2}_${goodDetailData.fileName2}" alt="">
-                    </div> -->
-                    <div class="product-comment">
+                    </div>
+                    <div id="product-comment">
                         <textarea class="textarea_style text-frame" rows="10" cols="115%" readonly><c:out value="${goodDetailData.productComment}" /></textarea>
                     </div>
+                    <script type="text/javascript">
+                        function showComment() {
+                            document.getElementById("product-comment").style.display = "block";
+                            document.getElementById("img-guide").style.display = "none";
+                            document.getElementById("commentBtn").style.background = "black";
+                            document.getElementById("commentBtn").style.color = "white";
+                            document.getElementById("guideBtn").style.background = "white";
+                            document.getElementById("guideBtn").style.color = "black";
+                        }
+                        function showGuide() {
+                            document.getElementById("img-guide").style.display = "block";
+                            document.getElementById("product-comment").style.display = "none";
+                            document.getElementById("guideBtn").style.background = "black";
+                            document.getElementById("guideBtn").style.color = "white";
+                            document.getElementById("commentBtn").style.background = "white";
+                            document.getElementById("commentBtn").style.color = "black";
+                        }
+                    </script>
                 </div>
                 <table class="detail-char-box">
                     <tbody>
