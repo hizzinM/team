@@ -1,5 +1,7 @@
 package com.shop.service;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -32,9 +34,12 @@ public class AdminServiceImpl implements AdminService {
 			return;
 		}
 		product.getImageList().forEach(attach -> {
+			if(attach.getImageId()!=0) {
 			attach.setProductId(product.getProductId());
 			adminMapper.imageEnroll(attach);
+			}
 		});
+		
 	}
 
 	/* 상품리스트(페이징) */
@@ -104,10 +109,12 @@ public class AdminServiceImpl implements AdminService {
 		// System.out.println(product.getImageList());
 
 		product.getImageList().forEach(attach -> {
+			if(attach.getImageId()!=0) {
 			attach.setProductId(product.getProductId());
 			System.out.println(product.getImageList());
 			adminMapper.deleterProdectImg(attach);
 			adminMapper.imageEnroll(attach);
+			}
 		});
 		return 0;
 
