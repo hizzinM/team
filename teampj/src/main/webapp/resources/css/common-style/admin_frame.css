@@ -78,3 +78,9 @@ header>nav>ul>li>a:hover{
     background-color: black;
     color:white;
 }
+.pageInfo_wrap_order{
+	top: 600px;
+    left: 900px;
+    position: absolute;
+    margin-top: 25px;
+}

@@ -116,6 +116,13 @@ aside ul li a:active {
 	    cursor: pointer;	
 	}
 	
+.ordertable{
+	position: absolute;
+    left: 293px;
+    top: 85px;
+    border: 1px solid black;
+    width: 79%;
+}
 
 	
 	

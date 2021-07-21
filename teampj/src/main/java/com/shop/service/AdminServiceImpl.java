@@ -13,6 +13,7 @@ import com.shop.model.AttachImageVO;
 import com.shop.model.Criteria;
 import com.shop.model.Product;
 import com.shop.model.User;
+import com.shop.model.UserOrder;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -196,6 +197,12 @@ public class AdminServiceImpl implements AdminService {
 	public List<Product> AccProductList() {
 
 		return adminMapper.AccProductList();
+	}
+
+	@Override
+	public List<UserOrder> orderAdminList(Criteria cri) {
+		// TODO Auto-generated method stub
+		return adminMapper.orderAdminList(cri);
 	}
 
 }

@@ -301,4 +301,33 @@
 		join
 		product_img i on p.product_id=i.product_id group by product_id
 	</select>
+	
+	<!-- 주문관리 리스트 -->
+	<select id="orderAdminList" resultType="com.shop.model.UserOrder">
+	select *from(select order_id,user_id,user_name,order_phone,order_address,order_address_detail,order_address_num,order_price,DATE_FORMAT(order_date, '%Y-%m-%d %H:%i:%s') as order_date
+	from user_order <if test="keyword != null">
+			<include refid="criteriaOrder"></include>
+		</if> order by order_date asc) as Page limit #{skip},#{amount}
+	</select>
+	
+	<!-- 주문검색 조건문 -->
+	<sql id="criteriaOrder">
+		<trim prefix="where (" suffix=")" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'I'.toString()">
+							order_id like concat('%',#{keyword},'%')
+						</when>
+						<when test="type == 'N'.toString()">
+							user_id like concat('%',#{keyword},'%')
+						</when>
+						<when test="type == 'D'.toString()">
+							user_name like concat('%',#{keyword},'%' )
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
 </mapper>

@@ -6,6 +6,7 @@ import com.shop.model.AttachImageVO;
 import com.shop.model.Criteria;
 import com.shop.model.Product;
 import com.shop.model.User;
+import com.shop.model.UserOrder;
 
 public interface AdminMapper {
 
@@ -77,4 +78,7 @@ public interface AdminMapper {
 
 	// Acc목록
 	public List<Product> AccProductList();
+	
+	/* 주문 목록(페이징) */
+	public List<UserOrder> orderAdminList(Criteria cri);
 }

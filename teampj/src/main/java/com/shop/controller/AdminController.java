@@ -114,8 +114,12 @@ public class AdminController {
 
 	// 주문관리 페이지 이동
 	@RequestMapping(value = "ordermenu", method = RequestMethod.GET)
-	public void getordermenu() throws Exception {
+	public void getordermenu(Model model, Criteria cri) throws Exception {
 		logger.info("주문관리 페이지 접속");
+		model.addAttribute("ordermenu", adminService.orderAdminList(cri));
+		int total = memberservice.getTotal(cri);
+		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+		model.addAttribute("pageMaker", pageMake);
 	}
 
 	// 상품등록 페이지 이동
