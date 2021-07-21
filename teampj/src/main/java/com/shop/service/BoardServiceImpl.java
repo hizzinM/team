@@ -101,6 +101,11 @@ public class BoardServiceImpl implements BoardService {
 	public List<ReviewVO> getReviewList() {
 		return boardmapper.getReviewList();
 	}
+	@Override
+	public List<ReviewVO> selectReviewList() {
+		
+		return boardmapper.selectReviewList();
+	}
 
 	@Override
 	public ReviewVO getReviewPage(int reviewId) {
@@ -162,5 +167,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void deleteboardreply(int bno) {
 	}
+
+
 
 }

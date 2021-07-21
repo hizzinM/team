@@ -56,8 +56,7 @@ public class MainController {
 
 		logger.info("goodsGetInfo()........." + productId);
 
-		Product result = adminService.goodsUpdateId(productId);
-		
+		Product result = adminService.goodsUpdateId(productId);	
 		System.out.println(result);
 		/* 목록 페이지 조건 정보 */
 		model.addAttribute("cri", cri);

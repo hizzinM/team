@@ -108,23 +108,26 @@
 
 	</insert>
 	<!-- 리뷰 목록 -->
-	<select id="getReviewList" resultType="com.shop.model.ReviewVO">
-		select * from review
+	<select id="selectReviewList" resultType="com.shop.model.ReviewVO">
+		select r.review_id,r.review_title,r.product_name,r.product_img,r.review_board,r.user_id,r.review_writedate 
+		from review r 
+		join user u on r.user_id=u.user_name
 	</select>
-
+	
+	<!-- 리뷰 목록 -->
+	<select id="getReviewList" resultType="com.shop.model.ReviewVO">
+		select * from review where 
+	</select>
 	<!-- 리뷰 조회 -->
 	<select id="getReviewPage" resultType="com.shop.model.ReviewVO">
 		select * from review where
-		review_id =
-		#{reviewId}
+		review_id = #{reviewId}
 	</select>
 
 	<!-- 리뷰 수정 -->
 	<update id="modifyReview">
-		update review set
-		review_title = #{reviewTitle},
-		review_board = #{reviewBoard}, where review_id=
-		#{reviewId}
+		update review set review_title = #{reviewTitle},review_board = #{reviewBoard}
+		where review_id=#{reviewId}
 	</update>
 
 	<!-- 리뷰 삭제 -->

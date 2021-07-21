@@ -55,6 +55,9 @@ public interface BoardService {
 	/* 리뷰 목록 */
 	public List<ReviewVO> getReviewList();
 
+	/*내 리뷰 목록*/
+	public List<ReviewVO> selectReviewList();
+	
 	/* 리뷰 조회 */
 	public ReviewVO getReviewPage(int reviewId);
 
