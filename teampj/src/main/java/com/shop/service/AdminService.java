@@ -71,8 +71,10 @@ public interface AdminService {
 	public List<Product> AccProductList();
 
 	public int goodsUpdateProductImg(AttachImageVO vo);
+	
 	//주문상세조회
 	public List<OrderDetail> selectorderadmin(UserOrder order)throws Exception;
+	
 	/* 주문 목록(페이징) */
 	public List<UserOrder> orderAdminList(Criteria cri);
 }

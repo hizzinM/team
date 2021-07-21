@@ -49,8 +49,8 @@ public class AdminServiceImpl implements AdminService {
 	public List<Product> searchproductList(Criteria cri) {
 		logger.info("searchproductList()......");
 		return adminMapper.searchproductList(cri);
-	} 
-	
+	}
+
 	/* 상품 총 갯수 */
 	public int goodsGetTotal(Criteria cri) {
 		logger.info("goodsGetTotal().........");
@@ -207,10 +207,8 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public List<OrderDetail> selectorderadmin(UserOrder order) throws Exception {
-		
+
 		return adminMapper.selectorderadmin(order);
 	}
-
-
 
 }

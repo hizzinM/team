@@ -66,7 +66,7 @@ public interface BoardService {
 
 	/* 리뷰 목록(페이징 적용) */
 	public List<ReviewVO> getReviewListPaging(Criteria cri);
-	
+
 	/* 리뷰 총 갯수 */
 	public int getReviewTotal(Criteria cri);
 
@@ -85,7 +85,10 @@ public interface BoardService {
 	// 댓글 삭제
 	public void deleteReply(ReplyVO vo);
 
+	// 댓글삭제
+	public void deleteboardreply(int bno);
+
 	// 댓글 갯수
-	public int getreplyTotal(Criteria cri);
+	public int getreplyTotal(Criteria cri); 
 
 }

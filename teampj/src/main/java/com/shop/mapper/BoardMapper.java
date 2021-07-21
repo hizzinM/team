@@ -2,6 +2,7 @@ package com.shop.mapper;
 
 import java.util.List;
 
+import com.shop.model.AttachImageVO;
 import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
 import com.shop.model.QnaVO;
@@ -66,10 +67,10 @@ public interface BoardMapper {
 
 	/* ReviewVO 목록(페이징 적용) */
 	public List<ReviewVO> getReviewListPaging(Criteria cri);
-	
+
 	// 리뷰 갯수
 	public int getReviewTotal(Criteria cri);
-	
+
 	// 댓글 조회
 	public List<ReplyVO> replyList(int bno);
 
@@ -82,8 +83,11 @@ public interface BoardMapper {
 	// 댓글 수정
 	public void updateReply(ReplyVO vo);
 
-	// 댓글 삭제
+	// 댓글삭제
 	public void deleteReply(ReplyVO vo);
+
+	// 댓글삭제
+	public void deleteboardreply(int bno);
 
 	// 댓글 갯수
 	public int getreplyTotal(Criteria cri);
