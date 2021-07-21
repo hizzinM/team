@@ -95,7 +95,7 @@ textarea {
 		</form>
 		<form id="infoForm" action="/board/modify" method="get">
 			<input type="hidden" id="bno" name="bno"
-				value='<c:out value="${pageInfo.bno}"/>'> <input
+				value='<c:out value="${noticeInfo.bno}"/>'> <input
 				type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
 			<input type="hidden" name="amount"
 				value='<c:out value="${cri.amount}"/>'>

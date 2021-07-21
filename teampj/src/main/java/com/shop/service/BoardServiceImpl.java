@@ -82,7 +82,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int deleteQNA(int bno) {
-		return boardmapper.delete(bno);
+		return boardmapper.deleteQNA(bno);
 	}
 
 	@Override
