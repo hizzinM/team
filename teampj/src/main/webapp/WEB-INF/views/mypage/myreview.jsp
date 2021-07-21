@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="/resources/css/common-style/reset.css">
 	<link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 	<link rel="stylesheet" href="/resources/css/common-style/contents.css">
-	<link rel="stylesheet" href="/resources/css/board/review.css">
+	<link rel="stylesheet" href="/resources/css/mypage/myreview.css">
 </head>
 <body>
 	<header>
@@ -27,7 +27,6 @@
 			<table>
 				<thead>
 					<tr>
-						<th>번호</th>
 						<th>상품이미지</th>
 						<th>제목</th>
 						<th>작성자</th>
@@ -37,10 +36,9 @@
 				<tbody>
 					<c:forEach items="${MyReviewlist}" var="MyReviewlist">
 						<tr>
-							<td><c:out value="${MyReviewlist.reviewId}" /></td>
 							<td><img src="" alt=""></td>
 							<td>
-							<a href="/mypagemyreviewget?rno=${MyReviewlist.reviewId}"> 
+							<a href="/mypage/myreviewget?rno=${MyReviewlist.reviewId}"> 
 								<c:out value="${MyReviewlist.reviewTitle}" />
 							</a>
 							</td>
@@ -54,7 +52,7 @@
 		</div>
         <div id="btn-wrap">
         	<div class="btn-box">
-            	<button type="button" class="button_style write-btn" onclick="location.href='/mypage/reviewenroll' ">글쓰기</button>
+            	<button type="button" class="button_style write-btn" onclick="location.href='/mypage/myreviewenroll' ">글쓰기</button>
             </div>
             <div class="pageInfo_area">
                 <ul id="pageInfo" class="pageInfo">

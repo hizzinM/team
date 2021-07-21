@@ -109,18 +109,9 @@
 	</insert>
 	<!-- 리뷰 목록 -->
 	<select id="selectReviewList" resultType="com.shop.model.ReviewVO">
-		select r.review_title,r.product_name,r.product_img,r.review_board,r.user_id,r.review_writedate 
+		select r.review_id,r.review_title,r.product_name,r.product_img,r.review_board,r.user_id,r.review_writedate 
 		from review r 
 		join user u on r.user_id=u.user_name
-	</select>
-	
-	<select id="selectMainProductList"
-		resultType="com.shop.model.Product">
-		select
-		p.product_id,p.product_name,p.product_price,p.product_category,p.product_size,p.product_color,
-		p.product_inventory,i.file_name,i.upload_path,i.uuid 
-		from product p
-		join product_img i on p.product_id=i.product_id where i.image_id=1;
 	</select>
 	
 	<!-- 리뷰 목록 -->

@@ -25,16 +25,16 @@
         <div id="review_wrap">
             <div id="top-box">
                 <div>
-                    <p class="top-box-child top-box-title"><c:out value="${reviewInfo.reviewTitle}" /><span><fmt:formatDate pattern="yyyy/MM/dd" value="${reviewInfo.reviewWritedate}" /></span></p>
-                    <p class="top-box-child top-box-useId"><c:out value="${reviewInfo.userId}" /></p>
-                    <p class="top-box-child"><c:out value="${reviewInfo.productName}" /></p>
+                    <p class="top-box-child top-box-title"><c:out value="${MyreviewInfo.reviewTitle}" /><span><fmt:formatDate pattern="yyyy/MM/dd" value="${MyreviewInfo.reviewWritedate}" /></span></p>
+                    <p class="top-box-child top-box-useId"><c:out value="${MyreviewInfo.userId}" /></p>
+                    <p class="top-box-child"><c:out value="${MyreviewInfo.productName}" /></p>
                 </div>
                 <div>
-                    <c:out value="${reviewInfo.productImg}" /><img src="#" alt="">
+                    <c:out value="${MyreviewInfo.productImg}" /><img src="#" alt="">
                 </div>
             </div>
             <div id="bottom-box">
-                <p><c:out value="${reviewInfo.reviewBoard}" /></p>
+                <p><c:out value="${MyreviewInfo.reviewBoard}" /></p>
             </div>
             <div class="btn_box">
                 <a href="board/review" class="button_style">목록</a>
