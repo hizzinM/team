@@ -237,8 +237,21 @@ public class MyPageController {
 		}
 		//주문취소
 		@RequestMapping(value = "/orderDelete")
-		public String ajaxTest(HttpServletRequest request) throws Exception {
+		public String ajaxTest(HttpServletRequest request,UserOrder order) throws Exception {
 			logger.info("주문 선택취소");
+			
+			OrderDetail detail=new OrderDetail();
+			
+			
+			
+//			 List<OrderDetail> list=memberservice.orderDetailList(order);
+//			Product product=new Product();
+//			 for(OrderDetail i: list) {
+//			 product.setProductId(Integer.parseInt(i.getProductId()));
+//			 product.setProductInventory(Integer.parseInt(i.getOrderQty()));
+//			 	membermapper.updateInvenPuls(product);
+//			 }
+			 
 			String[] ajaxMsg = request.getParameterValues("valueArr");
 			int size = ajaxMsg.length;
 			for (int i = 0; i < size; i++) {

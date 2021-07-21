@@ -7,10 +7,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/resources/css/admin/index.css">
+
 
 <meta charset="UTF-8">
 <title>주문관리</title>
+<link rel="stylesheet" href="/resources/css/admin/index.css">
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
@@ -21,6 +22,11 @@
     position: absolute;
     top: 525px;
     right: 550px;
+}
+#delete{
+	position: absolute;
+    top: 522px;
+    right: 436px;
 }
 
 </style>
@@ -47,6 +53,7 @@
 		<table class="ordertable">
 				<thead>
 					<tr>
+						<td><input type="checkbox" name="allCheck" id=allCheck /></td>
 						<td>주문번호</td>
 						<td>수령인 ID</td>
 						<td>수령인 이름</td>
@@ -60,7 +67,10 @@
 				</thead>
 			<c:forEach items="${ordermenu}" var="ordermenu">
 					<tr>
-						<td><c:out value="${ordermenu.orderId}"/></td>
+						<td><input type="checkbox" name="RowCheck" class="RowCheck"
+									value="${ordermenu.orderId}"></td>
+						<td><a href="/admin/orderAdminDetail?n=${ordermenu.orderId}">
+						<c:out value="${ordermenu.orderId}"/></a></td>
 						<td><c:out value="${ordermenu.userId}"/></td>
 						<td><c:out value="${ordermenu.userName}"/></td>
 						<td><c:out value="${ordermenu.orderPhone}"/></td>
@@ -72,7 +82,9 @@
 					</tr>
 			</c:forEach>	
 			</table><br>
-			
+			<input type="button" value="주문취소"
+					class="deletebutton button_style delete_btn" id="delete" onclick="deleteValue();">
+					
 			<div class="search_wrap">
 					<div class="search_area">
 						<select name="type" class="text-frame text-frame-margin">
@@ -155,6 +167,56 @@
 			moveForm.find("input[name='pageNum']").val(1);
 			moveForm.submit();
 		});
+		
+		$(function() {
+			var chkObj = document.getElementsByName("RowCheck");
+			var rowCnt = chkObj.length;
+			$("input[name='allCheck']").click(function() {
+				var chk_listArr = $("input[name='RowCheck']");
+				for (var i = 0; i < chk_listArr.length; i++) {
+					chk_listArr[i].checked = this.checked;
+				}
+			});
+			$("input[name='RowCheck']").click(function() {
+				if ($("input[name='RowCheck']:checked").length == rowCnt) {
+					$("input[name='allCheck']")[0].checked = true;
+				} else {
+					$("input[name='allCheck']")[0].checked = false;
+				}
+			});
+		});
+		function deleteValue() {
+			var url = "/mypage/orderDelete"; // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
+			var valueArr = new Array();
+			var list = $("input[name='RowCheck']");
+			for (var i = 0; i < list.length; i++) {
+				if (list[i].checked) { //선택되어 있으면 배열에 값을 저장함
+					valueArr.push(list[i].value);
+				}
+			}
+			if (valueArr.length == 0) {
+				alert("선택된 회원이 없습니다.");
+			} else {
+				var chk = confirm("정말 삭제하시겠습니까?");
+				$.ajax({
+					url : "/mypage/orderDelete", // 전송 URL
+					type : 'GET', // GET or POST 방식
+					traditional : true,
+					data : {
+						valueArr : valueArr
+					// 보내고자 하는 data 변수 설정
+					},
+					success : function(jdata) {
+						if (jdata = 1) {
+							alert("삭제 성공");
+							location.replace("/admin/ordermenu")
+						} else {
+							alert("삭제 실패");
+						}
+					}
+				});
+			}
+		}
 	</script>
 
 

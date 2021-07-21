@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.shop.mapper.AdminMapper;
 import com.shop.model.AttachImageVO;
 import com.shop.model.Criteria;
+import com.shop.model.OrderDetail;
 import com.shop.model.Product;
 import com.shop.model.User;
 import com.shop.model.UserOrder;
@@ -201,8 +202,15 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public List<UserOrder> orderAdminList(Criteria cri) {
-		// TODO Auto-generated method stub
 		return adminMapper.orderAdminList(cri);
 	}
+
+	@Override
+	public List<OrderDetail> selectorderadmin(UserOrder order) throws Exception {
+		
+		return adminMapper.selectorderadmin(order);
+	}
+
+
 
 }

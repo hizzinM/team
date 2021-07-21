@@ -80,9 +80,10 @@ public interface MemberMapper {
 	public int deleteOrderDetail(String orderId);
 	
 	// public User readMember(String userId);
-
+	/*주문시 재고감소*/
 	public void updateInven(Product product);
-
+	/*주문취소 재고증가*/
+	public void updateInvenPuls(Product product);
 	//주문수정조회
 	public UserOrder orderselect(String orderId);
 		

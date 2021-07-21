@@ -18,6 +18,7 @@ import java.util.UUID;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,9 +40,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.shop.mapper.MemberMapper;
 import com.shop.model.AttachImageVO;
 import com.shop.model.Criteria;
+import com.shop.model.OrderDetail;
 import com.shop.model.PageMakerDTO;
 import com.shop.model.Product;
 import com.shop.model.User;
+import com.shop.model.UserOrder;
 import com.shop.service.AdminService;
 import com.shop.service.MemberService;
 
@@ -121,6 +124,18 @@ public class AdminController {
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
 	}
+	// 주문관리 상세정보 이동
+	@RequestMapping(value = "/orderAdminDetail", method = RequestMethod.GET)
+	public void getOrderList(HttpSession session,@RequestParam("n") String orderId,UserOrder order, Model model) throws Exception {
+	 logger.info("get order view");
+	 
+	 order.setOrderId(orderId);
+	 
+	 List<OrderDetail> orderView = adminService.selectorderadmin(order);
+	 
+	 model.addAttribute("orderAdmin", orderView);
+	}
+	
 
 	// 상품등록 페이지 이동
 	@RequestMapping(value = "goodsmenu", method = RequestMethod.GET)
