@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
-<link rel="stylesheet" href="/resources/css/main.css">
+<link rel="stylesheet" href="/resources/css/board/reviewenroll.css">
 <script src="/resources/ckeditor/ckeditor.js"></script>
 </head>
 <body>
@@ -20,31 +20,40 @@
 		<%@ include file="../include_collection/navigation.jsp"%>
 	</div>
 	<div id="contents">
-		<form action="/board/enroll" method="post">
-			<div class="input_wrap">
-				<label>Title</label> <input name="noticeTitle">
-			</div>
-			<div class="input_wrap">
-				<label>Content</label>
-				<textarea rows="3" id="noticeContent" name="noticeContent"></textarea>
-				<script>
-					var ckeditor_config = {
-						resize_enaleb : false,
-						enterMode : CKEDITOR.ENTER_BR,
-						shiftEnterMode : CKEDITOR.ENTER_P,
-						filebrowserUploadUrl : "업로드주소"
-					};
-
-					CKEDITOR.replace("noticeContent", ckeditor_config);
-				</script>
-			</div>
-			<div class="input_wrap">
-				<label>Writer</label> <input name="userId"
-					value="${loginuser.userId}">
-			</div>
-			<button class="btn">등록</button>
-		</form>
-
+		<div id="table-wrap">
+			<h1>리뷰 작성</h1>
+			<form action="/board/enroll" method="post">
+				<table id="review-table">
+					<tbody>
+						<tr>
+							<td>Title</td>
+							<td><input name="noticeTitle" class="text-frame"></td>
+						</tr>
+						<tr>
+							<td>Content</td>
+							<td><textarea rows="2" id="noticeContent"
+									name="noticeContent"></textarea> <script>
+										var ckeditor_config = {
+											resize_enaleb : false,
+											enterMode : CKEDITOR.ENTER_BR,
+											shiftEnterMode : CKEDITOR.ENTER_P,
+											filebrowserUploadUrl : "업로드주소"
+										};
+										CKEDITOR.replace("noticeContent",
+												ckeditor_config);
+									</script></td>
+						</tr>
+						<tr>
+							<td>Writer</td>
+							<td><input name="userId" value="${loginuser.userId}"></td>
+						</tr>
+					</tbody>
+				</table>
+				<div id="btn-box">
+					<button class="button_style">등록</button>
+				</div>
+			</form>
+		</div>
 		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
 </body>

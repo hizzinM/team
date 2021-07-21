@@ -53,7 +53,7 @@
 			form.attr("action", "/mypage/myreviewmodify");
 			form.submit();
 		});
-	</
+	</script>
 		
 
 </body>
