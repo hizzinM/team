@@ -108,15 +108,17 @@
 
 	</insert>
 	<!-- 리뷰 목록 -->
-	<select id="selectReviewList" resultType="com.shop.model.ReviewVO">
-		select r.review_id,r.review_title,r.product_name,r.product_img,r.review_board,r.user_id,r.review_writedate 
-		from review r 
+	<select id="selectReviewList"
+		resultType="com.shop.model.ReviewVO">
+		select
+		r.review_id,r.review_title,r.product_name,r.product_img,r.review_board,r.user_id,r.review_writedate
+		from review r
 		join user u on r.user_id=u.user_name
 	</select>
-	
+
 	<!-- 리뷰 목록 -->
 	<select id="getReviewList" resultType="com.shop.model.ReviewVO">
-		select * from review where 
+		select * from review where
 	</select>
 	<!-- 리뷰 조회 -->
 	<select id="getReviewPage" resultType="com.shop.model.ReviewVO">
@@ -126,12 +128,15 @@
 
 	<!-- 리뷰 수정 -->
 	<update id="modifyReview">
-		update review set review_title = #{reviewTitle},review_board = #{reviewBoard}
-		where review_id=#{reviewId}
+		update review set review_title =
+		#{reviewTitle},review_board = #{reviewBoard}
+		where
+		review_id=#{reviewId}
 	</update>
 
 	<!-- 리뷰 삭제 -->
-	<delete id="deleteReview" parameterType="com.shop.model.ReviewVO">
+	<delete id="deleteReview"
+		parameterType="com.shop.model.ReviewVO">
 		delete from review where review_id = #{rno}
 	</delete>
 
@@ -205,5 +210,14 @@
 		update qna q
 		set q.rc = (select count(*) from reply where bno = #{bno})
 		where q.bno = #{bno}
+	</update>
+
+	<!-- 답변완료 체크 -->
+	<update id="getreplyTotal" parameterType="int">
+		<!-- update q.*,(select count(*) from reply r where r.bno=q.bno)as rc from 
+			qna q -->
+		update qna q
+		set q.rc = (select count(rno) from reply r where r.bno =
+		q.bno)
 	</update>
 </mapper>
