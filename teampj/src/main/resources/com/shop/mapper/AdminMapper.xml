@@ -342,9 +342,11 @@
 	
 	<!--관리자 메인페이지(주문)-->
 	<select id="selectAdminindex" resultType="com.shop.model.UserOrder">
-	SELECT * FROM user_order ORDER BY order_date DESC
+	SELECT * FROM user_order ORDER BY order_date DESC limit 5
 	</select>
-	
+	<select id="selectAdminUser" resultType="com.shop.model.User">
+	SELECT * FROM user ORDER BY reg_date DESC limit 5
+	</select>
 	
 	
 	
