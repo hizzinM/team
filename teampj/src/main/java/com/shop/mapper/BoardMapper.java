@@ -58,6 +58,9 @@ public interface BoardMapper {
 
 	/* 리뷰 조회 */
 	public ReviewVO getReviewPage(int reviewId);
+	
+	/*내 리뷰 목록*/
+	public List<ReviewVO> selectReviewList();
 
 	/* 리뷰 수정 */
 	public int modifyReview(ReviewVO review);

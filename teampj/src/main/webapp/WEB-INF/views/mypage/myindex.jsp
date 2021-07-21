@@ -89,7 +89,7 @@
 					</li>
 					<li>
 						<div>
-							<a href="/member/">
+							<a href="/mypage/myreview">
 								<p>MYREVIEW</p>
 								<p>내가 쓴 리뷰</p>
 							</a>
