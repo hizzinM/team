@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="/resources/css/common-style/reset.css">
 	<link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 	<link rel="stylesheet" href="/resources/css/common-style/contents.css">
-	<link rel="stylesheet" href="/resources/css/board/review.css">
+	<link rel="stylesheet" href="/resources/css/mypage/myreview.css">
 </head>
 <body>
 	<header>
@@ -27,7 +27,6 @@
 			<table>
 				<thead>
 					<tr>
-						<th>번호</th>
 						<th>상품이미지</th>
 						<th>제목</th>
 						<th>작성자</th>
@@ -35,17 +34,16 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${Reviewlist}" var="Reviewlist">
+					<c:forEach items="${MyReviewlist}" var="MyReviewlist">
 						<tr>
-							<td><c:out value="${Reviewlist.reviewId}" /></td>
-							<td><img src="${MyReviewlist.productImg}" alt=""></td>
+							<td><img src="/resources/upload/${MyReviewlist.productImg}" alt=""></td>
 							<td>
-							<a href="/board/reviewget?rno=${Reviewlist.reviewId}"> 
-								<c:out value="${Reviewlist.reviewTitle}" />
+							<a href="/mypage/myreviewget?rno=${MyReviewlist.reviewId}"> 
+								<c:out value="${MyReviewlist.reviewTitle}" />
 							</a>
 							</td>
-							<td><c:out value="${Reviewlist.userId}" /></td>
-							<td><fmt:formatDate value="${Reviewlist.reviewWritedate}"
+							<td><c:out value="${MyReviewlist.userId}" /></td>
+							<td><fmt:formatDate value="${MyReviewlist.reviewWritedate}"
 									pattern="yyyy/MM/dd" /></td>
 						</tr>
 					</c:forEach>
@@ -53,9 +51,6 @@
 			</table>
 		</div>
         <div id="btn-wrap">
-        	<div class="btn-box">
-            	<button type="button" class="button_style write-btn" onclick="location.href='/board/reviewenroll' ">글쓰기</button>
-            </div>
             <div class="pageInfo_area">
                 <ul id="pageInfo" class="pageInfo">
                     <!-- 각 번호 페이지 버튼 -->
@@ -78,12 +73,12 @@
 		$(".pageInfo a").on("click", function(e) {
 			e.preventDefault();
 			moveform3.find("input[name='pageNum']").val($(this).attr("href"));
-			moveform3.attr("action", "/board/qna");
+			moveform3.attr("action", "/mypage/review");
 			moveform3.submit();
 		});
 
 		$(document).ready(function() {
-			let result = '<c:out value="${result}"/>';
+			let result = '<c:out value="${Myresult}"/>';
 			checkAlert(result);
 			console.log(result);
 			function checkAlert(result) {

@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
-<link rel="stylesheet" href="/resources/css/board/getreview.css">
+<link rel="stylesheet" href="/resources/css/mypage/mygetreview.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
@@ -25,22 +25,36 @@
         <div id="review_wrap">
             <div id="top-box">
                 <div>
-                    <p class="top-box-child top-box-title"><c:out value="${reviewInfo.reviewTitle}" /><span><fmt:formatDate pattern="yyyy/MM/dd" value="${reviewInfo.reviewWritedate}" /></span></p>
-                    <p class="top-box-child top-box-useId"><c:out value="${reviewInfo.userId}" /></p>
-                    <p class="top-box-child"><c:out value="${reviewInfo.productName}" /></p>
+                    <p class="top-box-child top-box-title"><c:out value="${MyreviewInfo.reviewTitle}" /><span><fmt:formatDate pattern="yyyy/MM/dd" value="${MyreviewInfo.reviewWritedate}" /></span></p>
+                    <p class="top-box-child top-box-useId"><c:out value="${MyreviewInfo.userId}" /></p>
+                    <p class="top-box-child"><c:out value="${MyreviewInfo.productName}" /></p>
                 </div>
                 <div>
-                    <c:out value="${reviewInfo.productImg}" /><img src="${MyReviewlist.productImg}" alt="">
+                    <img src="/resources/upload/${MyreviewInfo.productImg}" alt="">
                 </div>
             </div>
             <div id="bottom-box">
-                <p><c:out value="${reviewInfo.reviewBoard}" /></p>
+                <p><c:out value="${MyreviewInfo.reviewBoard}" /></p>
             </div>
             <div class="btn_box">
-                <a href="board/review" class="button_style">목록</a>
+                <a href="myreview" class="button_style">목록</a>
+                <div class="button_style update_btn"><a class="btn" id="modify_btn" >수정 하기</a></div>
+                <form id="infoForm" action="/board/modify" method="get">
+					<input type="hidden" id="bno" name="rno" value='<c:out value="${MyreviewInfo.reviewId}"/>'>
+			</form>
             </div>
         </div>
 		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
+	<script>
+		let form = $("#infoForm");
+
+		$("#modify_btn").on("click", function(e) {
+			form.attr("action", "/mypage/myreviewmodify");
+			form.submit();
+		});
+	</
+		
+
 </body>
 </html>

@@ -72,6 +72,5 @@
         </div>
 		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
-	
 </body>
 </html>

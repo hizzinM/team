@@ -122,7 +122,7 @@ th {
 			</form>
 		</div>
 		<script type="text/javascript">
-	/* 이미지 업로드 */
+			/* 이미지 업로드 */
 			$("input[name='uploadFile']").on("change", function(e){
 				/* 이미지 존재시 삭제 */
 				if($(".imgDeleteBtn").length > 0){

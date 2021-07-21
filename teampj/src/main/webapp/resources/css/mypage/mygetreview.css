@@ -1,0 +1,28 @@
+@charset "UTF-8";
+#contents{padding-top:100px;}
+#review_wrap{
+    width:1300px;
+    font-size: 12px;
+    border:1px solid #adadad;
+    margin:0 auto;
+    padding: 50px 50px 80px 50px;
+    box-sizing: border-box; /* 오페라(Opera) */
+    -moz-box-sizing: border-box; /* 파이어폭스(Firefox)*/
+    -webkit-box-sizing: border-box; /* 웹킷(Webkit) & 크롬(Chrome) */
+    margin-bottom: 100px;
+}
+#top-box{border-bottom:1px solid #adadad; text-align: right; }
+#top-box>div:first-child{width:500px;float: left;text-align: left;vertical-align: top;}
+#top-box>div:last-child{width:800px;height:200px;}
+.top-box-child{margin-bottom: 20px;}
+.top-box-useId{font-size: 11px;}
+.top-box-title span{border-left:1px solid rgb(43, 43, 43);margin-left:10px;padding-left:10px;font-size:7px;}
+#bottom-box{padding:50px 0;margin-bottom:30px;}
+.btn_box{float: right;}
+.update_btn{margin-right:10px;}
+.button_style{
+    width:70px;
+    display:block;
+    float:right;
+    text-align: center;
+}

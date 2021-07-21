@@ -114,11 +114,32 @@
             <img src="/resources/upload/${goodDetailData.uploadPath3}/${goodDetailData.uuid3}_${goodDetailData.fileName3}" alt="" class="prodct-img-ex">
             <img src="/resources/upload/${goodDetailData.uploadPath4}/${goodDetailData.uuid4}_${goodDetailData.fileName4}" alt="" class="prodct-img-ex">
         </div>
-            
-        <div id="review_wrap">
-			<%@ include file="include_collection/reviewReple.jsp"%>
-        </div>  
-           <!--  <textarea rows="5" cols="50" id="Detail" name="Detail"></textarea>
+		<div id="review_wrap">
+			<table>
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>상품이미지</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${Reviewlist}" var="Reviewlist">
+						<tr>
+							<td><c:out value="${Reviewlist.reviewId}" /></td>
+							<td><img src="" alt=""></td>
+							<td><c:out value="${Reviewlist.reviewTitle}" /></td>
+							<td><c:out value="${Reviewlist.userId}" /></td>
+							<td><fmt:formatDate value="${Reviewlist.reviewWritedate}"
+									pattern="yyyy/MM/dd" /></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+		<!--  <textarea rows="5" cols="50" id="Detail" name="Detail"></textarea>
             <script>
             	var ckeditor_config = {
    				resize_enaleb : false,
@@ -129,16 +150,9 @@
  
 				 CKEDITOR.replace("Detail", ckeditor_config);
 			</script> -->
-           </div>
-        
-        </div>
 		<%@ include file="include_collection/footer.jsp"%>
-    </div>
-    
-    
-    
-    
-    
+	</div>
+         
   <script type="text/javascript">
   $("#addcart").click(function(){
 	  var productInventory=$("#productInventory").val();

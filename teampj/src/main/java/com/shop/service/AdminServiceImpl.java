@@ -199,7 +199,7 @@ public class AdminServiceImpl implements AdminService {
 
 		return adminMapper.AccProductList();
 	}
-
+	/*관리자 주문관리페이지*/
 	@Override
 	public List<UserOrder> orderAdminList(Criteria cri) {
 		return adminMapper.orderAdminList(cri);
@@ -209,6 +209,17 @@ public class AdminServiceImpl implements AdminService {
 	public List<OrderDetail> selectorderadmin(UserOrder order) throws Exception {
 
 		return adminMapper.selectorderadmin(order);
+	}
+	/*관리자메인페이지(주문)*/
+	@Override
+	public List<UserOrder> selectAdminindex() {
+		return adminMapper.selectAdminindex();
+	}
+	/*관리자메인페이지(회원)*/
+	@Override
+	public List<User> selectAdminUser() {
+		
+		return adminMapper.selectAdminUser();
 	}
 
 }

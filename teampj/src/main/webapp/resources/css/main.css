@@ -83,9 +83,13 @@
     margin-right: 10px;
 }
 #product-warp{
-    width:1600px;
-    text-align: center;
+    width:1500px;
+    margin:0 auto;
     margin-bottom: 150px;
+    padding:0 80px;
+    box-sizing: border-box; /* 오페라(Opera) */
+    -moz-box-sizing: border-box; /* 파이어폭스(Firefox)*/
+    -webkit-box-sizing: border-box; /* 웹킷(Webkit) & 크롬(Chrome) */
 }
 .product_unit{
     display: inline-block;

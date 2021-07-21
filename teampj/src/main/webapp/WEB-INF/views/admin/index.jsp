@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +11,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title>관리자페이지</title>
+<style type="text/css">
+.indexorder{
+    position: absolute;
+    right: 169px;
+    width: 71%;
+}
+.indexuser{
+	 position: absolute;
+    right: 169px;
+    width: 71%;
+    top:350px;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -30,6 +49,77 @@
 	</header>
 	<section id="container">
 		<div id="container_box">본문</div>
+		<table class="indexorder">
+				<thead>
+						<tr>
+							<th colspan="9">최신주문</th>
+						</tr>
+					<tr>
+						<td>주문번호</td>
+						<td>수령인 ID</td>
+						<td>수령인 이름</td>
+						<td>수령인 개인폰번호</td>
+						<td>수령인 주소</td>
+						<td>수령인 상세주소</td>
+						<td>수령인 우편번호</td>
+						<td>주문가격</td>
+						<td>주문시간</td>
+					</tr>
+				</thead>
+			<c:forEach items="${mainorder}" var="mainorder">
+					<tr>
+						<td><a href="/admin/orderAdminDetail?n=${mainorder.orderId}">
+						<c:out value="${mainorder.orderId}"/></a></td>
+						<td><c:out value="${mainorder.userId}"/></td>
+						<td><c:out value="${mainorder.userName}"/></td>
+						<td><c:out value="${mainorder.orderPhone}"/></td>
+						<td><c:out value="${mainorder.orderAddress}"/></td>
+						<td><c:out value="${mainorder.orderAddressDetail}"/></td>
+						<td><c:out value="${mainorder.orderAddressNum}"/></td>
+						<td><c:out value="${mainorder.orderPrice}"/></td>
+					    <td><c:out value="${mainorder.orderDate}"/></td>
+					</tr>
+			</c:forEach>	
+			</table><br>
+				<table class="indexuser">
+					<thead>
+						<tr>
+							<th colspan="7">최신회원</th>
+						</tr>
+						<tr>
+							<th>회원명</th>
+							<th>ID</th>
+							<th>연락처</th>
+							<th>이메일</th>
+							<th>주소</th>
+							<th>가입일자</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${mainUser}" var="mainUser">
+							<tr>
+								<td><c:out value="${mainUser.userName}" /></td>
+								<td><a href="/admin/AdminMemberUpdate?userId=${mainUser.userId}"><c:out value="${mainUser.userId}"></c:out>
+								</a></td>
+								<td><c:out value="${mainUser.phone}" /></td>
+								<td><c:out value="${mainUser.email}" /></td>
+								<td style="width: 450px;"><c:out
+										value="${mainUser.addressNum}" />&nbsp; <c:out
+										value="${mainUser.address}" />&nbsp; <c:out
+										value="${mainUser.addressDetail}" /></td>
+								<td><fmt:formatDate value="${mainUser.regDate}"
+										pattern="yyyy년MM월dd일 HH시mm분" /></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+		
+		
+		
+		
+		
+		
+		
 	</section>
 
 </body>
