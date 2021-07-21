@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+.imgDeleteBtn2{
+	    position: absolute;
+	    top:45%;
+	    right: 63%;
+	    background-color: #ef7d7d;
+	    color: wheat;
+	    font-weight: 900;
+	    width: 30px;
+	    height: 30px;
+	    border-radius: 50%;
+	    line-height: 26px;
+	    text-align: center;
+	    border: none;
+	    display: block;
+	    cursor: pointer;	
+	}
+		
+.imgDeleteBtn3{
+	    position: absolute;
+	    top:45%;
+	    right: 50%;
+	    background-color: #ef7d7d;
+	    color: wheat;
+	    font-weight: 900;
+	    width: 30px;
+	    height: 30px;
+	    border-radius: 50%;
+	    line-height: 26px;
+	    text-align: center;
+	    border: none;
+	    display: block;
+	    cursor: pointer;	
+	}	
+	
+.imgDeleteBtn4{
+	    position: absolute;
+	      top:45%;
+	    right: 36%;
+	    background-color: #ef7d7d;
+	    color: wheat;
+	    font-weight: 900;
+	    width: 30px;
+	    height: 30px;
+	    border-radius: 50%;
+	    line-height: 26px;
+	    text-align: center;
+	    border: none;
+	    display: block;
+	    cursor: pointer;	
+	}	
+	
+	

@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
 	<link rel="stylesheet" href="/resources/css/admin/membermenu.css">
 	<link rel="stylesheet" href="/resources/css/admin/index.css">
+	<link rel="stylesheet" href="/resources/css/admin/insertDeleteButton.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<style>
 		td:first-child{width:100px;}
