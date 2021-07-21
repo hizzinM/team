@@ -43,64 +43,28 @@
 					<li><img src="/resources/img/slide-img_08.jpg" alt=""></li>
                 </ul>
             </div>
-        </div> 
-        <div id="product-warp">
-            <div id="product_column">
-                <div class="product_unit">
-                    <a href="/detail?productId=${Product.productId}">
-                        <img class="puoduct_img" src="/resources/img/slide-img_000.jpg" alt="" onerror="this.src='/resources/img/noimg.jpg'">
-                    </a>
-                    <ul>
-                        <li><a href="/detail?productId=${Product.productId}">디언 린넨 슬릿 니트</a></li>
-                        <hr>
-                        <li>KRW 40,000</li>
-                    </ul>
-                </div>
-                <div class="product_unit">
-                    <a href="#">
-                        <img class="puoduct_img" src="/resources/img/slide-img_03.jpg" alt="" onerror="this.src='/resources/img/noimg.jpg'">
-                    </a>
-                    <ul>
-                        <li><a href="#">디언 린넨 슬릿 니트</a></li>
-                        <hr>
-                        <li>KRW 40,000</li>
-                    </ul>
-                </div>
-                <div class="product_unit">
-                    <a href="#">
-                        <img class="puoduct_img" src="/resources/img/slide-img_04.jpg" alt="" onerror="this.src='/resources/img/noimg.jpg'">
-                    </a>
-                    <ul>
-                        <li><a href="#">디언 린넨 슬릿 니트</a></li>
-                        <hr>
-                        <li>KRW 40,000</li>
-                    </ul>
-                </div>
-                <div class="product_unit">
-                    <a href="#">
-                        <img class="puoduct_img" src="/resources/img/slide-img_06.jpg" alt="" onerror="this.src='/resources/img/noimg.jpg'">
-                    </a>
-                    <ul>
-                        <li><a href="#">디언 린넨 슬릿 니트</a></li>
-                        <hr>
-                        <li>KRW 40,000</li>
-                    </ul>
-                </div>
-                <div class="product_unit">
-                    <c:forEach items="${MainProduct}" var="Product" end="7">
-                        <a href="/detail?productId=${Product.productId}">
-                            <img class="puoduct_img" src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}" alt="" onerror="this.src='/resources/img/noimg.jpg'">
-                        </a>
-                        <ul>
-                            <li><a href="/detail?productId=${Product.productId}"><c:out value="${Product.productName}" /></a></li>
-                            <hr>
-                            <li><c:out value="${Product.productPrice}" /></li>
-                        </ul>
-                    </c:forEach>
-                </div>
-            </div>
         </div>
-        <%@ include file="include_collection/footer.jsp"%>
+		<div id="product-warp">
+			<div id="product_column">
+				<c:forEach items="${MainProduct}" var="Product" end="7">
+					<div class="product_unit">
+						<a href="/detail?productId=${Product.productId}"> <img
+							class="puoduct_img"
+							src="/resources/upload/${Product.uploadPath}/${Product.uuid}_${Product.fileName}"
+							alt="" onerror="this.src='/resources/img/noimg.jpg'">
+						</a>
+						<ul>
+							<li><a href="/detail?productId=${Product.productId}"><c:out
+										value="${Product.productName}" /></a></li>
+							<hr>
+							<li><c:out value="KRW ${Product.productPrice}" /></li>
+						</ul>
+
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+		<%@ include file="include_collection/footer.jsp"%>
     </div>
 	
 </body>
