@@ -163,4 +163,43 @@ public class BoardController {
 	public void getreviewenroll() {
 		logger.info("게시글 작성 페이지 진입");
 	}
+
+	@RequestMapping(value = "/replyUpdate", method = RequestMethod.GET)
+	public String replyUpdate(ReplyVO vo, Model model) throws Exception {
+		logger.info("reply write");
+
+		ReplyVO reply = boardService.selectReply(vo.getRno());
+		logger.info("댓글번호 : " + reply.getRno());
+		model.addAttribute("replyUpdate", boardService.selectReply(vo.getRno()));
+
+		return "board/replyUpdate";
+	}
+
+	@RequestMapping(value = "/replyUpdate", method = RequestMethod.POST)
+	public String replyUpdate(ReplyVO reply, RedirectAttributes ra) throws Exception {
+		logger.info("reply Write");
+		boardService.updateReply(reply);
+		ra.addAttribute("board_number", reply.getBno());
+
+		return "redirect:/board/qna";
+	}
+
+	@RequestMapping(value = "/replyDelete", method = RequestMethod.GET)
+	public String replyDelete(ReplyVO vo, Model model) throws Exception {
+		logger.info("reply Delete");
+
+		model.addAttribute("replyDelete", boardService.selectReply(vo.getRno()));
+		System.out.println("댓글 번호 : " + boardService.selectReply(vo.getRno()));
+
+		return "board/replyDelete";
+	}
+
+	@RequestMapping(value = "/replyDelete", method = RequestMethod.POST)
+	public String replyDelete(ReplyVO vo, RedirectAttributes ra) throws Exception {
+		logger.info("reply delete");
+		boardService.deleteReply(vo);
+		ra.addAttribute("board_number", vo.getBno());
+
+		return "redirect:/board/qna";
+	}
 }

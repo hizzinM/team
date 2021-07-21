@@ -128,18 +128,23 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
+	public ReplyVO selectReply(int rno) {
+		return boardmapper.selectReply(rno);
+	}
+
+	@Override
 	public void writereply(ReplyVO reply) {
 		boardmapper.writereply(reply);
 	}
 
 	@Override
-	public void modifyreply(ReplyVO reply) {
-		boardmapper.modifyreply(reply);
+	public void updateReply(ReplyVO reply) {
+		boardmapper.updateReply(reply);
 	}
 
 	@Override
-	public void deletereply(ReplyVO reply) {
-		boardmapper.deletereply(reply);
+	public void deleteReply(ReplyVO reply) {
+		boardmapper.deleteReply(reply);
 	}
 
 	/* 게시물 총 갯수 */

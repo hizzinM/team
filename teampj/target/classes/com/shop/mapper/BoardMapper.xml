@@ -148,6 +148,7 @@
 		select count(*) from
 		review
 	</select>
+
 	<!-- 댓글 조회 -->
 	<select id="replyList" parameterType="int"
 		resultType="com.shop.model.ReplyVO">
@@ -163,26 +164,35 @@
 		#{replyContent},#{userId})
 	</insert>
 
+
 	<!-- 댓글 수정 -->
-	<update id="modifyreply" parameterType="com.shop.model.ReplyVO">
-		update reply set
-		reply_content =
-		#{replyContent}
+	<update id="updateReply" parameterType="com.shop.model.ReplyVO">
+		update reply
+		set
+		reply_content
+		= #{replyContent}
 		where rno = #{rno}
-		and bno =
-		#{bno}
 	</update>
 
 	<!-- 댓글 삭제 -->
-	<delete id="deletereply" parameterType="com.shop.model.ReplyVO">
-		delete from reply
-		where
-		rno = #{rno}
-		and bno = ${bno}
+	<delete id="deleteReply" parameterType="com.shop.model.ReplyVO">
+		delete
+		from reply
+		where rno
+		= #{rno}
 	</delete>
+
+	<!-- 선택된 댓글 조회 -->
+	<select id="selectReply" resultType="com.shop.model.ReplyVO">
+		select * from reply
+		where
+		rno
+		= #{rno}
+	</select>
 
 	<!-- 게시물 총 개수 -->
 	<select id="getreplyTotal" resultType="int">
-		<!--  -->select count(*) from reply 
+		<!-- -->
+		select count(*) from reply
 	</select>
 </mapper>

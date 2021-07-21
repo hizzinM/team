@@ -77,6 +77,9 @@
 						</ul>
 					</div>
 				</div>
+				<div>
+					<%@ include file="../include_collection/footer.jsp"%>
+				</div>
 
 				<form id="moveform3" method="get">
 					<input type="hidden" name="pageNum"
@@ -100,6 +103,7 @@
 		});
 
 		$(document).ready(function() {
+			
 			let result = '<c:out value="${result}"/>';
 			checkAlert(result);
 			console.log(result);
