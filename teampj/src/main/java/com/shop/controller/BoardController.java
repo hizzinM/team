@@ -117,6 +117,7 @@ public class BoardController {
 	// qna 조회
 	@GetMapping("/getqna")
 	public void QnaGetPageGET(int bno, Model model, Criteria cri) {
+		logger.info(" get qna 페이지 접속");
 		model.addAttribute("qnaInfo", boardService.getQNAPage(bno));
 		model.addAttribute("cri", cri);
 
@@ -129,6 +130,7 @@ public class BoardController {
 	// qna 수정페이지 이동
 	@GetMapping("/qnamodify")
 	public void QnaModifyGET(int bno, Model model, Criteria cri) {
+		logger.info("qna 수정 페이지 접속");
 		model.addAttribute("qnaInfo", boardService.getQNAPage(bno));
 		model.addAttribute("cri", cri);
 	}
@@ -144,6 +146,7 @@ public class BoardController {
 	// qna 삭제
 	@PostMapping("/qnadelete")
 	public String QnaDeletePOST(int bno, RedirectAttributes rttr) {
+		logger.info(" qna 삭제");
 		boardService.deleteQNA(bno);
 		rttr.addFlashAttribute("result", "delete success");
 		return "redirect:/board/qna";
@@ -158,11 +161,13 @@ public class BoardController {
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
 	}
+
 	// 리뷰작성페이지이동
 	@GetMapping("/reviewenroll")
 	public void getreviewenroll() {
 		logger.info("게시글 작성 페이지 진입");
 	}
+
 	// 리뷰공지글 등록
 	@PostMapping("/reviewenroll")
 	public String postReviewenroll(ReviewVO review, RedirectAttributes rttr) {
@@ -171,6 +176,7 @@ public class BoardController {
 		rttr.addFlashAttribute("result", "enrol success");
 		return "redirect:/board/review";
 	}
+
 	@RequestMapping(value = "/replyUpdate", method = RequestMethod.POST)
 	public String replyUpdate(ReplyVO vo, RedirectAttributes ra) {
 		logger.info("reply Write");
@@ -206,11 +212,13 @@ public class BoardController {
 		ra.addAttribute("bno", vo.getBno());
 		return "redirect:/board/qna";
 	}
+
 	// 리뷰 조회
 	@GetMapping("/reviewget")
 	public void reviewGetPageGET(int rno, Model model, Criteria cri) {
 		model.addAttribute("reviewInfo", boardService.getReviewPage(rno));
 		model.addAttribute("cri", cri);
+
 	}
 
 	// 리뷰 수정페이지 이동

@@ -82,7 +82,8 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int deleteQNA(int bno) {
-		return boardmapper.delete(bno);
+		boardmapper.deleteboardreply(bno);
+		return boardmapper.deleteQNA(bno);
 	}
 
 	@Override
@@ -120,11 +121,12 @@ public class BoardServiceImpl implements BoardService {
 	public List<ReviewVO> getReviewListPaging(Criteria cri) {
 		return boardmapper.getReviewListPaging(cri);
 	}
+
 	@Override
 	public int getReviewTotal(Criteria cri) {
 		return boardmapper.getReviewTotal(cri);
 	}
-	
+
 	// 댓글
 	@Override
 	public List<ReplyVO> replyList(int bno) {
@@ -157,5 +159,8 @@ public class BoardServiceImpl implements BoardService {
 		return boardmapper.getreplyTotal(cri);
 	}
 
+	@Override
+	public void deleteboardreply(int bno) {
+	}
 
 }
