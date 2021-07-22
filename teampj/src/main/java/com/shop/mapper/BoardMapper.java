@@ -2,8 +2,6 @@ package com.shop.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.shop.model.AttachImageVO;
 import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
@@ -60,8 +58,8 @@ public interface BoardMapper {
 
 	/* 리뷰 조회 */
 	public ReviewVO getReviewPage(int reviewId);
-
-	/* 내 리뷰 목록 */
+	
+	/*내 리뷰 목록*/
 	public List<ReviewVO> selectReviewList();
 
 	/* 리뷰 수정 */
@@ -79,9 +77,6 @@ public interface BoardMapper {
 	// 댓글 조회
 	public List<ReplyVO> replyList(int bno);
 
-	// 댓글 개수
-	public int getreplyTotal(ReplyVO reply);
-
 	// 특정댓글 조회
 	public ReplyVO selectReply(int rno);
 
@@ -98,8 +93,6 @@ public interface BoardMapper {
 	public void deleteboardreply(int bno);
 
 	// 답변완료체크
-	// public int getreplyTotal(int bno);
-
-	public void updateRc(@Param("bno") int bno, @Param("amount") int amount);
+	public int getreplyTotal(int bno);
 
 }

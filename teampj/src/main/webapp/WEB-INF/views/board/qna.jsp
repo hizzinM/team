@@ -22,8 +22,7 @@
 	</header>
 	<div id="side_navigation">
 		<%@ include file="../include_collection/navigation.jsp"%>
-	</div>
-	<h1>QNA</h1>
+	</div> 
 	<div id="table_wrap">
 		<table>
 			<thead>

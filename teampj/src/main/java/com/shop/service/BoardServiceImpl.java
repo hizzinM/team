@@ -1,11 +1,9 @@
 package com.shop.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.shop.mapper.BoardMapper;
 import com.shop.model.Criteria;
@@ -18,7 +16,6 @@ import com.shop.model.ReplyVO;
 @Service
 public class BoardServiceImpl implements BoardService {
 
-	private static final int bno = 0;
 	@Autowired
 	private BoardMapper boardmapper;
 
@@ -147,7 +144,6 @@ public class BoardServiceImpl implements BoardService {
 		return boardmapper.selectReply(rno);
 	}
 
-	@Transactional
 	@Override
 	public void writereply(ReplyVO reply) {
 		boardmapper.writereply(reply);
@@ -158,23 +154,19 @@ public class BoardServiceImpl implements BoardService {
 		boardmapper.updateReply(reply);
 	}
 
-	@Transactional
 	@Override
 	public void deleteReply(ReplyVO reply) {
 		boardmapper.deleteReply(reply);
 	}
 
-	// 덧글상태
-	// public int getreplyTotal(ReplyVO reply) {
-	// return boardmapper.getreplyTotal(reply);
-	// }
+	// 답변완료체크
+	@Override
+	public int getreplyTotal(int bno) {
+		return boardmapper.getreplyTotal(bno);
+	}
 
 	@Override
 	public void deleteboardreply(int bno) {
 	}
 
-	@Override
-	public int getreplyTotal(ReplyVO reply) { 
-		return 0;
-	} 
 }

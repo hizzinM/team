@@ -203,11 +203,13 @@
 		= #{bno}
 	</delete>
 
-	<!-- 덧글 총 갯수 <select id="getreplyTotal" resultType="int"> update qna q set 
-		q.rc = (select count(rno) from reply r where r.bno =q.bno) ; </select> -->
-
-	<update id="updateRc">
-		update qna set rc=#{rc}+#{amount} where bno=#{bno}
+	<!-- 답변완료 체크 -->
+	<update id="getreplyTotal" parameterType="int">
+		<!-- update q.*,(select count(*) from reply r where r.bno=q.bno)as rc from 
+			qna q -->
+		update qna q
+		set q.rc = (select count(*) from reply where bno = #{bno})
+		where q.bno = #{bno}
 	</update>
 
 </mapper>
