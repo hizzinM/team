@@ -11,92 +11,82 @@
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
-<link rel="stylesheet" href="/resources/css/main.css">
+<link rel="stylesheet" href="/resources/css/board/qnamodify.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
 <script src="/resources/ckeditor/ckeditor.js"></script>
-<style type="text/css">
-.input_wrap {
-	padding: 5px 20px;
-}
-
-label {
-	display: block;
-	margin: 10px 0;
-	font-size: 20px;
-}
-
-input {
-	padding: 5px;
-	font-size: 17px;
-}
-
-textarea {
-	width: 800px;
-	height: 200px;
-	font-size: 15px;
-	padding: 10px;
-}
-
-#delete_btn {
-	background-color: #f3e3e7;
-}
-</style>
 </head>
 <body>
 	<div id="side_navigation">
 		<%@ include file="../include_collection/navigation.jsp"%>
 	</div>
-	<div align="center">
-		<form id="modifyForm" action="/board/qnamodify" method="post">
-			<div class="input_wrap">
-				<label>질문 번호</label> <input name="bno" readonly="readonly"
-					value='<c:out value="${qnaInfo.bno}"/>'>
-			</div>
-			<div class="input_wrap">
-				<label>질문 카테고리</label> <input name="qnaCategory"
-					value='<c:out value="${qnaInfo.qnaCategory}"/>'>
-			</div>
-			<div class="input_wrap">
-				<label>질문 제목</label> <input name="qnaTitle"
-					value='<c:out value="${qnaInfo.qnaTitle}"/>'>
-			</div>
-			<div class="input_wrap">
-				<label>질문 작성자</label> <input name="userId" readonly="readonly"
-					value='<c:out value="${qnaInfo.userId}"/>'>
-			</div>
-			<div class="input_wrap">
-				<label>질문 등록일</label> <input name="qnaWritedate" readonly="readonly"
-					value='<fmt:formatDate pattern="yyyy/MM/dd" value="${qnaInfo.qnaWritedate}"/>'>
-			</div>
-			<div class="input_wrap">
-				<label>질문 내용</label>
-				<textarea rows="3" id="qnaContents" name="qnaContents"><c:out
-						value="${qnaInfo.qnaContents}" /></textarea>
-				<script>
-					var ckeditor_config = {
-						resize_enaleb : false,
-						enterMode : CKEDITOR.ENTER_BR,
-						shiftEnterMode : CKEDITOR.ENTER_P,
-						filebrowserUploadUrl : "주소임시"
-					};
-					CKEDITOR.replace("qnaContents", ckeditor_config);
-				</script>
-			</div>
 
-			<div class="btn_wrap">
-				<a class="btn" id="list_btn">목록 페이지</a> <a class="btn"
-					id="modify_btn">수정 완료</a> <a class="btn" id="delete_btn">삭제</a> <a
-					class="btn" id="cancel_btn">수정 취소</a>
-			</div>
-		</form>
-		<form id="infoForm" action="/board/qnamodify" method="get">
-			<input id="bno" name="bno" value='<c:out value="${qnaInfo.bno}"/>'>
-			<input type="hidden" name="pageNum"
-				value='<c:out value="${cri.pageNum}"/>'> <input
-				type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
-		</form>
+	<div id="contents">
+		<div id="table-wrap">
+			<h1>QNA 수정</h1>
+			<form id="modifyForm" action="/board/qnamodify" method="post">
+				<table id="notice-table">
+					<tbody>
+						<tr>
+							<td>질문 번호</td>
+							<td><input name="bno" readonly="readonly"
+								value='<c:out value="${qnaInfo.bno}"/>'></td>
+						</tr>
+						<tr>
+							<td>질문 카테고리</td>
+							<td><input name="qnaCategory"
+								value='<c:out value="${qnaInfo.qnaCategory}"/>'></td>
+						</tr>
+						<tr>
+							<td>질문 제목</td>
+							<td><input name="qnaTitle"
+								value='<c:out value="${qnaInfo.qnaTitle}"/>'></td>
+						</tr>
+						<tr>
+							<td>질문 작성자</td>
+							<td><input name="userId" readonly="readonly"
+								value='<c:out value="${qnaInfo.userId}"/>'></td>
+						</tr>
+						<tr>
+							<td>질문 등록일</td>
+							<td><input name="qnaWritedate" readonly="readonly"
+								value='<fmt:formatDate pattern="yyyy/MM/dd" value="${qnaInfo.qnaWritedate}"/>'></td>
+						</tr>
+						<tr>
+							<td>질문 등록일</td>
+							<td><input name="qnaWritedate" readonly="readonly"
+								value='<fmt:formatDate pattern="yyyy/MM/dd" value="${qnaInfo.qnaWritedate}"/>'></td>
+						</tr>
+						<tr>
+							<td colspan="2"><textarea rows="3" id="qnaContents"
+									name="qnaContents"><c:out
+										value="${qnaInfo.qnaContents}" /></textarea> <script>
+											var ckeditor_config = {
+												resize_enaleb : false,
+												enterMode : CKEDITOR.ENTER_BR,
+												shiftEnterMode : CKEDITOR.ENTER_P,
+												filebrowserUploadUrl : "주소임시"
+											};
+											CKEDITOR.replace("qnaContents",
+													ckeditor_config);
+										</script></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="btn_box">
+					<button class="button_style" id="list_btn">목록 페이지</button> 
+					<button class="button_style" id="modify_btn">수정 완료</button> 
+					<button class="button_style" id="delete_btn">삭제</button> 
+					<button class="button_style" id="cancel_btn">수정 취소</button>
+				</div>
+			</form>
+			<form id="infoForm" action="/board/qnamodify" method="get">
+				<input type="hidden" name="bno" id="bno"  value='<c:out value="${qnaInfo.bno}"/>'>
+				<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'> 
+				<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+			</form>
+		</div>
 		<div>
 			<%@ include file="../include_collection/footer.jsp"%>
 		</div>
@@ -129,6 +119,5 @@ textarea {
 			form.attr("method", "post");
 			form.submit();
 		});
-	</script>
-</body>
+	</script></body>
 </html>

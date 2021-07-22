@@ -10,7 +10,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
-<link rel="stylesheet" href="/resources/css/admin/membermenu.css">
 <link rel="stylesheet"
 	href="/resources/css/common-style/admin_frame.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
@@ -121,15 +120,7 @@
 					</tr>
 				</c:forEach>
 			</tbody>
-		</table>
-
-
-
-
-
-
-
-	</section>
-
+		</table> 
+	</section> 
 </body>
 </html>

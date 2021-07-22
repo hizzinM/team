@@ -1,11 +1,6 @@
 @charset "UTF-8";
 #content{
-    width:100%;
     padding-left: 250px;
-    padding-top:100px;
-    box-sizing: border-box; /* 오페라(Opera) */
-    -moz-box-sizing: border-box; /* 파이어폭스(Firefox)*/
-    -webkit-box-sizing: border-box; /* 웹킷(Webkit) & 크롬(Chrome) */
     font-size: 12px;
 }
 #table-warp{
@@ -24,7 +19,6 @@ th,td{padding:10px 0 10px 10px;}
 th:first-child,td:first-child{text-align: center;padding-left: 0;}
 th{border-top: 1px solid black;border-bottom: 1px solid black;text-align: left;font-weight: 600;}
 td{border-bottom:1px solid rgb(221, 221, 221);}
-tr:last-child>td{border-bottom:1px solid black;}
 table{border:1px solid black;}
 
 .button_style{
