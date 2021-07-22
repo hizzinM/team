@@ -200,6 +200,7 @@ public class MemberServiceImpl implements MemberService {
 			
 			System.out.printf("*",password);
 			//return password.replaceAll(".(?=.{2})", "*");
+			
 			return password.replaceAll(".(?=.{3})", "*");
 		}
 	}
