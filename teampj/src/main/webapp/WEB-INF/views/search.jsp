@@ -77,8 +77,8 @@
 		<div class="product_frame">
 			<c:if test="${listcheck != 'empty'}">
 				<div id="product_column">
-					<div class="product_unit">
-						<c:forEach items="${searchlist}" var="searchresult">
+					<c:forEach items="${searchlist}" var="searchresult">
+						<div class="product_unit">
 							<a href=""> <img src="/resources/upload/${searchresult.uploadPath}/${searchresult.uuid}_${searchresult.fileName}" alt="" onerror="this.src='/resources/img/noimg.jpg'">
 							</a>
 							<ul>
@@ -89,8 +89,8 @@
 								<li>상품 가격: KRW <c:out value="${searchresult.productPrice}" />
 								</li>
 							</ul>
-						</c:forEach>
-					</div>
+						</div>
+					</c:forEach>
 				</div>
 			</c:if>
 			<!-- <c:if test="${listCheck == 'empty'}">
