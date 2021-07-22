@@ -62,10 +62,10 @@
 								</a>
 							</td>
 							<td>
-								<img src="/resources/upload/${product.uploadPath}/${product.uuid}_${product.fileName}" width="280px" height="300px">
+								<img src="/resources/upload/${product.uploadPath}/${product.uuid}_${product.fileName}" width="280px" height="300px" onerror="this.src='/resources/img/noimg.jpg'">
 							</td>
 							<td>
-								<img src="/resources/upload/${product.uploadPath2}/${product.uuid2}_${product.fileName2}" width="200px" height="200px">
+								<img src="/resources/upload/${product.uploadPath2}/${product.uuid2}_${product.fileName2}" width="200px" height="200px" onerror="this.src='/resources/img/noimg.jpg'">
 							</td>
 							<td>
 								<c:out value="${product.productName}" />

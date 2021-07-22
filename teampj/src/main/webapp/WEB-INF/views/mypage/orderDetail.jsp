@@ -50,7 +50,7 @@
 							<td><c:out value="${orderView.orderDetailId}" /></td>	
 							
 							
-							<td><img src="/resources/upload/${orderView.uploadPath}/${orderView.uuid}_${orderView.fileName}" width="200px" height="200px"></td>
+							<td><img src="/resources/upload/${orderView.uploadPath}/${orderView.uuid}_${orderView.fileName}" width="200px" height="200px" onerror="this.src='/resources/img/noimg.jpg'"></td>
 							
 							<td><c:out value="${orderView.productId}" /></td>
 							
