@@ -150,7 +150,9 @@
 		phone=#{phone},email=#{email},account_name=#{accountName},account_bank=#{accountBank},account_num=#{accountNum}
 		where user_id=#{userId}
 	</update>
-
+	
+	
+	
 	<!-- 이미지목록 -->
 	<select id="selectimgList"
 		resultType="com.shop.model.AttachImageVO">

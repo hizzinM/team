@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.shop.mapper.BoardMapper;
 import com.shop.model.Criteria;
@@ -146,6 +147,7 @@ public class BoardServiceImpl implements BoardService {
 		return boardmapper.selectReply(rno);
 	}
 
+	@Transactional
 	@Override
 	public void writereply(ReplyVO reply) {
 		boardmapper.writereply(reply);
@@ -156,18 +158,23 @@ public class BoardServiceImpl implements BoardService {
 		boardmapper.updateReply(reply);
 	}
 
+	@Transactional
 	@Override
 	public void deleteReply(ReplyVO reply) {
 		boardmapper.deleteReply(reply);
 	}
 
 	// 덧글상태
-	public int getreplyTotal(ReplyVO reply) {
-		return boardmapper.getreplyTotal(reply);
-	}
+	// public int getreplyTotal(ReplyVO reply) {
+	// return boardmapper.getreplyTotal(reply);
+	// }
 
 	@Override
 	public void deleteboardreply(int bno) {
 	}
 
+	@Override
+	public int getreplyTotal(ReplyVO reply) { 
+		return 0;
+	} 
 }

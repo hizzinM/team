@@ -26,7 +26,10 @@ public interface MemberService {
 
 	// 아이디 찾기
 	public String findid(HttpServletResponse response, String email) throws Exception;
-
+	
+	// 아이디 찾기
+	public String selectPassword(HttpServletResponse response, String userId) throws Exception;
+	
 	// 회원목록 조회
 	public List<User> getmemberList();
 
@@ -41,7 +44,8 @@ public interface MemberService {
 
 	// 회원정보수정
 	public int profileUpdate(User user); 
-
+	
+	public int	updatePassword(User user); 
 	// 회원정보 삭제
 	public int profileDelete(User user);
 	//카트담기

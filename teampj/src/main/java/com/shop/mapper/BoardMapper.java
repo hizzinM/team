@@ -2,6 +2,8 @@ package com.shop.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.shop.model.AttachImageVO;
 import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
@@ -97,5 +99,7 @@ public interface BoardMapper {
 
 	// 답변완료체크
 	// public int getreplyTotal(int bno);
+
+	public void updateRc(@Param("bno") int bno, @Param("amount") int amount);
 
 }
