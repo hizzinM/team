@@ -1,7 +1,6 @@
 @charset "UTF-8";
-@charset "UTF-8";
 #contents{padding-top:100px;}
-#table-wrap{width:1000px;margin:0 auto;font-size: 12px;}
+#table-wrap{width:1000px;margin:0 auto;font-size: 12px;margin-bottom:100px;}
 #table-wrap>h1{font-size: 15px;text-align: center;margin-bottom: 50px;}
 #notice-table{width:100%; border:none;border-top:1px solid black;}
 #notice-table>tbody>tr>td{padding:15px 0 15px 0;border-bottom: 1px solid #dddddd;}
@@ -12,4 +11,14 @@
 	width:100%;
 	text-align:right;
 	margin:10px 0 50px 0;
+}
+.btn_wrap{
+	width:100%;
+	margin-top:20px;
+}
+.button_style{
+	width:100px;
+	float:right;
+	text-align:center;
+	margin-right:10px;
 }
