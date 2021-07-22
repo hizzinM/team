@@ -1,0 +1,87 @@
+@charset "UTF-8";
+#contents{padding-top:100px;}
+#review_wrap,#reply_wrap{
+    width:1300px;
+    font-size: 12px;
+    border:1px solid #adadad;
+    margin:0 auto;
+    padding: 50px 50px 80px 50px;
+    box-sizing: border-box; /* 오페라(Opera) */
+    -moz-box-sizing: border-box; /* 파이어폭스(Firefox)*/
+    -webkit-box-sizing: border-box; /* 웹킷(Webkit) & 크롬(Chrome) */
+    margin-bottom: 100px;
+}
+#top-box{border-bottom:1px solid #adadad; text-align: right; }
+#top-box>div:first-child{width:500px;float: left;text-align: left;vertical-align: top;}
+#top-box>div:last-child{width:800px;height:200px;}
+.top-box-child{margin-bottom: 20px;}
+.top-box-useId{font-size: 11px;}
+.top-box-title span{border-left:1px solid rgb(43, 43, 43);margin-left:10px;padding-left:10px;font-size:7px;}
+#bottom-box{padding:50px 0;margin-bottom:30px;}
+.btn_box{float: right;}
+.btn_box a{float:left; margin-right:10px}
+.button_style{
+    width:70px;
+    display:block;
+    text-align: center;
+}
+#reply_wrap{
+    padding:0;
+    padding:20px 5px;
+    border:none;
+    border-top:1px solid rgb(43, 43, 43);
+    border-bottom:1px solid rgb(43, 43, 43);
+}
+.reply-read-unit{
+    width:100%;
+    border-bottom: 1px solid #d3d3d3;
+    margin-bottom: 20px;
+}
+
+.text-box,.btn-box{
+    display:inline-block;
+    vertical-align: top;
+}
+.text-box p:first-child{
+    font-size: 14px;
+    font-weight: 600;
+}
+.text-box span{
+    font-size: 10px;
+    margin-left:10px;
+}
+.text-box p:last-child{
+    padding:20px 0;
+    font-size: 13px;
+    font-weight: 500;
+}
+.btn-box{
+    margin-left:10px;
+}
+.reply_btn{
+    padding:0;
+    font-size: 5px;
+    width:30px;
+    display: inline-block;
+}
+textarea{
+    margin-top:10px;
+    width:1150px;
+    height:100px;
+    resize: none;
+    
+}
+.reply-write-box div:first-child{
+    display: inline-block;
+    vertical-align: top;
+}
+.reply-write-box div:last-child{
+    display: inline-block;
+    position:relative;
+    top:30px;
+}
+.submit_btn{
+    width:120px;
+    height:107px;
+    font-size: 13px;
+}
