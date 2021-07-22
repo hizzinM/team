@@ -77,13 +77,7 @@
 			form.attr("action", "/board/reviewmodify");
 			form.submit();
 		});
-
-		/* 삭제 버튼 */
-		$("#delete_btn").on("click", function(e) {
-			form.attr("action", "/board/deleteReview");
-			form.attr("method", "post");
-			form.submit();
-		});
+ 
 	</script>
 </body>
 </html>

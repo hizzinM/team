@@ -22,7 +22,9 @@
 	</header>
 	<div id="side_navigation">
 		<%@ include file="../include_collection/navigation.jsp"%>
-	</div> 
+	</div>
+	<div id="contents">
+	<h1>QNA</h1>
 	<div id="table_wrap">
 		<table>
 			<thead>
@@ -46,7 +48,7 @@
 								pattern="yyyy/MM/dd" /></td>
 					</tr>
 				</c:forEach>
-			</thead>
+			</tbody>
 		</table>
 		<c:if test="${ loginuser!= null }">
 			<div class="btn-box">
@@ -79,6 +81,7 @@
 			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
 			<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
 		</form>
+		</div>
 		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
 	<script>

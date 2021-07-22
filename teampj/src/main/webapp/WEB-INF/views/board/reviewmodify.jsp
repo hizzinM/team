@@ -64,11 +64,10 @@
 						</tr>
 					<tbody>
 				</table>
-				<div class="btn_box">
-					<button class="button_style" id="list_btn">목록 페이지</button>
-					<button class="button_style" id="modify_btn">수정 완료</button>
-					<button class="button_style" id="delete_btn">삭제</button>
-					<button class="button_style" id="cancel_btn">수정 취소</button>
+				<div class="btn_wrap">
+					<a class="btn" id="list_btn">목록 페이지</a> <a class="btn"
+						id="modify_btn">수정 완료</a> <a class="btn" id="delete_btn">삭제</a> <a
+						class="btn" id="cancel_btn">수정 취소</a>
 				</div>
 			</form>
 			<form id="infoForm" action="/board/reviewmodify" method="get">
