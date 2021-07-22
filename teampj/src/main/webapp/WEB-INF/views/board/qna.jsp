@@ -11,8 +11,7 @@
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
-<link rel="stylesheet" href="/resources/css/main.css">
-<link rel="stylesheet" href="/resources/css/admin/membermenu.css">
+<link rel="stylesheet" href="/resources/css/board/qna.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
@@ -24,74 +23,66 @@
 	<div id="side_navigation">
 		<%@ include file="../include_collection/navigation.jsp"%>
 	</div>
-	<div id="content">
-		<div id="table-warp">
-			<div id="table-frame">
-				<table>
-					<thead>
+	<div id="contents">
+		<h1>QNA</h1>
+		<div id="table_wrap">
+			<table>
+				<thead>
+					<tr>
+						<th>NO.</th>
+						<th>STATE</th>
+						<th>TITLE</th>
+						<th>DATE</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${Qnalist}" var="Qnalist">
 						<tr>
-							<th>NO.</th>
-							<th>STATE</th>
-							<th>TITLE</th>
-							<th>DATE</th>
+							<td><c:out value="${Qnalist.bno}" /></td>
+							<td><c:if test="${Qnalist.rc==0}">미답변</c:if> <c:if
+									test="${Qnalist.rc>=1}">답변완료</c:if></td>
+							<td><a href="/board/getqna?bno=${Qnalist.bno}"> <c:out
+										value="${Qnalist.qnaTitle}"></c:out>
+							</a></td>
+							<td><fmt:formatDate value="${Qnalist.qnaWritedate}"
+									pattern="yyyy/MM/dd" /></td>
 						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${Qnalist}" var="Qnalist">
-							<tr>
-								<td><c:out value="${Qnalist.bno}" /></td>
-								<td><c:if test="${Qnalist.rc==0}">
-								미답변
-									</c:if> <c:if test="${Qnalist.rc>=1}">
-									답변완료
-									</c:if></td>
-								<td><a href="/board/getqna?bno=${Qnalist.bno}"> <c:out
-											value="${Qnalist.qnaTitle}">
-										</c:out>
-								</a></td>
-								<td><fmt:formatDate value="${Qnalist.qnaWritedate}"
-										pattern="yyyy/MM/dd" /></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-				<div class="pageInfo_wrap">
-					<div class="pageInfo_area">
-						<ul id="pageInfo" class="pageInfo">
-							<!-- 이전페이지 버튼 -->
-							<c:if test="${pageMaker.prev}">
-								<li class="pageInfo_btn previous"><a
-									href="${pageMaker.startPage-1}">Previous</a></li>
-							</c:if>
-							<!-- 각 번호 페이지 버튼 -->
-							<c:forEach var="num" begin="${pageMaker.startPage}"
-								end="${pageMaker.endPage}">
-								<li class="pageInfo_btn"><a href="${num}">${num}</a></li>
-							</c:forEach>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+		<c:if test="${ loginuser!= null }">
+		<div class="btn-box">
+			<a href="/board/qnaenroll"><input type="button" class="button_style" value="글쓰기"></a>
+		</div>
+		</c:if>
+		<div class="pageInfo_wrap">
+			<div class="pageInfo_area">
+				<ul id="pageInfo" class="pageInfo">
+					<!-- 이전페이지 버튼 -->
+					<c:if test="${pageMaker.prev}">
+						<li class="pageInfo_btn previous"><a
+							href="${pageMaker.startPage-1}">Previous</a></li>
+					</c:if>
+					<!-- 각 번호 페이지 버튼 -->
+					<c:forEach var="num" begin="${pageMaker.startPage}"
+						end="${pageMaker.endPage}">
+						<li class="pageInfo_btn"><a href="${num}">${num}</a></li>
+					</c:forEach>
 
-							<!-- 다음페이지 버튼 -->
-							<c:if test="${pageMaker.next}">
-								<li class="pageInfo_btn next"><a
-									href="${pageMaker.endPage + 1 }">Next</a></li>
-							</c:if>
-						</ul>
-					</div>
-				</div>
-
-				<form id="moveform3" method="get">
-					<input type="hidden" name="pageNum"
-						value="${pageMaker.cri.pageNum }"> <input type="hidden"
-						name="amount" value="${pageMaker.cri.amount }">
-				</form>
-				<c:if test="${ loginuser!= null }">
-					<a href="/board/qnaenroll"><input type="button"
-						class="btn-style" value="글쓰기"></a>
-				</c:if>
-			</div>
-			<div>
-				<%@ include file="../include_collection/footer.jsp"%>
+					<!-- 다음페이지 버튼 -->
+					<c:if test="${pageMaker.next}">
+						<li class="pageInfo_btn next"><a
+							href="${pageMaker.endPage + 1 }">Next</a></li>
+					</c:if>
+				</ul>
 			</div>
 		</div>
+		<form id="moveform3" method="get">
+			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
+			<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
+		</form>
+		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
 	<script>
 		let moveform3 = $("#moveform3");

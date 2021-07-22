@@ -22,7 +22,7 @@
 
 	<div id="contents">
 		<div id="table-wrap">
-			<h1>리뷰 작성</h1>
+			<h1>리뷰 수정</h1>
 			<form action="/board/reviewenroll" method="post">
 				<table id="review-table">
 					<tbody>
