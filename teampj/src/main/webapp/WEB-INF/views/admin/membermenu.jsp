@@ -37,7 +37,7 @@
 	</header>
 	<div id="content">
 		<div id="table-warp">
-			<h1>회 원 관 리</h1>
+			<h1>주문 상세 조회</h1>
 			<div id="table-frame">
 				<table>
 					<thead>
