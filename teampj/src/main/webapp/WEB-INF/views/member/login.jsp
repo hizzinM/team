@@ -11,6 +11,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
 <body>
 	<!--상단 툴바-->
@@ -51,6 +52,18 @@
 							type="button" class="login_button text-deco" value="LOGIN">
 
 					</div>
+					<ul>
+						<li onclick="kakaoLogin();">
+					      <a href="javascript:void(0)">
+					          <span>카카오 로그인</span>
+					      </a>
+						</li>
+						<li onclick="kakaoLogout();">
+					      <a href="javascript:void(0)">
+					          <span>카카오 로그아웃</span>
+					      </a>
+						</li>
+					</ul>
 				</form>
 			</div>
 		</div>
@@ -63,6 +76,51 @@
 			$("#login_form").attr("action", "/member/login.do");
 			$("#login_form").submit();
 		});
+		
+		
+		Kakao.init('80eb43406d56c94e501ee32cf6e9ae1e'); //발급받은 키 중 javascript키를 사용해준다.
+		console.log(Kakao.isInitialized()); // sdk초기화여부판단
+		//카카오로그인
+		function kakaoLogin() {
+		    Kakao.Auth.login({
+		    	scope:"profile_nickname,account_email",
+		      success: function (response) {
+		        Kakao.API.request({
+		          url: '/v2/user/me',
+		          success: function (response) {
+		        	  console.log(response)
+		          },
+		          fail: function (error) {
+		            console.log(error)
+		          },
+		        })
+		      },
+		      fail: function (error) {
+		        console.log(error)
+		      },
+		    })
+		  }
+		//카카오로그아웃  
+		function kakaoLogout() {
+		    if (Kakao.Auth.getAccessToken()) {
+		      Kakao.API.request({
+		        url: '/v1/user/unlink',
+		        success: function (response) {
+		        	console.log(response)
+		        },
+		        fail: function (error) {
+		          console.log(error)
+		        },
+		      })
+		      Kakao.Auth.setAccessToken(undefined)
+		    }
+		  }  
+		
+		
+		
+		
+		
+		
 	</script>
 	<div id="contents">
 		<%@ include file="../include_collection/footer.jsp"%>

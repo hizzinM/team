@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/board/review.css">
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 </head>
 <body>
 	<header>
@@ -38,10 +40,9 @@
 					<c:forEach items="${Reviewlist}" var="Reviewlist">
 						<tr>
 							<td><c:out value="${Reviewlist.reviewId}" /></td>
-							<td><img src="${MyReviewlist.productImg}" alt=""></td>
-							<td><a
-								href="/board/reviewget?reviewId=${Reviewlist.reviewId}"> <c:out
-										value="${Reviewlist.reviewTitle}" />
+							<td><img src="${MyReviewlist.productImg}" alt="" onerror="this.src='/resources/img/noimg.jpg'"></td>
+							<td><a href="/board/reviewget?reviewId=${Reviewlist.reviewId}"> <c:out
+						value="${Reviewlist.reviewTitle}" />
 							</a></td>
 							<td><c:out value="${Reviewlist.userId}" /></td>
 							<td><fmt:formatDate value="${Reviewlist.reviewWritedate}"
