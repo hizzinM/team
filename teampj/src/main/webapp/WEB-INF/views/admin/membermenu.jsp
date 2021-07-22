@@ -9,8 +9,7 @@
 <meta charset="UTF-8">
 <title>회원관리</title>
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
-<link rel="stylesheet"
-	href="/resources/css/common-style/admin_frame.css">
+<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
 <link rel="stylesheet" href="/resources/css/admin/membermenu.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -38,8 +37,8 @@
 	</header>
 	<div id="content">
 		<div id="table-warp">
+			<h1>회 원 관 리</h1>
 			<div id="table-frame">
-				<h1>회 원 관 리</h1>
 				<table>
 					<thead>
 						<tr>
