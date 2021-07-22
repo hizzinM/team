@@ -50,7 +50,7 @@
 							<td><a href="/mypage/cartUpdate?cartId=${cartList.cartId}"><c:out value="${cartList.cartId}" /></a></td>	
 							<td><c:out value="${cartList.userId}" /></td>
 							
-							<td><img src="/resources/upload/${cartList.uploadPath}/${cartList.uuid}_${cartList.fileName}" width="200px" height="200px"></td>
+							<td><img src="/resources/upload/${cartList.uploadPath}/${cartList.uuid}_${cartList.fileName}" width="200px" height="200px" onerror="this.src='/resources/img/noimg.jpg'"></td>
 							
 							<td><c:out value="${cartList.productId}" />
 							<input type="hidden" name="productId" value="${cartList.productId}"></td>

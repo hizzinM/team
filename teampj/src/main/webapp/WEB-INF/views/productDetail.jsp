@@ -41,7 +41,7 @@
                     <input type="button" onclick="showComment();" id="commentBtn" class="button_style comment-btn" value="COMMENT">
                     <input type="button" onclick="showGuide();" id="guideBtn" class="button_style guide-btn" value="SIZE GUIDE">
                     <div id="img-guide">
-                        <img src="/resources/upload/${goodDetailData.uploadPath2}/${goodDetailData.uuid2}_${goodDetailData.fileName2}" alt="">
+                        <img src="/resources/upload/${goodDetailData.uploadPath2}/${goodDetailData.uuid2}_${goodDetailData.fileName2}" alt="" onerror="this.src='/resources/img/noimg.jpg'">
                     </div>
                     <div id="product-comment">
                         <textarea class="textarea_style text-frame" rows="10" cols="115%" readonly><c:out value="${goodDetailData.productComment}" /></textarea>
