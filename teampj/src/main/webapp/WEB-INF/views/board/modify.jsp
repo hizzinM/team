@@ -53,31 +53,34 @@
 								value='<fmt:formatDate pattern="yyyy/MM/dd" value="${noticeInfo.noticeWritedate}"/>'></td>
 						</tr>
 						<tr>
-							<td colspan="2"><textarea rows="3" id="noticeContent" name="noticeContent"><c:out value="${noticeInfo.noticeContent}" /></textarea> 
-								<script>
-									var ckeditor_config = {
-										resize_enaleb : false,
-										enterMode : CKEDITOR.ENTER_BR,
-										shiftEnterMode : CKEDITOR.ENTER_P,
-										filebrowserUploadUrl : "주소임시"
-									};
-									CKEDITOR.replace("noticeContent", ckeditor_config);
-								</script>
-							</td>
+							<td colspan="2"><textarea rows="3" id="noticeContent"
+									name="noticeContent"><c:out
+										value="${noticeInfo.noticeContent}" /></textarea> <script>
+											var ckeditor_config = {
+												resize_enaleb : false,
+												enterMode : CKEDITOR.ENTER_BR,
+												shiftEnterMode : CKEDITOR.ENTER_P,
+												filebrowserUploadUrl : "주소임시"
+											};
+											CKEDITOR.replace("noticeContent",
+													ckeditor_config);
+										</script></td>
 						</tr>
 					</tbody>
 				</table>
 				<div class="btn_box">
-					<button class="button_style" id="list_btn">목록 페이지</button> 
-					<button class="button_style" id="modify_btn">수정 완료</button> 
-					<button class="button_style" id="delete_btn">삭제</button> 
+					<button class="button_style" id="list_btn">목록 페이지</button>
+					<button class="button_style" id="modify_btn">수정 완료</button>
+					<button class="button_style" id="delete_btn">삭제</button>
 					<button class="button_style" id="cancel_btn">수정 취소</button>
 				</div>
 			</form>
 			<form id="infoForm" action="/board/modify" method="get">
-				<input type="hidden" id="bno" name="bno" value='<c:out value="${noticeInfo.bno}"/>'> 
-				<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'> 
-				<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+				<input type="hidden" id="bno" name="bno"
+					value='<c:out value="${noticeInfo.bno}"/>'> <input
+					type="hidden" name="pageNum"
+					value='<c:out value="${cri.pageNum}"/>'> <input
+					type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
 			</form>
 		</div>
 		<div>
