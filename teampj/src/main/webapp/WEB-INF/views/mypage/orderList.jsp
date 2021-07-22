@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
-<link rel="stylesheet" href="/resources/css/mypage/myindex.css">
+<link rel="stylesheet" href="/resources/css/mypage/orderlist.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <style type="text/css">
 .orderview{
@@ -37,62 +37,69 @@
 		<%@ include file="../include_collection/navigation.jsp"%>
 	</div>
 	<div id="contents">
+        <h1>ORDER LIST</h1> 
 		<div class="table-frame">
-			<h2>ORDER LIST</h2>
-				<h3 style="font-size:15px; color: red;">주문번호 클릭시 상세정보 열람가능,수령인 아이디 클릭시 배송지 변경가능</h3>
-			<table class="orderview">
-			  <thead class="orderthead">
-			  	<tr>
-				<td><input type="checkbox" name="allCheck" id=allCheck />전체선택</td>
-				</tr>
-			 </thead>
-			<c:forEach items="${orderList}" var="orderList">
-				<tbody class="ordertbody">
-				<tr>
-					<td><input type="checkbox" name="RowCheck" class="RowCheck" value="${orderList.orderId}" >주문번호</td>
-					<td style="color: blue;"><a href="/mypage/orderDetail?n=${orderList.orderId}"><c:out value="${orderList.orderId}"></c:out></a></td>
-				</tr>
-				<tr>
-					<td>수령인아이디</td>
-					<td><a href="/mypage/orderupdate?orderId=${orderList.orderId}"><c:out value="${orderList.userId}"></c:out></a></td>
-				</tr>
-				<tr>
-					<td>수령인</td>
-					<td><c:out value="${orderList.userName}"></c:out></td>
-				</tr>
-				<tr>
-					<td>휴대폰 번호</td>
-					<td><c:out value="${orderList.orderPhone}"></c:out></td>
-				</tr>
-				<tr>
-					<td>우편번호</td>
-					<td><c:out value="${orderList.orderAddressNum}"></c:out></td>
-				</tr>
-				<tr>
-					<td>주소</td>
-					<td><c:out value="${orderList.orderAddress}"></c:out></td>
-				</tr>
-				<tr>
-					<td>상세주소</td>
-					<td><c:out value="${orderList.orderAddressDetail}"></c:out></td>
-				</tr>
-				<tr>
-					<td>총가격</td>
-					<td><fmt:formatNumber pattern="###,###,###" value="${orderList.orderPrice}" />원</td>
-				</tr>
-				<tr>
-					<td>주문날짜</td>
-					<td><c:out value="${orderList.orderDate}"></c:out></td>
-				</tr>
-				</tbody>
-			</c:forEach>
-			
-		</table>
-			
-			<div>
-				<input type="button" value="주문취소" class="deletebutton button_style delete_btn" onclick="deleteValue()">
-		</div>
-
+            <h1>주문번호 클릭시 상세정보 열람가능,수령인 아이디 클릭시 배송지 변경가능</h1>	
+            <table class="order-wrap">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" name="allCheck" id=allCheck /></td>
+                        <th>주문번호</td>
+                        <th>수령인아이디</td>
+                        <th>수령인</td>
+                        <th>휴대폰 번호</td>
+                        <th>우편번호</td>
+                        <th>주소</td>
+                        <th>상세주소</td>
+                        <th>총가격</td>
+                        <th>주문날짜</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${orderList}" var="orderList">
+                        <tr>
+                            <td><input type="checkbox" name="RowCheck" class="RowCheck" value="${orderList.orderId}"></td>
+                            <td>
+                                <a href="/mypage/orderDetail?n=${orderList.orderId}">
+                                    <c:out value="${orderList.orderId}"></c:out>
+                                </a>
+                            </td>
+            
+                            <td>
+                                <a href="/mypage/orderupdate?orderId=${orderList.orderId}">
+                                    <c:out value="${orderList.userId}"></c:out>
+                                </a>
+                            </td>
+            
+                            <td>
+                                <c:out value="${orderList.userName}"></c:out>
+                            </td>
+            
+                            <td>
+                                <c:out value="${orderList.orderPhone}"></c:out>
+                            </td>
+                            <td>
+                                <c:out value="${orderList.orderAddressNum}"></c:out>
+                            </td>
+                            <td>
+                                <c:out value="${orderList.orderAddress}"></c:out>
+                            </td>
+                            <td>
+                                <c:out value="${orderList.orderAddressDetail}"></c:out>
+                            </td>
+                            <td>
+                                <fmt:formatNumber pattern="###,###,###" value="${orderList.orderPrice}" />원
+                            </td>
+                            <td>
+                                <c:out value="${orderList.orderDate}"></c:out>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>	
+			<div class="btn-box">
+				<input type="button" value="주문취소" class="button_style delete_btn" onclick="deleteValue()">
+		    </div>
 		</div>
 		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
