@@ -7,12 +7,12 @@
 <html lang="en">
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>리뷰</title>
-	<link rel="stylesheet" href="/resources/css/common-style/reset.css">
-	<link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
-	<link rel="stylesheet" href="/resources/css/common-style/contents.css">
-	<link rel="stylesheet" href="/resources/css/board/review.css">
+<meta charset="UTF-8">
+<title>리뷰</title>
+<link rel="stylesheet" href="/resources/css/common-style/reset.css">
+<link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
+<link rel="stylesheet" href="/resources/css/common-style/contents.css">
+<link rel="stylesheet" href="/resources/css/board/review.css">
 </head>
 <body>
 	<header>
@@ -21,9 +21,9 @@
 	<div id="side_navigation">
 		<%@ include file="../include_collection/navigation.jsp"%>
 	</div>
-    <div id="contents">
-        <h1>REVIEW</h1>
-        <div id="table_wrap">
+	<div id="contents">
+		<h1>REVIEW</h1>
+		<div id="table_wrap">
 			<table>
 				<thead>
 					<tr>
@@ -39,11 +39,10 @@
 						<tr>
 							<td><c:out value="${Reviewlist.reviewId}" /></td>
 							<td><img src="${MyReviewlist.productImg}" alt=""></td>
-							<td>
-							<a href="/board/reviewget?rno=${Reviewlist.reviewId}"> 
-								<c:out value="${Reviewlist.reviewTitle}" />
-							</a>
-							</td>
+							<td><a
+								href="/board/reviewget?reviewId=${Reviewlist.reviewId}"> <c:out
+										value="${Reviewlist.reviewTitle}" />
+							</a></td>
 							<td><c:out value="${Reviewlist.userId}" /></td>
 							<td><fmt:formatDate value="${Reviewlist.reviewWritedate}"
 									pattern="yyyy/MM/dd" /></td>
@@ -52,28 +51,29 @@
 				</tbody>
 			</table>
 		</div>
-        <div id="btn-wrap">
-        	<div class="btn-box">
-            	<button type="button" class="button_style write-btn" onclick="location.href='/board/reviewenroll' ">글쓰기</button>
-            </div>
-            <div class="pageInfo_area">
-                <ul id="pageInfo" class="pageInfo">
-                    <!-- 각 번호 페이지 버튼 -->
-                    <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-                        <li class="pageInfo_btn">
-                            <a href="${num}">${num}</a>
-                        </li>
-                    </c:forEach>
-                </ul>
-            </div>
-            <form id="moveForm" method="get">
-                <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }"> 
-                <input type="hidden" name="amount"  value="${pageMaker.cri.amount }">
-            </form>
-        </div>
-        <%@ include file="../include_collection/footer.jsp"%>
+		<div id="btn-wrap">
+			<div class="btn-box">
+				<button type="button" class="button_style write-btn"
+					onclick="location.href='/board/reviewenroll' ">글쓰기</button>
+			</div>
+			<div class="pageInfo_area">
+				<ul id="pageInfo" class="pageInfo">
+					<!-- 각 번호 페이지 버튼 -->
+					<c:forEach var="num" begin="${pageMaker.startPage}"
+						end="${pageMaker.endPage}">
+						<li class="pageInfo_btn"><a href="${num}">${num}</a></li>
+					</c:forEach>
+				</ul>
+			</div>
+			<form id="moveForm" method="get">
+				<input type="hidden" name="pageNum"
+					value="${pageMaker.cri.pageNum }"> <input type="hidden"
+					name="amount" value="${pageMaker.cri.amount }">
+			</form>
+		</div>
+		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
-		<script>
+	<script>
 		let moveform3 = $("#moveform3");
 		$(".pageInfo a").on("click", function(e) {
 			e.preventDefault();

@@ -13,6 +13,7 @@
 <title>주문관리</title>
 <link rel="stylesheet" href="/resources/css/admin/index.css">
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
+<link rel="stylesheet" href="/resources/css/admin/membermenu.css">
 <link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
