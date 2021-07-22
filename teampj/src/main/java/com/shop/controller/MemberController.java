@@ -66,12 +66,18 @@ public class MemberController {
 		logger.info("join Service 성공");
 		return "redirect:/main";
 
-	}
-	
+	}	
 	// 비밀번호 찾기 폼
 	@RequestMapping(value = "/findpwd")
 	public String Findpwd() throws Exception {
+		
 		return "/member/findpwd";
+	}
+	@RequestMapping(value = "/findpwdResult", method = RequestMethod.POST)
+	public String selectPasswordPost(HttpServletResponse response, @RequestParam("userId") String userId, Model md)
+			throws Exception {
+		md.addAttribute("findpwd", memberservice.selectPassword(response, userId));
+		return "/member/findpwdResult";
 	}
 
 	// 로그인 페이지 이동
