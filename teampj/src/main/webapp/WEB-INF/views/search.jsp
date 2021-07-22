@@ -19,6 +19,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
+
 </head>
 <body>
 	<header>
@@ -30,9 +31,8 @@
 	<div id="contents">
 		<div class="search_frame">
 			<div id="search-box">
-				<input type="text" name="keyword" id="search_frame"
-					class="keyword-input-frame" value="${pageMaker.cri.keyword }">
-				<button type="button" id="search-btn" class="fas fa-search"></button>
+				<input type="text" name="keyword" id="search_frame" class="keyword-input-frame" value="${pageMaker.cri.keyword }">
+				<button type="button" id="search-btn" class="button_style">검색</button>
 			</div>
 			<div class="select_box">
 				<span>카테고리</span> <select name="type"
@@ -77,8 +77,8 @@
 		<div class="product_frame">
 			<c:if test="${listcheck != 'empty'}">
 				<div id="product_column">
-					<div class="product_unit">
-						<c:forEach items="${searchlist}" var="searchresult">
+					<c:forEach items="${searchlist}" var="searchresult">
+						<div class="product_unit">
 							<a href=""> <img src="/resources/upload/${searchresult.uploadPath}/${searchresult.uuid}_${searchresult.fileName}" alt="" onerror="this.src='/resources/img/noimg.jpg'">
 							</a>
 							<ul>
@@ -89,8 +89,8 @@
 								<li>상품 가격: KRW <c:out value="${searchresult.productPrice}" />
 								</li>
 							</ul>
-						</c:forEach>
-					</div>
+						</div>
+					</c:forEach>
 				</div>
 			</c:if>
 			<!-- <c:if test="${listCheck == 'empty'}">
@@ -130,11 +130,11 @@
 	</form>
 
 	<script>
-		$(".search_area button").on("click", function(e) {
+		$(".search_frame button").on("click", function(e) {
 			e.preventDefault();
 
-			let type = $(".search_area select").val();
-			let keyword = $(".search_area input[name='keyword']").val();
+			let type = $(".search_frame select").val();
+			let keyword = $(".search_frame input[name='keyword']").val();
 
 			if (!keyword) {
 				alert("키워드를 입력하세요.");

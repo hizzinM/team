@@ -33,7 +33,6 @@
 					<button type="submit">예, 삭제합니다.</button>
 					<br />
 					<button type="button" id="cancel_btn">아니오, 삭제하지 않습니다.</button>
-
 					<script>
 						// 폼을 변수에 저장
 						var formObj = $("form[role='form']");

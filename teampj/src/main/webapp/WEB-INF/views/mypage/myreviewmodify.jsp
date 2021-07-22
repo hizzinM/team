@@ -102,7 +102,7 @@
 
 		/* 삭제 버튼 */
 		$("#delete_btn").on("click", function(e) {
-			form.attr("action", "/mypage/myreview");
+			form.attr("action", "/mypage/myreviewdelete");
 			form.attr("method", "post");
 			form.submit();
 		});
