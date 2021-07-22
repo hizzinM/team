@@ -96,7 +96,18 @@
 		phone=#{phone},email=#{email},account_name=#{accountName},account_bank=#{accountBank},account_num=#{accountNum}
 		where user_id=#{userId}
 	</update>
-
+	
+	<!-- 비밀번호 찾기 -->
+	<update id="updatePassword">
+	update user set password=#{password},password_check=#{passwordCheck} where user_id=#{userId};
+	</update>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="selectPassword" parameterType="String" resultType="String">
+		select password from user where user_id = #{userId}
+	</select>
+	
+	
 	<!-- 회원정보 삭제 -->
 	<delete id="profileDelete">
 		delete from user where user_id = #{userId} and

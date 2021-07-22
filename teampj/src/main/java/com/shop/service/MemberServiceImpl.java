@@ -176,6 +176,35 @@ public class MemberServiceImpl implements MemberService {
 		return membermapper.orderupdate(order);
 	}
 
+	@Override
+	public int updatePassword(User user) {
+		
+		return membermapper.updatePassword(user);
+	}
+
+	@Override
+	public String selectPassword(HttpServletResponse response, String userId) throws Exception {
+		
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String password = membermapper.selectPassword(userId);
+
+		if (password == null) {
+			out.println("<script>");
+			out.println("alert('가입된 패스워드가 없습니다.');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+			return null;
+		} else {
+			
+			System.out.printf("*",password);
+			//return password.replaceAll(".(?=.{2})", "*");
+			return password.replaceAll(".(?=.{3})", "*");
+		}
+	}
+
+
 	
 	
 	

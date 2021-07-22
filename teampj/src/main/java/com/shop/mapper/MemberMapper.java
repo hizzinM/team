@@ -35,7 +35,10 @@ public interface MemberMapper {
 
 	// 아이디 찾기 기능
 	public String findid(String email);
-
+	
+	// 비밀번호 찾기 기능
+	public String selectPassword(String userId);
+	
 	// 회원목록 조회
 	public List<User> getmemberList();
  
@@ -50,7 +53,9 @@ public interface MemberMapper {
 
 	// 회원정보 수정 기능
 	public int profileUpdate(User user);
-
+	/*비밀번호찾기*/
+	public int	updatePassword(User user); 
+	
 	// 회원정보 삭제 기능
 	public int profileDelete(User user);
 	//카트담기

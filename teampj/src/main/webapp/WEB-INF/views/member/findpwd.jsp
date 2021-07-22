@@ -12,21 +12,21 @@
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/member/find_style.css">
 <script>
-	$(function(){
+	/* $(function(){
 		$("#findBtn").click(function(){
 			$.ajax({
-				url : "/member/findpw",
+				url : "/member/findpwdResult",
 				type : "POST",
 				data : {
-					id : $("#userId").val(),
-					email : $("#email").val()
+					userId : $("#userId").val()
+					
 				},
 				success : function(result) {
 					alert(result);
 				},
 			})
 		});
-	})
+	}) */
 </script>
 <title>비밀번호 찾기</title>
 </head>
@@ -48,6 +48,7 @@
     <div id="contents">
         <div class="content-frame">
             <div class="form-frame">
+            	<form action="/member/findpwdResult" method="post">
                 <h3>비밀번호 찾기</h3>
                 <hr>
                 <p>
@@ -55,14 +56,15 @@
                     <input type="text" id="userId" class="text-frame" name="userId" placeholder="회원가입한 아이디를 입력하세요" required>
                 </p><hr>
                
-                <p>
+               <!--  <p>
                     <label><span class="font_style">이메일</span></label>
                     <input type="text" id="email" class="text-frame" name="email" placeholder="회원가입한 이메일주소를 입력하세요" required>
-                </p><hr>
+                </p><hr> -->
                 <p class="w3-center">
-                    <button type="button" id="findBtn" class="btn-style">find</button>
+                    <button type="submit" id="findBtn" class="btn-style">find</button>
                     <button type="button" onclick="history.go(-1);" class="btn-style">go to login</button>
                 </p>
+                </form>
             </div>
         </div>
 
