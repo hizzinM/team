@@ -1,5 +1,6 @@
 package com.shop.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import com.shop.model.ReplyVO;
 @Service
 public class BoardServiceImpl implements BoardService {
 
+	private static final int bno = 0;
 	@Autowired
 	private BoardMapper boardmapper;
 
@@ -159,10 +161,9 @@ public class BoardServiceImpl implements BoardService {
 		boardmapper.deleteReply(reply);
 	}
 
-	// 답변완료체크
-	@Override
-	public int getreplyTotal(int bno) {
-		return boardmapper.getreplyTotal(bno);
+	// 덧글상태
+	public int getreplyTotal(ReplyVO reply) {
+		return boardmapper.getreplyTotal(reply);
 	}
 
 	@Override

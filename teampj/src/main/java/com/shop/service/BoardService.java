@@ -55,9 +55,9 @@ public interface BoardService {
 	/* 리뷰 목록 */
 	public List<ReviewVO> getReviewList();
 
-	/*내 리뷰 목록*/
+	/* 내 리뷰 목록 */
 	public List<ReviewVO> selectReviewList();
-	
+
 	/* 리뷰 조회 */
 	public ReviewVO getReviewPage(int reviewId);
 
@@ -74,7 +74,7 @@ public interface BoardService {
 	public int getReviewTotal(Criteria cri);
 
 	// 댓글 조회
-	public List<ReplyVO> replyList(int bno);
+	public List<ReplyVO> replyList(int bno); 
 
 	// 특정댓글 조회
 	public ReplyVO selectReply(int rno);
@@ -91,7 +91,7 @@ public interface BoardService {
 	// 댓글삭제
 	public void deleteboardreply(int bno);
 
-	// 답변완료체크
-	public int getreplyTotal(int bno); 
+	// 댓글 개수
+	public int getreplyTotal(ReplyVO reply);
 
 }

@@ -40,9 +40,10 @@
 						<c:forEach items="${Qnalist}" var="Qnalist">
 							<tr>
 								<td><c:out value="${Qnalist.bno}" /></td>
-								<td><c:if test="${Qnalist.rc==0}">
+								${pageMaker2.total}
+								<td><c:if test="${pageMaker2.total==0}">
 								미답변
-									</c:if> <c:if test="${Qnalist.rc>=1}">
+									</c:if> <c:if test="${pageMaker2.total>=1}">
 									답변완료
 									</c:if></td>
 								<td><a href="/board/getqna?bno=${Qnalist.bno}"> <c:out
