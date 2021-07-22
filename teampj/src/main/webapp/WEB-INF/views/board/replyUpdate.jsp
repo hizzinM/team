@@ -11,35 +11,43 @@
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
-<link rel="stylesheet" href="/resources/css/main.css">
-<link rel="stylesheet" href="/resources/css/admin/membermenu.css">
+
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
-<style>
-<
-style type ="text /css ">.input_wrap {
-	padding: 5px 20px;
-}
+    <style>
+        #contents {
+            padding-top: 200px;
+        }
+        #container {
+            width: 500px;
+            border: 1px solid black;
+            margin: 0 auto;
+            text-align: center;
+            padding: 50px;
+            margin-bottom: 130px;
+        }
+        #container>h1{
+            margin-bottom: 50px;;
+        }
+        .button_style {
+            width:247px;
+            display: inline-block;
+        }
 
-label {
-	display: block;
-	margin: 10px 0;
-	font-size: 20px;
-}
-
-input {
-	padding: 5px;
-	font-size: 17px;
-}
-
-textarea {
-	width: 800px;
-	height: 200px;
-	font-size: 15px;
-	padding: 10px;
-}
-</style>
+        .text_Warning {
+            padding-bottom: 20px;
+        }
+        textarea{
+            width:494px;
+            height:200px;
+            resize: none;
+        }
+        .btn-box{
+            width:100%;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -49,7 +57,7 @@ textarea {
 	<div id="side_navigation">
 		<%@ include file="../include_collection/navigation.jsp"%>
 	</div>
-	<div id="content">
+	<div id="contents">
 		<section id="container">
 			<form role="form" method="post" autocomplete="off">
 
@@ -80,6 +88,7 @@ textarea {
 				</p>
 			</form>
 		</section>
+		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
 
 </body>
