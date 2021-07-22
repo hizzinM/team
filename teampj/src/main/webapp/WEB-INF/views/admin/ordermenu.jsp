@@ -10,31 +10,18 @@
 
 
 <meta charset="UTF-8">
-<title>주문관리</title>
-<<<<<<< HEAD
-<link rel="stylesheet" href="/resources/css/common-style/reset.css">
-=======
+<title>주문관리</title> 
 <link rel="stylesheet" href="/resources/css/common-style/reset.css"> 
->>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
-<link rel="stylesheet" href="/resources/css/admin/membermenu.css">
-<<<<<<< HEAD
-<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
-
-=======
+<link rel="stylesheet" href="/resources/css/common-style/reset.css">  
+<link rel="stylesheet" href="/resources/css/admin/membermenu.css"> 
+<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css"> 
 <link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">  
 <link rel="stylesheet" href="/resources/css/admin/membermenu.css">
-<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css"> 
->>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
-<link rel="stylesheet"
-<<<<<<< HEAD
-	href="/resources/css/common-style/admin_frame.css">
-<link rel="stylesheet" href="/resources/css/admin/membermenu">
-
-=======
-	href="/resources/css/common-style/admin_frame.css"> 
-<link rel="stylesheet" href="/resources/css/admin/membermenu">  
+<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">  
+<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
 <link rel="stylesheet" href="/resources/css/admin/membermenu"> 
->>>>>>> branch 'teammaster' of https://github.com/hizzinM/team.git
+<link rel="stylesheet" href="/resources/css/admin/membermenu">  
+<link rel="stylesheet" href="/resources/css/admin/membermenu">  
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
