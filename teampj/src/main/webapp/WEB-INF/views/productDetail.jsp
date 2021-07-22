@@ -111,8 +111,8 @@
 
         </div>
         <div id="prodct-img-ex_wrap">
-            <img src="/resources/upload/${goodDetailData.uploadPath3}/${goodDetailData.uuid3}_${goodDetailData.fileName3}" alt="" class="prodct-img-ex"  onerror="this.src='/resources/img/noimg.jpg'">
-            <img src="/resources/upload/${goodDetailData.uploadPath4}/${goodDetailData.uuid4}_${goodDetailData.fileName4}" alt="" class="prodct-img-ex"  onerror="this.src='/resources/img/noimg.jpg'">
+            <img src="/resources/upload/${goodDetailData.uploadPath3}/${goodDetailData.uuid3}_${goodDetailData.fileName3}" alt="" class="prodct-img-ex prodct-img-ex_01"  onerror="this.src='/resources/img/noimg.jpg'">
+            <img src="/resources/upload/${goodDetailData.uploadPath4}/${goodDetailData.uuid4}_${goodDetailData.fileName4}" alt="" class="prodct-img-ex prodct-img-ex_02"  onerror="this.src='/resources/img/noimg.jpg'">
         </div>
 		<div id="review_wrap">
 			<table>
