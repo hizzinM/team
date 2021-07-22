@@ -63,6 +63,7 @@
 
 /*prodct-img-ex_wrap*/
 #prodct-img-ex_wrap{
+	border:1px solid red;
 	width:1000px;
 	text-align:center;
 }

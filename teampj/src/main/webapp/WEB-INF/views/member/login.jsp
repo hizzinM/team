@@ -12,6 +12,23 @@
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <style>
+        .kakao_btn{
+            text-align: center;
+            margin-top:10px;
+        }
+        .kakao_btn li{
+            display:inline-block;
+            width:350px;
+            padding:15px;
+            background-color: #FEE500;
+            border-radius: 5px;
+            margin-bottom:5px;
+        }
+        .kakao_btn li:hover{
+            background-color: #F0D700;
+        }
+    </style>
 </head>
 <body>
 	<!--상단 툴바-->
@@ -52,16 +69,12 @@
 							type="button" class="login_button text-deco" value="LOGIN">
 
 					</div>
-					<ul>
+					<ul class="kakao_btn">
 						<li onclick="kakaoLogin();">
-					      <a href="javascript:void(0)">
-					          <span>카카오 로그인</span>
-					      </a>
+					      <a href="javascript:void(0)"><span>카카오 로그인</span></a>
 						</li>
 						<li onclick="kakaoLogout();">
-					      <a href="javascript:void(0)">
-					          <span>카카오 로그아웃</span>
-					      </a>
+					      <a href="javascript:void(0)"><span>카카오 로그아웃</span></a>
 						</li>
 					</ul>
 				</form>
