@@ -63,11 +63,14 @@
 
 /*prodct-img-ex_wrap*/
 #prodct-img-ex_wrap{
-	width:100%;
+	width:1000px;
 	text-align:center;
 }
 .prodct-img-ex{width:980px;height: 1000px;}
-
+/*상세이미지 1번*/
+.prodct-img-ex_01{width:980px;height: 1000px;}
+/*상세이미지 2번*/
+.prodct-img-ex_02{width:980px;height: 1000px;}
 /*review*/
 #footer{margin-top:230px;}
 #review_wrap{width: 1470px;margin:0 auto;}
