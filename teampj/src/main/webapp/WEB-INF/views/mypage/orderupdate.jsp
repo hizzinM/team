@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/mypage/myindex.css">
+<link rel="stylesheet" href="/resources/css/mypage/orderlist.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -23,10 +24,10 @@
 		<%@ include file="../include_collection/navigation.jsp"%>
 	</div>
 	<div id="contents">
-		<div class="table-frame">
-			  <h1>주 문 정 보 변 경</h1>
+		<h1>주 문 정 보 변 경</h1>
+		<div class="table-frame">  
 			<form action="/mypage/orderupdate" method="post"> 
-				<table>
+				<table class="order-wrap">
 					<thead>
 						<tr>
 							<th>카트ID</th>
@@ -61,7 +62,7 @@
                         </tr>
                     </tbody>
 				</table>
-                <div class="btn-frame">
+                <div class="btn-box">
 				    <input type="submit" class="button_style" value="수정하기">
                 </div>
 			</form>

@@ -14,19 +14,6 @@
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/mypage/orderlist.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-<style type="text/css">
-.orderview{
-	font-size: 20px;
-	width: 60%;
-}
-.orderthead{
-	border:1px black solid;
-}
-.ordertbody{
-	border:3px black solid;
-}
-
-</style>
 </head>
 
 <body>
