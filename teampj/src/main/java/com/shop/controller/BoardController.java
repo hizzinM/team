@@ -258,8 +258,7 @@ public class BoardController {
 		rttr.addFlashAttribute("result", "delete success");
 		return "redirect:/board/review";
 	}
-	
-	
+
 	/* 첨부 파일 업로드 */
 	@PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<AttachImageVO>> uploadAjaxActionPOST(MultipartFile[] productImg) {

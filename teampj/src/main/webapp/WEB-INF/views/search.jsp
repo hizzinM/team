@@ -35,12 +35,10 @@
 				<button type="button" id="search-btn" class="button_style">검색</button>
 			</div>
 			<div class="select_box">
-				<span>카테고리</span> <select name="type"
-					class="button_style select-input-frame">
-					<option value="" selected="selected"
-						<c:out value="${pageMaker.cri.type == null?'selected':''}" />>상품분류선택</option>
-					<option value="A"
-						<c:out value="${pageMaker.cri.type eq A?'selected':'' }" />>Outer</option>
+				<span>카테고리</span> 
+				<select name="type" class="button_style select-input-frame">
+					<option value="" selected="selected" <c:out value="${pageMaker.cri.type == null?'selected':''}" />>상품분류선택</option>
+					<option value="A" <c:out value="${pageMaker.cri.type eq A?'selected':'' }" />>Outer</option>
 					<option value="B"
 						<c:out value="${pageMaker.cri.type eq 'B'?'selected':'' }" />>Top</option>
 					<option value="C"
@@ -79,10 +77,10 @@
 				<div id="product_column">
 					<c:forEach items="${searchlist}" var="searchresult">
 						<div class="product_unit">
-							<a href=""> <img src="/resources/upload/${searchresult.uploadPath}/${searchresult.uuid}_${searchresult.fileName}" alt="" onerror="this.src='/resources/img/noimg.jpg'">
+							<a href="/detail?productId=${searchresult.productId}"> <img src="/resources/upload/${searchresult.uploadPath}/${searchresult.uuid}_${searchresult.fileName}" alt="" onerror="this.src='/resources/img/noimg.jpg'">
 							</a>
 							<ul>
-								<li><a href=""> 상품명: <c:out
+								<li><a href="/detail?productId=${searchresult.productId}"> 상품명: <c:out
 											value="${searchresult.productName}" />
 								</a></li>
 								<hr>
@@ -140,7 +138,7 @@
 				alert("키워드를 입력하세요.");
 				return false;
 			}
-			moveForm.find("input[name='type']").val(type);
+			moveForm.find("select[name='type']").val(type);
 			moveForm.find("input[name='keyword']").val(keyword);
 			moveForm.find("input[name='amount']").val(10);
 			moveForm.find("input[name='pageNum']").val(1);
