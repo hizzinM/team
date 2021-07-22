@@ -79,24 +79,7 @@
 								data-rno="${reply.rno}">삭제</button>
 						</div>
 					</div>
-				</c:forEach>
-				<c:forEach items="${reply}" var="reply">
-					<div class="reply-read-unit">
-						<div class="text-box">
-							<p>${reply.userId}<span><fmt:formatDate
-										value="${reply.replyWritedate}" pattern="yyyy-MM-dd" />2021-07-21</span>
-							</li>
-							<p>${reply.replyContent }</p>
-						</div>
-						<div class="btn-box">
-							<button type="button" class="replyUpdate button_style reply_btn"
-								data-rno="${reply.rno}">수정</button>
-							<button type="button" class="replyDelete button_style reply_btn"
-								data-rno="${reply.rno}">삭제</button>
-						</div>
-					</div>
-				</c:forEach>
-				</ul>
+				</c:forEach> 
 			</div>
 			<div class="reply-write-box">
 				<form method="post" action="/reply/write">
