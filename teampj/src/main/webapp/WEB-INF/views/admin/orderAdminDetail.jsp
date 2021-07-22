@@ -9,28 +9,29 @@
 <head>
 <meta charset="UTF-8">
 <title>주문상세조회(관리)</title>
-<link rel="stylesheet" href="/resources/css/admin/index.css">
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
+<link rel="stylesheet" href="/resources/css/admin/membermenu">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
-<style type="text/css">
-
-
-</style>
 </head>
-
-
-
+<style>
+	td{
+	 	vertical-align: middle;
+	}
+</style>
 <body>
-<header>
+	<header>
 		<div id="h_nav">
 			<h1>MINPARKANG</h1>
 			<div id="uesr_area">
-				<h1><!--${loginuser.userName}님--> 관리자님</h1>
+				<h1>
+					<!--${loginuser.userName}님-->
+					관리자님
+				</h1>
 				<h1>어서오세요</h1>
-			</div>	
+			</div>
 			<ul>
 				<li><a href="/main" class="btn-style">MAIN</a></li>
 				<li><a href="/member/logout.do" class="btn-style">LOGOUT</a></li>
@@ -40,10 +41,12 @@
 			<%@ include file="include/aside.jsp"%>
 		</nav>
 	</header>
-	<section id="container">
-		<div id="container_box" style="text-align: center; font-size: 20px;">주문관리</div>
-		<table class="ordertable">
-					<thead> 
+	<div id="content">
+		<div id="table-warp">
+			<h1>상품상세조회</h1>
+			<div id="table-frame">
+				<table>
+					<thead>
 						<tr>
 							<th>상품상세주문ID</th>
 							<th>상품이미지</th>
@@ -56,42 +59,34 @@
 							<th>총가격</th>
 						</tr>
 					</thead>
-					<c:set var="sum" value="0" />
-					<c:forEach items="${orderAdmin}" var="orderAdmin">
-						<tr>
-							<td><c:out value="${orderAdmin.orderDetailId}" /></td>	
-							
-							
-							<td><img src="/resources/upload/${orderAdmin.uploadPath}/${orderAdmin.uuid}_${orderAdmin.fileName}" width="200px" height="200px"></td>
-							
-							<td><c:out value="${orderAdmin.productId}" /></td>
-							
-							<td><c:out value="${orderAdmin.productName}" /></td>
-							
-							<td><c:out value="${orderAdmin.orderSize}" /></td>
-							
-							<td><c:out value="${orderAdmin.orderColor}" /></td>
-							
-							<td><fmt:formatNumber pattern="###,###,###" value="${orderAdmin.detailPrice}" />원</td>
-							
-							<td><c:out value="${orderAdmin.orderQty}" /></td>
-											
-							<td><fmt:formatNumber pattern="###,###,###" value="${orderAdmin.detailPrice *orderAdmin.orderQty}" />원
-						 <input type="hidden" name="CartPrice" value="${orderAdmin.detailPrice *orderAdmin.orderQty}">
-							</td>
-							
-						</tr>
-						<c:set var="sum" value="${sum + (orderAdmin.detailPrice *orderAdmin.orderQty)}" />
-					</c:forEach>
-			</table><br>
-			
-					
-			
-			
-			
-		
-
-			
-	</section>
+					<tbody>
+						<c:set var="sum" value="0" />
+						<c:forEach items="${orderAdmin}" var="orderAdmin">
+							<tr>
+								<td><c:out value="${orderAdmin.orderDetailId}" /></td>
+								<td><img
+									src="/resources/upload/${orderAdmin.uploadPath}/${orderAdmin.uuid}_${orderAdmin.fileName}"
+									width="200px" height="200px"></td>
+								<td><c:out value="${orderAdmin.productId}" /></td>
+								<td><c:out value="${orderAdmin.productName}" /></td>
+								<td><c:out value="${orderAdmin.orderSize}" /></td>
+								<td><c:out value="${orderAdmin.orderColor}" /></td>
+								<td><fmt:formatNumber pattern="###,###,###"
+										value="${orderAdmin.detailPrice}" />원</td>
+								<td><c:out value="${orderAdmin.orderQty}" /></td>
+								<td><fmt:formatNumber pattern="###,###,###"
+										value="${orderAdmin.detailPrice *orderAdmin.orderQty}" />원 <input
+									type="hidden" name="CartPrice"
+									value="${orderAdmin.detailPrice *orderAdmin.orderQty}">
+								</td>
+							</tr>
+							<c:set var="sum"
+								value="${sum + (orderAdmin.detailPrice *orderAdmin.orderQty)}" />
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
