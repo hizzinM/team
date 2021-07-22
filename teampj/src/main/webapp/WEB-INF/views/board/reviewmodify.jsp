@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
-<link rel="stylesheet" href="/resources/css/board/modify.css">
+<link rel="stylesheet" href="/resources/css/board/reviewmodify.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
@@ -25,7 +25,7 @@
 		<div id="table-wrap">
 			<h1>공지 수정</h1>
 			<form id="modifyForm" action="/board/reviewmodify" method="post">
-				<table id="notice-table">
+				<table id="review-table">
 					<tbody>
 						<tr>
 							<td>게시판 번호</td>
@@ -65,9 +65,10 @@
 					<tbody>
 				</table>
 				<div class="btn_wrap">
-					<a class="btn" id="list_btn">목록 페이지</a> <a class="btn"
-						id="modify_btn">수정 완료</a> <a class="btn" id="delete_btn">삭제</a> <a
-						class="btn" id="cancel_btn">수정 취소</a>
+					<a class="btn button_style" id="list_btn">목록 페이지</a> 
+					<a class="btn button_style" id="modify_btn">수정 완료</a> 
+					<a class="btn button_style" id="delete_btn">삭제</a> 
+					<a class="btn button_style" id="cancel_btn">수정 취소</a>
 				</div>
 			</form>
 			<form id="infoForm" action="/board/reviewmodify" method="get">

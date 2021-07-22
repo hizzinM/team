@@ -26,7 +26,7 @@
 		<div id="table-wrap">
 			<h1>QNA 수정</h1>
 			<form id="modifyForm" action="/board/qnamodify" method="post">
-				<table id="notice-table">
+				<table id="qna-table">
 					<tbody>
 						<tr>
 							<td>질문 번호</td>
@@ -75,17 +75,16 @@
 					</tbody>
 				</table>
 				<div class="btn_wrap">
-					<a class="btn" id="list_btn">목록 페이지</a> <a class="btn"
-						id="modify_btn">수정 완료</a> <a class="btn" id="delete_btn">삭제</a> <a
-						class="btn" id="cancel_btn">수정 취소</a>
+					<a class="btn button_style" id="list_btn">목록 페이지</a> 
+					<a class="btn button_style" id="modify_btn">수정 완료</a> 
+					<a class="btn button_style" id="delete_btn">삭제</a> 
+					<a class="btn button_style" id="cancel_btn">수정 취소</a>
 				</div>
 			</form>
 			<form id="infoForm" action="/board/qnamodify" method="get">
-				<input type="hidden" name="bno" id="bno"
-					value='<c:out value="${qnaInfo.bno}"/>'> <input
-					type="hidden" name="pageNum"
-					value='<c:out value="${cri.pageNum}"/>'> <input
-					type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+				<input type="hidden" name="bno" id="bno" value='<c:out value="${qnaInfo.bno}"/>'> 
+				<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'> 
+				<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
 			</form>
 		</div>
 		<div>
@@ -116,7 +115,7 @@
 		 
 		/* 삭제 버튼 */
 		$("#delete_btn").on("click", function(e) {
-			form.attr("action", "/board/delete");
+			form.attr("action", "/board/qnadelete");
 			form.attr("method", "post");
 			form.submit();
 		});

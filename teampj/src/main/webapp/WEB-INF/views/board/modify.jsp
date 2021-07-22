@@ -21,6 +21,7 @@
 	</div>
 	<div id="contents">
 		<div id="table-wrap">
+		<h1>공지 수정</h1>
 			<form id="modifyForm" action="/board/modify" method="post">
 				<table id="notice-table">
 					<tbody>
