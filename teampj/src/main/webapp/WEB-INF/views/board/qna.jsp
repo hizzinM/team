@@ -22,39 +22,37 @@
 	</header>
 	<div id="side_navigation">
 		<%@ include file="../include_collection/navigation.jsp"%>
-	</div>
-	<div id="contents">
-		<h1>QNA</h1>
-		<div id="table_wrap">
-			<table>
-				<thead>
+	</div> 
+	<div id="table_wrap">
+		<table>
+			<thead>
+				<tr>
+					<th>NO.</th>
+					<th>STATE</th>
+					<th>TITLE</th>
+					<th>DATE</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${Qnalist}" var="Qnalist">
 					<tr>
-						<th>NO.</th>
-						<th>STATE</th>
-						<th>TITLE</th>
-						<th>DATE</th>
+						<td><c:out value="${Qnalist.bno}" /></td>
+						<td><c:if test="${Qnalist.rc==0}">미답변</c:if> <c:if
+								test="${Qnalist.rc>=1}">답변완료</c:if></td>
+						<td><a href="/board/getqna?bno=${Qnalist.bno}"> <c:out
+									value="${Qnalist.qnaTitle}"></c:out>
+						</a></td>
+						<td><fmt:formatDate value="${Qnalist.qnaWritedate}"
+								pattern="yyyy/MM/dd" /></td>
 					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${Qnalist}" var="Qnalist">
-						<tr>
-							<td><c:out value="${Qnalist.bno}" /></td>
-							<td><c:if test="${Qnalist.rc==0}">미답변</c:if> <c:if
-									test="${Qnalist.rc>=1}">답변완료</c:if></td>
-							<td><a href="/board/getqna?bno=${Qnalist.bno}"> <c:out
-										value="${Qnalist.qnaTitle}"></c:out>
-							</a></td>
-							<td><fmt:formatDate value="${Qnalist.qnaWritedate}"
-									pattern="yyyy/MM/dd" /></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
+				</c:forEach>
+			</thead>
+		</table>
 		<c:if test="${ loginuser!= null }">
-		<div class="btn-box">
-			<a href="/board/qnaenroll"><input type="button" class="button_style" value="글쓰기"></a>
-		</div>
+			<div class="btn-box">
+				<a href="/board/qnaenroll"><input type="button"
+					class="button_style" value="글쓰기"></a>
+			</div>
 		</c:if>
 		<div class="pageInfo_wrap">
 			<div class="pageInfo_area">
@@ -69,7 +67,6 @@
 						end="${pageMaker.endPage}">
 						<li class="pageInfo_btn"><a href="${num}">${num}</a></li>
 					</c:forEach>
-
 					<!-- 다음페이지 버튼 -->
 					<c:if test="${pageMaker.next}">
 						<li class="pageInfo_btn next"><a
@@ -85,34 +82,37 @@
 		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
 	<script>
-		let moveform3 = $("#moveform3");
-		$(".pageInfo a").on("click", function(e) {
-			e.preventDefault();
-			moveform3.find("input[name='pageNum']").val($(this).attr("href"));
-			moveform3.attr("action", "/board/qna");
-			moveform3.submit();
-		});
+				let moveform3 = $("#moveform3");
+				$(".pageInfo a").on(
+						"click",
+						function(e) {
+							e.preventDefault();
+							moveform3.find("input[name='pageNum']").val(
+									$(this).attr("href"));
+							moveform3.attr("action", "/board/qna");
+							moveform3.submit();
+						});
 
-		$(document).ready(function() {
+				$(document).ready(function() {
 
-			let result = '<c:out value="${result}"/>';
-			checkAlert(result);
-			console.log(result);
-			function checkAlert(result) {
-				if (result === '') {
-					return;
-				}
-				if (result === "enrol success") {
-					alert("등록이 완료되었습니다.");
-				}
-				if (result === "modify success") {
-					alert("수정이 완료되었습니다.");
-				}
-				if (result === "delete success") {
-					alert("삭제가 완료되었습니다.");
-				}
-			}
-		});
-	</script>
+					let result = '<c:out value="${result}"/>';
+					checkAlert(result);
+					console.log(result);
+					function checkAlert(result) {
+						if (result === '') {
+							return;
+						}
+						if (result === "enrol success") {
+							alert("등록이 완료되었습니다.");
+						}
+						if (result === "modify success") {
+							alert("수정이 완료되었습니다.");
+						}
+						if (result === "delete success") {
+							alert("삭제가 완료되었습니다.");
+						}
+					}
+				});
+			</script>
 </body>
 </html>
