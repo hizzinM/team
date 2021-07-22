@@ -74,17 +74,18 @@
 						</tr>
 					</tbody>
 				</table>
-				<div class="btn_box">
-					<button class="button_style" id="list_btn">목록 페이지</button> 
-					<button class="button_style" id="modify_btn">수정 완료</button> 
-					<button class="button_style" id="delete_btn">삭제</button> 
-					<button class="button_style" id="cancel_btn">수정 취소</button>
+				<div class="btn_wrap">
+					<a class="btn" id="list_btn">목록 페이지</a> <a class="btn"
+						id="modify_btn">수정 완료</a> <a class="btn" id="delete_btn">삭제</a> <a
+						class="btn" id="cancel_btn">수정 취소</a>
 				</div>
 			</form>
 			<form id="infoForm" action="/board/qnamodify" method="get">
-				<input type="hidden" name="bno" id="bno"  value='<c:out value="${qnaInfo.bno}"/>'>
-				<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'> 
-				<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+				<input type="hidden" name="bno" id="bno"
+					value='<c:out value="${qnaInfo.bno}"/>'> <input
+					type="hidden" name="pageNum"
+					value='<c:out value="${cri.pageNum}"/>'> <input
+					type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
 			</form>
 		</div>
 		<div>
@@ -112,12 +113,13 @@
 			form.attr("action", "/board/getqna");
 			form.submit();
 		});
-
+		 
 		/* 삭제 버튼 */
 		$("#delete_btn").on("click", function(e) {
-			form.attr("action", "/board/qnadelete");
+			form.attr("action", "/board/delete");
 			form.attr("method", "post");
 			form.submit();
 		});
-	</script></body>
+	</script>
+</body>
 </html>

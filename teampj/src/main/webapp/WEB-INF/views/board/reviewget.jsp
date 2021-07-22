@@ -50,12 +50,15 @@
 			</div>
 			<div class="btn_box">
 				<a id="list_btn" class="button_style">목록</a> <a id="modify_btn"
-					class="button_style">수정 하기</a>
+					class="button_style">수정</a> <a id="delete_btn" class="button_style">삭제</a>
 			</div>
 		</div>
 		<form id="infoForm" action="/board/reviewmodify" method="get">
 			<input type="hidden" id="reviewId" name="reviewId"
-				value='<c:out value="${reviewInfo.reviewId}"/>'>
+				value='<c:out value="${reviewInfo.reviewId}"/>'> <input
+				type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+			<input type="hidden" name="amount"
+				value='<c:out value="${cri.amount}"/>'>
 		</form>
 	</div>
 	<div>
@@ -74,6 +77,7 @@
 			form.attr("action", "/board/reviewmodify");
 			form.submit();
 		});
+ 
 	</script>
 </body>
 </html>

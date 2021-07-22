@@ -31,27 +31,27 @@
 							<td>게시판 번호</td>
 							<td><input class="text-frame" name="reviewId"
 								readonly="readonly"
-								value='<c:out value="${reviewinfo.reviewId}"/>'></td>
+								value='<c:out value="${reviewInfo.reviewId}"/>'></td>
 						</tr>
 						<tr>
 							<td>제목</td>
 							<td><input name="reviewTitle"
-								value='<c:out value="${reviewinfo.reviewTitle}"/>'></td>
+								value='<c:out value="${reviewInfo.reviewTitle}"/>'></td>
 						</tr>
 						<tr>
 							<td>작성자</td>
 							<td><input name="userId" readonly="readonly"
-								value='<c:out value="${reviewinfo.userId}"/>'></td>
+								value='<c:out value="${reviewInfo.userId}"/>'></td>
 						</tr>
 						<tr>
 							<td>등록일</td>
 							<td><input name="reviewWritedate" readonly="readonly"
-								value='<fmt:formatDate pattern="yyyy/MM/dd" value="${reviewinfo.reviewWritedate}"/>'></td>
+								value='<fmt:formatDate pattern="yyyy/MM/dd" value="${reviewInfo.reviewWritedate}"/>'></td>
 						</tr>
 						<tr>
 							<td colspan="2"><textarea rows="3" id="reviewBoard"
 									name="reviewBoard"><c:out
-										value="${reviewinfo.noticeContent}" /></textarea> <script>
+										value="${reviewInfo.reviewBoard}" /></textarea> <script>
 											var ckeditor_config = {
 												resize_enaleb : false,
 												enterMode : CKEDITOR.ENTER_BR,
@@ -64,16 +64,15 @@
 						</tr>
 					<tbody>
 				</table>
-				<div class="btn_box">
-					<button class="button_style" id="list_btn">목록 페이지</button>
-					<button class="button_style" id="modify_btn">수정 완료</button>
-					<button class="button_style" id="delete_btn">삭제</button>
-					<button class="button_style" id="cancel_btn">수정 취소</button>
+				<div class="btn_wrap">
+					<a class="btn" id="list_btn">목록 페이지</a> <a class="btn"
+						id="modify_btn">수정 완료</a> <a class="btn" id="delete_btn">삭제</a> <a
+						class="btn" id="cancel_btn">수정 취소</a>
 				</div>
 			</form>
 			<form id="infoForm" action="/board/reviewmodify" method="get">
 				<input type="hidden" id="reviewId" name="reviewId"
-					value='<c:out value="${reviewinfo.reviewId}"/>'> <input
+					value='<c:out value="${reviewInfo.reviewId}"/>'> <input
 					type="hidden" name="pageNum"
 					value='<c:out value="${cri.pageNum}"/>'> <input
 					type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
