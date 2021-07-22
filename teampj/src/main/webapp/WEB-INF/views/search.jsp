@@ -31,14 +31,17 @@
 	<div id="contents">
 		<div class="search_frame">
 			<div id="search-box">
-				<input type="text" name="keyword" id="search_frame" class="keyword-input-frame" value="${pageMaker.cri.keyword }">
+				<input type="text" name="keyword" id="search_frame"
+					class="keyword-input-frame" value="${pageMaker.cri.keyword }">
 				<button type="button" id="search-btn" class="button_style">검색</button>
 			</div>
 			<div class="select_box">
-				<span>카테고리</span> 
-				<select name="type" class="button_style select-input-frame">
-					<option value="" selected="selected" <c:out value="${pageMaker.cri.type == null?'selected':''}" />>상품분류선택</option>
-					<option value="A" <c:out value="${pageMaker.cri.type eq A?'selected':'' }" />>Outer</option>
+				<span>카테고리</span> <select name="type"
+					class="button_style select-input-frame">
+					<option value="" selected="selected"
+						<c:out value="${pageMaker.cri.type == null?'selected':''}" />>상품분류선택</option>
+					<option value="A"
+						<c:out value="${pageMaker.cri.type eq A?'selected':'' }" />>Outer</option>
 					<option value="B"
 						<c:out value="${pageMaker.cri.type eq 'B'?'selected':'' }" />>Top</option>
 					<option value="C"
@@ -77,11 +80,13 @@
 				<div id="product_column">
 					<c:forEach items="${searchlist}" var="searchresult">
 						<div class="product_unit">
-							<a href="/detail?productId=${searchresult.productId}"> <img src="/resources/upload/${searchresult.uploadPath}/${searchresult.uuid}_${searchresult.fileName}" alt="" onerror="this.src='/resources/img/noimg.jpg'">
+							<a href="/detail?productId=${searchresult.productId}"> <img
+								src="/resources/upload/${searchresult.uploadPath}/${searchresult.uuid}_${searchresult.fileName}"
+								alt="" onerror="this.src='/resources/img/noimg.jpg'">
 							</a>
 							<ul>
-								<li><a href="/detail?productId=${searchresult.productId}"> 상품명: <c:out
-											value="${searchresult.productName}" />
+								<li><a href="/detail?productId=${searchresult.productId}">
+										상품명: <c:out value="${searchresult.productName}" />
 								</a></li>
 								<hr>
 								<li>상품 가격: KRW <c:out value="${searchresult.productPrice}" />

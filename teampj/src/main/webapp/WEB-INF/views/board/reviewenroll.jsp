@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/board/reviewenroll.css">
 <script src="/resources/ckeditor/ckeditor.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 </head>
 <body>
 	<header>
@@ -129,11 +131,11 @@
 	
 			}
 			/* 이미지 출력 */
-			/*
+			
 			function showUploadImage(uploadResultArr) {
-				/* 전달받은 데이터 검증 */
+			
 				if (!uploadResultArr || uploadResultArr.length == 0) {
-					return
+					return;
 				}
 				let uploadResult = $("#uploadResult");
 				let obj = uploadResultArr[0];
