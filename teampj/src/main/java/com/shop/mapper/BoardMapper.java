@@ -8,6 +8,7 @@ import com.shop.model.NoticeVO;
 import com.shop.model.QnaVO;
 import com.shop.model.ReviewVO;
 import com.shop.model.ReplyVO;
+import com.shop.model.ReviewImg;
 
 public interface BoardMapper {
 
@@ -52,7 +53,9 @@ public interface BoardMapper {
 
 	/* 리뷰 등록 */
 	public void enrollReview(ReviewVO review);
-
+	/* 이미지 등록 */
+	public void imageReview(ReviewImg img);
+	
 	/* 리뷰 목록 */
 	public List<ReviewVO> getReviewList();
 

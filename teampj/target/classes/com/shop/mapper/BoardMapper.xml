@@ -98,27 +98,26 @@
 		select count(*) from qna
 	</select>
 
-	<!-- 리뷰 등록 -->
 	<insert id="enrollReview">
-		insert into
-		review(review_title,product_name,product_img,review_board,user_id)
-		values
-		(#{reviewTitle},#{productName},#{productImg},#{reviewBoard},#{userId}
-		)
-
+	<selectKey resultType="int" order="AFTER" keyProperty="reviewId">
+	SELECT LAST_INSERT_ID()</selectKey>
+	insert into review(review_id,review_title,product_name,review_board,user_id,review_writedate) values(#{reviewId},#{reviewTitle},#{productName},#{reviewBoard},#{userId},#{reviewWritedate}) 
 	</insert>
+	<!-- 리뷰이미지 등록 -->
+	<insert id="imageReview">
+	insert into review_img(review_id,file_name,upload_path,uuid) 
+	values (#{reviewId},#{fileName},#{uploadPath},#{uuid}) </insert>
+	
 	<!-- 리뷰 목록 -->
-	<select id="selectReviewList"
-		resultType="com.shop.model.ReviewVO">
-		select
-		r.review_id,r.review_title,r.product_name,r.product_img,r.review_board,r.user_id,r.review_writedate
-		from review r
-		join user u on r.user_id=u.user_name
+	<select id="selectReviewList" resultType="com.shop.model.ReviewVO">
+	select r.review_id,i.file_name,i.upload_path,i.uuid,r.review_title,r.product_name,r.review_board,r.user_id,r.review_writedate
+	from review r,review_img i join user u where r.user_id=u.user_name and i.review_id=r.review_id;
 	</select>
 
 	<!-- 리뷰 목록 -->
 	<select id="getReviewList" resultType="com.shop.model.ReviewVO">
-		select * from review
+	select r.review_id,i.file_name,i.upload_path,i.uuid,r.review_title,r.product_name,r.review_board,r.user_id,r.review_writedate
+	from review r,review_img i join user u where r.user_id=u.user_name and i.review_id=r.review_id
 	</select>
 
 	<!-- 리뷰 조회 -->
@@ -145,8 +144,8 @@
 	<select id="getReviewListPaging"
 		resultType="com.shop.model.ReviewVO">
 		select * from (
-		select *
-		from review order by review_id desc)
+		select r.review_id,i.file_name,i.upload_path,i.uuid,r.review_title,r.product_name,r.review_board,r.user_id,r.review_writedate
+		from review r,review_img i join user u where r.user_id=u.user_name and i.review_id=r.review_id  order by review_id desc)
 		as RP
 		limit #{skip},#{amount}
 	</select>
