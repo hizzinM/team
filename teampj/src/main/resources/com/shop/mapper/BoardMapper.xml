@@ -122,8 +122,9 @@
 
 	<!-- 리뷰 조회 -->
 	<select id="getReviewPage" resultType="com.shop.model.ReviewVO">
-		select * from review where
-		review_id = #{reviewId}
+	select r.review_id,i.file_name,i.upload_path,i.uuid,r.review_title,r.product_name,r.review_board,r.user_id,r.review_writedate
+	from review r,review_img i join user u where r.user_id=u.user_name and i.review_id=r.review_id
+		and r.review_id = #{reviewId}
 	</select>
 
 	<!-- 리뷰 수정 -->

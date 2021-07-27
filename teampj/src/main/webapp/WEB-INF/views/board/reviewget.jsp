@@ -39,8 +39,7 @@
 					</p>
 				</div>
 				<div>
-					<c:out value="${reviewInfo.productImg}" />
-					<img src="${MyReviewlist.productImg}" alt="">
+					<img src="/resources/upload/${reviewInfo.uploadPath}/${reviewInfo.uuid}_${reviewInfo.fileName}" alt="" >
 				</div>
 			</div>
 			<div id="bottom-box">
