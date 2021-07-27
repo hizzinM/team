@@ -66,13 +66,11 @@
 	</div>
 	<script>
 		let form = $("#infoForm");
-
 		$("#list_btn").on("click", function(e) {
 			form.find("#reviewId").remove();
 			form.attr("action", "/board/review");
 			form.submit();
 		});
-
 		$("#modify_btn").on("click", function(e) {
 			form.attr("action", "/board/reviewmodify");
 			form.submit();
