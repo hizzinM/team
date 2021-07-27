@@ -18,6 +18,11 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
+	<style type="text/css">
+	#reviewimg{
+	width: 160px;
+	}
+	</style>
 </head>
 <body>
 	<header>
@@ -44,7 +49,7 @@
 					<c:forEach items="${Reviewlist}" var="Reviewlist">
 						<tr>
 							<td><c:out value="${Reviewlist.reviewId}" /></td>
-							<td><img src="/resources/upload/${Reviewlist.uploadPath}/${Reviewlist.uuid}_${Reviewlist.fileName}" alt="" ></td>
+							<td><img src="/resources/upload/${Reviewlist.uploadPath}/${Reviewlist.uuid}_${Reviewlist.fileName}" alt="" id="reviewimg"></td>
 								<td><c:out value="${Reviewlist.productName}" /></td>
 							<td><a
 								href="/board/reviewget?reviewId=${Reviewlist.reviewId}"> <c:out
