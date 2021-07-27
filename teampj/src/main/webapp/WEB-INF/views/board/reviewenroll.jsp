@@ -164,7 +164,7 @@
 				str += "<input type='hidden' name='imageList[0].uuid' value='"+ obj.uuid +"'>";
 				str += "<input type='hidden' name='imageList[0].uploadPath' value='"+ obj.uploadPath +"'>";
 				str += "</div>";
-				alert(str)
+				
 				uploadResult.append(str);     
 			}
 			/* 이미지 삭제 버튼 동작 */
