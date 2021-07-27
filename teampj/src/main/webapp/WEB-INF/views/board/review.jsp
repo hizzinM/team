@@ -44,8 +44,7 @@
 					<c:forEach items="${Reviewlist}" var="Reviewlist">
 						<tr>
 							<td><c:out value="${Reviewlist.reviewId}" /></td>
-							<td><img src="${MyReviewlist.productImg}" alt=""
-								onerror="this.src='/resources/img/noimg.jpg'"></td>
+							<td><img src="/resources/upload/${Reviewlist.uploadPath}/${Reviewlist.uuid}_${Reviewlist.fileName}" alt="" ></td>
 								<td><c:out value="${Reviewlist.productName}" /></td>
 							<td><a
 								href="/board/reviewget?reviewId=${Reviewlist.reviewId}"> <c:out

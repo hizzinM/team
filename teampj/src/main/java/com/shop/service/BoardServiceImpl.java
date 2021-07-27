@@ -1,7 +1,13 @@
 package com.shop.service;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +17,12 @@ import com.shop.model.NoticeVO;
 import com.shop.model.QnaVO;
 
 import com.shop.model.ReviewVO;
+
 import com.shop.model.ReplyVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
-
+	private static final Logger logger = LoggerFactory.getLogger("BoardServiceImpl.class");
 	@Autowired
 	private BoardMapper boardmapper;
 
@@ -94,7 +101,17 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void enrollReview(ReviewVO review) {
+		logger.info("(BoardServiceImpl)enrollReview");
+		Date now=new Date();
+		review.setReviewWritedate(now);
 		boardmapper.enrollReview(review);
+		if (review.getImageList() == null || review.getImageList().size() <= 0) {
+			return;
+		}
+		review.getImageList().forEach(reviewimg ->{
+			reviewimg.setReviewId(review.getReviewId());
+			boardmapper.imageReview(reviewimg);
+		});
 	}
 
 	@Override

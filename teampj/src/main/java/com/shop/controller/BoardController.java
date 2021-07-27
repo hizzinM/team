@@ -1,5 +1,43 @@
 package com.shop.controller;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.URLDecoder;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+/*
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -28,7 +66,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+*/
 import com.shop.model.AttachImageVO;
 import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
@@ -36,6 +74,7 @@ import com.shop.model.PageMakerDTO;
 import com.shop.model.QnaVO;
 import com.shop.model.ReviewVO;
 import com.shop.model.ReplyVO;
+import com.shop.model.ReviewImg;
 import com.shop.service.BoardService;
 
 import net.coobird.thumbnailator.Thumbnails;
@@ -261,12 +300,11 @@ public class BoardController {
 
 	/* 첨부 파일 업로드 */
 	@PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<List<AttachImageVO>> uploadAjaxActionPOST(MultipartFile[] productImg) {
+	public ResponseEntity<List<ReviewImg>> uploadAjaxActionPOST(MultipartFile[] productImg) {
 
 		logger.info("uploadAjaxActionPOST......");
 		/* 이미지 파일 체크 */
 		for (MultipartFile multipartFile : productImg) {
-
 			File checkfile = new File(multipartFile.getOriginalFilename());
 			String type = null;
 
@@ -278,7 +316,7 @@ public class BoardController {
 				e.printStackTrace();
 			}
 			if (!type.startsWith("image")) {
-				List<AttachImageVO> list = null;
+				List<ReviewImg> list = null;
 				return new ResponseEntity<>(list, HttpStatus.BAD_REQUEST);
 			}
 
@@ -300,17 +338,17 @@ public class BoardController {
 			uploadPath.mkdirs();
 		}
 		/* 이미저 정보 담는 객체 */
-		List<AttachImageVO> list = new ArrayList();
+		List<ReviewImg> list = new ArrayList();
 		// 향상된 for
 		for (MultipartFile multipartFile : productImg) {
+			logger.info("listActionPOST......"+productImg);
 			/* 이미지 정보 객체 */
-			AttachImageVO vo = new AttachImageVO();
+			ReviewImg vo = new ReviewImg();
 
 			/* 파일 이름 */
 			String uploadFileName = multipartFile.getOriginalFilename();
 			vo.setFileName(uploadFileName);
 			vo.setUploadPath(datePath);
-			vo.setImageId(0);
 			/* uuid 적용 파일 이름 */
 			String uuid = UUID.randomUUID().toString();
 			vo.setUuid(uuid);
@@ -358,7 +396,7 @@ public class BoardController {
 			}
 			list.add(vo);
 		} // for
-		ResponseEntity<List<AttachImageVO>> result = new ResponseEntity<List<AttachImageVO>>(list, HttpStatus.OK);
+		ResponseEntity<List<ReviewImg>> result = new ResponseEntity<List<ReviewImg>>(list, HttpStatus.OK);
 		return result;
 	}
 
