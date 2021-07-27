@@ -10,8 +10,8 @@
 #table_wrap>table>thead tr>th{background-color:#FAFAFA;}
 #table_wrap>table>thead tr>th:nth-child(1){width:50px;}
 #table_wrap>table>thead tr>th:nth-child(2){width:108px;}
-#table_wrap>table>thead tr>th:nth-child(3){width:670px;}
-#table_wrap>table>thead tr>th:nth-child(4){width:70px;}
+#table_wrap>table>thead tr>th:nth-child(3){width:150px;}
+#table_wrap>table>thead tr>th:nth-child(4){width:590px;}
 #table_wrap>table>thead tr>th:nth-child(5){width:100px;}
 #table_wrap>table>tbody tr>td:nth-child(2){width:110px;height:140px;padding:5px 0;}
 #table_wrap>table>tbody tr>td:nth-child(2)>img{width:100px;height:130px;}
