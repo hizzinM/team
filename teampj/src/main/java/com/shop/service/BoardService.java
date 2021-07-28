@@ -6,6 +6,7 @@ import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
 import com.shop.model.QnaVO;
 import com.shop.model.ReviewVO;
+import com.shop.model.User;
 import com.shop.model.ReplyVO;
 
 public interface BoardService {
@@ -56,7 +57,7 @@ public interface BoardService {
 	public List<ReviewVO> getReviewList();
 
 	/*내 리뷰 목록*/
-	public List<ReviewVO> selectReviewList();
+	public List<ReviewVO> selectReviewList(ReviewVO review);
 	
 	/* 리뷰 조회 */
 	public ReviewVO getReviewPage(int reviewId);
@@ -65,7 +66,7 @@ public interface BoardService {
 	public int modifyReview(ReviewVO review);
 
 	/* 리뷰 삭제 */
-	public int deleteReview(int reviewId);
+	public int deleteReview(String reviewId);
 
 	/* 리뷰 목록(페이징 적용) */
 	public List<ReviewVO> getReviewListPaging(Criteria cri);

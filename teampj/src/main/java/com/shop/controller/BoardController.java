@@ -254,10 +254,14 @@ public class BoardController {
 	}
 
 	// 리뷰 삭제
-	@PostMapping("/reviewdelete")
-	public String reviewDeletePOST(int reviewId, RedirectAttributes rttr) {
-		boardService.deleteReview(reviewId);
-		rttr.addFlashAttribute("result", "delete success");
+	@RequestMapping("/reviewdelete")
+	public String reviewDeletePOST(HttpServletRequest request) throws Exception {
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for (int i = 0; i < size; i++) {
+		boardService.deleteReview(ajaxMsg[i]);
+		
+	}
 		return "redirect:/board/review";
 	}
 

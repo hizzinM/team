@@ -7,6 +7,7 @@ import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
 import com.shop.model.QnaVO;
 import com.shop.model.ReviewVO;
+import com.shop.model.User;
 import com.shop.model.ReplyVO;
 import com.shop.model.ReviewImg;
 
@@ -63,14 +64,20 @@ public interface BoardMapper {
 	public ReviewVO getReviewPage(int reviewId);
 	
 	/*내 리뷰 목록*/
-	public List<ReviewVO> selectReviewList();
+	public List<ReviewVO> selectReviewList(ReviewVO review);
 
 	/* 리뷰 수정 */
 	public int modifyReview(ReviewVO review);
 
 	/* 리뷰 삭제 */
-	public int deleteReview(int reviewId);
-
+	public int deleteReview(String reviewId);
+	/* 리뷰 이미지삭제 */
+	public int deleterReviewImg(ReviewImg reviewImg);
+	
+	/* 리뷰 이미지삭제 */
+	public int deleterReviewImgAll(String reviewId);
+	
+	
 	/* ReviewVO 목록(페이징 적용) */
 	public List<ReviewVO> getReviewListPaging(Criteria cri);
 

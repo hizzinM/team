@@ -307,9 +307,15 @@ public class MyPageController {
 	
 	// 리뷰 페이지 이동
 	@GetMapping("/myreview")
-	public void getreview(Model model, Criteria cri) {
+	public void getreview(HttpSession session,Model model, Criteria cri,ReviewVO review) {
 		logger.info("리뷰 목록 페이지 접속");
-		model.addAttribute("MyReviewlist", boardService.selectReviewList());
+		
+		User user = (User) session.getAttribute("loginuser");
+		String userId = user.getUserId();
+		
+		review.setUserId(userId);
+		
+		model.addAttribute("MyReviewlist", boardService.selectReviewList(review));
 		int total = boardService.getTotal(cri);
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
@@ -355,9 +361,13 @@ public class MyPageController {
 
 	// 리뷰 삭제
 	@PostMapping("/myreviewdelete")
-	public String reviewDeletePOST(int rno, RedirectAttributes rttr) {
-		boardService.deleteReview(rno);
-		rttr.addFlashAttribute("Myresult", "delete success");
+	public String reviewDeletePOST(HttpServletRequest request) throws Exception {
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for (int i = 0; i < size; i++) {
+		boardService.deleteReview(ajaxMsg[i]);
+		
+	}
 		return "redirect:/mypage/myreview";
 	}
 	

@@ -30,7 +30,7 @@
                     <p class="top-box-child"><c:out value="${MyreviewInfo.productName}" /></p>
                 </div>
                 <div>
-                    <img src="/resources/upload/${MyreviewInfo.productImg}" alt="">
+                    <img src="/resources/upload/${MyreviewInfo.uploadPath}/${MyreviewInfo.uuid}_${MyreviewInfo.fileName}" alt="" id="reviewimg">
                 </div>
             </div>
             <div id="bottom-box">
@@ -38,7 +38,7 @@
             </div>
             <div class="btn_box">
                 <a href="myreview" class="button_style">목록</a>
-                <div class="button_style update_btn"><a class="btn" id="modify_btn" >수정 하기</a></div>
+                <div class="button_style update_btn"><a class="btn" id="modify_btn">수정 하기</a></div>
                 <form id="infoForm" action="/board/modify" method="get">
 					<input type="hidden" id="bno" name="rno" value='<c:out value="${MyreviewInfo.reviewId}"/>'>
 			</form>
@@ -53,6 +53,7 @@
 			form.attr("action", "/mypage/myreviewmodify");
 			form.submit();
 		});
+		
 	</script>
 		
 
