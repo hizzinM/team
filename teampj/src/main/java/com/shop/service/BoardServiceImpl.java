@@ -17,7 +17,7 @@ import com.shop.model.NoticeVO;
 import com.shop.model.QnaVO;
 
 import com.shop.model.ReviewVO;
-
+import com.shop.model.User;
 import com.shop.model.ReplyVO;
 
 @Service
@@ -120,23 +120,34 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<ReviewVO> selectReviewList() {
+	public List<ReviewVO> selectReviewList(ReviewVO review) {
 
-		return boardmapper.selectReviewList();
+		return boardmapper.selectReviewList(review);
 	}
 
 	@Override
 	public ReviewVO getReviewPage(int reviewId) {
 		return boardmapper.getReviewPage(reviewId);
 	}
-
+	/*리뷰수정*/
 	@Override
 	public int modifyReview(ReviewVO review) {
-		return boardmapper.modifyReview(review);
+		logger.info("(service)modifyReview........");
+		boardmapper.modifyReview(review);
+		if (review.getImageList() == null || review.getImageList().size() <= 0) {
+			return 0;
+		}
+		review.getImageList().forEach(reviewimg ->{
+			reviewimg.setReviewId(review.getReviewId());
+			boardmapper.deleterReviewImg(reviewimg);
+			boardmapper.imageReview(reviewimg);
+		});
+		return 0;
 	}
-
+	/*리뷰삭제*/
 	@Override
-	public int deleteReview(int reviewId) {
+	public int deleteReview(String reviewId) {
+		boardmapper.deleterReviewImgAll(reviewId);
 		return boardmapper.deleteReview(reviewId);
 	}
 

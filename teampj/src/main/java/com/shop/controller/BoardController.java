@@ -15,7 +15,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import javax.imageio.ImageIO; 
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -219,10 +220,14 @@ public class BoardController {
 	}
 
 	// 리뷰 삭제
-	@PostMapping("/reviewdelete")
-	public String reviewDeletePOST(int reviewId, RedirectAttributes rttr) {
-		boardService.deleteReview(reviewId);
-		rttr.addFlashAttribute("result", "delete success");
+	@RequestMapping("/reviewdelete")
+	public String reviewDeletePOST(HttpServletRequest request) throws Exception {
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for (int i = 0; i < size; i++) {
+		boardService.deleteReview(ajaxMsg[i]);
+		
+	}
 		return "redirect:/board/review";
 	}
 
