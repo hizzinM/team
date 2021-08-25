@@ -37,9 +37,7 @@
 		<div id="h_nav">
 			<h1>MINPARKANG</h1>
 			<div id="uesr_area">
-				<h1> 
-					관리자님
-				</h1>
+				<h1>관리자님</h1>
 				<h1>어서오세요</h1>
 			</div>
 			<ul>
@@ -60,12 +58,12 @@
 						<tr>
 							<th><input type="checkbox" name="allCheck" id=allCheck /></th>
 							<th>주문번호</th>
-							<th>수령인 ID</>
+							<th>주문자 ID</>
 							<th>수령인 이름</th>
-							<th>수령인 개인폰번호</th>
+							<th>수령인 전화번호</th>
 							<th>수령인 주소</th>
-							<th>수령인 상세주소</th>
-							<th>수령인 우편번호</th>
+							<th>상세주소</th>
+							<th>우편번호</th>
 							<th>주문가격</th>
 							<th>주문시간</th>
 						</tr>

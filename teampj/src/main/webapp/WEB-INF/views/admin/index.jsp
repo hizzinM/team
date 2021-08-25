@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>관리자페이지</title> 
+<title>관리자페이지</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
@@ -50,9 +50,9 @@
 					</tr>
 					<tr>
 						<th>주문번호</th>
-						<th>수령인 ID</th>
+						<th>주문자 ID</>
 						<th>수령인 이름</th>
-						<th>수령인 연락처</th>
+						<th>수령인 전화번호</th>
 						<th>수령인 주소</th>
 						<th>상세주소</th>
 						<th>우편번호</th>

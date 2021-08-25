@@ -62,7 +62,7 @@ public class AdminController {
 	public void getindex(Model model) throws Exception {
 		logger.info("관리자 페이지 ");
 		model.addAttribute("mainorder",adminService.selectAdminindex());
-		model.addAttribute("mainUser",adminService.selectAdminUser());
+		model.addAttribute("mainUser",adminService.selectAdminUser()); 
 	}
 
 	/* 게시판 목록 페이지 접속(페이징 적용) */

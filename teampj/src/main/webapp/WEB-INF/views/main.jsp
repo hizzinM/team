@@ -58,8 +58,7 @@
 										value="${Product.productName}" /></a></li>
 							<hr>
 							<li><c:out value="KRW ${Product.productPrice}" /></li>
-						</ul>
-
+						</ul> 
 					</div>
 				</c:forEach>
 			</div>
