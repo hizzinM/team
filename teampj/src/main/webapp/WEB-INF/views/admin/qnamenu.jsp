@@ -6,8 +6,7 @@
 <link rel="stylesheet" href="/resources/css/admin/index.css">
 <meta charset="UTF-8">
 <title>문의관리</title>
-<link rel="stylesheet" href="/resources/css/common-style/reset.css">
-<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
+<link rel="stylesheet" href="/resources/css/common-style/reset.css"> 
 </head>
 <body>
 	<header>

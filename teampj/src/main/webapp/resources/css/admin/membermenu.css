@@ -8,11 +8,11 @@
     -webkit-box-sizing: border-box; /* 웹킷(Webkit) & 크롬(Chrome) */
     font-size:12px;
 }
-#table-warp{
+#table-wrap{
     width:1100px;
     margin:0 auto;
 }
-#table-warp>h1{
+#table-wrap>h1{
     font-size:15px;
     text-align: center;
     margin-bottom: 50px;

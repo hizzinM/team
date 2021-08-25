@@ -10,18 +10,11 @@
 
 
 <meta charset="UTF-8">
-<title>주문관리</title> 
-<link rel="stylesheet" href="/resources/css/common-style/reset.css"> 
-<link rel="stylesheet" href="/resources/css/common-style/reset.css">  
-<link rel="stylesheet" href="/resources/css/admin/membermenu.css"> 
-<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css"> 
-<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">  
+<title>주문관리</title>
+<link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/admin/membermenu.css">
-<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">  
-<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
-<link rel="stylesheet" href="/resources/css/admin/membermenu"> 
-<link rel="stylesheet" href="/resources/css/admin/membermenu">  
-<link rel="stylesheet" href="/resources/css/admin/membermenu">  
+<link rel="stylesheet"
+	href="/resources/css/common-style/admin_frame.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
@@ -44,8 +37,7 @@
 		<div id="h_nav">
 			<h1>MINPARKANG</h1>
 			<div id="uesr_area">
-				<h1>
-					<!--${loginuser.userName}님-->
+				<h1> 
 					관리자님
 				</h1>
 				<h1>어서오세요</h1>
@@ -60,8 +52,8 @@
 		</nav>
 	</header>
 	<div id="content">
-		<div id="table-warp">
-			<h1>주 문 관 리</h1>
+		<div id="table-wrap">
+			<h1>주문 관리</h1>
 			<div id="table-frame">
 				<table>
 					<thead>
@@ -86,7 +78,9 @@
 								<td><a
 									href="/admin/orderAdminDetail?n=${ordermenu.orderId}"> <c:out
 											value="${ordermenu.orderId}" /></a></td>
-								<td> <a href="/mypage/orderupdate?orderId=${ordermenu.orderId}"><c:out value="${ordermenu.userId}" /></a></td>
+								<td><a
+									href="/mypage/orderupdate?orderId=${ordermenu.orderId}"><c:out
+											value="${ordermenu.userId}" /></a></td>
 								<td><c:out value="${ordermenu.userName}" /></td>
 								<td><c:out value="${ordermenu.orderPhone}" /></td>
 								<td><c:out value="${ordermenu.orderAddress}" /></td>

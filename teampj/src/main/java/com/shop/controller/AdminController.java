@@ -1,12 +1,8 @@
 package com.shop.controller;
-
-import java.awt.Graphics2D;
+ 
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.io.File; 
+import java.io.IOException; 
 import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
@@ -16,8 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest; 
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -27,8 +22,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model; 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -299,23 +293,7 @@ public class AdminController {
 			try {
 				multipartFile.transferTo(saveFile);
 				// 썸네일 생성
-				/*
-				 * File thumbnailFile = new File(uploadPath, "s_" + uploadFileName);
-				 * 
-				 * BufferedImage bo_image = ImageIO.read(saveFile); // 비율 double ratio = 3; 넓이
-				 * 높이 int width = (int) (bo_image.getWidth() / ratio); int height = (int)
-				 * (bo_image.getHeight() / ratio);
-				 * 
-				 * BufferedImage bt_image = new BufferedImage(width, height,
-				 * BufferedImage.TYPE_3BYTE_BGR);
-				 * 
-				 * Graphics2D graphic = bt_image.createGraphics();
-				 * 
-				 * graphic.drawImage(bo_image, 0, 0,width,height, null);
-				 * 
-				 * ImageIO.write(bt_image, "jpg", thumbnailFile);
-				 */
-
+				 
 				/* 방법 2 */
 				File thumbnailFile = new File(uploadPath, "s_" + uploadFileName);
 

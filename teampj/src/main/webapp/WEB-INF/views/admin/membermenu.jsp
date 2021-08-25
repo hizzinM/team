@@ -8,8 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원관리</title>
-<link rel="stylesheet" href="/resources/css/common-style/reset.css">
-<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
+<link rel="stylesheet" href="/resources/css/common-style/reset.css"> 
 <link rel="stylesheet" href="/resources/css/admin/membermenu.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -36,7 +35,7 @@
 		</nav>
 	</header>
 	<div id="content">
-		<div id="table-warp">
+		<div id="table-wrap">
 			<h1>주문 상세 조회</h1>
 			<div id="table-frame">
 				<table>

@@ -9,8 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>주문상세조회(관리)</title>
-<link rel="stylesheet" href="/resources/css/common-style/reset.css">
-<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
+<link rel="stylesheet" href="/resources/css/common-style/reset.css"> 
 <link rel="stylesheet" href="/resources/css/admin/membermenu">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="

@@ -8,8 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>상품관리</title>
-	<link rel="stylesheet" href="/resources/css/common-style/reset.css">
-	<link rel="stylesheet" href="/resources/css/common-style/admin_frame.css">
+	<link rel="stylesheet" href="/resources/css/common-style/reset.css"> 
 	<link rel="stylesheet" href="/resources/css/admin/goodsmanage.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 </head>
@@ -18,7 +17,7 @@
 		<div id="h_nav">
 			<h1>MINPARKANG</h1>
 			<div id="uesr_area">
-				<h1><!--${loginuser.userName}님--> 관리자님</h1>
+				<h1>관리자님</h1>
 				<h1>어서오세요</h1>
 			</div>
 			<ul>
@@ -32,8 +31,8 @@
 	</header>
 
 	<div id="content">
-		<div id="table-warp">
-			<h1>상품관리</h1>
+		<div id="table-wrap">
+			<h1>상품 관리</h1>
 			<!--상품 테이블-->
 			<c:if test="${listcheck != 'empty'}">
 				<table>
