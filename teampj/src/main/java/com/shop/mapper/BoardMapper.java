@@ -1,13 +1,11 @@
 package com.shop.mapper;
 
 import java.util.List;
-
-import com.shop.model.AttachImageVO;
+ 
 import com.shop.model.Criteria;
 import com.shop.model.NoticeVO;
 import com.shop.model.QnaVO;
-import com.shop.model.ReviewVO;
-import com.shop.model.User;
+import com.shop.model.ReviewVO; 
 import com.shop.model.ReplyVO;
 import com.shop.model.ReviewImg;
 

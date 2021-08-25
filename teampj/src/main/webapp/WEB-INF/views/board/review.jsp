@@ -93,7 +93,6 @@
 			moveform3.attr("action", "/board/qna");
 			moveform3.submit();
 		});
-
 		$(document).ready(function() {
 			let result = '<c:out value="${result}"/>';
 			checkAlert(result);

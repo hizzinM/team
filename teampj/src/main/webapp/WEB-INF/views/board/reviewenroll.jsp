@@ -80,16 +80,12 @@
 			$("#cancelBtn").click(function() {
 				
 				location.href = "redirect:/board/review"
-
 			});
-
 			/* 상품 등록 버튼 */
 			$("#enrollBtn").on("click", function(e) {
 				
 				e.preventDefault();
-
 				enrollForm.submit();
-
 			});
 			
 			/* 이미지 업로드(상품대표이미지) */
@@ -133,7 +129,6 @@
 			let maxSize = 1048576; //1MB	
 			
 			function fileCheck(fileName, fileSize){
-
 				if(fileSize >= maxSize){
 					alert("파일 사이즈 초과");
 					return false;
