@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -20,7 +21,6 @@
 
 <title>회원정보 수정</title>
 </head>
-</script>
 <body>
 
 	<form id="modifyForm" action="/mypage/profileUpdate" method="post">
@@ -67,7 +67,6 @@
 					class="form-control" type="text" id="phone" name="phone"
 					value='<c:out value="${profile.phone}"/>' />
 			</div>
-			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="email">이메일</label> <input
 					class="form-control" type="text" id="email" name="email"
@@ -95,6 +94,7 @@
 				<a class="btn" id="modify_btn">수정 완료</a> <a class="btn"
 					id="cancel_btn">수정 취소</a>
 			</div>
+		</section>
 	</form>
 	<form id="infoForm" action="/mypage/profileUpdate" method="get">
 		<input type="hidden" id="userId" name="userId"
@@ -116,7 +116,6 @@
 			form.submit();
 		});
 	</script>
-	</section>
 	<script type="text/javascript">
 		function execution_daum_address() {
 			new daum.Postcode(

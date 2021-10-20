@@ -1,97 +1,74 @@
 @charset "UTF-8";
-/* 상품 목록 영역 */
-.goods_table_wrap{
-	padding: 20px 35px
+#content{
+    padding-left: 250px;
+    font-size: 12px;
 }
-.goods_table{
-	width: 100%;
-    border: 1px solid #d3d8e1;
+#table-wrap{
+    width:1100px;
+    margin:0 auto; 
+}
+#table-wrap>h1{
+    font-size:15px;
     text-align: center;
-    border-collapse: collapse;
+    margin-bottom: 30px;
 }
-.goods_table td{
-	padding: 10px 5px;
-	border : 1px solid #e9ebf0;
+table{width:100%;}
+th,td{padding:10px 0 10px 10px;}
+th{border-top:1px solid black;border-bottom:1px solid black;text-align: left; font-weight: 600;}
+th:first-child,td:first-child{width:32px; text-align: center; padding-left: 0;}
+th:nth-child(6),th:nth-child(7),th:nth-child(8),th:nth-child(9){width:60px;}
+td{border-bottom:1px solid RGB(221,221,221);}
+td{vertical-align: top;}
+td:nth-child(3){width:255px;}
+td:nth-child(4){width:210px;}
+.button_style{
+	background-color: white;
+	border:1px solid  black;
+	font-weight: bolder;
+	padding:7px 14px 7px 14px;
+	cursor: pointer;
 }
-.goods_table thead{
-	background-color: #f8f9fd;	
-	font-weight: 600;
+.delete_btn{
+    margin-top: 15px;
+    float: right;
 }
-.goods_table a{
-	color:#1088ed;
-	font-weight: 500;
+.button_style:hover{
+	background-color: black;
+	color:white;
 }
-.th_column_1{
-	width:120px;
+.search_wrap{
+    width:390px;
+    margin:0 auto;
+    text-align: center;
+    margin-top: 15px;
 }
-.th_column_3{
-	width:110px;
+.text-frame{
+	position:relative;
+	border:1px solid RGB(221,221,221);
+	width: 300px;
+	height: 27px;
+    margin-right: 8px;
 }
-.th_column_4{
-	width:140px;
+.text-frame:focus{
+	border:1px solid RGB(22,22,22);
+	outline: none;
 }
-.th_column_5{
-	width:140px;
+.text-frame:hover{
+	border:1px solid RGB(22,22,22);
 }
-.th_column_6{
-	
+.pageMaker_wrap{
+    margin-top: 25px;
 }
-	
+.pageMaker{
+    width:150px;
+    margin: 0 auto;
+    text-align: center;
+}
+.pageMaker li {
+    float: left;
+    margin-right: 20px;
+}
 .table_empty{
-	height: 50px;
     text-align: center;
-    margin: 200px 0 215px 0px;
-    font-size: 25px;
 }
-
-.pageInfo li {
-	float: left;
-	font-size: 20px;
-	margin-left: 18px;
-	padding: 7px;
-	font-weight: 500;
-}
-
-a:link {
-	color: black;
-	text-decoration: none;
-}
-
-a:visited {
-	color: black;
-	text-decoration: none;
-}
-
-a:hover {
-	color: black;
-	text-decoration: underline;
-}
-
-.active {
-	background-color: #cdd5ec;
-}
-
-.pageInfo_wrap {
-	text-align: center;
-}
-
-.search_wrap {
-	text-align: center;
-}
-
-.search_area {
-	display: inline-block;
-	margin-top: 30px;
-	margin-left: 260px;
-}
-
-.search_area input {
-	height: 30px;
-	width: 250px;
-}
-
-.search_area button {
-	width: 100px;
-	height: 36px;
-}
-
+ 

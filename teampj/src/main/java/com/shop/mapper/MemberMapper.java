@@ -15,7 +15,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.shop.model.Criteria;
+import com.shop.model.OrderDetail;
+import com.shop.model.Product;
+import com.shop.model.ShoppingCart;
 import com.shop.model.User;
+import com.shop.model.UserOrder;
 
 @Mapper
 public interface MemberMapper {
@@ -31,7 +35,10 @@ public interface MemberMapper {
 
 	// 아이디 찾기 기능
 	public String findid(String email);
-
+	
+	// 비밀번호 찾기 기능
+	public String selectPassword(String userId);
+	
 	// 회원목록 조회
 	public List<User> getmemberList();
  
@@ -46,12 +53,48 @@ public interface MemberMapper {
 
 	// 회원정보 수정 기능
 	public int profileUpdate(User user);
-
+	/*비밀번호찾기*/
+	public int	updatePassword(User user); 
+	
 	// 회원정보 삭제 기능
 	public int profileDelete(User user);
-
+	//카트담기
+	public void addCart(ShoppingCart cart) throws Exception;
+	
+	//장바구니 리스트
+	public List<ShoppingCart> selectCart(String userId)  throws Exception;
+	// 장바구니 삭제 기능
+	public int deleteCart(String cartId);
+	// 장바구니 물품 간단조회 기능
+	public ShoppingCart selectCartId(String cartId);
+	// 장바구니 물품 수량 수정 기능
+	public int updateCartQty(ShoppingCart cart);
+	
+	//주문
+	public void orderinsert(UserOrder order);
+	//주문상세정보
+	public void orderinsertDetail(OrderDetail detail);
+	//주문목록
+	public List<UserOrder> orderList(UserOrder order);
+	//주문상세목록
+	public List<OrderDetail> orderDetailList(UserOrder order) throws Exception;
+	/* 상품삭제 */
+	public int deleteOrder(String orderId);
+	/* 상품이미지 전체삭제 */
+	public int deleteOrderDetail(String orderId);
+	public int orderDetailPuls(String orderId);
+	
 	// public User readMember(String userId);
+	/*주문시 재고감소*/
+	public void updateInven(Product product);
+	/*주문취소 재고증가*/
+	public void updateInvenPuls(Product product);
+	//주문수정조회
+	public UserOrder orderselect(String orderId);
+		
+	public int orderupdate(UserOrder order);
+
+	
 
 	// public int updatePw(User user) throws Exception;
-
 }

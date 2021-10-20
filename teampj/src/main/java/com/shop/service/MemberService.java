@@ -8,7 +8,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.shop.model.Criteria;
+import com.shop.model.OrderDetail;
+import com.shop.model.ShoppingCart;
 import com.shop.model.User;
+import com.shop.model.UserOrder;
 
 public interface MemberService {
 
@@ -23,7 +26,10 @@ public interface MemberService {
 
 	// 아이디 찾기
 	public String findid(HttpServletResponse response, String email) throws Exception;
-
+	
+	// 아이디 찾기
+	public String selectPassword(HttpServletResponse response, String userId) throws Exception;
+	
 	// 회원목록 조회
 	public List<User> getmemberList();
 
@@ -37,9 +43,34 @@ public interface MemberService {
 	public User getProfile(String userId);
 
 	// 회원정보수정
-	public int profileUpdate(User user);
-
+	public int profileUpdate(User user); 
+	
+	public int	updatePassword(User user); 
 	// 회원정보 삭제
 	public int profileDelete(User user);
-
+	//카트담기
+	public void addCart(ShoppingCart cart) throws Exception;
+	//장바구니 리스트
+	public List<ShoppingCart> selectCart(String userId)  throws Exception;
+	// 장바구니 삭제 기능
+	public int deleteCart(String cartId);
+	// 장바구니 물품 간단조회 기능
+	public ShoppingCart selectCartId(String cartId);
+	// 장바구니 물품 수량 수정 기능
+	public int updateCartQty(ShoppingCart cart);
+	//주문
+	public void orderinsert(UserOrder order) throws Exception;
+	
+	//주문목록
+	public List<UserOrder> orderList(UserOrder order) throws Exception;
+	
+	//주문상세목록
+	public List<OrderDetail> orderDetailList(UserOrder order) throws Exception;
+	//주문삭제
+	public int deleteOrder(String orderId);
+	//주문수정조회
+	public UserOrder orderselect(String orderId);	
+	public int orderupdate(UserOrder order);
+	
+	
 }

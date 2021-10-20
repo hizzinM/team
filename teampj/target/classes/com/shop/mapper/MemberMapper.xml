@@ -84,10 +84,9 @@
 	<!-- 회원정보 조회 -->
 	<select id="getProfile" resultType="com.shop.model.User">
 		select
-		user_id,password,password_check,user_name,address_num,address,address_detail,phone,email,adminck,reg_date,account_name,account_bank,account_num
+		user_id,password,password_check,user_name,address_num,address,address_detail,phone,email,adminck,account_name,account_bank,account_num
 		from user where
 		user_id = #{userId}
-
 	</select>
 
 	<!-- 회원정보 수정 -->
@@ -97,10 +96,124 @@
 		phone=#{phone},email=#{email},account_name=#{accountName},account_bank=#{accountBank},account_num=#{accountNum}
 		where user_id=#{userId}
 	</update>
-
+	
+	<!-- 비밀번호 찾기 -->
+	<update id="updatePassword">
+	update user set password=#{password},password_check=#{passwordCheck} where user_id=#{userId};
+	</update>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="selectPassword" parameterType="String" resultType="String">
+		select password from user where user_id = #{userId}
+	</select>
+	
+	
 	<!-- 회원정보 삭제 -->
 	<delete id="profileDelete">
 		delete from user where user_id = #{userId} and
 		password =#{password}
 	</delete>
-</mapper>
+	<!-- 장바구니 추가-->
+	<insert id="addCart">
+ 	 insert into shopping_cart (cart_id,user_id,product_id,product_name,cart_productsize,cart_productColor,cart_productOption,cart_price,cart_qty,cart_update)
+     values (#{cartId},#{userId},#{productId},#{productName},#{cartProductsize},#{cartProductColor},#{cartProductOption},#{cartPrice},#{cartQty},#{cartUpdate})
+	</insert>
+	<!-- 장바구니 목록-->
+	<select id="selectCart" resultType="com.shop.model.ShoppingCart">
+	select c.cart_id,c.user_id,c.product_id,c.product_name,u.user_name,u.phone,u.address,u.address_num,u.address_detail,c.cart_productsize,c.cart_productColor,c.cart_price,
+		c.cart_qty,i.file_name,i.upload_path,i.uuid
+		from product p,shopping_cart c,user u
+		join (select
+		product_id
+		,max(case when image_id=1 then file_name end) as file_name
+		,max(case when image_id=1 then upload_path end) as upload_path
+		,max(case when image_id=1 then uuid end) as uuid
+		from product_img group by product_id) i 
+        where p.product_id=i.product_id and p.product_id=c.product_id and c.user_id=u.user_id and u.user_id=#{userId}
+	</select>
+	
+	<!-- 수량변경 -->
+	<select id="selectCartId" resultType="com.shop.model.ShoppingCart">
+	select cart_id,product_name,cart_qty from shopping_cart where cart_id=#{cartId}
+	</select>
+	<update id="updateCartQty">
+	update shopping_cart set cart_qty=#{cartQty} where cart_id=#{cartId}
+	</update>
+	
+	<!-- 장바구니삭제 -->
+	<delete id="deleteCart">
+	delete from shopping_cart where cart_id =#{cartId}
+	</delete>
+	<!-- 주문 삽입 -->
+	<insert id="orderinsert">
+	 insert into user_order (order_id,user_id,user_name,order_phone,order_address,order_address_detail,order_address_num,order_price,order_date)
+     values (#{orderId},#{userId},#{userName},#{orderPhone},#{orderAddress},#{orderAddressDetail},#{orderAddressNum},#{orderPrice},sysdate())
+	</insert>
+	<!-- 주문 상세정보삽입 -->
+	<insert id="orderinsertDetail">
+	insert into order_detail(order_detail_id,order_id,product_id,product_name,order_size,detail_price,order_color,order_qty)
+	 values (#{orderDetailId},#{orderId},#{productId},#{productName},#{orderSize},#{detailPrice},#{orderColor},#{orderQty});
+	</insert>
+	<!-- 주문리스트 -->
+	<select id="orderList" resultType="com.shop.model.UserOrder">
+	select order_id,user_id,user_name,order_phone,order_address,order_address_detail,order_address_num,order_price,DATE_FORMAT(order_date, '%Y-%m-%d %H:%i:%s') as order_date
+	from user_order where user_id = #{userId}
+	</select>
+	<!-- 주문 상세리스트 -->
+	<select id="orderDetailList" resultType="com.shop.model.OrderDetail">
+	   select o.order_detail_id,o.order_id,o.product_id,o.product_name,o.order_size,o.detail_price,o.order_color,o.order_qty,i.file_name,i.upload_path,i.uuid
+	from order_detail o,user_order u join (select
+		product_id
+		,max(case when image_id=1 then file_name end) as file_name
+		,max(case when image_id=1 then upload_path end) as upload_path
+		,max(case when image_id=1 then uuid end) as uuid
+		from product_img group by product_id) i where o.product_id=i.product_id  and u.order_id=o.order_id and u.order_id = #{orderId} and u.user_id=#{userId}
+	</select>
+	
+	<select id="orderDetailPuls" resultType="com.shop.model.OrderDetail">
+	   select o.order_detail_id,o.order_id,o.product_id,o.product_name,o.order_size,o.detail_price,o.order_color,o.order_qty,i.file_name,i.upload_path,i.uuid
+		from order_detail o,user_order u join (select product_id,max(case when image_id=1 then file_name end) as file_name
+		,max(case when image_id=1 then upload_path end) as upload_path
+		,max(case when image_id=1 then uuid end) as uuid 
+		from product_img group by product_id) i where o.product_id=i.product_id and u.order_id=o.order_id and u.order_id = #{orderId} 
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	<!-- 주문삭제 -->
+	<delete id="deleteOrder">
+	 delete from user_order where order_id = #{orderId}
+	</delete>
+	<delete id="deleteOrderDetail">
+	 delete from order_detail where order_id = #{orderId}
+	</delete>
+	<!-- 주문시 재고감소 -->
+	<update id="updateInven">
+		update product set product_inventory=product_inventory-#{productInventory} where product_id=#{productId}
+	</update>
+	<!-- 주문취소시 재고증가 -->
+	<update id="updateInvenPuls">
+		update product set product_inventory=product_inventory+#{productInventory} where product_id=#{productId}
+	</update>
+	
+	
+	<!-- 배송지 수정 -->
+	<select id="orderselect" resultType="com.shop.model.UserOrder">
+	select*from user_order where order_id=#{orderId}
+	</select>
+	<update id="orderupdate">
+	update user_order set user_name=#{userName},order_phone=#{orderPhone},order_address=#{orderAddress},order_address_detail=#{orderAddressDetail},
+	order_address_num=#{orderAddressNum} where order_id=#{orderId}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+</mapper> 

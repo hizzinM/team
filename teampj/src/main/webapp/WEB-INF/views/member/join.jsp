@@ -21,160 +21,94 @@
 </head>
 </head>
 <body>
-<!--상단 툴바-->
-    <header>
-        <nav>
-            <!--
-            <ul>
-                <li><a href="#">장바구니</a></li>
-                <li><a href="#">마이페이지</a></li>
-                <li><a href="#">언어설정</a></li>
-            </ul>
-            -->
-        </nav>
-    </header>
-    <div id="side_navigation">
-        <h1><a href="/main">MINPARKANG</a></h1>
-        <div id="s_nav">
-            <ul>
-                <!-- 로그인 전 -->
-                <c:if test="${loginuser == null }">
-                    <li><a href="/member/login">로그인</a></li>
-                    <li><a href="/member/join">회원가입</a></li><br>
-                </c:if>
-                
-                <!-- 로그인 후 -->
-                <c:if test="${ loginuser!= null }">
-                    <li style="font-weight: bold; font-size: 11px;">${loginuser.userName}님 어서오세요.</li><br><br>
-                    <li><a href="/member/logout">로그아웃</a></li>
-                    <li><a href="/mypage/myindex">마이페이지</a></li>
-                    <c:if test="${ loginuser.adminck ==1 }">
-                        <li><a href="/admin/index">관리자화면</a></li>
-                    </c:if>
-                </c:if><br>
-                <li><a href="#">배송조회</a></li>
-                <li><a href="#">장바구니</a></li>
-                <li><a href="#">리뷰</a></li>
-                <li><a href="#">고객센터</a></li><br>
-            </ul>
-        </div>
-        <div id="s_category">
-            <ul>
-                <li><a href="#">Outer</a></li>
-                <li><a href="#">Top</a></li>
-                <li><a href="#">Shirts</a></li>
-                <li><a href="#">Pants</a></li>
-                <li><a href="#">Suit</a></li>
-                <li><a href="#">Bag/Shose</a></li>
-                <li><a href="#">Acc</a></li>
-                <li><a href="#">Sale</a></li>
-            </ul>
-        </div>
-        <div id ="s_footer">
-            <h1>고객센터　1522-4953</h1><br>
-            <p>
-                MON-FRI AM 11:00 – PM 6:00<br>
-                LUNCH TIME PM 13:00 – 14:00<br>
-                SAT.SUN.HOLIDAY OFF<br>
-            </p><br>
-            <h1>은행정보</h1><br>
-            <p>
-                농협 123-4567-8910-12<br>
-                국민 9876-54-3210<br>
-                예금주 : (주) 민박강
-            </p>
-        </div>
-        <div id="s_search">
-            <form action="">
-                <input type="text" id="search"name="">
-            </form>
-        </div>
-    </div>
-    <div id="contents">
-        <div id ="form-frame">
-            <form name="for" action="" form id="join_form" method="post" onsubmit="return CheckForm()">
-                <p class="ex01">J O I N</p>
-                <table id="join_table">
-                    <tr>
-                        <td>아이디</td>
-                        <td>
-                            <input type="text" name="userId" id="user_id" class="text-frame">&nbsp;<spanid="checkid"></span>
-                            <span class="id_input_re_1">사용 가능한아이디입니다.</span> 
-                            <span class="id_input_re_2">아이디가 이미 존재합니다.</span><br>
-                            <b>영문 소문자/숫자, 4-16자</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>비밀번호</td>
-                        <td>
-                            <input type="password" name="password" id="pass_word" class="text-frame">&nbsp;
-                            <span id="checkpass"></span><br>
-                            <b>영문 대소문자/숫자 4자~12자</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>비밀번호 확인</td>
-                        <td>
-                            <input type="password" name="passwordCheck" id="passwordCheck" class="text-frame">&nbsp;
-                            <span id="checkpass2"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                        <td>이름</td>
-                        <td>
-                            <input type="text" name="userName" id="userName" class="text-frame">&nbsp;
-                            <span id="checkname"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><p>주소</p></td>
-                        <td>
-                            <div class="address_button address_style" onclick="execution_daum_address()">
-                                <span class="button_style" style="border: 1px solid gray;">주소찾기</span>
-                            </div> 
-                            <input type="text" class="address_input_1 text-frame text-frame-margin" name="addressNum">&nbsp;
-                            <span id="checkaddress1"></span><br>
-                            <input type="text" class="address_input_2 text-frame text-frame-margin" name="address"><br>
-                            <input type="text" class="address_input_3 text-frame" name="addressDetail">&nbsp;
-                            <span id="checkaddress2"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>전화번호</td>
-                        <td>
-                            <input type="tel" name="phone" id="phone" class="text-frame"><span id="checkphone" ></span>
-                        </td>
-                    </tr>
+	<!--상단 툴바-->
+	<header>
+		<nav></nav>
+	</header>
+	<div id="side_navigation">
+		<%@ include file="../include_collection/navigation.jsp"%>
+	</div>
+	<div id="contents">
+		<div id="form-frame">
+			<form name="for" action="" form id="join_form" method="post"
+				onsubmit="return CheckForm()">
+				<p class="ex01">J O I N</p>
+				<table id="join_table">
+					<tr>
+						<td>아이디</td>
+						<td><input type="text" name="userId" id="user_id"
+							class="text-frame">&nbsp;<spanid="checkid">
+							</span> <span class="id_input_re_1">사용 가능한아이디입니다.</span> <span
+								class="id_input_re_2">아이디가 이미 존재합니다.</span>
+							<br>
+							<b>영문 소문자/숫자, 4-16자</b></td>
+					</tr>
+					<tr>
+						<td>비밀번호</td>
+						<td><input type="password" name="password" id="pass_word"
+							class="text-frame">&nbsp; <span id="checkpass"></span><br>
+							<b>영문 대소문자/숫자 4자~12자</b></td>
+					</tr>
+					<tr>
+						<td>비밀번호 확인</td>
+						<td><input type="password" name="passwordCheck"
+							id="passwordCheck" class="text-frame">&nbsp; <span
+							id="checkpass2"></span></td>
+					</tr>
+					<tr>
+					</tr>
+					<tr>
+						<td>이름</td>
+						<td><input type="text" name="userName" id="userName"
+							class="text-frame">&nbsp; <span id="checkname"></span></td>
+					</tr>
+					<tr>
+						<td><p>주소</p></td>
+						<td>
+							<div class="address_button address_style"
+								onclick="execution_daum_address()">
+								<span class="button_style" style="border: 1px solid gray;">주소찾기</span>
+							</div> <input type="text"
+							class="address_input_1 text-frame text-frame-margin"
+							name="addressNum">&nbsp; <span id="checkaddress1"></span><br>
+							<input type="text"
+							class="address_input_2 text-frame text-frame-margin"
+							name="address"><br> <input type="text"
+							class="address_input_3 text-frame" name="addressDetail">&nbsp;
+							<span id="checkaddress2"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>전화번호</td>
+						<td><input type="tel" name="phone" id="phone"
+							class="text-frame"><span id="checkphone"></span></td>
+					</tr>
 
-                    <tr>
-                        <td>이메일</td>
-                        <td><input type="email" name="email" id="email" class="text-frame">&nbsp;
-                            <span id="checkemail"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="6" align="center">추가정보</td>
-                    </tr>
-                    <tr>
-                        <td>환불계좌 정보</td>
-                        <td>
-                            <span class="span-margin">예 금 주&nbsp;</span>
-                            <input type="text" name="accountName" class="text-frame text-frame-margin">&nbsp;
-                            <span id="checkeaccountName"></span><br> 
-                            <span class="span-margin">은 행 명&nbsp;</span>
-                            <select name="accountBank" id="accountBank" class="text-frame-margin">
-                                <option value="국민">국민 은행</option>
-                                <option value="신한">신한 은행</option>
-                            </select><br> 
-                            <span class="span-margin">계좌번호</span>
-                            <input type="text" name="accountNum"  class="text-frame">&nbsp;<span id="checkeaccountNum"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <textarea rows="20" cols="30" style="margin: 0px; width: 1100px; height: 345px">
+					<tr>
+						<td>이메일</td>
+						<td><input type="email" name="email" id="email"
+							class="text-frame">&nbsp; <span id="checkemail"></span></td>
+					</tr>
+					<tr>
+						<td colspan="6" align="center">추가정보</td>
+					</tr>
+					<tr>
+						<td>환불계좌 정보</td>
+						<td><span class="span-margin">예 금 주&nbsp;</span> <input
+							type="text" name="accountName"
+							class="text-frame text-frame-margin">&nbsp; <span
+							id="checkeaccountName"></span><br> <span class="span-margin">은
+								행 명&nbsp;</span> <select name="accountBank" id="accountBank"
+							class="text-frame-margin">
+								<option value="국민">국민 은행</option>
+								<option value="신한">신한 은행</option>
+						</select><br> <span class="span-margin">계좌번호</span> <input type="text"
+							name="accountNum" class="text-frame">&nbsp;<span
+							id="checkeaccountNum"></span></td>
+					</tr>
+					<tr>
+						<td colspan="2"><textarea rows="20" cols="30"
+								style="margin: 0px; width: 1100px; height: 345px">
                                 제1조(목적)
                                 이 약관은 민박강이 운영하는 민박강 사이버 몰(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리,의무 및 책임사항을 규정함을 목적으로 합니다.
                                 ※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다.」
@@ -382,45 +316,22 @@
                                 -보존이유: 통신비밀보호법
                                 -보존기간 : 3개월
                                 ※ 동의를 거부할 수 있으나 거부시 회원 가입이 불가능합니다.
-                            </textarea><br>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <label>
-                                <span>이용약관과 개인정보 수집 및 이용에 동의하십니까?</span>
-                                <input type="checkbox" name="agree1">동의함
-                            </label>
-                        </td>
-                    </tr>
-                </table>
-                <p align="center">
-                    <br> <input type="submit" value="확 인" alian="center" class="button_style submit_style">
-                </p>
-            </form>
-        </div>
-        <div id="footer">
-            <div class="footer-text">
-                <p>고객센터</p>
-                <p>1522-4953</p>
-                <p>Mon-Fri AM 11:00 – PM 6:00</p>
-                <p>Lunch time PM 13:00 – 14:00</p>
-                <p>Sat.Sun.Holiday OFF</p>
-                <p>은행정보</p>
-                <p>농협 123-4567-8910-11</p>
-                <p>국민 123-4567-8910-11</p>
-                <p>예금주 : (주) minparkang</p>
-            </div>
-            <div class="footer-text">
-                <P>주식회사 minparkang</P>
-                <p>대표이사 : 민박강 | 이메일 : minparkang@gmail.com</p>
-                <p>16490 경기도 수원시 팔달구 인계8동</p>
-                <p>사업자등록번호 : 123456789 | 통신판매업신고번호 : 2021-더조은-0000호</p>
-                <p>고객님은 안전거래를 위해 현금 등으로 결제시 저희 쇼핑몰에서 가입한 PG 사의 구매안전서비스를 이용하실 수 있습니다.
-                    KG 이니시스</p>
-            </div>
-        </div>
-    </div>
+                            </textarea><br></td>
+					</tr>
+					<tr>
+						<td colspan="2"><label> <span>이용약관과 개인정보 수집 및
+									이용에 동의하십니까?</span> <input type="checkbox" name="agree1">동의함
+						</label></td>
+					</tr>
+				</table>
+				<p align="center">
+					<br> <input type="submit" value="확 인" alian="center"
+						class="button_style submit_style">
+				</p>
+			</form>
+		</div>
+		<%@ include file="../include_collection/footer.jsp"%>
+	</div>
 	<script>
 	 function CheckForm(){
 		 var regul1 = /^[a-zA-Z]*$/; 

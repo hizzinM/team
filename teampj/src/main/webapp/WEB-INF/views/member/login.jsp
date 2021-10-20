@@ -4,91 +4,42 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/resources/css/common-style/reset.css">
 <link rel="stylesheet" href="/resources/css/common-style/side-nav.css">
 <link rel="stylesheet" href="/resources/css/common-style/contents.css">
 <link rel="stylesheet" href="/resources/css/member/login_200615.css">
-<script src="https://code.jquery.com/jquery-3.4.1.js"
-	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-	crossorigin="anonymous"></script>
+<!-- 카카오 로그인 api 소스 첨부 -->
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<style>
+.kakao_btn {
+	text-align: center;
+	margin-top: 10px;
+}
+
+.kakao_btn li {
+	display: inline-block;
+	width: 350px;
+	padding: 15px;
+	background-color: #FEE500;
+	border-radius: 5px;
+	margin-bottom: 5px;
+}
+
+.kakao_btn li:hover {
+	background-color: #F0D700;
+}
+</style>
 </head>
 <body>
 	<!--상단 툴바-->
 	<header>
-		<nav>
-			<!--
-            <ul>
-                <li><a href="#">장바구니</a></li>
-                <li><a href="#">마이페이지</a></li>
-                <li><a href="#">언어설정</a></li>
-            </ul>
-            -->
-		</nav>
+		<nav></nav>
 	</header>
 	<div id="side_navigation">
-		<h1>
-			<a href="/main">MINPARKANG</a>
-		</h1>
-		<div id="s_nav">
-			<ul>
-				<!-- 로그인 전 -->
-				<c:if test="${loginuser == null }">
-					<li><a href="/member/login">로그인</a></li>
-					<li><a href="/member/join">회원가입</a></li>
-					<br>
-				</c:if>
-
-				<!-- 로그인 후 -->
-				<c:if test="${ loginuser!= null }">
-					<li style="font-weight: bold; font-size: 11px;">${loginuser.userName}님
-						어서오세요.</li>
-					<br>
-					<br>
-					<li><a href="/member/logout">로그아웃</a></li>
-					<li><a href="/mypage/myindex">마이페이지</a></li>
-					<c:if test="${ loginuser.adminck ==1 }">
-						<li><a href="/admin/index">관리자화면</a></li>
-					</c:if>
-				</c:if>
-				<br>
-				<li><a href="#">배송조회</a></li>
-				<li><a href="#">장바구니</a></li>
-				<li><a href="#">리뷰</a></li>
-				<li><a href="#">고객센터</a></li>
-				<br>
-			</ul>
-		</div>
-		<div id="s_category">
-			<ul>
-				<li><a href="#">Outer</a></li>
-				<li><a href="#">Top</a></li>
-				<li><a href="#">Shirts</a></li>
-				<li><a href="#">Pants</a></li>
-				<li><a href="#">Suit</a></li>
-				<li><a href="#">Bag/Shose</a></li>
-				<li><a href="#">Acc</a></li>
-				<li><a href="#">Sale</a></li>
-			</ul>
-		</div>
-		<div id="s_footer">
-			<h1>고객센터 1522-4953</h1>
-			<br>
-			<p>
-				MON-FRI AM 11:00 – PM 6:00<br> LUNCH TIME PM 13:00 – 14:00<br>
-				SAT.SUN.HOLIDAY OFF<br>
-			</p>
-			<br>
-			<h1>은행정보</h1>
-			<br>
-			<p>
-				농협 123-4567-8910-12<br> 국민 9876-54-3210<br> 예금주 : (주) 민박강
-			</p>
-		</div>
-		<div id="s_search">
-			<form action="">
-				<input type="text" id="search" name="">
-			</form>
-		</div>
+		<%@ include file="../include_collection/navigation.jsp"%>
 	</div>
 	<!--본문-->
 	<div id="contents">
@@ -99,13 +50,13 @@
 						<div class="id_wrap">
 							<div class="id_input_box">
 								<input class="id_input text-frame" name="userId"
-									placeholder="아이디">
+									placeholder="아이디" value="관리자">
 							</div>
 						</div>
 						<div class="pw_wrap">
 							<div class="pw_input_box">
 								<input class="pw_iput text-frame" type="password"
-									name="password" placeholder="비밀번호">
+									name="password" placeholder="비밀번호" value="admin">
 								<!--<br> &nbsp;<span id="checklogin"></span><br>-->
 							</div>
 						</div>
@@ -120,6 +71,14 @@
 							type="button" class="login_button text-deco" value="LOGIN">
 
 					</div>
+					<!--   <div class="col-6">
+						<a class="btn" type="button" href="${kakaoUrl}">카카오톡 로그인</a>
+					</div> 
+					<a
+						href="https://kauth.kakao.com/oauth/authorize?client_id=adbee01da337c0d5c211cb26551a245a&redirect_uri=http://localhost:8080/member/kakaologin.do&response_type=code"><img
+						src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
+						width="222" /></a>-->
+
 				</form>
 			</div>
 		</div>
@@ -134,27 +93,7 @@
 		});
 	</script>
 	<div id="contents">
-		<div id="footer">
-			<div class="footer-text">
-				<p>고객센터</p>
-				<p>1522-4953</p>
-				<p>Mon-Fri AM 11:00 – PM 6:00</p>
-				<p>Lunch time PM 13:00 – 14:00</p>
-				<p>Sat.Sun.Holiday OFF</p>
-				<p>은행정보</p>
-				<p>농협 123-4567-8910-11</p>
-				<p>국민 123-4567-8910-11</p>
-				<p>예금주 : (주) minparkang</p>
-			</div>
-			<div class="footer-text">
-				<P>주식회사 minparkang</P>
-				<p>대표이사 : 민박강 | 이메일 : minparkang@gmail.com</p>
-				<p>16490 경기도 수원시 팔달구 인계8동</p>
-				<p>사업자등록번호 : 123456789 | 통신판매업신고번호 : 2021-더조은-0000호</p>
-				<p>고객님은 안전거래를 위해 현금 등으로 결제시 저희 쇼핑몰에서 가입한 PG 사의 구매안전서비스를 이용하실 수
-					있습니다. KG 이니시스</p>
-			</div>
-		</div>
+		<%@ include file="../include_collection/footer.jsp"%>
 	</div>
 </body>
 </html>

@@ -42,4 +42,48 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+	border: 1px black solid;
+}
+/*사각형 버튼*/
+.button_style{
+	background-color: white;
+	border:1px solid  black;
+	font-weight: bolder;
+	padding:8px;
+	cursor: pointer;
+}
+.button_style:hover{
+	background-color: black;
+	color:white;
+}
+/*둥근 버튼*/
+.btn-style{
+    background-color: white;
+    border:1px solid black;
+    width:197px;
+    margin-top:20px;
+    border-radius: 40px;
+    padding: 10px 0;
+    font-size:11px;
+}
+.btn-style:hover{
+    background-color: black;
+    color:white;
+}
+/*입력창*/
+.text-frame{
+	position:relative;
+	border:1px solid RGB(221,221,221);
+	width: 90%;
+	height: 20px;
+}
+.text-frame:focus{
+	border:1px solid RGB(22,22,22);
+	outline: none;
+}
+.text-frame:hover{
+	border:1px solid RGB(22,22,22);
+}
+.text-frame-margin{
+	margin-bottom: 5px;
 }

@@ -1,0 +1,53 @@
+@charset "UTF-8";
+#contents{
+    padding-top:100px;
+}
+#table-frame{
+    width:900px;
+    margin:0 auto;
+    margin-bottom: 200px;
+}
+#table-frame>h1{
+    font-size:15px;
+    text-align: center;
+    margin-bottom: 100px;
+    color:rgb(71, 71, 71)
+}
+table{width:100%;font-size:12px;text-align: center;}
+th,td{border:1px solid #DFDFDF;text-align:center;padding:15px 0 15px 0;}
+th{background-color: #FAFAFA;color:#555555;}
+.text-style{
+    width:80%;
+    text-align:left;
+    border:none;
+    outline: none;
+    color:#555555;
+}
+.num-btn{
+    width:50px;
+    border:1px solid rgb(99, 99, 99);
+    text-align: center;
+}
+
+.pageInfo li {
+    float: left;
+    margin-right: 20px;
+}
+.listResult { padding:20px; background:#eee; }
+.listResult .sum { float:left; width:45%; font-size:22px; }
+
+.listResult .orderOpne { float:right; width:45%; text-align:right; }
+.listResult .orderOpne button { font-size:18px; padding:5px 10px; border:1px solid #999; background:#fff;}
+.listResult::after { content:""; display:block; clear:both; }
+
+.orderInfo { border:5px solid #eee; padding:20px; display:none;}
+.orderInfo .inputArea { margin:10px 0; }
+.orderInfo .inputArea label { display:inline-block; width:120px; margin-right:10px; }
+.orderInfo .inputArea input { font-size:14px; padding:5px; }
+#userAddr2, #userAddr3 { width:250px; }
+
+.orderInfo .inputArea:last-child { margin-top:30px; }
+.orderInfo .inputArea button { font-size:20px; border:2px solid #ccc; padding:5px 10px; background:#fff; margin-right:20px;}
+
+.btn-frame{text-align: right;margin-top:20px;}
+

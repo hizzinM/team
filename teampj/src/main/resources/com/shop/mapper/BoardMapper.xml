@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.mapper.BoardMapper">
+
+	<!-- 공지 등록 -->
+	<insert id="enroll">
+		insert into notice(notice_title, notice_content,
+		user_id) values
+		(#{noticeTitle}, #{noticeContent},
+		#{userId})
+	</insert>
+
+	<!-- 공지 목록 -->
+	<select id="getList" resultType="com.shop.model.NoticeVO">
+		select * from notice
+	</select>
+
+	<!-- 공지 조회 -->
+	<select id="getPage" resultType="com.shop.model.NoticeVO">
+		select * from notice where bno =
+		#{bno}
+	</select>
+
+	<!-- 공지 수정 -->
+	<update id="modify">
+		update notice set notice_title =
+		#{noticeTitle},
+		notice_content =
+		#{noticeContent},
+		notice_bold=#{noticeBold} where bno
+		=
+		#{bno}
+	</update>
+
+	<!-- 공지 삭제 -->
+	<delete id="delete">
+		delete from notice where bno = #{bno}
+	</delete>
+
+	<!-- 게시물 목록(페이징) -->
+	<select id="getListPaging" resultType="com.shop.model.NoticeVO">
+		select * from (
+		select *
+		from notice order by notice_bold desc, notice_writedate desc) as Page
+		limit #{skip},#{amount}
+	</select>
+
+	<!-- 게시물 총 개숫 -->
+	<select id="getTotal" resultType="int">
+		select count(*) from notice
+	</select>
+
+	<!-- QNA 등록 -->
+	<insert id="enrollQNA">
+		insert into
+		qna(qna_title,qna_category,user_id,qna_contents ) values
+		(#{qnaTitle},
+		#{qnaCategory},#{userId},#{qnaContents} )
+	</insert>
+
+	<!-- QNA 목록 -->
+	<select id="getQNAList" resultType="com.shop.model.QnaVO">
+		select * from qna
+	</select>
+
+	<!-- QNA 조회 -->
+	<select id="getQNAPage" resultType="com.shop.model.QnaVO">
+		select * from qna where
+		bno =
+		#{bno}
+	</select>
+
+	<!-- QNA 수정 -->
+	<update id="modifyQNA">
+		update qna set qna_title = #{qnaTitle},
+		qna_category =
+		#{qnaCategory}, qna_contents=#{qnaContents} where bno
+		= #{bno}
+	</update>
+
+	<!-- QNA 삭제 -->
+	<delete id="deleteQNA">
+		delete from qna where bno = #{bno}
+	</delete>
+
+	<!-- QNA 목록(페이징) -->
+	<select id="getQnaListPaging" resultType="com.shop.model.QnaVO">
+		select * from (
+		select *
+		from qna order by bno desc) as Page2
+		limit #{skip},#{amount}
+	</select>
+
+	<!-- QNA 총 개숫 -->
+	<select id="getQnaTotal" resultType="int">
+		select count(*) from qna
+	</select>
+
+	<insert id="enrollReview">
+	<selectKey resultType="int" order="AFTER" keyProperty="reviewId">
+	SELECT LAST_INSERT_ID()</selectKey>
+	insert into review(review_id,review_title,product_name,review_board,user_id,review_writedate) values(#{reviewId},#{reviewTitle},#{productName},#{reviewBoard},#{userId},#{reviewWritedate}) 
+	</insert>
+	<!-- 리뷰이미지 등록 -->
+	<insert id="imageReview">
+	insert into review_img(review_id,file_name,upload_path,uuid) 
+	values (#{reviewId},#{fileName},#{uploadPath},#{uuid}) </insert>
+	
+	<!-- 리뷰 목록 -->
+	<select id="selectReviewList" resultType="com.shop.model.ReviewVO">
+	select r.review_id,i.file_name,i.upload_path,i.uuid,r.review_title,r.product_name,r.review_board,r.user_id,r.review_writedate
+	from review r,review_img i join user u where r.user_id=u.user_name and i.review_id=r.review_id and r.user_id=#{userId}
+	</select>
+
+	<!-- 리뷰 목록 -->
+	<select id="getReviewList" resultType="com.shop.model.ReviewVO">
+	select r.review_id,i.file_name,i.upload_path,i.uuid,r.review_title,r.product_name,r.review_board,r.user_id,r.review_writedate
+	from review r,review_img i join user u where r.user_id=u.user_name and i.review_id=r.review_id
+	</select>
+
+	<!-- 리뷰 조회 -->
+	<select id="getReviewPage" resultType="com.shop.model.ReviewVO">
+	select r.review_id,i.file_name,i.upload_path,i.uuid,r.review_title,r.product_name,r.review_board,r.user_id,r.review_writedate
+	from review r,review_img i join user u where r.user_id=u.user_name and i.review_id=r.review_id
+		and r.review_id = #{reviewId}
+	</select>
+
+	<!-- 리뷰 수정 -->
+	<update id="modifyReview">
+		update review set review_title =
+		#{reviewTitle},review_board = #{reviewBoard}
+		where
+		review_id=#{reviewId}
+	</update>
+
+	<!-- 리뷰 삭제 -->
+	<delete id="deleteReview">
+		delete from review where review_id = #{reviewId}
+	</delete>
+	<!-- 리뷰 이미지 수정삭제 -->
+	<delete id="deleterReviewImg">
+		delete from review_img where review_id=#{reviewId}
+	</delete>
+	<!-- 리뷰 이미지 조회삭제 -->
+	<delete id="deleterReviewImgAll">
+		delete from review_img where review_id=#{reviewId}
+	</delete>
+	
+	<!-- 리뷰 목록(페이징) -->
+	<select id="getReviewListPaging"
+		resultType="com.shop.model.ReviewVO">
+		select * from (
+		select r.review_id,i.file_name,i.upload_path,i.uuid,r.review_title,r.product_name,r.review_board,r.user_id,r.review_writedate
+		from review r,review_img i join user u where r.user_id=u.user_name and i.review_id=r.review_id  order by review_id desc)
+		as RP
+		limit #{skip},#{amount}
+	</select>
+
+	<!-- 리뷰 총 개숫 -->
+	<select id="getReviewTotal" resultType="int">
+		select count(*) from
+		review
+	</select>
+
+	<!-- 댓글 조회 -->
+	<select id="replyList" parameterType="int"
+		resultType="com.shop.model.ReplyVO">
+		select * from reply where bno
+		= #{bno}
+	</select>
+
+	<!-- 선택된 댓글 조회 -->
+	<select id="selectReply" resultType="com.shop.model.ReplyVO">
+		select * from reply
+		where
+		rno
+		= #{rno}
+	</select>
+
+	<!-- 댓글 작성 -->
+	<insert id="writereply" parameterType="com.shop.model.ReplyVO">
+		insert into
+		reply(bno,reply_content,user_id) values
+		(#{bno},
+		#{replyContent},#{userId})
+	</insert>
+
+	<!-- 댓글 수정 -->
+	<update id="updateReply" parameterType="com.shop.model.ReplyVO">
+		update reply
+		set
+		reply_content = #{replyContent}
+		where rno = #{rno}
+	</update>
+
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReply" parameterType="com.shop.model.ReplyVO">
+		delete
+		from reply
+		where rno
+		= #{rno}
+	</delete>
+
+	<!-- 댓글 삭제 -->
+	<delete id="deleteboardreply" parameterType="int">
+		delete
+		from reply
+		where bno
+		= #{bno}
+	</delete>
+
+	<!-- 답변완료 체크 -->
+	<update id="getreplyTotal" parameterType="int">
+		<!-- update q.*,(select count(*) from reply r where r.bno=q.bno)as rc from 
+			qna q -->
+		update qna q
+		set q.rc = (select count(*) from reply where bno = #{bno})
+		where q.bno = #{bno}
+	</update>
+
+</mapper>

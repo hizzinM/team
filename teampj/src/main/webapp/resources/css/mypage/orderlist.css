@@ -1,0 +1,23 @@
+@charset "UTF-8";
+#contents{
+    padding-top:100px;
+}
+#contents>h1{text-align: center;font-size:14px; margin-bottom: 50px;}
+.table-frame{
+    width:1400px;
+    margin: 0 auto;
+    margin-bottom: 200px;
+    font-size:12px;
+}
+.table-frame>h1{
+    font-size: 9px;
+    margin-bottom:3px;
+}
+.order-wrap{
+    width:100%;
+    border:1px solid #D7D5D5;
+}
+.order-wrap tbody tr>td,.order-wrap thead tr>th
+{padding:15px 0 15px 0;border:1px solid #D7D5D5;text-align: center;}
+.order-wrap thead tr>th{background-color:#FAFAFA;}
+.btn-box{text-align: right;margin-top:20px}

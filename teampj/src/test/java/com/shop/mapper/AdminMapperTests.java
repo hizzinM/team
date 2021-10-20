@@ -27,7 +27,7 @@ public class AdminMapperTests {
 		
 		product.setProductId(0);
 		product.setProductName("테스트 실험3");
-		product.setProductPrice("100");
+		product.setProductPrice(100);
 		product.setProductSize("L");
 		product.setProductColor("노랑");
 		product.setProductInventory(1);
@@ -51,7 +51,7 @@ public class AdminMapperTests {
 		mapper.imageEnroll(vo);
 		
 	}
-	@Test@Ignore
+	@Test
 	public void selectproductList() {
 		Criteria cri=new Criteria();
 		cri.setKeyword("테스트");
